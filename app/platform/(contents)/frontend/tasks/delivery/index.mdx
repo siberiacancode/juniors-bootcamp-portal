@@ -49,7 +49,7 @@ export const metadata = {
   <div>UI kit</div>
 </Mention>
 
-<Mention external href='https://shift-intensive.ru/api'>
+<Mention external href='https://juniors-bootcamp.ru/api'>
   <ExternalLinkIcon className='size-5' />
   <div>Необходимые API</div>
 </Mention>
@@ -76,8 +76,8 @@ export const metadata = {
 
     ### Флоу
 
-    1. Реализована главная страница с выбором направления и типом посылки, с помощью запросов **get** [/delivery/points](https://shift-intensive.ru/api/rest#tag/-delivery/get/api/delivery/points) и **get** [/delivery/package/types](https://shift-intensive.ru/api/rest#tag/-delivery/get/api/delivery/package/types)
-    2. Реализован расчет стоимости доставки, с помощью запроса **post** [/delivery/calc](https://shift-intensive.ru/api/rest#tag/-delivery/post/api/delivery/calc)
+    1. Реализована главная страница с выбором направления и типом посылки, с помощью запросов **get** [/delivery/points](https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/points) и **get** [/delivery/package/types](https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/package/types)
+    2. Реализован расчет стоимости доставки, с помощью запроса **post** [/delivery/calc](https://juniors-bootcamp.ru/api/rest#tag/-delivery/post/api/delivery/calc)
 
   </TabsContent>
 
@@ -91,10 +91,10 @@ export const metadata = {
 
     ### Флоу
 
-    1. Реализована главная страница с выбором направления и типом посылки, с помощью запросов **get** [/delivery/points](https://shift-intensive.ru/api/rest#tag/-delivery/get/api/delivery/points) и **get** [/delivery/package/types](https://shift-intensive.ru/api/rest#tag/-delivery/get/api/delivery/package/types)
-    2. Реализован расчет стоимости доставки, с помощью запроса **post** [/delivery/calc](https://shift-intensive.ru/api/rest#tag/-delivery/post/api/delivery/calc)
+    1. Реализована главная страница с выбором направления и типом посылки, с помощью запросов **get** [/delivery/points](https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/points) и **get** [/delivery/package/types](https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/package/types)
+    2. Реализован расчет стоимости доставки, с помощью запроса **post** [/delivery/calc](https://juniors-bootcamp.ru/api/rest#tag/-delivery/post/api/delivery/calc)
     3. Реализованы все формы для оформления заказа
-    4. Реализована форма оплаты с персональными данными и картой, создан заказ с помощью запроса **post** [/delivery/order](https://shift-intensive.ru/api/rest#tag/-delivery/post/api/delivery/order)
+    4. Реализована форма оплаты с персональными данными и картой, создан заказ с помощью запроса **post** [/delivery/order](https://juniors-bootcamp.ru/api/rest#tag/-delivery/post/api/delivery/order)
     5. Реализовано отображение результата оплаты
 
   </TabsContent>
@@ -108,18 +108,18 @@ export const metadata = {
     </Mention>
 
     ### Флоу
-    1. Реализована главная страница с выбором направления и типом посылки, с помощью запросов **get** [/delivery/points](https://shift-intensive.ru/api/rest#tag/-delivery/get/api/delivery/points) и **get** [/delivery/package/types](https://shift-intensive.ru/api/rest#tag/-delivery/get/api/delivery/package/types)
-    2. Реализован расчет стоимости доставки, с помощью запроса **post** [/delivery/calc](https://shift-intensive.ru/api/rest#tag/-delivery/post/api/delivery/calc)
+    1. Реализована главная страница с выбором направления и типом посылки, с помощью запросов **get** [/delivery/points](https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/points) и **get** [/delivery/package/types](https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/package/types)
+    2. Реализован расчет стоимости доставки, с помощью запроса **post** [/delivery/calc](https://juniors-bootcamp.ru/api/rest#tag/-delivery/post/api/delivery/calc)
     3. Реализованы все формы для оформления заказа
-    4. Реализована форма оплаты с персональными данными и картой, создан заказ с помощью запроса **post** [/delivery/order](https://shift-intensive.ru/api/rest#tag/-delivery/post/api/delivery/order)
+    4. Реализована форма оплаты с персональными данными и картой, создан заказ с помощью запроса **post** [/delivery/order](https://juniors-bootcamp.ru/api/rest#tag/-delivery/post/api/delivery/order)
     5. Реализовано отображение результата оплаты
 
     ### Личный кабинет
-    1. Реализована страница/экран авторизации, создан отп код с помощью запроса **post** <Link href='https://shift-intensive.ru/api/rest#tag/%EF%B8%8F-otps/post/api/auth/otp'>/auth/otp</Link>, авторизация с помощью запроса **post** <Link href='https://shift-intensive.ru/api/rest#tag/%EF%B8%8F-users/post/api/users/signin'>/users/signin</Link>
-    2. Реализована страница/экран профиля с возможностью изменения персональных данных, обновление данных профиля с помощью запроса **patch** <Link href='https://shift-intensive.ru/api/rest#tag/%EF%B8%8F-users/patch/api/users/profile'>/users/profile</Link>
-    3. Реализована страница/экран с отправлениями пользователя, получение доставок и отображения их статуса с помощью запроса **get** [/delivery/orders](https://shift-intensive.ru/api/rest#tag/-delivery/get/api/delivery/orders)
-    4. Реализована страница/экран с конкретным отправлением, посмотреть подробную информацию о доставке с помощью запроса **get** [/delivery/orders/:orderId](https://shift-intensive.ru/api/rest#tag/-delivery/get/api/delivery/orders/{orderId})
-      1. Возможность отмены отправления, с помощью запроса **post** [/delivery/order/cancel](https://shift-intensive.ru/api/rest#tag/-delivery/put/api/delivery/orders/cancel)
+    1. Реализована страница/экран авторизации, создан отп код с помощью запроса **post** <Link href='https://juniors-bootcamp.ru/api/rest#tag/%EF%B8%8F-otps/post/api/auth/otp'>/auth/otp</Link>, авторизация с помощью запроса **post** <Link href='https://juniors-bootcamp.ru/api/rest#tag/%EF%B8%8F-users/post/api/users/signin'>/users/signin</Link>
+    2. Реализована страница/экран профиля с возможностью изменения персональных данных, обновление данных профиля с помощью запроса **patch** <Link href='https://juniors-bootcamp.ru/api/rest#tag/%EF%B8%8F-users/patch/api/users/profile'>/users/profile</Link>
+    3. Реализована страница/экран с отправлениями пользователя, получение доставок и отображения их статуса с помощью запроса **get** [/delivery/orders](https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/orders)
+    4. Реализована страница/экран с конкретным отправлением, посмотреть подробную информацию о доставке с помощью запроса **get** [/delivery/orders/:orderId](https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/orders/{orderId})
+      1. Возможность отмены отправления, с помощью запроса **post** [/delivery/order/cancel](https://juniors-bootcamp.ru/api/rest#tag/-delivery/put/api/delivery/orders/cancel)
 
   </TabsContent>
 </Tabs>
@@ -858,7 +858,7 @@ export const metadata = {
   </TabsContent>
 </Tabs>
 
-## <Link href='https://shift-intensive.ru/api'>API</Link>
+## <Link href='https://juniors-bootcamp.ru/api'>API</Link>
 
 Необходимое апи для выполнения задания
 
@@ -870,37 +870,37 @@ export const metadata = {
 
     <TabsContent value="rest">
     	<div className="flex flex-col gap-2">
-    		<Link href='https://shift-intensive.ru/api/rest#tag/%EF%B8%8F-otps/post/api/auth/otp'>
+    		<Link href='https://juniors-bootcamp.ru/api/rest#tag/%EF%B8%8F-otps/post/api/auth/otp'>
     			<ApiCard variant="rest" type="post" name="/auth/otp" className='hover:bg-accent' />
     		</Link>
-    		<Link href='https://shift-intensive.ru/api/rest#tag/%EF%B8%8F-users/post/api/users/signin'>
+    		<Link href='https://juniors-bootcamp.ru/api/rest#tag/%EF%B8%8F-users/post/api/users/signin'>
     			<ApiCard variant="rest" type="post" name="/users/signin" className='hover:bg-accent' />
     		</Link>
-    		<Link href='https://shift-intensive.ru/api/rest#tag/%EF%B8%8F-users/get/api/users/session'>
+    		<Link href='https://juniors-bootcamp.ru/api/rest#tag/%EF%B8%8F-users/get/api/users/session'>
     			<ApiCard variant="rest" type="post" name="/users/session" className='hover:bg-accent' />
     		</Link>
-    		<Link href='https://shift-intensive.ru/api/rest#tag/%EF%B8%8F-users/patch/api/users/profile'>
+    		<Link href='https://juniors-bootcamp.ru/api/rest#tag/%EF%B8%8F-users/patch/api/users/profile'>
     			<ApiCard variant="rest" type="patch" name="/users/profile" className='hover:bg-accent' />
     		</Link>
-    		<Link href='https://shift-intensive.ru/api/rest#tag/-delivery/get/api/delivery/points'>
+    		<Link href='https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/points'>
     			<ApiCard variant="rest" type="get" name="/delivery/points" className='hover:bg-accent' />
     		</Link>
-    		<Link href='https://shift-intensive.ru/api/rest#tag/-delivery/get/api/delivery/package/types'>
+    		<Link href='https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/package/types'>
     			<ApiCard variant="rest" type="get" name="/delivery/package/types" className='hover:bg-accent' />
     		</Link>
-    		<Link href='https://shift-intensive.ru/api/rest#tag/-delivery/post/api/delivery/calc'>
+    		<Link href='https://juniors-bootcamp.ru/api/rest#tag/-delivery/post/api/delivery/calc'>
     			<ApiCard variant="rest" type="post" name="/delivery/calc" className='hover:bg-accent' />
     		</Link>
-    		<Link href='https://shift-intensive.ru/api/rest#tag/-delivery/post/api/delivery/order'>
+    		<Link href='https://juniors-bootcamp.ru/api/rest#tag/-delivery/post/api/delivery/order'>
     			<ApiCard variant="rest" type="post" name="/delivery/order" className='hover:bg-accent' />
     		</Link>
-    		<Link href='https://shift-intensive.ru/api/rest#tag/-delivery/get/api/delivery/orders'>
+    		<Link href='https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/orders'>
     			<ApiCard variant="rest" type="get" name="/delivery/orders" className='hover:bg-accent' />
     		</Link>
-        <Link href='https://shift-intensive.ru/api/rest#tag/-delivery/get/api/delivery/orders/{orderId}'>
+        <Link href='https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/orders/{orderId}'>
     			<ApiCard variant="rest" type="get" name="/delivery/orders/:orderId" className='hover:bg-accent' />
     		</Link>
-        <Link href='https://shift-intensive.ru/api/rest#tag/-delivery/put/api/delivery/orders/cancel'>
+        <Link href='https://juniors-bootcamp.ru/api/rest#tag/-delivery/put/api/delivery/orders/cancel'>
     			<ApiCard variant="rest" type="put" name="/delivery/orders/cancel" className='hover:bg-accent' />
     		</Link>
     	</div>
@@ -908,37 +908,37 @@ export const metadata = {
 
     <TabsContent value="graphql">
     	<div className="flex flex-col gap-2">
-    		<Link href='https://shift-intensive.ru/api/graphql/'>
+    		<Link href='https://juniors-bootcamp.ru/api/graphql/'>
     			<ApiCard variant="graphql" type="mutation" name="createOtp" className='hover:bg-accent' />
     		</Link>
-    		<Link href='https://shift-intensive.ru/api/graphql/'>
+    		<Link href='https://juniors-bootcamp.ru/api/graphql/'>
     			<ApiCard variant="graphql" type="mutation" name="signin" className='hover:bg-accent' />
     		</Link>
-    		<Link href='https://shift-intensive.ru/api/graphql/'>
+    		<Link href='https://juniors-bootcamp.ru/api/graphql/'>
     			<ApiCard variant="graphql" type="mutation" name="updateProfile" className='hover:bg-accent' />
     		</Link>
-    		<Link href='https://shift-intensive.ru/api/graphql/'>
+    		<Link href='https://juniors-bootcamp.ru/api/graphql/'>
     			<ApiCard variant="graphql" type="query" name="session" className='hover:bg-accent' />
     		</Link>
-    		<Link href='https://shift-intensive.ru/api/graphql/'>
+    		<Link href='https://juniors-bootcamp.ru/api/graphql/'>
     			<ApiCard variant="graphql" type="query" name="getDeliveryPoints" className='hover:bg-accent' />
     		</Link>
-    		<Link href='https://shift-intensive.ru/api/graphql/'>
+    		<Link href='https://juniors-bootcamp.ru/api/graphql/'>
     			<ApiCard variant="graphql" type="query" name="getDeliveryPackageTypes" className='hover:bg-accent' />
     		</Link>
-    		<Link href='https://shift-intensive.ru/api/graphql/'>
+    		<Link href='https://juniors-bootcamp.ru/api/graphql/'>
     			<ApiCard variant="graphql" type="mutation" name="cancelDeliveryOrder" className='hover:bg-accent' />
     		</Link>
-    		<Link href='https://shift-intensive.ru/api/graphql/'>
+    		<Link href='https://juniors-bootcamp.ru/api/graphql/'>
     			<ApiCard variant="graphql" type="mutation" name="createDeliveryOrder" className='hover:bg-accent' />
     		</Link>
-    		<Link href='https://shift-intensive.ru/api/graphql/'>
+    		<Link href='https://juniors-bootcamp.ru/api/graphql/'>
     			<ApiCard variant="graphql" type="query" name="getDeliveries" className='hover:bg-accent' />
     		</Link>
-        <Link href='https://shift-intensive.ru/api/graphql/'>
+        <Link href='https://juniors-bootcamp.ru/api/graphql/'>
     			<ApiCard variant="graphql" type="query" name="getDelivery" className='hover:bg-accent' />
     		</Link>
-        <Link href='https://shift-intensive.ru/api/graphql/'>
+        <Link href='https://juniors-bootcamp.ru/api/graphql/'>
     			<ApiCard variant="graphql" type="mutation" name="cancelDeliveryOrder" className='hover:bg-accent' />
     		</Link>
     	</div>
