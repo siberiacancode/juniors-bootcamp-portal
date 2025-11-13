@@ -1,0 +1,185 @@
+import Link from 'next/link';
+import { ExternalLinkIcon } from 'lucide-react';
+
+import { FigmaIcon } from '@/components/icons';
+import { Mention } from '@/app/platform/[...slug]/components';
+
+import { Iframe, ApiCard, Meta, Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui';
+
+export const metadata = {
+  emoji: '🍕',
+  title: 'Пицца'
+};
+
+Приложение позволяет пользователям заказать пиццу. На странице каталога показаны доступные пиццы, при клике на любую из пицц, пользователь может увидеть информацию о конкретной пицце и добавить ее в корзину с топпингами. В корзине пользователь может посмотреть выбранные пиццы и оформить заказ. При оформление заказа пользователь вводить персональные данные и оплачивает заказ.
+
+В рамках задания мы не ограничиваем вас. Это может быть космическая/магическая доставка пиццы 🍕 или клон любого существующего сервиса, тут мы полагаемся на вашу фантазию, также вы можете самостоятельно расширить требования задачи при желании.
+
+## Ссылки
+
+<div className='flex gap-2 flex-wrap'>
+
+<Mention
+  external
+  href='https://www.figma.com/design/HbwUMBOWcrPBkPTmRPYwor/%D0%97%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-%D0%A8%D0%98%D0%A4%D0%A2-%D0%98%D0%BD%D1%82%D0%B5%D0%BD%D1%81%D0%B8%D0%B2?node-id=0-1&p=f&t=toSaiMlYhYvhLwRS-0'
+>
+  <FigmaIcon className='size-5' />
+  <div>Дизайн заданий</div>
+</Mention>
+
+<Mention
+  external
+  href='https://www.figma.com/design/KsxWtBbM0Ni8e5c9aFBa8I/UI-Kit-%D0%A8%D0%98%D0%A4%D0%A2-%D0%B8%D0%BD%D1%82%D0%B5%D0%BD%D1%81%D0%B8%D0%B2?node-id=76-9676&p=f&t=KKxa6XwkU2FFsh5J-0'
+>
+  <FigmaIcon className='size-5' />
+  <div>UI kit</div>
+</Mention>
+
+<Mention external href='https://shift-intensive.ru/api'>
+  <ExternalLinkIcon className='size-5' />
+  <div>Необходимые API</div>
+</Mention>
+</div>
+
+## Уровни сложности
+
+Задание имеет несколько уровней сложности, задания спроектированы так, чтобы после выполнения одного уровня, вы смогли перейти к следующему уровню.
+
+<Tabs defaultValue="easy" param="level">
+  <TabsList>
+    <TabsTrigger value="easy">Легкий</TabsTrigger>
+    <TabsTrigger value="medium">Средний</TabsTrigger>
+    <TabsTrigger value="hard">Сложный</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="easy">
+    Ожидаемый результат: Создана страница/экран каталога пицц и модальное окно/экран конкретной пиццы:
+
+    <Mention href='https://www.figma.com/design/HbwUMBOWcrPBkPTmRPYwor/%D0%97%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-%D0%A8%D0%98%D0%A4%D0%A2-%D0%98%D0%BD%D1%82%D0%B5%D0%BD%D1%81%D0%B8%D0%B2?node-id=13278-31852&t=toSaiMlYhYvhLwRS-0'>
+      <FigmaIcon className='size-5' />
+      <div>Дизайн легкого уровня</div>
+    </Mention>
+
+    ### Флоу
+
+    1. Реализована страница/экран каталога со списком пицц, список пицц получен с помощью запроса: <div className='flex items-center gap-2 flex-wrap'><Link href='https://shift-intensive.ru/api/rest#tag/-pizza/get/api/pizza/catalog'><ApiCard variant="rest" type="get" name="/pizza/catalog" className='hover:bg-accent'  /></Link><Link href='https://shift-intensive.ru/api/graphql/'><ApiCard variant="graphql" type="query" name="pizzaCatalog" className='hover:bg-accent'  /></Link></div>
+    2. Реализовано модальное окно/экран конкретной пиццы
+
+  </TabsContent>
+
+  <TabsContent value="medium">
+    Ожидаемый результат: Создана страница/экран каталога пицц и модальное окно/экран конкретной пиццы. Реализована корзина и сценарий оформления заказа:
+    
+    <Mention external href='https://www.figma.com/design/HbwUMBOWcrPBkPTmRPYwor/%D0%97%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-%D0%A8%D0%98%D0%A4%D0%A2-%D0%98%D0%BD%D1%82%D0%B5%D0%BD%D1%81%D0%B8%D0%B2?node-id=13278-28169&t=toSaiMlYhYvhLwRS-0'>
+      <FigmaIcon className='size-5' />
+      <div>Дизайн среднего уровня</div>
+    </Mention>
+
+    ### Флоу
+
+    1. Реализована страница/экран каталога со списком пицц, список пицц получен с помощью запроса: <div className='flex items-center gap-2 flex-wrap'><Link href='https://shift-intensive.ru/api/rest#tag/-pizza/get/api/pizza/catalog'><ApiCard variant="rest" type="get" name="/pizza/catalog" className='hover:bg-accent'  /></Link><Link href='https://shift-intensive.ru/api/graphql/'><ApiCard variant="graphql" type="query" name="pizzaCatalog" className='hover:bg-accent'  /></Link></div>
+    2. Реализовано модальное окно/экран конкретной пиццы с возможностью добавления пицц в корзину
+    3. Реализована страница/экран корзины и сценарий оформления заказа, состоящий из нескольких шагов с использованием запроса: <div className='flex items-center gap-2 flex-wrap'><Link href='https://shift-intensive.ru/api/rest#tag/-pizza/post/api/pizza/payment'><ApiCard variant="rest" type="post" name="/pizza/payment" className='hover:bg-accent'  /></Link><Link href='https://shift-intensive.ru/api/graphql/'><ApiCard variant="graphql" type="mutation" name="createPayment" className='hover:bg-accent'  /></Link></div>
+    4. Реализовано отображение результата оплаты
+
+  </TabsContent>
+
+  <TabsContent value="hard">
+    Ожидаемый результат: Создана страница/экран каталога пицц и модальное окно/экран конкретной пиццы. Реализована корзина и сценарий оформления заказа. Реализована авторизация и работа с профилем, а также страница/экран заказов и заказа.
+
+    <Mention external href='https://www.figma.com/design/HbwUMBOWcrPBkPTmRPYwor/%D0%97%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-%D0%A8%D0%98%D0%A4%D0%A2-%D0%98%D0%BD%D1%82%D0%B5%D0%BD%D0%B8%D0%B2?node-id=13259-12768&t=toSaiMlYhYvhLwRS-0'>
+      <FigmaIcon className='size-5' />
+      <div>Дизайн сложного уровня</div>
+    </Mention>
+
+    ### Флоу
+       1. Реализована страница/экран каталога со списком пицц, список пицц получен с помощью запроса: <div className='flex items-center gap-2 flex-wrap'><Link href='https://shift-intensive.ru/api/rest#tag/-pizza/get/api/pizza/catalog'><ApiCard variant="rest" type="get" name="/pizza/catalog" className='hover:bg-accent'  /></Link><Link href='https://shift-intensive.ru/api/graphql/'><ApiCard variant="graphql" type="query" name="pizzaCatalog" className='hover:bg-accent'  /></Link></div>
+       2. Реализовано модальное окно/экран конкретной пиццы с возможностью добавления пицц в корзину
+       3. Реализована страница/экран корзины и сценарий оформления заказа, состоящий из нескольких шагов с использованием запроса: <div className='flex items-center gap-2 flex-wrap'><Link href='https://shift-intensive.ru/api/rest#tag/-pizza/post/api/pizza/payment'><ApiCard variant="rest" type="post" name="/pizza/payment" className='hover:bg-accent'  /></Link><Link href='https://shift-intensive.ru/api/graphql/'><ApiCard variant="graphql" type="mutation" name="createPayment" className='hover:bg-accent'  /></Link></div>
+       4. Реализовано отображение результата оплаты
+    ### Личный кабинет
+       1. Реализована страница/экран авторизации, использующий запросы: <div className='flex items-center gap-2 flex-wrap'><Link href='https://shift-intensive.ru/api/rest#tag/%EF%B8%8F-otps/post/api/auth/otp'><ApiCard variant="rest" type="post" name="/auth/otp" className='hover:bg-accent'  /></Link><Link href='https://shift-intensive.ru/api/graphql/'><ApiCard variant="graphql" type="mutation" name="createOtp" className='hover:bg-accent'  /></Link></div><div className='flex items-center gap-2 flex-wrap'><Link href='https://shift-intensive.ru/api/rest#tag/%EF%B8%8F-users/post/api/users/signin'><ApiCard variant="rest" type="post" name="/users/signin" className='hover:bg-accent'  /></Link><Link href='https://shift-intensive.ru/api/graphql/'><ApiCard variant="graphql" type="mutation" name="signin" className='hover:bg-accent'  /></Link></div>
+       2. Реализована страница/экран профиля с возможностью изменения персональных данных с помощью запроса: <div className='flex items-center gap-2 flex-wrap'><Link href='https://shift-intensive.ru/api/rest#tag/%EF%B8%8F-users/patch/api/users/profile'><ApiCard variant="rest" type="patch" name="/users/profile" className='hover:bg-accent'  /></Link><Link href='https://shift-intensive.ru/api/graphql/'><ApiCard variant="graphql" type="mutation" name="updateProfile" className='hover:bg-accent'  /></Link></div>
+       3. Реализована страница/экран с заказами пользователя с помощью запроса: <div className='flex items-center gap-2 flex-wrap'><Link href='https://shift-intensive.ru/api/rest#tag/-pizza/get/api/pizza/orders'><ApiCard variant="rest" type="get" name="/pizza/orders" className='hover:bg-accent'  /></Link><Link href='https://shift-intensive.ru/api/graphql/'><ApiCard variant="graphql" type="query" name="pizzaOrders" className='hover:bg-accent'  /></Link></div>
+       4. Реализована страница/экран с заказами
+          1. Получение заказа с помощью запроса: <div className='flex items-center gap-2 flex-wrap'><Link href='https://shift-intensive.ru/api/rest#tag/-pizza/get/api/pizza/orders/{orderId}'><ApiCard variant="rest" type="get" name="/pizza/orders/:orderId" className='hover:bg-accent'  /></Link><Link href='https://shift-intensive.ru/api/graphql/'><ApiCard variant="graphql" type="query" name="pizzaOrder" className='hover:bg-accent'  /></Link></div>
+          2. Отмена оплаты с помощью запроса: <div className='flex items-center gap-2 flex-wrap'><Link href='https://shift-intensive.ru/api/rest#tag/-pizza/put/api/pizza/orders/cancel'><ApiCard variant="rest" type="put" name="/pizza/order/cancel" className='hover:bg-accent'  /></Link><Link href='https://shift-intensive.ru/api/graphql/'><ApiCard variant="graphql" type="mutation" name="cancelOrder" className='hover:bg-accent'  /></Link></div>
+
+  </TabsContent>
+</Tabs>
+
+## <Link href='https://shift-intensive.ru/api'>API</Link>
+
+Необходимое апи для выполнения задания
+
+<Tabs defaultValue="rest" param="api">
+	<TabsList>
+		<TabsTrigger value="rest">REST</TabsTrigger>
+		<TabsTrigger value="graphql">⭐ GraphQL</TabsTrigger>
+	</TabsList>
+
+    <TabsContent value="rest">
+    	<div className="flex flex-col gap-2">
+    		<Link href='https://shift-intensive.ru/api/rest#tag/%EF%B8%8F-otps/post/api/auth/otp'>
+    			<ApiCard variant="rest" type="post" name="/auth/otp" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://shift-intensive.ru/api/rest#tag/%EF%B8%8F-users/post/api/users/signin'>
+    			<ApiCard variant="rest" type="post" name="/users/signin" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://shift-intensive.ru/api/rest#tag/%EF%B8%8F-users/get/api/users/session'>
+    			<ApiCard variant="rest" type="post" name="/users/session" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://shift-intensive.ru/api/rest#tag/%EF%B8%8F-users/patch/api/users/profile'>
+    			<ApiCard variant="rest" type="patch" name="/users/profile" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://shift-intensive.ru/api/rest#tag/-pizza/get/api/pizza/catalog'>
+    			<ApiCard variant="rest" type="get" name="/pizza/catalog" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://shift-intensive.ru/api/rest#tag/-pizza/post/api/pizza/payment'>
+    			<ApiCard variant="rest" type="post" name="/pizza/payment" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://shift-intensive.ru/api/rest#tag/-pizza/get/api/pizza/orders'>
+    			<ApiCard variant="rest" type="get" name="/pizza/orders" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://shift-intensive.ru/api/rest#tag/-pizza/get/api/pizza/orders/{orderId}'>
+    			<ApiCard variant="rest" type="get" name="/pizza/orders/:orderId" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://shift-intensive.ru/api/rest#tag/-pizza/put/api/pizza/orders/cancel'>
+    			<ApiCard variant="rest" type="put" name="/pizza/order/cancel" className='hover:bg-accent' />
+    		</Link>
+    	</div>
+    </TabsContent>
+
+    <TabsContent value="graphql">
+    	<div className="flex flex-col gap-2">
+    		<Link href='https://shift-intensive.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="mutation" name="createOtp" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://shift-intensive.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="mutation" name="signin" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://shift-intensive.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="mutation" name="updateProfile" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://shift-intensive.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="query" name="me" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://shift-intensive.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="query" name="getPizzasCatalog" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://shift-intensive.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="mutation" name="createPizzaPayment" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://shift-intensive.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="query" name="getPizzaOrders" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://shift-intensive.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="query" name="getPizzaOrder" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://shift-intensive.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="query" name="cancelPizzaOrder" className='hover:bg-accent' />
+    		</Link>
+    	</div>
+    </TabsContent>
+
+</Tabs>

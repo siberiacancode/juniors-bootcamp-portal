@@ -1,0 +1,72 @@
+export const metadata = {
+  title: 'Children prop',
+  description:
+    'Как правильно использовать children prop в React для создания гибких и переиспользуемых компонентов',
+  labels: ['react']
+};
+
+В архитектуре React-приложений композиция компонентов представляет собой фундаментальный принцип создания гибких, переиспользуемых и масштабируемых пользовательских интерфейсов. Одним из ключевых механизмов реализации композиционных паттернов является специальный проп `children`, который обеспечивает элегантный способ передачи произвольного контента между открывающим и закрывающим тегами компонента.
+
+**Концептуальные основы children prop:**
+
+Проп `children` представляет собой встроенный механизм React, который автоматически передается в компонент и содержит все элементы, размещенные между его открывающим и закрывающим тегами. Этот подход кардинально отличается от традиционных методов передачи данных через именованные пропсы и открывает широкие возможности для создания компонентов-контейнеров и layout-компонентов.
+
+```tsx
+import type { ComponentProps, ReactNode } from 'react';
+
+interface ButtonProps extends ComponentProps<'button'> {
+  children: ReactNode;
+  variant?: 'primary' | 'secondary' | 'danger';
+  size?: 'small' | 'medium' | 'large';
+}
+
+const Button = ({
+  children,
+  variant = 'primary',
+  size = 'medium',
+  className,
+  ...props
+}: ButtonProps) => (
+  <button className={`btn btn--${variant} btn--${size} ${className}`} {...props}>
+    {children}
+  </button>
+);
+
+// Демонстрация гибкости использования
+export const App = () => (
+  <div>
+    <Button variant='primary'>Простой текст</Button>
+    <Button variant='secondary'>
+      <Icon name='save' />
+      Текст с иконкой
+    </Button>
+    <Button variant='danger'>
+      <span className='font-bold'>Жирный</span> текст
+    </Button>
+  </div>
+);
+```
+
+**Типизация и ограничения children:**
+
+Важнейшим аспектом профессиональной разработки является корректная типизация пропа `children`. React предоставляет тип `ReactNode`, который охватывает все возможные варианты содержимого, однако в определенных сценариях может потребоваться более строгая типизация:
+
+```tsx
+// Компонент, принимающий только строковые значения
+interface TextOnlyProps {
+  children: string;
+}
+
+const TextOnly = ({ children }: TextOnlyProps) => <p className='text-only'>{children}</p>;
+
+// Компонент, принимающий только React-элементы
+interface ElementOnlyProps {
+  children: React.ReactElement | React.ReactElement[];
+}
+
+const ElementOnly = ({ children }: ElementOnlyProps) => (
+  <div className='element-container'>{children}</div>
+);
+```
+
+Важно помнить, что `children` — это обычный проп, и мы можем ограничивать его типизацию так же, как и любой другой. Например, если компонент должен принимать только текст, можно указать `children: string`. Такой подход обеспечивает типобезопасность и предотвращает ошибки на этапе компиляции, что особенно важно в крупных проектах с множественными разработчиками.

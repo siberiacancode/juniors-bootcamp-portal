@@ -1,0 +1,38 @@
+import Link from 'next/link';
+
+import { TaskCard } from '@/components/ui';
+
+export const metadata = {
+  emoji: '⭐',
+  title: 'Задания'
+};
+
+<div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
+
+<Link href='/platform/frontend/tasks/delivery'>
+  <TaskCard
+    title='Доставка товаров'
+    description='Доставка товаров'
+    emoji='📦'
+    className='hover:bg-accent'
+  />
+</Link>
+
+<Link href='/platform/frontend/tasks/cinema'>
+  <TaskCard title='Кинотеатр' description='Кинотеатр' emoji='🍿' className='hover:bg-accent' />
+</Link>
+
+<Link href='/platform/frontend/tasks/pizza'>
+  <TaskCard title='Пицца' description='Пицца' emoji='🍕' className='hover:bg-accent' />
+</Link>
+
+<Link href='/platform/frontend/tasks/car'>
+  <TaskCard
+    title='Аренда машин'
+    description='Аренда машин'
+    emoji='🚗'
+    className='hover:bg-accent'
+  />
+</Link>
+
+</div>

@@ -1,0 +1,300 @@
+import Link from 'next/link';
+import { ExternalLinkIcon } from 'lucide-react';
+
+import { FigmaIcon, GithubIcon } from '@/components/icons';
+import { Mention } from '@/app/platform/[...slug]/components';
+
+import {
+  Iframe,
+  ApiCard,
+  Meta,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+  Table,
+  TableHeader,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell
+} from '@/components/ui';
+
+export const metadata = {
+  emoji: '⭐',
+  title: 'Задание'
+};
+
+## Описание рабочей среды:
+
+Рабочая среда представляет собой простое web-приложение, состоящее из двух экранов: авторизации и личного профиля.
+
+[Требования*Приложение*ШИФТ.docx](%D0%97%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%2017eec51a3b888172a526e19c6e8a22a1/%D0%A2%D1%80%D0%B5%D0%B1%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F_%D0%9F%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%A8%D0%98%D0%A4%D0%A2.docx)
+
+## Приложение
+
+<Mention external href='https://shift-intensive.ru/api/rest#tag/-tester'>
+  <ExternalLinkIcon className='size-5' />
+  <div>Необходимые API</div>
+</Mention>
+
+<Mention external href='https://github.com/shift-intensive/web-tester/tree/main'>
+  <GithubIcon className='size-5' />
+  <div>web samples for tasks</div>
+</Mention>
+
+## Дизайн
+
+<Mention
+  external
+  href='https://www.figma.com/design/wUGd5R8yKbc0cQMOlKLMT0/%D0%97%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%A2%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5?node-id=0-1&p=f&t=EH6VgmFMx6A1Uqyb-0'
+>
+  <FigmaIcon className='size-5' />
+  <div>Дизайн заданий</div>
+</Mention>
+
+## Валидация
+
+### Экран авторизации
+
+<Tabs defaultValue="auth">
+  <TabsList>
+    <TabsTrigger value="auth">Авторизация</TabsTrigger>
+    <TabsTrigger value="profile">Личный профиль</TabsTrigger>
+  </TabsList>
+
+<TabsContent value='auth'>
+  <Table>
+    <TableHeader>
+      <TableRow>
+        <TableHead>Поле</TableHead>
+        <TableHead>Допустимые символы</TableHead>
+        <TableHead>Кол-во символов</TableHead>
+        <TableHead>Дополнительные требования</TableHead>
+        <TableHead>Значения для проверки</TableHead>
+        <TableHead>Сообщения валидации</TableHead>
+        <TableHead>Примечание</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell>Телефон</TableCell>
+        <TableCell>Только цифры</TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>79234232343</TableCell>
+        <TableCell>Корректное значение. Сообщения нет</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>Пустое поле</TableCell>
+        <TableCell>Поле является обязательным</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>Буквы или символы</TableCell>
+        <TableCell>Не можем ввести. Сообщения нет</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>Код</TableCell>
+        <TableCell>Только цифры</TableCell>
+        <TableCell>6</TableCell>
+        <TableCell></TableCell>
+        <TableCell>123456</TableCell>
+        <TableCell>Корректное значение. Сообщения нет</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>Пустое поле</TableCell>
+        <TableCell>Поле обязательно для заполнения</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>333</TableCell>
+        <TableCell>Код должен содержать 6 цифр</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>Буквы или символы</TableCell>
+        <TableCell>Ввести не можем. Сообщения нет</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>йцукенгшqweryu</TableCell>
+        <TableCell>Ввести не можем. Сообщения нет</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</TabsContent>
+
+<TabsContent value="profile">
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Поле</TableHead>
+          <TableHead>Допустимые символы</TableHead>
+          <TableHead>Количество символов</TableHead>
+          <TableHead>Дополнительные требования</TableHead>
+          <TableHead>Значения для проверки</TableHead>
+          <TableHead>Сообщения валидации</TableHead>
+          <TableHead>Примечание</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>Фамилия</TableCell>
+          <TableCell>Буквы алфавита, пробел " ", спец. символы: ` ' -</TableCell>
+          <TableCell>1-60</TableCell>
+          <TableCell>Недопустим ввод спец. символов в начале и в конце строки</TableCell>
+          <TableCell>Пустое поле</TableCell>
+          <TableCell>Поле является обязательным</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Имя</TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Недопустим ввод нескольких спец. символов в строке подряд</TableCell>
+          <TableCell>Иванов Иван</TableCell>
+          <TableCell>Корректное значение. Сообщения нет</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Отчество (необязательное)</TableCell>
+          <TableCell></TableCell>
+          <TableCell>0-60</TableCell>
+          <TableCell>Недопустим ввод различных алфавитов в рамках одного поля или группы полей ФИО</TableCell>
+          <TableCell>Ivaнов (сочетание латиницы и кириллицы в одном поле)</TableCell>
+          <TableCell>Значение должно быть задано с использованием одного из следующих алфавитов: кириллического, латинского</TableCell>
+          <TableCell>Обязательность поля определяется его пустотой (если поле пустое – значит не обязательное)</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Ivanov Иван Ivanovich</TableCell>
+          <TableCell>Значения заданы с использованием разных алфавитов</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>-Иванов</TableCell>
+          <TableCell>Некорректный формат</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Иванов-</TableCell>
+          <TableCell>Некорректный формат</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Ива--нов</TableCell>
+          <TableCell>Некорректный формат</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>~!@#$%^&*()_+=[]{};:"</TableCell>
+          <TableCell>./\<>?</TableCell>
+          <TableCell>Ввести не можем. Сообщения нет</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Телефон</TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Поле имеет состояние disabled</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Email</TableCell>
+          <TableCell>Буквы алфавита, цифры, спец. символы: @ . ! $ & * = ^ ` ' ~ # % ' + / ? _ { }</TableCell>
+          <TableCell></TableCell>
+          <TableCell>Адрес электронной почты в формате user@example.com</TableCell>
+          <TableCell>example@mail.ru</TableCell>
+          <TableCell>Корректное значение. Сообщения нет</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Город</TableCell>
+          <TableCell>Буквы алфавита, цифры, пробел " ", спец. символы: - , .</TableCell>
+          <TableCell>1-60</TableCell>
+          <TableCell>Недопустим ввод спец. символов в начале и в конце строки</TableCell>
+          <TableCell>Томск-7</TableCell>
+          <TableCell>Корректное значение. Сообщения валидации нет</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  </TabsContent>
+</Tabs>
+
+## <Link href='https://shift-intensive.ru/api'>API</Link>
+
+Необходимое апи для выполнения задания
+
+<Tabs defaultValue="rest" param="api">
+	<TabsList>
+		<TabsTrigger value="rest">REST</TabsTrigger>
+	</TabsList>
+
+    <TabsContent value="rest">
+    	<div className="flex flex-col gap-2">
+    		<Link href='https://shift-intensive.ru/api/rest#tag/-tester/post/api/tester/auth/otp'>
+    			<ApiCard variant="rest" type="post" name="tester/auth/otp" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://shift-intensive.ru/api/rest#tag/-tester/post/api/tester/signin'>
+    			<ApiCard variant="rest" type="post" name="/tester/signin" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://shift-intensive.ru/api/rest#tag/-tester/get/api/tester/session'>
+    			<ApiCard variant="rest" type="post" name="/tester/session" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://shift-intensive.ru/api/rest#tag/-tester/patch/api/tester/profile'>
+    			<ApiCard variant="rest" type="patch" name="/tester/profile" className='hover:bg-accent' />
+    		</Link>
+    	</div>
+    </TabsContent>
+
+</Tabs>

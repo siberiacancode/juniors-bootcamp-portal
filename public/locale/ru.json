@@ -1,0 +1,61 @@
+{
+  "seo.landing.title": "JUNIORS BOOTCAMP",
+  "seo.landing.description": "Демо-версия будущей профессии. В течение 1-2 недель участники погружаются в одно из ключевых направлений в ИТ, получают реальные знания и опыт, которые затем смогут использовать для успешного старта карьеры",
+
+  "notFound.title": "Страница не найдена",
+  "notFound.backHome": "Вернуться на главную",
+
+  "section.banner.start": "✨ начни свой путь",
+  "section.banner.description": "Демо-версия будущей профессии. В течение 1-2 недель участники погружаются в одно из ключевых направлений в ИТ, получают реальные знания и опыт, которые затем смогут использовать для успешного старта карьеры",
+
+  "section.subfooter.title": "JUNIORS BOOTCAMP",
+
+  "section.faq.title": "FAQ",
+  "section.faq.0.question": "Что такое \"JUNIORS BOOTCAMP\"?",
+  "section.faq.0.answer": "Это бесплатный образовательный контент и учебные материалы по фронтенду и другим ИТ-направлениям, доступные для всех, кто хочет прокачать свои навыки, вне зависимости от уровня — не только для джунов.",
+  "section.faq.1.question": "Могу ли я свободно пользоваться контентом?",
+  "section.faq.1.answer": "Да, вы можете свободно пользоваться всеми материалами Juniors. Вся информация, учебные материалы и рекомендации открыты для вашего изучения и применения. Материалы предоставляются специально для вашего самостоятельного развития, без ограничений по времени, возрасту или уровню подготовки. Пожалуйста, используйте их для обучения, профессионального роста и делитесь с друзьями — это абсолютно легально и приветствуется в рамках сообщества.",
+  "section.faq.2.question": "Как можно выразить благодарность за материалы?",
+  "section.faq.2.answer": "Самый лучший способ выразить благодарность — подписаться на Telegram-канал [siberiacancode](https://t.me/siberiacancode). Так вы останетесь в курсе новых материалов, поддержите команду авторов и сможете делиться впечатлениями с другими участниками сообщества.",
+  "section.faq.3.question": "Это платный проект?",
+  "section.faq.3.answer": "Нет, все материалы полностью бесплатны. Проект реализуется IT-специалистами и [siberiacancode](https://t.me/siberiacancode) на добровольных началах, чтобы дать возможность каждому получить доступ к современным знаниям и практикам в IT без финансовых барьеров.",
+
+  "section.statistic.since": "Готовим специалистов с <badge>{year}</badge> года",
+  "section.statistic.students": "Студентов выпущено",
+  "section.statistic.employed": "Студентов трудоустроено",
+  "section.statistic.mentors": "Кураторов с опытом",
+
+  "section.web": "Frontend",
+  "section.ios": "iOS",
+  "section.android": "Android",
+  "section.test": "Тестирование ПО",
+  "section.ml": "Машинное обучение",
+  "section.backend": "Backend",
+  "section.system-analysis": "Системный анализ",
+  "section.autotests": "Автотесты",
+  "section.information-security": "Информационная безопасность",
+
+  "header.logo.alt": "Логотип JUNIORS BOOTCAMP",
+  "header.github.alt": "GitHub JUNIORS BOOTCAMP",
+
+  "navigation.tasks": "Задания",
+  "navigation.guides": "Гайды",
+
+  "page.guides.title": "GUIDES",
+  "page.guides.description": "Данная страница содержит \"1001 способ помочь новичкам\". Здесь вы найдете полезные советы и рекомендации, примеры кода, объяснения основных концепций и лучших практик, а также распространенные ошибки, которых стоит избегать.",
+  "page.guides.edit": "Редактировать статью на GitHub",
+
+  "footer.logo.alt": "Логотип JUNIORS BOOTCAMP",
+  "footer.description": "Бесплатный развивающий контент для начинающих айтишников",
+  "footer.social.telegram.alt": "Telegram siberiacancode",
+  "footer.social.github.alt": "GitHub siberiacancode",
+  "footer.social.twitch.alt": "Twitch siberiacancode",
+  "footer.social.youtube.alt": "YouTube siberiacancode",
+  "footer.directions.title": "Направления",
+  "footer.directions.road-map": "Начать обучение",
+  "footer.opensource.title": "Opensource siberiacancode",
+
+  "button.copy": "Скопировать",
+  "button.share": "Поделиться",
+  "button.contact": "Связаться"
+}
