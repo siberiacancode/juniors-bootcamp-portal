@@ -8,12 +8,12 @@ export const Logo = ({ className, ...props }: LogoProps) => (
   <>
     <img
       className={cn('hidden object-contain dark:block', className)}
-      src='/images/light-logo.png'
+      src='/images/light-logo-full.png'
       {...props}
     />
     <img
       className={cn('object-contain dark:hidden', className)}
-      src='/images/dark-logo.png'
+      src='/images/dark-logo-full.png'
       {...props}
     />
   </>

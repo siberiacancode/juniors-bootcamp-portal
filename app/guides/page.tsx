@@ -61,7 +61,7 @@ const GuidesPage = async () => {
         </div>
 
         <div
-          className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'
+          className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'
           style={{ alignItems: 'stretch' }}
         >
           {guides.map((guide, index) => {
@@ -70,7 +70,7 @@ const GuidesPage = async () => {
 
             return (
               <Link href={`/guides/${guide.slug}`} key={number} className='h-full'>
-                <div className='bg-card flex h-full flex-col rounded-xl border p-6 transition-all duration-200 hover:scale-101 hover:drop-shadow-[3px_3px_0px_#000]/90 dark:hover:drop-shadow-[3px_3px_0px_#fff]/80'>
+                <div className='bg-card flex h-full flex-col rounded-md border p-6 transition-all duration-200 hover:scale-101 hover:drop-shadow-[3px_3px_0px_#000]/90 dark:hover:drop-shadow-[3px_3px_0px_#fff]/80'>
                   <div className='relative mb-4 flex items-center gap-4'>
                     <div className='font-pixelify-sans text-4xl font-bold' style={shadowColor}>
                       {number.toString().padStart(2, '0')}

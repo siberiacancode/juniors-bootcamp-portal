@@ -1,0 +1,917 @@
+import Link from 'next/link';
+import { ExternalLinkIcon } from 'lucide-react';
+
+import { FigmaIcon } from '@/components/icons';
+import { Mention } from '@/app/platform/[...slug]/components';
+
+import {
+  Iframe,
+  ApiCard,
+  Meta,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+  Table,
+  TableHeader,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell
+} from '@/components/ui';
+
+export const metadata = {
+  emoji: '📦',
+  title: 'Доставка'
+};
+
+Необходимо создать приложение с помощью которого можно оформить доставку из дома. Приложение состоит из калькулятор расчета суммы посылки и заполнения данных, как отправителя, так и получателя.
+
+В рамках задания мы не ограничиваем вас. Это может быть космическая/магическая доставка товаров 📦 или клон любой существующей доставки, тут мы полагаемся на вашу фантазию, также вы можете самостоятельно расширить требования задачи при желании.
+
+## Ссылки
+
+<div className='flex gap-2 flex-wrap'>
+
+<Mention external href='/tasks/api'>
+  <ExternalLinkIcon className='size-5' />
+  <div>Необходимые API</div>
+</Mention>
+</div>
+
+## Уровни сложности
+
+Задание имеет несколько уровней сложности, задания спроектированы так, чтобы после выполнения одного уровня, вы смогли перейти к следующему уровню.
+
+<Tabs defaultValue="easy" param="level">
+  <TabsList>
+    <TabsTrigger value="easy">Легкий</TabsTrigger>
+    <TabsTrigger value="medium">Средний</TabsTrigger>
+    <TabsTrigger value="hard">Сложный</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="easy">
+    Ожидаемый результат: Создана страница/экран с калькулятором доставки и формой отправки:
+
+    ### Флоу
+
+    1. Реализована главная страница с выбором направления и типом посылки, с помощью запросов **get** [/delivery/points](https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/points) и **get** [/delivery/package/types](https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/package/types)
+    2. Реализован расчет стоимости доставки, с помощью запроса **post** [/delivery/calc](https://juniors-bootcamp.ru/api/rest#tag/-delivery/post/api/delivery/calc)
+
+  </TabsContent>
+
+  <TabsContent value="medium">
+    Ожидаемый результат: Создана страница/экран с калькулятором доставки и формой отправки. Реализован сценарий оформления доставки и оплаты:
+    
+ 
+    ### Флоу
+
+    1. Реализована главная страница с выбором направления и типом посылки, с помощью запросов **get** [/delivery/points](https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/points) и **get** [/delivery/package/types](https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/package/types)
+    2. Реализован расчет стоимости доставки, с помощью запроса **post** [/delivery/calc](https://juniors-bootcamp.ru/api/rest#tag/-delivery/post/api/delivery/calc)
+    3. Реализованы все формы для оформления заказа
+    4. Реализована форма оплаты с персональными данными и картой, создан заказ с помощью запроса **post** [/delivery/order](https://juniors-bootcamp.ru/api/rest#tag/-delivery/post/api/delivery/order)
+    5. Реализовано отображение результата оплаты
+
+  </TabsContent>
+
+  <TabsContent value="hard">
+    Ожидаемый результат: Создана страница/экран с калькулятором доставки и формой отправки. Реализован сценарий оформления доставки и оплаты. Реализована авторизация и работа с профилем, а также страница/экран отправлений.
+
+    ### Флоу
+    1. Реализована главная страница с выбором направления и типом посылки, с помощью запросов **get** [/delivery/points](https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/points) и **get** [/delivery/package/types](https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/package/types)
+    2. Реализован расчет стоимости доставки, с помощью запроса **post** [/delivery/calc](https://juniors-bootcamp.ru/api/rest#tag/-delivery/post/api/delivery/calc)
+    3. Реализованы все формы для оформления заказа
+    4. Реализована форма оплаты с персональными данными и картой, создан заказ с помощью запроса **post** [/delivery/order](https://juniors-bootcamp.ru/api/rest#tag/-delivery/post/api/delivery/order)
+    5. Реализовано отображение результата оплаты
+
+    ### Личный кабинет
+    1. Реализована страница/экран авторизации, создан отп код с помощью запроса **post** <Link href='https://juniors-bootcamp.ru/api/rest#tag/%EF%B8%8F-otps/post/api/auth/otp'>/auth/otp</Link>, авторизация с помощью запроса **post** <Link href='https://juniors-bootcamp.ru/api/rest#tag/%EF%B8%8F-users/post/api/users/signin'>/users/signin</Link>
+    2. Реализована страница/экран профиля с возможностью изменения персональных данных, обновление данных профиля с помощью запроса **patch** <Link href='https://juniors-bootcamp.ru/api/rest#tag/%EF%B8%8F-users/patch/api/users/profile'>/users/profile</Link>
+    3. Реализована страница/экран с отправлениями пользователя, получение доставок и отображения их статуса с помощью запроса **get** [/delivery/orders](https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/orders)
+    4. Реализована страница/экран с конкретным отправлением, посмотреть подробную информацию о доставке с помощью запроса **get** [/delivery/orders/:orderId](https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/orders/{orderId})
+      1. Возможность отмены отправления, с помощью запроса **post** [/delivery/order/cancel](https://juniors-bootcamp.ru/api/rest#tag/-delivery/put/api/delivery/orders/cancel)
+
+  </TabsContent>
+</Tabs>
+
+## Требования к валидации
+
+<Tabs defaultValue="auth">
+  <TabsList>
+    <TabsTrigger value="auth">Авторизация</TabsTrigger>
+    <TabsTrigger value="recipient">Данные получателя</TabsTrigger>
+    <TabsTrigger value="sender">Данные отправителя</TabsTrigger>
+    <TabsTrigger value="pickup">Адрес приезда курьера</TabsTrigger>
+    <TabsTrigger value="dropoff">Адрес доставки</TabsTrigger>
+    <TabsTrigger value="profile">Личный кабинет</TabsTrigger>
+  </TabsList>
+
+<TabsContent value='auth'>
+  <Table>
+    <TableHeader>
+      <TableRow>
+        <TableHead>Поле</TableHead>
+        <TableHead>Допустимые символы</TableHead>
+        <TableHead>Кол-во символов</TableHead>
+        <TableHead>Дополнительные требования</TableHead>
+        <TableHead>Значения для проверки</TableHead>
+        <TableHead>Сообщения валидации</TableHead>
+        <TableHead>Примечание</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell>Телефон</TableCell>
+        <TableCell>Только цифры</TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>79234232343</TableCell>
+        <TableCell>Корректное значение. Сообщения нет</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>Пустое поле</TableCell>
+        <TableCell>Поле является обязательным</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>Буквы или символы</TableCell>
+        <TableCell>Не можем ввести. Сообщения нет</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>Код</TableCell>
+        <TableCell>Только цифры</TableCell>
+        <TableCell>6</TableCell>
+        <TableCell></TableCell>
+        <TableCell>123456</TableCell>
+        <TableCell>Корректное значение. Сообщения нет</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>Пустое поле</TableCell>
+        <TableCell>Поле обязательно для заполнения</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>333</TableCell>
+        <TableCell>Код должен содержать 6 цифр</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</TabsContent>
+
+  <TabsContent value="recipient">
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Поле</TableHead>
+          <TableHead>Допустимые символы</TableHead>
+          <TableHead>Количество символов</TableHead>
+          <TableHead>Дополнительные требования</TableHead>
+          <TableHead>Значения для проверки</TableHead>
+          <TableHead>Сообщения валидации</TableHead>
+          <TableHead>Примечание</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>Фамилия</TableCell>
+          <TableCell>Буквы алфавита, пробел " ", спец. символы: ` ' -</TableCell>
+          <TableCell>1-60</TableCell>
+          <TableCell>Недопустим ввод спец. символов в начале и в конце строки</TableCell>
+          <TableCell>Пустое поле</TableCell>
+          <TableCell>Поле является обязательным</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Имя</TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Недопустим ввод нескольких спец. символов в строке подряд</TableCell>
+          <TableCell>Иванов Иван</TableCell>
+          <TableCell>Корректное значение. Сообщения нет</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Отчество (необязательное)</TableCell>
+          <TableCell></TableCell>
+          <TableCell>0-60</TableCell>
+          <TableCell>Недопустим ввод различных алфавитов в рамках одного поля или группы полей ФИО</TableCell>
+          <TableCell>Ivaнов (сочетание латиницы и кириллицы в одном поле)</TableCell>
+          <TableCell>Значение должно быть задано с использованием одного из следующих алфавитов: кириллического, латинского</TableCell>
+          <TableCell>Обязательность поля определяется его пустотой (если поле пустое – значит не обязательное)</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Ivanov Иван Ivanovich</TableCell>
+          <TableCell>Значения заданы с использованием разных алфавитов</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>-Иванов</TableCell>
+          <TableCell>Некорректный формат</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Иванов-</TableCell>
+          <TableCell>Некорректный формат</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Ива--нов</TableCell>
+          <TableCell>Некорректный формат</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>~!@#$%^&*()_+=[]{};:"</TableCell>
+          <TableCell>./\<>?</TableCell>
+          <TableCell>Ввести не можем. Сообщения нет</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Телефон</TableCell>
+          <TableCell>Только цифры</TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>79234232343</TableCell>
+          <TableCell>Корректное значение. Сообщения нет</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Пустое поле</TableCell>
+          <TableCell>Поле является обязательным</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  </TabsContent>
+
+  <TabsContent value="sender">
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Поле</TableHead>
+          <TableHead>Допустимые символы</TableHead>
+          <TableHead>Количество символов</TableHead>
+          <TableHead >Дополнительные требования</TableHead>
+          <TableHead>Значения для проверки</TableHead>
+          <TableHead>Сообщения валидации</TableHead>
+          <TableHead>Примечание</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>Фамилия</TableCell>
+          <TableCell>Буквы алфавита, пробел " ", спец. символы: ` ' -</TableCell>
+          <TableCell>1-60</TableCell>
+          <TableCell>Недопустим ввод спец. символов в начале и в конце строки</TableCell>
+          <TableCell>Пустое поле</TableCell>
+          <TableCell>Поле является обязательным</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Имя</TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Недопустим ввод нескольких спец. символов в строке подряд</TableCell>
+          <TableCell>Иванов Иван</TableCell>
+          <TableCell>Корректное значение. Сообщения нет</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Отчество (необязательное)</TableCell>
+          <TableCell></TableCell>
+          <TableCell>0-60</TableCell>
+          <TableCell>Недопустим ввод различных алфавитов в рамках одного поля или группы полей ФИО</TableCell>
+          <TableCell>Ivaнов (сочетание латиницы и кириллицы в одном поле)</TableCell>
+          <TableCell>Значение должно быть задано с использованием одного из следующих алфавитов: кириллического, латинского</TableCell>
+          <TableCell>Обязательность поля определяется его пустотой (если поле пустое – значит не обязательное)</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Ivanov Иван Ivanovich</TableCell>
+          <TableCell>Значения заданы с использованием разных алфавитов</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>-Иванов</TableCell>
+          <TableCell>Некорректный формат</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Иванов-</TableCell>
+          <TableCell>Некорректный формат</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Ива--нов</TableCell>
+          <TableCell>Некорректный формат</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>~!@#$%^&*()_+=[]{};:"</TableCell>
+          <TableCell>./\<>?</TableCell>
+          <TableCell>Ввести не можем. Сообщения нет</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Телефон</TableCell>
+          <TableCell>Только цифры</TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>79234232343</TableCell>
+          <TableCell>Корректное значение. Сообщения нет</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Пустое поле</TableCell>
+          <TableCell>Поле является обязательным</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  </TabsContent>
+
+<TabsContent value='pickup'>
+  <Table>
+    <TableHeader>
+      <TableRow>
+        <TableHead>Поле</TableHead>
+        <TableHead>Допустимые символы</TableHead>
+        <TableHead>Количество символов</TableHead>
+        <TableHead>Дополнительные требования</TableHead>
+        <TableHead>Значения для проверки</TableHead>
+        <TableHead>Сообщения валидации</TableHead>
+        <TableHead>Примечание</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell>Улица, дом</TableCell>
+        <TableCell>Буквы алфавита, цифры, спец. символы: пробел " ", / ` ' : ; - _ . , #</TableCell>
+        <TableCell>1-100</TableCell>
+        <TableCell>Недопустим ввод спец. символов в начале и в конце строки</TableCell>
+        <TableCell>Пустое поле</TableCell>
+        <TableCell>Поле является обязательным</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>
+          Недопустим ввод различных алфавитов в рамках одного поля или группы полей адреса
+        </TableCell>
+        <TableCell>ул. Пушкина 3, дом Колотушкина 5/1</TableCell>
+        <TableCell>Корректное значение. Сообщения валидации нет</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>st. Pushkin дом Колотушкина</TableCell>
+        <TableCell>
+          Значение должно быть задано с использованием одного из следующих алфавитов:
+          кириллического, латинского
+        </TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>-ул. Пушкина</TableCell>
+        <TableCell>Некорректный формат</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>дом Колотушкина-</TableCell>
+        <TableCell>Некорректный формат</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>Квартира (необязательное)</TableCell>
+        <TableCell>Буквы алфавита, цифры, спец. символы: пробел " " - / ` ' : ; _ # , .</TableCell>
+        <TableCell>0-100</TableCell>
+        <TableCell>Недопустим ввод спец. символов в начале и в конце строки</TableCell>
+        <TableCell>Пустое поле</TableCell>
+        <TableCell>Корректное значение. Сообщения валидации нет</TableCell>
+        <TableCell>
+          Обязательность поля определяется его пустотой (если поле пустое – значит не обязательное)
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>Заметка для курьера (необязательное)</TableCell>
+        <TableCell></TableCell>
+        <TableCell>0-300</TableCell>
+        <TableCell>
+          Недопустим ввод различных алфавитов в рамках одного поля или группы полей адреса
+        </TableCell>
+        <TableCell>Квартира 5</TableCell>
+        <TableCell>Корректное значение. Сообщения валидации нет</TableCell>
+        <TableCell>
+          Обязательность поля определяется его пустотой (если поле пустое – значит не обязательное)
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>-кв. 2</TableCell>
+        <TableCell>Некорректный формат</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>кв. 2-</TableCell>
+        <TableCell>Некорректный формат</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>Kvartира 5</TableCell>
+        <TableCell>
+          Значение должно быть задано с использованием одного из следующих алфавитов:
+          кириллического, латинского
+        </TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</TabsContent>
+
+<TabsContent value='dropoff'>
+  <Table>
+    <TableHeader>
+      <TableRow>
+        <TableHead>Поле</TableHead>
+        <TableHead>Допустимые символы</TableHead>
+        <TableHead>Количество символов</TableHead>
+        <TableHead>Дополнительные требования</TableHead>
+        <TableHead>Значения для проверки</TableHead>
+        <TableHead>Сообщения валидации</TableHead>
+        <TableHead>Примечание</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell>Улица, дом</TableCell>
+        <TableCell>Буквы алфавита, цифры, спец. символы: пробел " ", / ` ' : ; - _ . , #</TableCell>
+        <TableCell>1-100</TableCell>
+        <TableCell>Недопустим ввод спец. символов в начале и в конце строки</TableCell>
+        <TableCell>Пустое поле</TableCell>
+        <TableCell>Поле является обязательным</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>
+          Недопустим ввод различных алфавитов в рамках одного поля или группы полей адреса
+        </TableCell>
+        <TableCell>ул. Пушкина 3, дом Колотушкина 5/1</TableCell>
+        <TableCell>Корректное значение. Сообщения валидации нет</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>st. Pushkin дом Колотушкина</TableCell>
+        <TableCell>
+          Значение должно быть задано с использованием одного из следующих алфавитов:
+          кириллического, латинского
+        </TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>-ул. Пушкина</TableCell>
+        <TableCell>Некорректный формат</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>дом Колотушкина-</TableCell>
+        <TableCell>Некорректный формат</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>Квартира (необязательное)</TableCell>
+        <TableCell>Буквы алфавита, цифры, спец. символы: пробел " " - / ` ' : ; _ # , .</TableCell>
+        <TableCell>0-100</TableCell>
+        <TableCell>Недопустим ввод спец. символов в начале и в конце строки</TableCell>
+        <TableCell>Пустое поле</TableCell>
+        <TableCell>Корректное значение. Сообщения валидации нет</TableCell>
+        <TableCell>
+          Обязательность поля определяется его пустотой (если поле пустое – значит не обязательное)
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>Заметка для курьера (необязательное)</TableCell>
+        <TableCell></TableCell>
+        <TableCell>0-300</TableCell>
+        <TableCell>
+          Недопустим ввод различных алфавитов в рамках одного поля или группы полей адреса
+        </TableCell>
+        <TableCell>Квартира 5</TableCell>
+        <TableCell>Корректное значение. Сообщения валидации нет</TableCell>
+        <TableCell>
+          Обязательность поля определяется его пустотой (если поле пустое – значит не обязательное)
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>-кв. 2</TableCell>
+        <TableCell>Некорректный формат</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>кв. 2-</TableCell>
+        <TableCell>Некорректный формат</TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
+        <TableCell>Kvartира 5</TableCell>
+        <TableCell>
+          Значение должно быть задано с использованием одного из следующих алфавитов:
+          кириллического, латинского
+        </TableCell>
+        <TableCell></TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</TabsContent>
+
+  <TabsContent value="profile">
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Поле</TableHead>
+          <TableHead>Допустимые символы</TableHead>
+          <TableHead>Количество символов</TableHead>
+          <TableHead>Дополнительные требования</TableHead>
+          <TableHead>Значения для проверки</TableHead>
+          <TableHead>Сообщения валидации</TableHead>
+          <TableHead>Примечание</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>Фамилия</TableCell>
+          <TableCell>Буквы алфавита, пробел " ", спец. символы: ` ' -</TableCell>
+          <TableCell>1-60</TableCell>
+          <TableCell>Недопустим ввод спец. символов в начале и в конце строки</TableCell>
+          <TableCell>Пустое поле</TableCell>
+          <TableCell>Поле является обязательным</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Имя</TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Недопустим ввод нескольких спец. символов в строке подряд</TableCell>
+          <TableCell>Иванов Иван</TableCell>
+          <TableCell>Корректное значение. Сообщения нет</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Отчество (необязательное)</TableCell>
+          <TableCell></TableCell>
+          <TableCell>0-60</TableCell>
+          <TableCell>Недопустим ввод различных алфавитов в рамках одного поля или группы полей ФИО</TableCell>
+          <TableCell>Ivaнов (сочетание латиницы и кириллицы в одном поле)</TableCell>
+          <TableCell>Значение должно быть задано с использованием одного из следующих алфавитов: кириллического, латинского</TableCell>
+          <TableCell>Обязательность поля определяется его пустотой (если поле пустое – значит не обязательное)</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Ivanov Иван Ivanovich</TableCell>
+          <TableCell>Значения заданы с использованием разных алфавитов</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>-Иванов</TableCell>
+          <TableCell>Некорректный формат</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Иванов-</TableCell>
+          <TableCell>Некорректный формат</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Ива--нов</TableCell>
+          <TableCell>Некорректный формат</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>~!@#$%^&*()_+=[]{};:"</TableCell>
+          <TableCell>./\<>?</TableCell>
+          <TableCell>Ввести не можем. Сообщения нет</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Email</TableCell>
+          <TableCell>Буквы алфавита, цифры, спец. символы: @ . ! $ & * = ^ ` ' ~ # % ' + / ? _ { }</TableCell>
+          <TableCell></TableCell>
+          <TableCell>Допустим ввод hostname вида: example-example</TableCell>
+          <TableCell>example@mail.ru</TableCell>
+          <TableCell>Корректное значение. Сообщения нет</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Пустое поле</TableCell>
+          <TableCell>Поле является обязательным</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>test@mail-mail.com</TableCell>
+          <TableCell>Корректное значение. Сообщения валидации нет</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>n.test@mail.com</TableCell>
+          <TableCell>Корректное значение. Сообщения валидации нет</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>.test@mail.com</TableCell>
+          <TableCell>Некорректный формат</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>test@mail.com-</TableCell>
+          <TableCell>Некорректный формат</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>user@mail.e</TableCell>
+          <TableCell>Корректное значение. Сообщения валидации нет</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>user@mail.e5</TableCell>
+          <TableCell>Некорректный формат</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Город</TableCell>
+          <TableCell>Буквы алфавита, цифры, пробел " ", спец. символы: - , .</TableCell>
+          <TableCell>1-60</TableCell>
+          <TableCell>Недопустим ввод спец. символов в начале и в конце строки</TableCell>
+          <TableCell>Томск-7</TableCell>
+          <TableCell>Корректное значение. Сообщения валидации нет</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>Недопустим ввод различных алфавитов внутри одного поля или группы полей</TableCell>
+          <TableCell>Тест-</TableCell>
+          <TableCell>Некорректный формат</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell>-тест</TableCell>
+          <TableCell>Некорректный формат</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  </TabsContent>
+</Tabs>
+
+## <Link href='https://juniors-bootcamp.ru/api'>API</Link>
+
+Необходимое апи для выполнения задания
+
+<Tabs defaultValue="rest" param="api">
+	<TabsList>
+		<TabsTrigger value="rest">REST</TabsTrigger>
+		<TabsTrigger value="graphql">⭐ GraphQL</TabsTrigger>
+	</TabsList>
+
+    <TabsContent value="rest">
+    	<div className="flex flex-col gap-2">
+    		<Link href='https://juniors-bootcamp.ru/api/rest#tag/%EF%B8%8F-otps/post/api/auth/otp'>
+    			<ApiCard variant="rest" type="post" name="/auth/otp" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://juniors-bootcamp.ru/api/rest#tag/%EF%B8%8F-users/post/api/users/signin'>
+    			<ApiCard variant="rest" type="post" name="/users/signin" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://juniors-bootcamp.ru/api/rest#tag/%EF%B8%8F-users/get/api/users/session'>
+    			<ApiCard variant="rest" type="post" name="/users/session" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://juniors-bootcamp.ru/api/rest#tag/%EF%B8%8F-users/patch/api/users/profile'>
+    			<ApiCard variant="rest" type="patch" name="/users/profile" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/points'>
+    			<ApiCard variant="rest" type="get" name="/delivery/points" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/package/types'>
+    			<ApiCard variant="rest" type="get" name="/delivery/package/types" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://juniors-bootcamp.ru/api/rest#tag/-delivery/post/api/delivery/calc'>
+    			<ApiCard variant="rest" type="post" name="/delivery/calc" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://juniors-bootcamp.ru/api/rest#tag/-delivery/post/api/delivery/order'>
+    			<ApiCard variant="rest" type="post" name="/delivery/order" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/orders'>
+    			<ApiCard variant="rest" type="get" name="/delivery/orders" className='hover:bg-accent' />
+    		</Link>
+        <Link href='https://juniors-bootcamp.ru/api/rest#tag/-delivery/get/api/delivery/orders/{orderId}'>
+    			<ApiCard variant="rest" type="get" name="/delivery/orders/:orderId" className='hover:bg-accent' />
+    		</Link>
+        <Link href='https://juniors-bootcamp.ru/api/rest#tag/-delivery/put/api/delivery/orders/cancel'>
+    			<ApiCard variant="rest" type="put" name="/delivery/orders/cancel" className='hover:bg-accent' />
+    		</Link>
+    	</div>
+    </TabsContent>
+
+    <TabsContent value="graphql">
+    	<div className="flex flex-col gap-2">
+    		<Link href='https://juniors-bootcamp.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="mutation" name="createOtp" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://juniors-bootcamp.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="mutation" name="signin" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://juniors-bootcamp.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="mutation" name="updateProfile" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://juniors-bootcamp.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="query" name="session" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://juniors-bootcamp.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="query" name="getDeliveryPoints" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://juniors-bootcamp.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="query" name="getDeliveryPackageTypes" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://juniors-bootcamp.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="mutation" name="cancelDeliveryOrder" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://juniors-bootcamp.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="mutation" name="createDeliveryOrder" className='hover:bg-accent' />
+    		</Link>
+    		<Link href='https://juniors-bootcamp.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="query" name="getDeliveries" className='hover:bg-accent' />
+    		</Link>
+        <Link href='https://juniors-bootcamp.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="query" name="getDelivery" className='hover:bg-accent' />
+    		</Link>
+        <Link href='https://juniors-bootcamp.ru/api/graphql/'>
+    			<ApiCard variant="graphql" type="mutation" name="cancelDeliveryOrder" className='hover:bg-accent' />
+    		</Link>
+    	</div>
+    </TabsContent>
+
+</Tabs>

@@ -32,12 +32,12 @@ const SOCIALS = [
 
 const NAVIGATION = [
   {
-    href: '/guides',
-    label: 'navigation.guides'
-  },
-  {
     href: '/tasks',
     label: 'navigation.tasks'
+  },
+  {
+    href: '/guides',
+    label: 'navigation.guides'
   }
 ] as const;
 
@@ -75,7 +75,7 @@ export const Footer = () => {
 
             <Button asChild>
               <Link href='https://t.me/siberiacancode' rel='noopener noreferrer' target='_blank'>
-                <IntlText path='button.contact' />
+                contact us
               </Link>
             </Button>
             <p className='text-muted-foreground text-sm'>
@@ -155,9 +155,9 @@ export const Footer = () => {
             rel='noopener noreferrer'
             target='_blank'
           >
-            siberiacancode.
-          </Link>{' '}
-          The source code is available on{' '}
+            siberiacancode
+          </Link>
+          . The source code is available on{' '}
           <Link
             href='https://github.com/siberiacancode/juniors-bootcamp-portal'
             className='underline'

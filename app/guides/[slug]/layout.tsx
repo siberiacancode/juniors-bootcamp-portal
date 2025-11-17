@@ -1,4 +1,4 @@
-import { ArrowLeftIcon, ArrowRightIcon, PencilIcon } from 'lucide-react';
+import { ArrowLeftIcon, ArrowRightIcon, ExternalLinkIcon } from 'lucide-react';
 import Link from 'next/link';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -116,8 +116,7 @@ const GuidesLayout = async ({ children, params }: GuidesLayoutProps) => {
           rel='noopener noreferrer'
           target='_blank'
         >
-          <PencilIcon className='size-4' />
-          <IntlText path='page.guides.edit' />
+          <IntlText path='link.editOnGitHub' /> <ExternalLinkIcon className='size-4' />
         </Link>
       </div>
     </main>

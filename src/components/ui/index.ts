@@ -13,6 +13,7 @@ export * from './image';
 export * from './input';
 export * from './iphone-15-pro';
 export * from './link';
+export * from './magic-card';
 export * from './markdown';
 export * from './navigation-menu';
 export * from './pointer';

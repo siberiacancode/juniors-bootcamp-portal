@@ -22,8 +22,7 @@ export const generateMetadata = async () => {
   const messages = await getDictionary(locale);
 
   return {
-    title: messages['seo.landing.title'],
-    description: messages['seo.landing.description']
+    title: messages['seo.main.title']
   };
 };
 

@@ -1,8 +1,9 @@
-// import { BannerSection, FAQSection, StatisticSection, SubFooterSection } from './(components)';
+import { BannerSection } from './(components)';
 
 const HomePage = () => (
   <>
-    {/* <BannerSection />
+    <BannerSection />
+    {/* 
     <StatisticSection />
     <FAQSection />
     <SubFooterSection /> */}
