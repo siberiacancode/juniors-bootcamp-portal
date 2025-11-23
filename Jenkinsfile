@@ -6,7 +6,7 @@ pipeline {
 
         IMAGE_NAME='siberiacancode/juniors-bootcamp-portal'
         IMAGE_VERSION='latest'
-        PORT='3005'
+        PORT='3011'
     }
     stages {
         stage('cleanup') {
