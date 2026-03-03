@@ -29,8 +29,8 @@ const getGuides = async () => {
       .sort()
       .map(async (file, index) => {
         const slug = file.replace('.mdx', '');
-        const module = await import(`./(contents)/${slug}.mdx`);
-        const metadata = module.metadata as GuideMetadata;
+        const m = await import(`./(contents)/${slug}.mdx`);
+        const metadata = m.metadata as GuideMetadata;
 
         return {
           number: index + 1,

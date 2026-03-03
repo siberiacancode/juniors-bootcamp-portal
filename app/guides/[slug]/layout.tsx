@@ -37,8 +37,8 @@ const getAllGuides = async () => {
 
 export const generateMetadata = async ({ params }: GuidesLayoutProps) => {
   const { slug } = await params;
-  const module = await import(`../(contents)/${slug}.mdx`);
-  const metadata = module.metadata as GuideMetadata;
+  const m = await import(`../(contents)/${slug}.mdx`);
+  const metadata = m.metadata as GuideMetadata;
 
   return {
     title: metadata.title,
@@ -48,8 +48,8 @@ export const generateMetadata = async ({ params }: GuidesLayoutProps) => {
 
 const GuidesLayout = async ({ children, params }: GuidesLayoutProps) => {
   const { slug } = await params;
-  const module = await import(`../(contents)/${slug}.mdx`);
-  const metadata = module.metadata as GuideMetadata;
+  const m = await import(`../(contents)/${slug}.mdx`);
+  const metadata = m.metadata as GuideMetadata;
 
   const guides = await getAllGuides();
   const currentIndex = guides.findIndex((g) => g.slug === slug);
