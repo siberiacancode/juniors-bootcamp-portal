@@ -9,8 +9,8 @@ export const GoalsSection = () => {
 
   return (
     <TextSections
-      title={intl.formatMessage({ id: 'page.tasksApi.goals.title' })}
       description={intl.formatMessage({ id: 'page.tasksApi.goals.description' })}
+      title={intl.formatMessage({ id: 'page.tasksApi.goals.title' })}
     />
   );
 };

@@ -1,7 +1,7 @@
 import type { SVGProps } from 'react';
 
 export const BarChartIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg height='1em' width='1em' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' {...props}>
+  <svg height='1em' viewBox='0 0 32 32' width='1em' xmlns='http://www.w3.org/2000/svg' {...props}>
     <g fill='none'>
       <g filter='url(#f101idk)'>
         <rect fill='url(#f101id0)' height='27.906' rx='3.8' width='27.906' x='2.047' y='2.055' />
@@ -330,15 +330,15 @@ export const BarChartIcon = (props: SVGProps<SVGSVGElement>) => (
           <stop offset='1' stopColor='#6CEDA7' />
         </linearGradient>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='29.906'
           id='f101idk'
           width='30.406'
           x='1.047'
           y='1.055'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0' />
+          <feFlood floodOpacity='0' result='BackgroundImageFix' />
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape' />
           <feColorMatrix
             in='SourceAlpha'
@@ -372,54 +372,54 @@ export const BarChartIcon = (props: SVGProps<SVGSVGElement>) => (
           <feBlend in2='effect2_innerShadow_18_23005' result='effect3_innerShadow_18_23005' />
         </filter>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='24.155'
           id='f101idl'
           width='7.754'
           x='20.505'
           y='6.043'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0' />
+          <feFlood floodOpacity='0' result='BackgroundImageFix' />
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape' />
           <feGaussianBlur result='effect1_foregroundBlur_18_23005' stdDeviation='.5' />
         </filter>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='14.589'
           id='f101idm'
           width='7.754'
           x='11.485'
           y='16.036'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0' />
+          <feFlood floodOpacity='0' result='BackgroundImageFix' />
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape' />
           <feGaussianBlur result='effect1_foregroundBlur_18_23005' stdDeviation='.5' />
         </filter>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='21.375'
           id='f101idn'
           width='7.754'
           x='2.357'
           y='8.428'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0' />
+          <feFlood floodOpacity='0' result='BackgroundImageFix' />
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape' />
           <feGaussianBlur result='effect1_foregroundBlur_18_23005' stdDeviation='.5' />
         </filter>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='24.367'
           id='f101ido'
           width='6.644'
           x='22.073'
           y='5.594'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0' />
+          <feFlood floodOpacity='0' result='BackgroundImageFix' />
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape' />
           <feColorMatrix
             in='SourceAlpha'
@@ -433,28 +433,28 @@ export const BarChartIcon = (props: SVGProps<SVGSVGElement>) => (
           <feBlend in2='shape' result='effect1_innerShadow_18_23005' />
         </filter>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='24.502'
           id='f101idp'
           width='2.865'
           x='25.394'
           y='5.527'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0' />
+          <feFlood floodOpacity='0' result='BackgroundImageFix' />
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape' />
           <feGaussianBlur result='effect1_foregroundBlur_18_23005' stdDeviation='.5' />
         </filter>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='13.314'
           id='f101idq'
           width='6.644'
           x='13.053'
           y='16.647'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0' />
+          <feFlood floodOpacity='0' result='BackgroundImageFix' />
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape' />
           <feColorMatrix
             in='SourceAlpha'
@@ -468,28 +468,28 @@ export const BarChartIcon = (props: SVGProps<SVGSVGElement>) => (
           <feBlend in2='shape' result='effect1_innerShadow_18_23005' />
         </filter>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='13.643'
           id='f101idr'
           width='2.865'
           x='16.374'
           y='16.555'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0' />
+          <feFlood floodOpacity='0' result='BackgroundImageFix' />
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape' />
           <feGaussianBlur result='effect1_foregroundBlur_18_23005' stdDeviation='.5' />
         </filter>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='21.296'
           id='f101ids'
           width='6.644'
           x='4.033'
           y='8.665'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0' />
+          <feFlood floodOpacity='0' result='BackgroundImageFix' />
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape' />
           <feColorMatrix
             in='SourceAlpha'
@@ -503,25 +503,25 @@ export const BarChartIcon = (props: SVGProps<SVGSVGElement>) => (
           <feBlend in2='shape' result='effect1_innerShadow_18_23005' />
         </filter>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='21.77'
           id='f101idt'
           width='2.865'
           x='7.678'
           y='8.428'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0' />
+          <feFlood floodOpacity='0' result='BackgroundImageFix' />
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape' />
           <feGaussianBlur result='effect1_foregroundBlur_18_23005' stdDeviation='.5' />
         </filter>
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='matrix(-5.58858 .20883 -.81418 -21.7886 29.953 16.403)'
           gradientUnits='userSpaceOnUse'
           id='f101idu'
           r='1'
-          gradientTransform='matrix(-5.58858 .20883 -.81418 -21.7886 29.953 16.403)'
         >
           <stop stopColor='#F2EDF5' />
           <stop offset='1' stopColor='#DED3E7' stopOpacity='0' />
@@ -529,10 +529,10 @@ export const BarChartIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='matrix(-3.69009 3.2723 -3.38707 -3.81951 29.586 2.896)'
           gradientUnits='userSpaceOnUse'
           id='f101idv'
           r='1'
-          gradientTransform='matrix(-3.69009 3.2723 -3.38707 -3.81951 29.586 2.896)'
         >
           <stop stopColor='#F7F4F7' />
           <stop offset='1' stopColor='#E2DCE5' stopOpacity='0' />
@@ -540,10 +540,10 @@ export const BarChartIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='matrix(-2.46588 0 0 -2.37936 14.324 20.93)'
           gradientUnits='userSpaceOnUse'
           id='f101idw'
           r='1'
-          gradientTransform='matrix(-2.46588 0 0 -2.37936 14.324 20.93)'
         >
           <stop offset='.228' stopColor='#86738A' />
           <stop offset='1' stopColor='#86738A' stopOpacity='0' />

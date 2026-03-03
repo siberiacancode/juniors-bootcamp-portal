@@ -34,14 +34,14 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
   const messages = await getDictionary(locale);
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html suppressHydrationWarning lang={locale}>
       <head>
         <link href='/metadata/favicon.ico' rel='icon' sizes='any' />
         <meta content='/metadata/open-graph.png' property='og:image' />
         <meta content='image/png' property='og:image:type' />
         <meta content='1200' property='og:image:width' />
         <meta content='640' property='og:image:height' />
-        <meta name='robots' content='noindex, nofollow' />
+        <meta content='noindex, nofollow' name='robots' />
         <script
           dangerouslySetInnerHTML={{
             __html: `

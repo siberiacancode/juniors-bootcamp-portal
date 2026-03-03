@@ -31,7 +31,7 @@ export const DockPanel = () => {
           <Tooltip>
             <TooltipTrigger>
               <Button asChild className='size-12 rounded-full' size='icon' variant='ghost'>
-                <Link href='/' aria-label='main'>
+                <Link aria-label='main' href='/'>
                   <HouseIcon className='size-4' />
                 </Link>
               </Button>
@@ -46,12 +46,12 @@ export const DockPanel = () => {
             <Tooltip>
               <TooltipTrigger>
                 <Link
-                  href={href}
                   className={cn(
                     buttonVariants({ variant: 'ghost', size: 'icon' }),
                     'size-12 rounded-full'
                   )}
                   aria-label={href.slice(1)}
+                  href={href}
                 >
                   <Icon className='size-4' />
                 </Link>

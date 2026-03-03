@@ -1,7 +1,7 @@
 import type { SVGProps } from 'react';
 
 export const GithubIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg {...props} height='32' width='32' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'>
+  <svg {...props} height='32' viewBox='0 0 128 128' width='32' xmlns='http://www.w3.org/2000/svg'>
     <g fill='currentColor'>
       <path
         clipRule='evenodd'

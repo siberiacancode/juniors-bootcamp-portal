@@ -14,7 +14,7 @@ interface IntlTextProps {
 export const IntlText = ({ html, id, path, values }: IntlTextProps) =>
   html ? (
     <FormattedMessage id={path} values={values}>
-      {(txt: string | TrustedHTML) => <span id={id} dangerouslySetInnerHTML={{ __html: txt }} />}
+      {(txt: string | TrustedHTML) => <span dangerouslySetInnerHTML={{ __html: txt }} id={id} />}
     </FormattedMessage>
   ) : (
     <FormattedMessage id={path} values={values} />

@@ -1,7 +1,7 @@
 import type { SVGProps } from 'react';
 
 export const FigmaIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg height='1em' width='1em' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128' {...props}>
+  <svg height='1em' viewBox='0 0 128 128' width='1em' xmlns='http://www.w3.org/2000/svg' {...props}>
     <path
       d='M45.5 129c11.9 0 21.5-9.6 21.5-21.5V86H45.5C33.6 86 24 95.6 24 107.5S33.6 129 45.5 129m0 0'
       fill='#0acf83'

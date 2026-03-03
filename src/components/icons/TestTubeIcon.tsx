@@ -1,7 +1,7 @@
 import type { SVGProps } from 'react';
 
 export const TestTubeIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg height='1em' width='1em' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' {...props}>
+  <svg height='1em' viewBox='0 0 32 32' width='1em' xmlns='http://www.w3.org/2000/svg' {...props}>
     <g fill='none'>
       <g filter='url(#f2465id5)'>
         <path
@@ -104,15 +104,15 @@ export const TestTubeIcon = (props: SVGProps<SVGSVGElement>) => (
           <stop offset='1' stopColor='#A8C3FF' stopOpacity='0'></stop>
         </linearGradient>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='25.366'
           id='f2465id5'
           width='25.366'
           x='2.692'
           y='4.43'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0'></feFlood>
+          <feFlood floodOpacity='0' result='BackgroundImageFix'></feFlood>
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'></feBlend>
           <feColorMatrix
             in='SourceAlpha'
@@ -126,15 +126,15 @@ export const TestTubeIcon = (props: SVGProps<SVGSVGElement>) => (
           <feBlend in2='shape' result='effect1_innerShadow_18_24902'></feBlend>
         </filter>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='13.675'
           id='f2465id6'
           width='13.675'
           x='13.347'
           y='5.524'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0'></feFlood>
+          <feFlood floodOpacity='0' result='BackgroundImageFix'></feFlood>
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'></feBlend>
           <feGaussianBlur
             result='effect1_foregroundBlur_18_24902'
@@ -142,15 +142,15 @@ export const TestTubeIcon = (props: SVGProps<SVGSVGElement>) => (
           ></feGaussianBlur>
         </filter>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='17.178'
           id='f2465id7'
           width='26.42'
           x='2.692'
           y='12.618'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0'></feFlood>
+          <feFlood floodOpacity='0' result='BackgroundImageFix'></feFlood>
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'></feBlend>
           <feColorMatrix
             in='SourceAlpha'
@@ -190,15 +190,15 @@ export const TestTubeIcon = (props: SVGProps<SVGSVGElement>) => (
           ></feBlend>
         </filter>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='11.181'
           id='f2465id8'
           width='11.181'
           x='19.12'
           y='2.187'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0'></feFlood>
+          <feFlood floodOpacity='0' result='BackgroundImageFix'></feFlood>
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'></feBlend>
           <feColorMatrix
             in='SourceAlpha'
@@ -212,15 +212,15 @@ export const TestTubeIcon = (props: SVGProps<SVGSVGElement>) => (
           <feBlend in2='shape' result='effect1_innerShadow_18_24902'></feBlend>
         </filter>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='10.986'
           id='f2465id9'
           width='10.986'
           x='19.166'
           y='2.14'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0'></feFlood>
+          <feFlood floodOpacity='0' result='BackgroundImageFix'></feFlood>
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'></feBlend>
           <feGaussianBlur
             result='effect1_foregroundBlur_18_24902'

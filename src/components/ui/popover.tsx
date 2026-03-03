@@ -24,8 +24,8 @@ const PopoverContent = ({
         className
       )}
       align={align}
-      sideOffset={sideOffset}
       data-slot='popover-content'
+      sideOffset={sideOffset}
       {...props}
     />
   </PopoverPrimitive.Portal>

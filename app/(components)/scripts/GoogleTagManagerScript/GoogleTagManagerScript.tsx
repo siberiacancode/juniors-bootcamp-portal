@@ -8,8 +8,6 @@ export const GoogleTagManagerScript = () => (
       strategy='afterInteractive'
     />
     <Script
-      id='google-analytics-config'
-      strategy='afterInteractive'
       dangerouslySetInnerHTML={{
         __html: `
           window.dataLayer = window.dataLayer || [];
@@ -18,6 +16,8 @@ export const GoogleTagManagerScript = () => (
           gtag('config', 'G-KPFPSKKZDG');
         `
       }}
+      id='google-analytics-config'
+      strategy='afterInteractive'
     />
   </>
 );

@@ -1,7 +1,7 @@
 import type { SVGProps } from 'react';
 
 export const FrenchFries = (props: SVGProps<SVGSVGElement>) => (
-  <svg height='1em' width='1em' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' {...props}>
+  <svg height='1em' viewBox='0 0 32 32' width='1em' xmlns='http://www.w3.org/2000/svg' {...props}>
     <g fill='none'>
       <path
         d='M28.87 12.33C28.87 6.62 24.25 2 18.54 2h-5.21C7.63 2 3 6.62 3 12.33h4.7v8.7h16.47v-8.7z'
@@ -289,15 +289,15 @@ export const FrenchFries = (props: SVGProps<SVGSVGElement>) => (
           <stop offset='.623' stopColor='#FC5396'></stop>
         </linearGradient>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='19.624'
           id='f582idg'
           width='25.594'
           x='3.344'
           y='1.906'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0'></feFlood>
+          <feFlood floodOpacity='0' result='BackgroundImageFix'></feFlood>
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'></feBlend>
           <feGaussianBlur
             result='effect1_foregroundBlur_18_30853'
@@ -305,15 +305,15 @@ export const FrenchFries = (props: SVGProps<SVGSVGElement>) => (
           ></feGaussianBlur>
         </filter>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='23.484'
           id='f582idh'
           width='8.558'
           x='10'
           y='1.797'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0'></feFlood>
+          <feFlood floodOpacity='0' result='BackgroundImageFix'></feFlood>
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'></feBlend>
           <feGaussianBlur
             result='effect1_foregroundBlur_18_30853'
@@ -321,15 +321,15 @@ export const FrenchFries = (props: SVGProps<SVGSVGElement>) => (
           ></feGaussianBlur>
         </filter>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='18.603'
           id='f582idi'
           width='9.87'
           x='3.431'
           y='4.842'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0'></feFlood>
+          <feFlood floodOpacity='0' result='BackgroundImageFix'></feFlood>
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'></feBlend>
           <feGaussianBlur
             result='effect1_foregroundBlur_18_30853'
@@ -337,15 +337,15 @@ export const FrenchFries = (props: SVGProps<SVGSVGElement>) => (
           ></feGaussianBlur>
         </filter>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='7.488'
           id='f582idj'
           width='8.3'
           x='7.944'
           y='12.694'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0'></feFlood>
+          <feFlood floodOpacity='0' result='BackgroundImageFix'></feFlood>
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'></feBlend>
           <feGaussianBlur
             result='effect1_foregroundBlur_18_30853'
@@ -353,15 +353,15 @@ export const FrenchFries = (props: SVGProps<SVGSVGElement>) => (
           ></feGaussianBlur>
         </filter>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='7.456'
           id='f582idk'
           width='12.628'
           x='16.147'
           y='12.537'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0'></feFlood>
+          <feFlood floodOpacity='0' result='BackgroundImageFix'></feFlood>
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'></feBlend>
           <feGaussianBlur
             result='effect1_foregroundBlur_18_30853'
@@ -371,10 +371,10 @@ export const FrenchFries = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='matrix(-1.125 7.125 -3.65411 -.57696 20.625 19)'
           gradientUnits='userSpaceOnUse'
           id='f582idl'
           r='1'
-          gradientTransform='matrix(-1.125 7.125 -3.65411 -.57696 20.625 19)'
         >
           <stop stopColor='#B96D11'></stop>
           <stop offset='1' stopColor='#C07617' stopOpacity='0'></stop>
@@ -382,10 +382,10 @@ export const FrenchFries = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='rotate(82.763 -3.064 14.67)scale(9.9227 4.66075)'
           gradientUnits='userSpaceOnUse'
           id='f582idm'
           r='1'
-          gradientTransform='rotate(82.763 -3.064 14.67)scale(9.9227 4.66075)'
         >
           <stop stopColor='#A7650A'></stop>
           <stop offset='1' stopColor='#A15D0A' stopOpacity='0'></stop>
@@ -393,10 +393,10 @@ export const FrenchFries = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='matrix(3 4.28125 -4.8014 3.36449 10.75 15.5)'
           gradientUnits='userSpaceOnUse'
           id='f582idn'
           r='1'
-          gradientTransform='matrix(3 4.28125 -4.8014 3.36449 10.75 15.5)'
         >
           <stop stopColor='#FF6983'></stop>
           <stop offset='1' stopColor='#FB5471' stopOpacity='0'></stop>

@@ -1,7 +1,7 @@
 import type { SVGProps } from 'react';
 
 export const PizzaIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg height='1em' width='1em' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' {...props}>
+  <svg height='1em' viewBox='0 0 32 32' width='1em' xmlns='http://www.w3.org/2000/svg' {...props}>
     <g fill='none'>
       <path
         d='M23.501 29.404L7.738 20.311L6 16L25 4.5l3 3v19.306c0 2.309-2.499 3.752-4.499 2.598'
@@ -38,10 +38,10 @@ export const PizzaIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='matrix(-9.87498 12.25 -10.64792 -8.5835 25.313 15.75)'
           gradientUnits='userSpaceOnUse'
           id='f2063id0'
           r='1'
-          gradientTransform='matrix(-9.87498 12.25 -10.64792 -8.5835 25.313 15.75)'
         >
           <stop stopColor='#FFE657'></stop>
           <stop offset='1' stopColor='#FFC547'></stop>
@@ -49,10 +49,10 @@ export const PizzaIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='rotate(145.566 7.594 10.642)scale(34.7064 18.3004)'
           gradientUnits='userSpaceOnUse'
           id='f2063id1'
           r='1'
-          gradientTransform='rotate(145.566 7.594 10.642)scale(34.7064 18.3004)'
         >
           <stop offset='.278' stopColor='#FFA060'></stop>
           <stop offset='.39' stopColor='#FFC48A'></stop>
@@ -62,10 +62,10 @@ export const PizzaIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='matrix(.5 3.1875 -6.21153 .97436 26.875 4.438)'
           gradientUnits='userSpaceOnUse'
           id='f2063id2'
           r='1'
-          gradientTransform='matrix(.5 3.1875 -6.21153 .97436 26.875 4.438)'
         >
           <stop stopColor='#FFE498'></stop>
           <stop offset='1' stopColor='#FFE398' stopOpacity='0'></stop>
@@ -73,10 +73,10 @@ export const PizzaIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='rotate(137.626 9.472 11.544)scale(4.82223)'
           gradientUnits='userSpaceOnUse'
           id='f2063id3'
           r='1'
-          gradientTransform='rotate(137.626 9.472 11.544)scale(4.82223)'
         >
           <stop stopColor='#FF8DA2'></stop>
           <stop offset='1' stopColor='#FF2B43'></stop>
@@ -84,10 +84,10 @@ export const PizzaIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='rotate(101.611 4.145 17.376)scale(4.65782)'
           gradientUnits='userSpaceOnUse'
           id='f2063id4'
           r='1'
-          gradientTransform='rotate(101.611 4.145 17.376)scale(4.65782)'
         >
           <stop offset='.393' stopColor='#F63080'></stop>
           <stop offset='1' stopColor='#F73184' stopOpacity='0'></stop>
@@ -95,10 +95,10 @@ export const PizzaIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='rotate(137.626 7.632 15.92)scale(2.75556)'
           gradientUnits='userSpaceOnUse'
           id='f2063id5'
           r='1'
-          gradientTransform='rotate(137.626 7.632 15.92)scale(2.75556)'
         >
           <stop stopColor='#FF8DA2'></stop>
           <stop offset='1' stopColor='#FF2B43'></stop>
@@ -106,10 +106,10 @@ export const PizzaIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='rotate(101.611 1.441 21.422)scale(2.66161)'
           gradientUnits='userSpaceOnUse'
           id='f2063id6'
           r='1'
-          gradientTransform='rotate(101.611 1.441 21.422)scale(2.66161)'
         >
           <stop offset='.393' stopColor='#F63080'></stop>
           <stop offset='1' stopColor='#F73184' stopOpacity='0'></stop>
@@ -117,10 +117,10 @@ export const PizzaIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='rotate(137.626 4.514 13.206)scale(3.44445)'
           gradientUnits='userSpaceOnUse'
           id='f2063id7'
           r='1'
-          gradientTransform='rotate(137.626 4.514 13.206)scale(3.44445)'
         >
           <stop stopColor='#FF8DA2'></stop>
           <stop offset='1' stopColor='#FF2B43'></stop>
@@ -128,10 +128,10 @@ export const PizzaIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='rotate(101.611 -1.46 17.25)scale(3.32702)'
           gradientUnits='userSpaceOnUse'
           id='f2063id8'
           r='1'
-          gradientTransform='rotate(101.611 -1.46 17.25)scale(3.32702)'
         >
           <stop offset='.393' stopColor='#F63080'></stop>
           <stop offset='1' stopColor='#F73184' stopOpacity='0'></stop>

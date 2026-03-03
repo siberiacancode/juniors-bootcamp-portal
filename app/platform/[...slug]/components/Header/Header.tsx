@@ -132,7 +132,7 @@ export const DesktopHeader = ({ breadcrumbs }: HeaderProps) => {
       </Breadcrumb>
 
       <div className='flex flex-wrap items-center gap-2'>
-        <DynamicSharedButton title={lastBreadcrumb.title} emoji={lastBreadcrumb.emoji} />
+        <DynamicSharedButton emoji={lastBreadcrumb.emoji} title={lastBreadcrumb.title} />
       </div>
     </div>
   );
@@ -151,17 +151,17 @@ export const MobileHeader = ({ breadcrumbs }: HeaderProps) => {
           <ChevronDownIcon className='h-4 w-4' />
         </Button>
 
-        <DynamicSharedButton title={lastBreadcrumb.title} emoji={lastBreadcrumb.emoji} />
+        <DynamicSharedButton emoji={lastBreadcrumb.emoji} title={lastBreadcrumb.title} />
       </div>
 
-      <Drawer onOpenChange={navigationDropdown.toggle} open={navigationDropdown.opened}>
+      <Drawer open={navigationDropdown.opened} onOpenChange={navigationDropdown.toggle}>
         <DrawerContent>
           <div className='flex flex-col gap-2'>
             {[...breadcrumbs].reverse().map((item) => (
               <Link
-                href={item.path}
                 key={item.path}
                 className='flex items-center gap-2 rounded-md p-2 hover:bg-gray-100'
+                href={item.path}
                 onClick={() => navigationDropdown.toggle()}
               >
                 <span>{item.emoji}</span>
