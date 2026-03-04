@@ -68,7 +68,7 @@ export const Footer = () => {
       <div className='mx-auto max-w-[var(--max-width)] px-4 py-16'>
         <div className='flex flex-col justify-between gap-4 md:flex-row'>
           <div className='space-y-4'>
-            <Link href='/' className='font-pixelify-sans flex items-center text-2xl font-bold'>
+            <Link className='font-pixelify-sans flex items-center text-2xl font-bold' href='/'>
               juniors bootcamp
               {/* <Logo alt={intl.formatMessage({ id: 'footer.logo.alt' })} className='w-10' /> */}
             </Link>
@@ -84,8 +84,8 @@ export const Footer = () => {
             <div className='flex gap-3'>
               {SOCIALS.map((social) => (
                 <Link
-                  href={social.href}
                   key={social.href}
+                  href={social.href}
                   rel='noopener noreferrer'
                   target='_blank'
                 >
@@ -106,8 +106,8 @@ export const Footer = () => {
               <ul className='space-y-2 text-sm'>
                 <li>
                   <Link
-                    href='/platform/road-map'
                     className='text-muted-foreground hover:text-foreground transition-colors'
+                    href='/platform/road-map'
                   >
                     <IntlText path='footer.directions.road-map' />
                   </Link>
@@ -115,8 +115,8 @@ export const Footer = () => {
                 {NAVIGATION.map((navigation) => (
                   <li key={navigation.href}>
                     <Link
-                      href={navigation.href}
                       className='text-muted-foreground hover:text-foreground transition-colors'
+                      href={navigation.href}
                     >
                       <IntlText path={navigation.label as MessagePath} />
                     </Link>
@@ -133,8 +133,8 @@ export const Footer = () => {
                 {OPENSOURCE.map((opensource) => (
                   <li key={opensource.href}>
                     <Link
-                      href={opensource.href}
                       className='text-muted-foreground hover:text-foreground transition-colors'
+                      href={opensource.href}
                       rel='noopener noreferrer'
                       target='_blank'
                     >
@@ -150,8 +150,8 @@ export const Footer = () => {
         <p className='text-muted-foreground mt-12 w-full text-center text-sm'>
           Built by{' '}
           <Link
-            href='https://github.com/siberiacancode'
             className='underline'
+            href='https://github.com/siberiacancode'
             rel='noopener noreferrer'
             target='_blank'
           >
@@ -159,8 +159,8 @@ export const Footer = () => {
           </Link>
           . The source code is available on{' '}
           <Link
-            href='https://github.com/siberiacancode/juniors-bootcamp-portal'
             className='underline'
+            href='https://github.com/siberiacancode/juniors-bootcamp-portal'
             rel='noopener noreferrer'
             target='_blank'
           >

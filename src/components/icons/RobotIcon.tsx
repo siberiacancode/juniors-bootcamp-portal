@@ -1,7 +1,7 @@
 import type { SVGProps } from 'react';
 
 export const RobotIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg height='1em' width='1em' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' {...props}>
+  <svg height='1em' viewBox='0 0 32 32' width='1em' xmlns='http://www.w3.org/2000/svg' {...props}>
     <g fill='none'>
       <path
         d='M22.05 30H9.95C6.66 30 4 27.34 4 24.05V12.03C4 8.7 6.7 6 10.03 6h11.95C25.3 6 28 8.7 28 12.03v12.03c0 3.28-2.66 5.94-5.95 5.94'
@@ -179,10 +179,10 @@ export const RobotIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='rotate(141.911 10.515 10.065)scale(23.5053)'
           gradientUnits='userSpaceOnUse'
           id='f2228idd'
           r='1'
-          gradientTransform='rotate(141.911 10.515 10.065)scale(23.5053)'
         >
           <stop stopColor='#EEEBF0'></stop>
           <stop offset='.493' stopColor='#D1BEE3'></stop>
@@ -191,10 +191,10 @@ export const RobotIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='matrix(5 -.5 1.9111 19.11108 25 13.5)'
           gradientUnits='userSpaceOnUse'
           id='f2228ide'
           r='1'
-          gradientTransform='matrix(5 -.5 1.9111 19.11108 25 13.5)'
         >
           <stop stopColor='#F0EAF6'></stop>
           <stop offset='1' stopColor='#E7E0EF' stopOpacity='0'></stop>
@@ -202,10 +202,10 @@ export const RobotIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='matrix(-.5 2 -2 -.5 4 3)'
           gradientUnits='userSpaceOnUse'
           id='f2228idf'
           r='1'
-          gradientTransform='matrix(-.5 2 -2 -.5 4 3)'
         >
           <stop stopColor='#FF6C82'></stop>
           <stop offset='.441' stopColor='#FF2455'></stop>
@@ -214,10 +214,10 @@ export const RobotIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='rotate(104.036 13.324 12.844)scale(2.13027)'
           gradientUnits='userSpaceOnUse'
           id='f2228idg'
           r='1'
-          gradientTransform='rotate(104.036 13.324 12.844)scale(2.13027)'
         >
           <stop stopColor='#FF6C82'></stop>
           <stop offset='.441' stopColor='#FF2455'></stop>
@@ -226,10 +226,10 @@ export const RobotIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='matrix(-2.5 .5 -.68428 -3.42136 9.5 15)'
           gradientUnits='userSpaceOnUse'
           id='f2228idh'
           r='1'
-          gradientTransform='matrix(-2.5 .5 -.68428 -3.42136 9.5 15)'
         >
           <stop stopColor='#322649'></stop>
           <stop offset='1' stopColor='#342950' stopOpacity='0'></stop>
@@ -237,10 +237,10 @@ export const RobotIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='matrix(-2.5 .5 -.68428 -3.42136 21 15)'
           gradientUnits='userSpaceOnUse'
           id='f2228idi'
           r='1'
-          gradientTransform='matrix(-2.5 .5 -.68428 -3.42136 21 15)'
         >
           <stop stopColor='#322649'></stop>
           <stop offset='1' stopColor='#342950' stopOpacity='0'></stop>
@@ -248,10 +248,10 @@ export const RobotIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='matrix(0 3 -10 0 16 4)'
           gradientUnits='userSpaceOnUse'
           id='f2228idj'
           r='1'
-          gradientTransform='matrix(0 3 -10 0 16 4)'
         >
           <stop offset='.431' stopColor='#CA7E29' stopOpacity='0'></stop>
           <stop offset='1' stopColor='#673F13'></stop>
@@ -259,10 +259,10 @@ export const RobotIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='matrix(0 2.5 -1.14393 0 11 13.5)'
           gradientUnits='userSpaceOnUse'
           id='f2228idk'
           r='1'
-          gradientTransform='matrix(0 2.5 -1.14393 0 11 13.5)'
         >
           <stop stopColor='#54C8FF'></stop>
           <stop offset='1' stopColor='#54C8FF' stopOpacity='0'></stop>
@@ -270,10 +270,10 @@ export const RobotIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='matrix(0 2.5 -1.14393 0 22.5 13.5)'
           gradientUnits='userSpaceOnUse'
           id='f2228idl'
           r='1'
-          gradientTransform='matrix(0 2.5 -1.14393 0 22.5 13.5)'
         >
           <stop stopColor='#54C8FF'></stop>
           <stop offset='1' stopColor='#54C8FF' stopOpacity='0'></stop>
@@ -281,10 +281,10 @@ export const RobotIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='matrix(0 1.5 -1 0 29 13.5)'
           gradientUnits='userSpaceOnUse'
           id='f2228idm'
           r='1'
-          gradientTransform='matrix(0 1.5 -1 0 29 13.5)'
         >
           <stop stopColor='#FF72C1'></stop>
           <stop offset='1' stopColor='#FF6EBF' stopOpacity='0'></stop>
@@ -292,10 +292,10 @@ export const RobotIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='matrix(0 4.5 -.55944 0 29 16.5)'
           gradientUnits='userSpaceOnUse'
           id='f2228idn'
           r='1'
-          gradientTransform='matrix(0 4.5 -.55944 0 29 16.5)'
         >
           <stop stopColor='#FF4B9C'></stop>
           <stop offset='1' stopColor='#FF73C1' stopOpacity='0'></stop>
@@ -303,24 +303,24 @@ export const RobotIcon = (props: SVGProps<SVGSVGElement>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='rotate(90 8 12)'
           gradientUnits='userSpaceOnUse'
           id='f2228ido'
           r='1'
-          gradientTransform='rotate(90 8 12)'
         >
           <stop stopColor='#FFEA60'></stop>
           <stop offset='1' stopColor='#FFEF66' stopOpacity='0'></stop>
         </radialGradient>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='7'
           id='f2228idp'
           width='1.25'
           x='3'
           y='4.5'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0'></feFlood>
+          <feFlood floodOpacity='0' result='BackgroundImageFix'></feFlood>
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'></feBlend>
           <feGaussianBlur
             result='effect1_foregroundBlur_31_1501'
@@ -328,15 +328,15 @@ export const RobotIcon = (props: SVGProps<SVGSVGElement>) => (
           ></feGaussianBlur>
         </filter>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='7'
           id='f2228idq'
           width='1.25'
           x='28'
           y='4.5'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0'></feFlood>
+          <feFlood floodOpacity='0' result='BackgroundImageFix'></feFlood>
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'></feBlend>
           <feGaussianBlur
             result='effect1_foregroundBlur_31_1501'

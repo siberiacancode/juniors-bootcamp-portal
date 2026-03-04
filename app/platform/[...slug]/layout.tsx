@@ -38,10 +38,10 @@ export const generateStaticParams = async () => {
 
 export async function generateMetadata({ params }: ContentsLayoutProps) {
   const { slug } = await params;
-  const module = await import(`../(contents)/${slug.join('/')}/index.mdx`);
+  const m = await import(`../(contents)/${slug.join('/')}/index.mdx`);
 
   return {
-    title: `${module.metadata.emoji} ${module.metadata.title}`
+    title: `${m.metadata.emoji} ${m.metadata.title}`
   };
 }
 
@@ -51,10 +51,10 @@ const getBreadcrumbs = async (slug: string[]) => {
   for (let i = 0; i < slug.length; i++) {
     const currentPath = slug.slice(0, i + 1).join('/');
 
-    const module = await import(`../(contents)/${currentPath}/index.mdx`);
+    const m = await import(`../(contents)/${currentPath}/index.mdx`);
 
     breadcrumbs.push({
-      ...module.metadata,
+      ...m.metadata,
       path: `/platform/${currentPath}`
     });
   }

@@ -37,8 +37,8 @@ const getAllGuides = async () => {
 
 export const generateMetadata = async ({ params }: GuidesLayoutProps) => {
   const { slug } = await params;
-  const module = await import(`../(contents)/${slug}.mdx`);
-  const metadata = module.metadata as GuideMetadata;
+  const m = await import(`../(contents)/${slug}.mdx`);
+  const metadata = m.metadata as GuideMetadata;
 
   return {
     title: metadata.title,
@@ -48,8 +48,8 @@ export const generateMetadata = async ({ params }: GuidesLayoutProps) => {
 
 const GuidesLayout = async ({ children, params }: GuidesLayoutProps) => {
   const { slug } = await params;
-  const module = await import(`../(contents)/${slug}.mdx`);
-  const metadata = module.metadata as GuideMetadata;
+  const m = await import(`../(contents)/${slug}.mdx`);
+  const metadata = m.metadata as GuideMetadata;
 
   const guides = await getAllGuides();
   const currentIndex = guides.findIndex((g) => g.slug === slug);
@@ -80,7 +80,7 @@ const GuidesLayout = async ({ children, params }: GuidesLayoutProps) => {
 
         <div className='mt-12 flex flex-col items-center gap-4 md:flex-row'>
           {prevGuide && (
-            <Link href={`/guides/${prevGuide.slug}`} className='w-full md:w-auto'>
+            <Link className='w-full md:w-auto' href={`/guides/${prevGuide.slug}`}>
               <div className='bg-card flex items-center justify-start gap-3 rounded-xl border p-4 transition-all duration-200 hover:scale-101'>
                 <ArrowLeftIcon className='size-4' />
                 <div
@@ -95,7 +95,7 @@ const GuidesLayout = async ({ children, params }: GuidesLayoutProps) => {
           )}
 
           {nextGuide && (
-            <Link href={`/guides/${nextGuide.slug}`} className='w-full md:w-auto'>
+            <Link className='w-full md:w-auto' href={`/guides/${nextGuide.slug}`}>
               <div className='bg-card flex items-center justify-end gap-3 rounded-xl border p-4 transition-all duration-200 hover:scale-101'>
                 <div
                   className='font-pixelify-sans text-2xl font-bold'
@@ -111,8 +111,8 @@ const GuidesLayout = async ({ children, params }: GuidesLayoutProps) => {
         </div>
 
         <Link
-          href={`https://github.com/siberiacancode/juniors-bootcamp-portal/edit/main/app/guides/(contents)/${slug}.mdx`}
           className='hover:text-foreground text-muted-foreground mt-6 flex items-center gap-2 text-sm font-semibold transition-colors'
+          href={`https://github.com/siberiacancode/juniors-bootcamp-portal/edit/main/app/guides/(contents)/${slug}.mdx`}
           rel='noopener noreferrer'
           target='_blank'
         >

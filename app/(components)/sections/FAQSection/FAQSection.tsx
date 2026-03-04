@@ -19,7 +19,7 @@ export const FAQSection = ({ items }: FAQSectionProps) => (
       </div>
 
       <div className='flex w-full flex-col items-center justify-center'>
-        <Accordion className='flex w-full flex-col gap-4' type='single' collapsible>
+        <Accordion collapsible className='flex w-full flex-col gap-4' type='single'>
           {items.map((item, index) => (
             <AccordionItem key={index} className='rounded-lg border px-6' value={index.toString()}>
               <AccordionTrigger className='text-left text-lg font-medium hover:no-underline'>

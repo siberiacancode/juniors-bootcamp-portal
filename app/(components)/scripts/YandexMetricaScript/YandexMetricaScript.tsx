@@ -2,8 +2,6 @@ import Script from 'next/script';
 
 export const YandexMetrikaScript = () => (
   <Script
-    id='yandex-metrika'
-    strategy='afterInteractive'
     dangerouslySetInnerHTML={{
       __html: `
     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){
@@ -24,5 +22,7 @@ export const YandexMetrikaScript = () => (
     });
   `
     }}
+    id='yandex-metrika'
+    strategy='afterInteractive'
   />
 );

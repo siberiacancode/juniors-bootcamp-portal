@@ -39,7 +39,7 @@ export const Header = () => {
     <header className='w-full'>
       <div className='mx-auto flex h-16 max-w-[var(--max-width)] items-center justify-between px-4'>
         <div className='flex gap-4'>
-          <Link href='/' className='font-pixelify-sans flex items-center text-2xl font-bold'>
+          <Link className='font-pixelify-sans flex items-center text-2xl font-bold' href='/'>
             j.bootcamp
             {/* <Logo alt={intl.formatMessage({ id: 'header.logo.alt' })} className='w-10' /> */}
           </Link>
@@ -48,7 +48,7 @@ export const Header = () => {
             <NavigationMenuList className='items-start gap-2'>
               {NAVIGATION.map((navigation, index) => (
                 <NavigationMenuItem key={index} className='w-full'>
-                  <NavigationMenuLink href={navigation.href} className='py-1.5'>
+                  <NavigationMenuLink className='py-1.5' href={navigation.href}>
                     <IntlText path={navigation.label as MessagePath} />
                   </NavigationMenuLink>
                 </NavigationMenuItem>

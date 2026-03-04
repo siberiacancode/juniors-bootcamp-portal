@@ -1,6 +1,6 @@
-import 'server-only';
-
 import type ruMessage from '@/public/locale/ru.json';
+
+import 'server-only';
 
 type Message = typeof ruMessage;
 

@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 
 export const AppleIcon = (props: ComponentProps<'svg'>) => (
-  <svg height='1em' width='1em' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' {...props}>
+  <svg height='1em' viewBox='0 0 32 32' width='1em' xmlns='http://www.w3.org/2000/svg' {...props}>
     <g fill='none'>
       <path
         d='M10.25 2H4.22a5.92 5.92 0 0 0 5.92 5.92h6.03C16.18 4.66 13.52 2 10.25 2'
@@ -43,10 +43,10 @@ export const AppleIcon = (props: ComponentProps<'svg'>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='rotate(-40.012 39.811 6.793)scale(28.2351)'
           gradientUnits='userSpaceOnUse'
           id='f622id0'
           r='1'
-          gradientTransform='rotate(-40.012 39.811 6.793)scale(28.2351)'
         >
           <stop stopColor='#689133'></stop>
           <stop offset='.528' stopColor='#A4D948'></stop>
@@ -55,10 +55,10 @@ export const AppleIcon = (props: ComponentProps<'svg'>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='matrix(20.09575 14.29874 -17.18862 24.15726 4.746 6.74)'
           gradientUnits='userSpaceOnUse'
           id='f622id1'
           r='1'
-          gradientTransform='matrix(20.09575 14.29874 -17.18862 24.15726 4.746 6.74)'
         >
           <stop stopColor='#678F32'></stop>
           <stop offset='.39' stopColor='#96CB3A' stopOpacity='0'></stop>
@@ -66,10 +66,10 @@ export const AppleIcon = (props: ComponentProps<'svg'>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='matrix(10.47528 20.3604 -24.4754 12.59242 12.196 14.348)'
           gradientUnits='userSpaceOnUse'
           id='f622id2'
           r='1'
-          gradientTransform='matrix(10.47528 20.3604 -24.4754 12.59242 12.196 14.348)'
         >
           <stop stopColor='#BFF341'></stop>
           <stop offset='.367' stopColor='#BFF341' stopOpacity='0'></stop>
@@ -77,10 +77,10 @@ export const AppleIcon = (props: ComponentProps<'svg'>) => (
         <radialGradient
           cx='0'
           cy='0'
+          gradientTransform='matrix(-14.45602 18.42518 -22.14903 -17.37767 24.181 14.258)'
           gradientUnits='userSpaceOnUse'
           id='f622id3'
           r='1'
-          gradientTransform='matrix(-14.45602 18.42518 -22.14903 -17.37767 24.181 14.258)'
         >
           <stop stopColor='#EEFF61'></stop>
           <stop offset='.386' stopColor='#EEFF61' stopOpacity='0'></stop>
@@ -131,15 +131,15 @@ export const AppleIcon = (props: ComponentProps<'svg'>) => (
           <stop offset='1' stopColor='#A37CA3'></stop>
         </linearGradient>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='5.92'
           id='f622id8'
           width='11.906'
           x='4.243'
           y='2'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0'></feFlood>
+          <feFlood floodOpacity='0' result='BackgroundImageFix'></feFlood>
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'></feBlend>
           <feGaussianBlur
             result='effect1_foregroundBlur_18_30671'
@@ -147,15 +147,15 @@ export const AppleIcon = (props: ComponentProps<'svg'>) => (
           ></feGaussianBlur>
         </filter>
         <filter
+          colorInterpolationFilters='sRGB'
           filterUnits='userSpaceOnUse'
           height='6.42'
           id='f622id9'
           width='10.191'
           x='6.208'
           y='1.75'
-          colorInterpolationFilters='sRGB'
         >
-          <feFlood result='BackgroundImageFix' floodOpacity='0'></feFlood>
+          <feFlood floodOpacity='0' result='BackgroundImageFix'></feFlood>
           <feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'></feBlend>
           <feGaussianBlur
             result='effect1_foregroundBlur_18_30671'

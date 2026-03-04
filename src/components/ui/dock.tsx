@@ -6,7 +6,8 @@ import type { PropsWithChildren } from 'react';
 
 import { cva } from 'class-variance-authority';
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
-import React, { useRef } from 'react';
+import * as React from 'react';
+import { useRef } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -15,11 +16,13 @@ const DEFAULT_MAGNIFICATION = 60;
 const DEFAULT_DISTANCE = 140;
 
 const dockVariants = cva(
-  'supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto mt-8 flex h-[58px] w-max items-center justify-center gap-2 rounded-2xl border p-2 backdrop-blur-md'
+  'supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto mt-8 flex h-14.5 w-max items-center justify-center gap-2 rounded-2xl border p-2 backdrop-blur-md'
 );
 
-export interface DockIconProps
-  extends Omit<MotionProps & React.HTMLAttributes<HTMLDivElement>, 'children'> {
+export interface DockIconProps extends Omit<
+  MotionProps & React.HTMLAttributes<HTMLDivElement>,
+  'children'
+> {
   children?: React.ReactNode;
   className?: string;
   distance?: number;

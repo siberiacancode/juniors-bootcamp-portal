@@ -10,9 +10,9 @@ const Iphone15Pro = ({ width = 433, height = 882, children, ...props }: Iphone15
   <svg
     fill='none'
     height={height}
+    viewBox={`0 0 ${width} ${height}`}
     width={width}
     xmlns='http://www.w3.org/2000/svg'
-    viewBox={`0 0 ${width} ${height}`}
     {...props}
   >
     <path

@@ -9,8 +9,8 @@ export const WhySection = () => {
 
   return (
     <TextSections
-      title={intl.formatMessage({ id: 'page.tasks.why.title' })}
       description={intl.formatMessage({ id: 'page.tasks.why.description' })}
+      title={intl.formatMessage({ id: 'page.tasks.why.title' })}
     />
   );
 };
