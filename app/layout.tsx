@@ -1,4 +1,5 @@
-import { Pixelify_Sans, Roboto } from 'next/font/google';
+import clsx from 'clsx';
+import { Nunito, Parisienne, Pixelify_Sans } from 'next/font/google';
 
 import { Footer, GoogleTagManagerScript, Header, YandexMetrikaScript } from './(components)';
 import { getDictionary } from './(contexts)/intl/helpers/getDictionary';
@@ -6,13 +7,19 @@ import { Provider } from './provider';
 
 import './globals.css';
 
-const roboto = Roboto({
-  variable: '--font-roboto',
-  subsets: ['latin']
+const nunito = Nunito({
+  variable: '--font-nunito',
+  subsets: ['latin', 'cyrillic']
 });
 
 const pixelifySans = Pixelify_Sans({
   variable: '--font-pixelify-sans',
+  subsets: ['latin', 'cyrillic']
+});
+
+const parisienne = Parisienne({
+  variable: '--font-parisienne',
+  weight: '400',
   subsets: ['latin']
 });
 
@@ -34,7 +41,11 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
   const messages = await getDictionary(locale);
 
   return (
-    <html suppressHydrationWarning lang={locale}>
+    <html
+      suppressHydrationWarning
+      className={clsx(nunito.variable, pixelifySans.variable, parisienne.variable)}
+      lang={locale}
+    >
       <head>
         <link href='/metadata/favicon.ico' rel='icon' sizes='any' />
         <meta content='/metadata/open-graph.png' property='og:image' />
@@ -51,7 +62,7 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
           }}
         />
       </head>
-      <body className={`${roboto.variable} ${pixelifySans.variable} flex min-h-screen flex-col`}>
+      <body className='flex min-h-screen flex-col'>
         {process.env.NODE_ENV === 'production' && (
           <>
             <YandexMetrikaScript />
