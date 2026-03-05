@@ -81,12 +81,7 @@ const GuidesLayout = async ({ children, params }: GuidesLayoutProps) => {
         <div className='mt-12 flex flex-col items-center gap-4 md:flex-row'>
           {prevGuide && (
             <Link className='w-full md:w-auto' href={`/guides/${prevGuide.slug}`}>
-              <div
-                className='
-                  flex items-center justify-start gap-3 rounded-xl border bg-card p-4 transition-all duration-200
-                  hover:scale-101
-                '
-              >
+              <div className='flex items-center justify-start gap-3 rounded-xl border bg-card p-4 transition-all duration-200 hover:scale-101'>
                 <ArrowLeftIcon className='size-4' />
                 <div
                   className='font-pixelify-sans text-2xl font-bold'
@@ -101,12 +96,7 @@ const GuidesLayout = async ({ children, params }: GuidesLayoutProps) => {
 
           {nextGuide && (
             <Link className='w-full md:w-auto' href={`/guides/${nextGuide.slug}`}>
-              <div
-                className='
-                  flex items-center justify-end gap-3 rounded-xl border bg-card p-4 transition-all duration-200
-                  hover:scale-101
-                '
-              >
+              <div className='flex items-center justify-end gap-3 rounded-xl border bg-card p-4 transition-all duration-200 hover:scale-101'>
                 <div
                   className='font-pixelify-sans text-2xl font-bold'
                   style={getShadowColor(nextGuide.number)}
@@ -121,10 +111,7 @@ const GuidesLayout = async ({ children, params }: GuidesLayoutProps) => {
         </div>
 
         <Link
-          className='
-            mt-6 flex items-center gap-2 text-sm font-semibold text-muted-foreground transition-colors
-            hover:text-foreground
-          '
+          className='mt-6 flex items-center gap-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground'
           href={`https://github.com/siberiacancode/juniors-bootcamp-portal/edit/main/app/guides/(contents)/${slug}.mdx`}
           rel='noopener noreferrer'
           target='_blank'

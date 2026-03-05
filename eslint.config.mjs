@@ -14,7 +14,15 @@ export default eslint(
     rules: {
       'node/prefer-global/process': 'off',
       'react/no-context-provider': 'off',
-      'siberiacancode-tailwind/enforce-consistent-line-wrapping': 'off'
+      'siberiacancode-tailwind/enforce-consistent-line-wrapping': [
+        'warn',
+        {
+          group: 'never',
+          preferSingleLine: true,
+          printWidth: 0,
+          strictness: 'loose'
+        }
+      ]
     }
   },
   {

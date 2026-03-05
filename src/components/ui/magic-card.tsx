@@ -121,16 +121,13 @@ export const MagicCard = ({
       onPointerMove={handlePointerMove}
     >
       <motion.div
-        className='
-          pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300
-          group-hover:opacity-100
-        '
         style={{
           background: useMotionTemplate`
             radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px, ${gradientColor}, transparent 100%)
           `,
           opacity: gradientOpacity
         }}
+        className='pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100'
       />
       <div className='relative'>{children}</div>
     </motion.div>

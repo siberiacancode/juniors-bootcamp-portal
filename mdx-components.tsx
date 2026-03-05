@@ -37,10 +37,7 @@ export const useMDXComponents = (components?: MDXComponents): MDXComponents => (
   blockquote: (props) => (
     <blockquote
       {...props}
-      className='
-        mb-4 border-l-4 border-gray-200 pl-4 text-lg text-gray-700 italic
-        dark:border-gray-700 dark:text-gray-300
-      '
+      className='mb-4 border-l-4 border-gray-200 pl-4 text-lg text-gray-700 italic dark:border-gray-700 dark:text-gray-300'
     />
   ),
   pre: (props: CodeBlockProps) => (

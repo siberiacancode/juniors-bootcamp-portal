@@ -70,13 +70,7 @@ const GuidesPage = async () => {
 
             return (
               <Link key={number} className='h-full' href={`/guides/${guide.slug}`}>
-                <div
-                  className='
-                    flex h-full flex-col rounded-md border bg-card p-6 transition-all duration-200
-                    hover:scale-101 hover:drop-shadow-[3px_3px_0px_#000]/90
-                    dark:hover:drop-shadow-[3px_3px_0px_#fff]/80
-                  '
-                >
+                <div className='flex h-full flex-col rounded-md border bg-card p-6 transition-all duration-200 hover:scale-101 hover:drop-shadow-[3px_3px_0px_#000]/90 dark:hover:drop-shadow-[3px_3px_0px_#fff]/80'>
                   <div className='relative mb-4 flex items-center gap-4'>
                     <div className='font-pixelify-sans text-4xl font-bold' style={shadowColor}>
                       {number.toString().padStart(2, '0')}
