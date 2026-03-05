@@ -103,10 +103,7 @@ export const MagicCard = ({
     <motion.div
       ref={ref}
       className={cn(
-        `
-          group relative overflow-hidden rounded-[inherit] border
-          border-transparent
-        `,
+        `group relative overflow-hidden rounded-[inherit] border border-transparent`,
         className
       )}
       style={{
@@ -125,8 +122,7 @@ export const MagicCard = ({
     >
       <motion.div
         className='
-          pointer-events-none absolute inset-0 opacity-0 transition-opacity
-          duration-300
+          pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300
           group-hover:opacity-100
         '
         style={{

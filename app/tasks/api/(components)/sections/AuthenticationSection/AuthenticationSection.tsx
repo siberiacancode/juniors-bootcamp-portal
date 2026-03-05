@@ -25,12 +25,7 @@ export const AuthenticationSection = () => {
         </Button>
       </div>
 
-      <div
-        className='
-        prose prose-sm max-w-none text-lg text-pretty
-        dark:prose-invert
-      '
-      >
+      <div className='prose prose-sm max-w-none text-lg text-pretty dark:prose-invert'>
         <ReactMarkdown>
           {intl.formatMessage({ id: 'page.tasksApi.authentication.description' })}
         </ReactMarkdown>

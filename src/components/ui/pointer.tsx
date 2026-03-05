@@ -76,9 +76,6 @@ export const Pointer = ({
               scale: 1,
               opacity: 1
             }}
-            className='
-              pointer-events-none fixed z-50 transform-[translate(-50%,-50%)]
-            '
             exit={{
               scale: 0,
               opacity: 0
@@ -92,6 +89,7 @@ export const Pointer = ({
               left: x,
               ...style
             }}
+            className='pointer-events-none fixed z-50 transform-[translate(-50%,-50%)]'
             {...props}
           >
             {children || (

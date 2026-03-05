@@ -160,10 +160,7 @@ export const MobileHeader = ({ breadcrumbs }: HeaderProps) => {
             {[...breadcrumbs].reverse().map((item) => (
               <Link
                 key={item.path}
-                className='
-                  flex items-center gap-2 rounded-md p-2
-                  hover:bg-gray-100
-                '
+                className='flex items-center gap-2 rounded-md p-2 hover:bg-gray-100'
                 href={item.path}
                 onClick={() => navigationDropdown.toggle()}
               >
@@ -180,20 +177,10 @@ export const MobileHeader = ({ breadcrumbs }: HeaderProps) => {
 
 export const Header = ({ breadcrumbs }: HeaderProps) => (
   <>
-    <div
-      className='
-      mb-5
-      md:hidden
-    '
-    >
+    <div className='mb-5 md:hidden'>
       <MobileHeader breadcrumbs={breadcrumbs} />
     </div>
-    <div
-      className='
-      mb-5 hidden
-      md:block
-    '
-    >
+    <div className='mb-5 hidden md:block'>
       <DesktopHeader breadcrumbs={breadcrumbs} />
     </div>
   </>

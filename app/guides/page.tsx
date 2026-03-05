@@ -61,11 +61,7 @@ const GuidesPage = async () => {
         </div>
 
         <div
-          className='
-            grid grid-cols-1 gap-4
-            md:grid-cols-2
-            lg:grid-cols-3
-          '
+          className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'
           style={{ alignItems: 'stretch' }}
         >
           {guides.map((guide, index) => {
@@ -76,11 +72,10 @@ const GuidesPage = async () => {
               <Link key={number} className='h-full' href={`/guides/${guide.slug}`}>
                 <div
                   className='
-                  flex h-full flex-col rounded-md border bg-card p-6
-                  transition-all duration-200
-                  hover:scale-101 hover:drop-shadow-[3px_3px_0px_#000]/90
-                  dark:hover:drop-shadow-[3px_3px_0px_#fff]/80
-                '
+                    flex h-full flex-col rounded-md border bg-card p-6 transition-all duration-200
+                    hover:scale-101 hover:drop-shadow-[3px_3px_0px_#000]/90
+                    dark:hover:drop-shadow-[3px_3px_0px_#fff]/80
+                  '
                 >
                   <div className='relative mb-4 flex items-center gap-4'>
                     <div className='font-pixelify-sans text-4xl font-bold' style={shadowColor}>
@@ -88,11 +83,7 @@ const GuidesPage = async () => {
                     </div>
                   </div>
                   <h3 className='mb-3 text-xl font-semibold'>{guide.title}</h3>
-                  <p
-                    className='
-                    mb-2 flex-1 text-sm/relaxed text-muted-foreground
-                  '
-                  >
+                  <p className='mb-2 flex-1 text-sm/relaxed text-muted-foreground'>
                     {guide.description}
                   </p>
                   {!!guide.labels.length && (

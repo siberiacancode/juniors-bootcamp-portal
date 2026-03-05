@@ -13,7 +13,8 @@ export default eslint(
     name: 'junior-bootcamp/rewrite',
     rules: {
       'node/prefer-global/process': 'off',
-      'react/no-context-provider': 'off'
+      'react/no-context-provider': 'off',
+      'siberiacancode-tailwind/enforce-consistent-line-wrapping': 'off'
     }
   },
   {

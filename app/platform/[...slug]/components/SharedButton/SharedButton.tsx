@@ -54,15 +54,7 @@ export const SharedButton = ({ emoji, title }: SharedButtonProps) => {
 
           <div className='flex flex-col gap-4 p-4'>
             <div className='flex flex-col gap-3'>
-              {emoji && (
-                <div
-                  className='
-                flex items-center justify-start text-4xl
-              '
-                >
-                  {emoji}
-                </div>
-              )}
+              {emoji && <div className='flex items-center justify-start text-4xl'>{emoji}</div>}
               <span className='text-lg font-medium'>{title}</span>
             </div>
 
@@ -72,12 +64,7 @@ export const SharedButton = ({ emoji, title }: SharedButtonProps) => {
             </div>
           </div>
 
-          <div
-            className='
-            absolute inset-x-0 bottom-0 h-10 rounded-b-lg bg-linear-to-b
-            from-transparent to-black/10
-          '
-          />
+          <div className='absolute inset-x-0 bottom-0 h-10 rounded-b-lg bg-linear-to-b from-transparent to-black/10' />
         </div>
 
         <div className='mt-4 flex gap-2'>
@@ -87,15 +74,7 @@ export const SharedButton = ({ emoji, title }: SharedButtonProps) => {
             disabled={copied}
             onClick={onCopy}
           >
-            {copied ? (
-              <CheckIcon className='size-4' />
-            ) : (
-              <CopyIcon
-                className='
-              size-4
-            '
-              />
-            )}
+            {copied ? <CheckIcon className='size-4' /> : <CopyIcon className='size-4' />}
           </Button>
         </div>
       </PopoverContent>

@@ -14,24 +14,14 @@ export const Mention = ({ children, external = false, ...props }: MentionProps) 
   <>
     {external && (
       <a {...(props as TagMentionProps)} rel='noopener noreferrer' target='_blank'>
-        <div
-          className='
-          flex w-fit items-center gap-2 rounded-md p-2 text-lg font-medium
-          hover:bg-accent
-        '
-        >
+        <div className='flex w-fit items-center gap-2 rounded-md p-2 text-lg font-medium hover:bg-accent'>
           {children}
         </div>
       </a>
     )}
     {!external && (
       <Link {...(props as LinkMentionProps)}>
-        <div
-          className='
-          flex w-fit items-center gap-2 rounded-md p-2 text-lg font-medium
-          hover:bg-accent
-        '
-        >
+        <div className='flex w-fit items-center gap-2 rounded-md p-2 text-lg font-medium hover:bg-accent'>
           {children}
         </div>
       </Link>

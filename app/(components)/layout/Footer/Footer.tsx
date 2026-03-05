@@ -66,19 +66,9 @@ export const Footer = () => {
   return (
     <footer className='z-0 my-20 border-t border-border bg-background'>
       <div className='mx-auto max-w-(--max-width) px-4 py-16'>
-        <div
-          className='
-          flex flex-col justify-between gap-4
-          md:flex-row
-        '
-        >
+        <div className='flex flex-col justify-between gap-4 md:flex-row'>
           <div className='space-y-4'>
-            <Link
-              className='
-              flex items-center font-pixelify-sans text-2xl font-bold
-            '
-              href='/'
-            >
+            <Link className='flex items-center font-pixelify-sans text-2xl font-bold' href='/'>
               juniors bootcamp
               {/* <Logo alt={intl.formatMessage({ id: 'footer.logo.alt' })} className='w-10' /> */}
             </Link>
@@ -108,12 +98,7 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div
-            className='
-            flex flex-col justify-between gap-4
-            md:flex-row md:gap-20
-          '
-          >
+          <div className='flex flex-col justify-between gap-4 md:flex-row md:gap-20'>
             <div className='space-y-4'>
               <h3 className='text-sm font-semibold'>
                 <IntlText path='footer.directions.title' />
@@ -121,10 +106,7 @@ export const Footer = () => {
               <ul className='space-y-2 text-sm'>
                 <li>
                   <Link
-                    className='
-                      text-muted-foreground transition-colors
-                      hover:text-foreground
-                    '
+                    className='text-muted-foreground transition-colors hover:text-foreground'
                     href='/platform/road-map'
                   >
                     <IntlText path='footer.directions.road-map' />
@@ -133,10 +115,7 @@ export const Footer = () => {
                 {NAVIGATION.map((navigation) => (
                   <li key={navigation.href}>
                     <Link
-                      className='
-                        text-muted-foreground transition-colors
-                        hover:text-foreground
-                      '
+                      className='text-muted-foreground transition-colors hover:text-foreground'
                       href={navigation.href}
                     >
                       <IntlText path={navigation.label as MessagePath} />
@@ -154,10 +133,7 @@ export const Footer = () => {
                 {OPENSOURCE.map((opensource) => (
                   <li key={opensource.href}>
                     <Link
-                      className='
-                        text-muted-foreground transition-colors
-                        hover:text-foreground
-                      '
+                      className='text-muted-foreground transition-colors hover:text-foreground'
                       href={opensource.href}
                       rel='noopener noreferrer'
                       target='_blank'

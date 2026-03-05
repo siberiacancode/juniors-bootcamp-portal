@@ -29,20 +29,11 @@ const API_TYPES = [
 
 export const ApiTypesSection = () => (
   <section className='mb-4'>
-    <ul
-      className='
-      grid grid-cols-1 gap-3
-      md:grid-cols-2
-    '
-    >
+    <ul className='grid grid-cols-1 gap-3 md:grid-cols-2'>
       {API_TYPES.map((apiType) => (
         <li key={apiType.label}>
           <Link className='w-full' href={apiType.href}>
-            <div
-              className='
-              flex flex-col rounded-md transition-all duration-200
-            '
-            >
+            <div className='flex flex-col rounded-md transition-all duration-200'>
               <MagicCard
                 className='bg-card! p-6'
                 gradientColor='none'
