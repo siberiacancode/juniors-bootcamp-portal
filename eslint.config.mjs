@@ -5,9 +5,8 @@ export default eslint(
   {
     typescript: true,
     react: true,
-    jsx: true,
-    'jsx-a11y': true,
-    nextjs: true
+    nextjs: true,
+    jsxA11y: true
   },
   {
     name: 'junior-bootcamp/rewrite',
@@ -25,6 +24,7 @@ export default eslint(
     }
   },
   {
+    name: 'junior-bootcamp/shadcn',
     files: ['src/components/ui/**/*.tsx'],
     rules: {
       'react-refresh/only-export-components': 'off'
