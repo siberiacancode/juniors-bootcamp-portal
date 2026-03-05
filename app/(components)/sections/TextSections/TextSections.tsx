@@ -8,8 +8,19 @@ export interface TextSectionsProps {
 export const TextSections = ({ title, description }: TextSectionsProps) => (
   <section className='flex flex-col gap-4'>
     <h2 className='font-pixelify-sans text-5xl font-bold'>{title}</h2>
-    <div className='bg-secondary text-muted-foreground dark:bg-card rounded-lg p-6 leading-relaxed text-pretty'>
-      <div className='prose prose-sm dark:prose-invert max-w-none text-lg'>
+    <div
+      className='
+      rounded-lg bg-secondary p-6 leading-relaxed text-pretty
+      text-muted-foreground
+      dark:bg-card
+    '
+    >
+      <div
+        className='
+        prose prose-sm max-w-none text-lg
+        dark:prose-invert
+      '
+      >
         <ReactMarkdown>{description}</ReactMarkdown>
       </div>
     </div>

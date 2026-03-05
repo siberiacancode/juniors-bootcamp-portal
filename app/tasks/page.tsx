@@ -10,9 +10,9 @@ export const metadata = {
 
 const TasksPage = async () => (
   <main className='flex flex-1 flex-col'>
-    <div className='mx-auto max-w-[var(--max-width)] px-4 py-8'>
+    <div className='mx-auto max-w-(--max-width) px-4 py-8'>
       <div className='mb-6 text-start'>
-        <h1 className='font-pixelify-sans mb-4 text-8xl font-bold'>
+        <h1 className='mb-4 font-pixelify-sans text-8xl font-bold'>
           <IntlText path='page.tasks.title' />
         </h1>
         <p className='text-xl'>

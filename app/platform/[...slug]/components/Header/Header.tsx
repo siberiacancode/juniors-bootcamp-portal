@@ -25,7 +25,7 @@ import {
 } from '@/components/ui';
 
 const DynamicSharedButton = dynamic(
-  () => import('../SharedButton/SharedButton').then((module) => module.SharedButton),
+  async () => import('../SharedButton/SharedButton').then((module) => module.SharedButton),
   {
     ssr: false,
     loading: () => <Skeleton className='size-9' />
@@ -148,7 +148,7 @@ export const MobileHeader = ({ breadcrumbs }: HeaderProps) => {
         <Button variant='ghost' onClick={() => navigationDropdown.toggle()}>
           <span>{lastBreadcrumb.emoji}</span>
           <span>{lastBreadcrumb.title}</span>
-          <ChevronDownIcon className='h-4 w-4' />
+          <ChevronDownIcon className='size-4' />
         </Button>
 
         <DynamicSharedButton emoji={lastBreadcrumb.emoji} title={lastBreadcrumb.title} />
@@ -160,7 +160,10 @@ export const MobileHeader = ({ breadcrumbs }: HeaderProps) => {
             {[...breadcrumbs].reverse().map((item) => (
               <Link
                 key={item.path}
-                className='flex items-center gap-2 rounded-md p-2 hover:bg-gray-100'
+                className='
+                  flex items-center gap-2 rounded-md p-2
+                  hover:bg-gray-100
+                '
                 href={item.path}
                 onClick={() => navigationDropdown.toggle()}
               >
@@ -177,10 +180,20 @@ export const MobileHeader = ({ breadcrumbs }: HeaderProps) => {
 
 export const Header = ({ breadcrumbs }: HeaderProps) => (
   <>
-    <div className='mb-5 md:hidden'>
+    <div
+      className='
+      mb-5
+      md:hidden
+    '
+    >
       <MobileHeader breadcrumbs={breadcrumbs} />
     </div>
-    <div className='mb-5 hidden md:block'>
+    <div
+      className='
+      mb-5 hidden
+      md:block
+    '
+    >
       <DesktopHeader breadcrumbs={breadcrumbs} />
     </div>
   </>

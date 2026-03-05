@@ -64,11 +64,21 @@ export const Footer = () => {
   const intl = useIntl();
 
   return (
-    <footer className='bg-background border-border z-0 my-20 border-t'>
-      <div className='mx-auto max-w-[var(--max-width)] px-4 py-16'>
-        <div className='flex flex-col justify-between gap-4 md:flex-row'>
+    <footer className='z-0 my-20 border-t border-border bg-background'>
+      <div className='mx-auto max-w-(--max-width) px-4 py-16'>
+        <div
+          className='
+          flex flex-col justify-between gap-4
+          md:flex-row
+        '
+        >
           <div className='space-y-4'>
-            <Link className='font-pixelify-sans flex items-center text-2xl font-bold' href='/'>
+            <Link
+              className='
+              flex items-center font-pixelify-sans text-2xl font-bold
+            '
+              href='/'
+            >
               juniors bootcamp
               {/* <Logo alt={intl.formatMessage({ id: 'footer.logo.alt' })} className='w-10' /> */}
             </Link>
@@ -78,7 +88,7 @@ export const Footer = () => {
                 contact us
               </Link>
             </Button>
-            <p className='text-muted-foreground text-sm'>
+            <p className='text-sm text-muted-foreground'>
               <IntlText path='footer.description' />
             </p>
             <div className='flex gap-3'>
@@ -98,7 +108,12 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className='flex flex-col justify-between gap-4 md:flex-row md:gap-20'>
+          <div
+            className='
+            flex flex-col justify-between gap-4
+            md:flex-row md:gap-20
+          '
+          >
             <div className='space-y-4'>
               <h3 className='text-sm font-semibold'>
                 <IntlText path='footer.directions.title' />
@@ -106,7 +121,10 @@ export const Footer = () => {
               <ul className='space-y-2 text-sm'>
                 <li>
                   <Link
-                    className='text-muted-foreground hover:text-foreground transition-colors'
+                    className='
+                      text-muted-foreground transition-colors
+                      hover:text-foreground
+                    '
                     href='/platform/road-map'
                   >
                     <IntlText path='footer.directions.road-map' />
@@ -115,7 +133,10 @@ export const Footer = () => {
                 {NAVIGATION.map((navigation) => (
                   <li key={navigation.href}>
                     <Link
-                      className='text-muted-foreground hover:text-foreground transition-colors'
+                      className='
+                        text-muted-foreground transition-colors
+                        hover:text-foreground
+                      '
                       href={navigation.href}
                     >
                       <IntlText path={navigation.label as MessagePath} />
@@ -133,7 +154,10 @@ export const Footer = () => {
                 {OPENSOURCE.map((opensource) => (
                   <li key={opensource.href}>
                     <Link
-                      className='text-muted-foreground hover:text-foreground transition-colors'
+                      className='
+                        text-muted-foreground transition-colors
+                        hover:text-foreground
+                      '
                       href={opensource.href}
                       rel='noopener noreferrer'
                       target='_blank'
@@ -147,7 +171,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <p className='text-muted-foreground mt-12 w-full text-center text-sm'>
+        <p className='mt-12 w-full text-center text-sm text-muted-foreground'>
           Built by{' '}
           <Link
             className='underline'

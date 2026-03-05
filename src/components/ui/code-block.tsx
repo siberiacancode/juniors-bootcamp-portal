@@ -25,7 +25,10 @@ export const CodeBlock = (props: CodeBlockProps) => {
       {...props}
       ref={ref}
       className={cn(
-        'relative rounded-sm py-4 pr-8 pl-4 text-wrap [&>button]:hover:opacity-100',
+        `
+          relative rounded-sm py-4 pr-8 pl-4 text-wrap
+          [&>button]:hover:opacity-100
+        `,
         props.className
       )}
     >

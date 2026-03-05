@@ -50,9 +50,9 @@ const GuidesPage = async () => {
 
   return (
     <main className='flex flex-1 flex-col'>
-      <div className='mx-auto max-w-[var(--max-width)] px-4 py-8'>
+      <div className='mx-auto max-w-(--max-width) px-4 py-8'>
         <div className='mb-12 text-start'>
-          <h1 className='font-pixelify-sans mb-4 text-8xl font-bold'>
+          <h1 className='mb-4 font-pixelify-sans text-8xl font-bold'>
             <IntlText path='page.guides.title' />
           </h1>
           <p className='text-xl'>
@@ -61,7 +61,11 @@ const GuidesPage = async () => {
         </div>
 
         <div
-          className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'
+          className='
+            grid grid-cols-1 gap-4
+            md:grid-cols-2
+            lg:grid-cols-3
+          '
           style={{ alignItems: 'stretch' }}
         >
           {guides.map((guide, index) => {
@@ -70,14 +74,25 @@ const GuidesPage = async () => {
 
             return (
               <Link key={number} className='h-full' href={`/guides/${guide.slug}`}>
-                <div className='bg-card flex h-full flex-col rounded-md border p-6 transition-all duration-200 hover:scale-101 hover:drop-shadow-[3px_3px_0px_#000]/90 dark:hover:drop-shadow-[3px_3px_0px_#fff]/80'>
+                <div
+                  className='
+                  flex h-full flex-col rounded-md border bg-card p-6
+                  transition-all duration-200
+                  hover:scale-101 hover:drop-shadow-[3px_3px_0px_#000]/90
+                  dark:hover:drop-shadow-[3px_3px_0px_#fff]/80
+                '
+                >
                   <div className='relative mb-4 flex items-center gap-4'>
                     <div className='font-pixelify-sans text-4xl font-bold' style={shadowColor}>
                       {number.toString().padStart(2, '0')}
                     </div>
                   </div>
                   <h3 className='mb-3 text-xl font-semibold'>{guide.title}</h3>
-                  <p className='text-muted-foreground mb-2 flex-1 text-sm leading-relaxed'>
+                  <p
+                    className='
+                    mb-2 flex-1 text-sm/relaxed text-muted-foreground
+                  '
+                  >
                     {guide.description}
                   </p>
                   {!!guide.labels.length && (

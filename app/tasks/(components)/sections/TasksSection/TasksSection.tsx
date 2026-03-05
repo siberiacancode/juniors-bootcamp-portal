@@ -83,7 +83,12 @@ const TASK_CARDS = [
 ];
 
 export const TasksSection = () => (
-  <section className='grid grid-cols-1 gap-4 md:grid-cols-2'>
+  <section
+    className='
+    grid grid-cols-1 gap-4
+    md:grid-cols-2
+  '
+  >
     {TASK_CARDS.map((card, index) => (
       <Link
         key={card.slug}
@@ -98,11 +103,28 @@ export const TasksSection = () => (
         className='group block'
         href={card.href}
       >
-        <div className='bg-card relative flex flex-col overflow-hidden rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:[filter:drop-shadow(8px_8px_0px_var(--task-shadow))]'>
-          <div className='pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
+        <div
+          className='
+          relative flex flex-col overflow-hidden rounded-2xl border bg-card p-6
+          transition-all duration-300
+          hover:-translate-y-1
+          hover:filter-[drop-shadow(8px_8px_0px_var(--task-shadow))]
+        '
+        >
+          <div
+            className='
+            pointer-events-none absolute inset-0 opacity-0 transition-opacity
+            duration-300
+            group-hover:opacity-100
+          '
+          >
             {createPixelCluster(card.slug, index).map((pixel) => (
               <span
                 key={pixel.id}
+                className='
+                  absolute block transition-transform duration-300
+                  group-hover:scale-110
+                '
                 style={{
                   width: pixel.size,
                   height: pixel.size,
@@ -111,27 +133,41 @@ export const TasksSection = () => (
                   backgroundColor: 'var(--task-overlay)',
                   opacity: 0.5
                 }}
-                className='absolute block transition-transform duration-300 group-hover:scale-110'
               />
             ))}
           </div>
           <div className='flex items-center justify-between'>
             <div
-              className='font-pixelify-sans flex size-18 items-center justify-center rounded-2xl text-3xl transition-all duration-300'
+              className='
+                flex size-18 items-center justify-center rounded-2xl
+                font-pixelify-sans text-3xl transition-all duration-300
+              '
               style={{ backgroundColor: card.colors.iconBg, color: card.colors.icon }}
             >
               <card.icon className='size-14' />
             </div>
-            <span className='font-pixelify-sans text-muted-foreground/60 group-hover:text-foreground text-6xl transition-all duration-300'>
+            <span
+              className='
+              font-pixelify-sans text-6xl text-muted-foreground/60
+              transition-all duration-300
+              group-hover:text-foreground
+            '
+            >
               {String(index + 1).padStart(2, '0')}
             </span>
           </div>
 
           <div className='mt-6 flex flex-col justify-between'>
-            <h3 className='font-pixelify-sans text-6xl leading-tight font-bold transition-[text-shadow] group-hover:[text-shadow:4px_4px_0px_var(--task-shadow)]'>
+            <h3
+              className='
+              font-pixelify-sans text-6xl/tight font-bold
+              transition-[text-shadow]
+              group-hover:[text-shadow:4px_4px_0px_var(--task-shadow)]
+            '
+            >
               <IntlText path={card.title as MessagePath} />
             </h3>
-            <p className='text-muted-foreground mt-3 text-base leading-relaxed'>
+            <p className='mt-3 text-base/relaxed text-muted-foreground'>
               <IntlText path={card.description as MessagePath} />
             </p>
           </div>

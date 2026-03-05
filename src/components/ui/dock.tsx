@@ -6,18 +6,14 @@ import type { PropsWithChildren } from 'react';
 
 import { cva } from 'class-variance-authority';
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
-import * as React from 'react';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 
 import { cn } from '@/lib/utils';
 
 const DEFAULT_SIZE = 40;
 const DEFAULT_MAGNIFICATION = 60;
 const DEFAULT_DISTANCE = 140;
-
-const dockVariants = cva(
-  'supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto mt-8 flex h-14.5 w-max items-center justify-center gap-2 rounded-2xl border p-2 backdrop-blur-md'
-);
+const DEFAULT_DISABLEMAGNIFICATION = false;
 
 export interface DockIconProps extends Omit<
   MotionProps & React.HTMLAttributes<HTMLDivElement>,
@@ -25,6 +21,7 @@ export interface DockIconProps extends Omit<
 > {
   children?: React.ReactNode;
   className?: string;
+  disableMagnification?: boolean;
   distance?: number;
   magnification?: number;
   mouseX?: MotionValue<number>;
@@ -35,6 +32,7 @@ export interface DockIconProps extends Omit<
 const DockIcon = ({
   size = DEFAULT_SIZE,
   magnification = DEFAULT_MAGNIFICATION,
+  disableMagnification,
   distance = DEFAULT_DISTANCE,
   mouseX,
   className,
@@ -50,10 +48,12 @@ const DockIcon = ({
     return val - bounds.x - bounds.width / 2;
   });
 
+  const targetSize = disableMagnification ? size : magnification;
+
   const sizeTransform = useTransform(
     distanceCalc,
     [-distance, 0, distance],
-    [size, magnification, size]
+    [size, targetSize, size]
   );
 
   const scaleSize = useSpring(sizeTransform, {
@@ -66,13 +66,21 @@ const DockIcon = ({
     <motion.div
       ref={ref}
       className={cn(
-        'flex aspect-square cursor-pointer items-center justify-center rounded-full',
+        `
+          flex aspect-square cursor-pointer items-center justify-center
+          rounded-full
+        `,
+        disableMagnification &&
+          `
+          transition-colors
+          hover:bg-muted-foreground
+        `,
         className
       )}
       style={{ width: scaleSize, height: scaleSize, padding }}
       {...props}
     >
-      {children}
+      <div>{children}</div>
     </motion.div>
   );
 };
@@ -83,10 +91,20 @@ export interface DockProps extends VariantProps<typeof dockVariants> {
   children: React.ReactNode;
   className?: string;
   direction?: 'bottom' | 'middle' | 'top';
+  disableMagnification?: boolean;
   iconDistance?: number;
   iconMagnification?: number;
   iconSize?: number;
 }
+
+const dockVariants = cva(
+  `
+    mx-auto mt-8 flex h-[58px] w-max items-center justify-center gap-2
+    rounded-2xl border p-2 backdrop-blur-md
+    supports-backdrop-blur:bg-white/10
+    supports-backdrop-blur:dark:bg-black/10
+  `
+);
 
 const Dock = ({
   ref,
@@ -94,6 +112,7 @@ const Dock = ({
   children,
   iconSize = DEFAULT_SIZE,
   iconMagnification = DEFAULT_MAGNIFICATION,
+  disableMagnification = DEFAULT_DISABLEMAGNIFICATION,
   iconDistance = DEFAULT_DISTANCE,
   direction = 'middle',
   ...props
@@ -108,6 +127,7 @@ const Dock = ({
           mouseX,
           size: iconSize,
           magnification: iconMagnification,
+          disableMagnification,
           distance: iconDistance
         });
       }

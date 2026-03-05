@@ -74,7 +74,7 @@ const ContentsLayout = async ({ children, params }: ContentsLayoutProps) => {
 
   return (
     <main className='flex flex-1 flex-col'>
-      <div className='mx-auto max-w-[var(--max-width)] px-4 py-8'>
+      <div className='mx-auto max-w-(--max-width) px-4 py-8'>
         {/* <Header breadcrumbs={breadcrumbs} /> */}
 
         <div className='mb-6 ml-[-10px] text-7xl'>{lastBreadcrumb.emoji}</div>

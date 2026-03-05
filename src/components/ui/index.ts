@@ -9,7 +9,6 @@ export * from './code-block';
 export * from './dock';
 export * from './drawer';
 export * from './dropdown-menu';
-export * from './image';
 export * from './input';
 export * from './iphone-15-pro';
 export * from './link';
