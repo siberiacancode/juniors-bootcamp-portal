@@ -16,7 +16,7 @@ import {
 } from '@/components/ui';
 
 const ThemeButton = dynamic(
-  async () => import('./components/ThemeButton/ThemeButton').then((module) => module.ThemeButton),
+  () => import('./components/ThemeButton/ThemeButton').then((module) => module.ThemeButton),
   {
     ssr: false,
     loading: () => (
@@ -37,10 +37,10 @@ export const Header = () => {
 
   return (
     <header className='w-full'>
-      <div className='mx-auto flex h-16 max-w-(--max-width) items-center justify-between px-4'>
+      <div className='mx-auto flex h-16 max-w-(--max-width) items-center justify-between px-3'>
         <div className='flex gap-4'>
-          <Link className='flex items-center font-pixelify-sans text-2xl font-bold' href='/'>
-            j.bootcamp
+          <Link className='flex items-center font-pixelify-sans text-3xl font-bold' href='/'>
+            jb
             {/* <Logo alt={intl.formatMessage({ id: 'header.logo.alt' })} className='w-10' /> */}
           </Link>
 

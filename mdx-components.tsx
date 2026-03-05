@@ -1,4 +1,3 @@
-/* eslint-disable siberiacancode-jsx-a11y/heading-has-content */
 import type { MDXComponents } from 'mdx/types';
 import type { ComponentProps } from 'react';
 

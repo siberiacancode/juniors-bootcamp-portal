@@ -6,7 +6,7 @@ export default eslint(
     typescript: true,
     react: true,
     nextjs: true,
-    jsxA11y: true,
+    // jsxA11y: true,
     tailwind: true
   },
   {

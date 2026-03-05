@@ -25,7 +25,7 @@ import {
 } from '@/components/ui';
 
 const DynamicSharedButton = dynamic(
-  async () => import('../SharedButton/SharedButton').then((module) => module.SharedButton),
+  () => import('../SharedButton/SharedButton').then((module) => module.SharedButton),
   {
     ssr: false,
     loading: () => <Skeleton className='size-9' />
