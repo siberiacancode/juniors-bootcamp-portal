@@ -1,5 +1,4 @@
 import { eslint } from '@siberiacancode/eslint';
-import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss';
 
 /** @type {import('eslint').Linter.Config} */
 export default eslint(
@@ -7,7 +6,8 @@ export default eslint(
     typescript: true,
     react: true,
     nextjs: true,
-    jsxA11y: true
+    jsxA11y: true,
+    tailwind: true
   },
   {
     name: 'junior-bootcamp/rewrite',
@@ -32,12 +32,6 @@ export default eslint(
     }
   },
   {
-    name: 'junior-bootcamp/tailwindcss',
-    extends: [eslintPluginBetterTailwindcss.configs.recommended],
-    rules: {
-      'better-tailwindcss/enforce-consistent-line-wrapping': 'off',
-      'better-tailwindcss/enforce-consistent-class-order': 'off'
-    },
     settings: {
       'better-tailwindcss': {
         entryPoint: 'app/globals.css'
