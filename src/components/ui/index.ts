@@ -19,6 +19,7 @@ export * from './pointer';
 export * from './popover';
 export * from './scroll-based-velocity';
 export * from './separator';
+export * from './sheet';
 export * from './skeleton';
 export * from './table';
 export * from './tabs';

@@ -34,7 +34,7 @@ export const ThemeButton = (props: ThemeButtonProps) => {
   };
 
   return (
-    <Button size='icon' variant='ghost' onClick={onThemeClick} {...props}>
+    <Button iconOnly variant='ghost' onClick={onThemeClick} {...props}>
       {theme.value === 'dark' ? <SunIcon /> : <MoonIcon />}
     </Button>
   );

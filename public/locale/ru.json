@@ -62,6 +62,10 @@
 
   "button.copy": "Скопировать",
   "button.share": "Поделиться",
+  "button.login-via": "Войти через",
+
+  "sheet.menu.title": "Главное меню",
+  "sheet.menu.description": "Навигационное меню сайта с разделами заданий и гайдов",
 
   "link.editOnGitHub": "Редактировать на GitHub",
   "link.otpCodes": "ОТП коды"
