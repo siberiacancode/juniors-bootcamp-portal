@@ -3,7 +3,6 @@
 import { Github, Loader2Icon, MenuIcon, XIcon } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { VisuallyHidden } from 'radix-ui';
 import { useIntl } from 'react-intl';
 
 import { IntlText } from '@/components/intl';
@@ -92,17 +91,13 @@ export const Header = () => {
               </SheetTrigger>
               <SheetContent className='w-full' showCloseButton={false}>
                 <SheetHeader className='flex h-16 flex-row items-center justify-between px-6'>
-                  <VisuallyHidden.Root asChild>
-                    <SheetTitle>
-                      <IntlText path='sheet.menu.title' />
-                    </SheetTitle>
-                  </VisuallyHidden.Root>
+                  <SheetTitle className='sr-only'>
+                    <IntlText path='navigationMenu.title' />
+                  </SheetTitle>
 
-                  <VisuallyHidden.Root asChild>
-                    <SheetDescription>
-                      <IntlText path='sheet.menu.description' />
-                    </SheetDescription>
-                  </VisuallyHidden.Root>
+                  <SheetDescription className='sr-only'>
+                    <IntlText path='navigationMenu.description' />
+                  </SheetDescription>
 
                   <Link
                     className='flex items-center font-pixelify-sans text-3xl font-bold'
