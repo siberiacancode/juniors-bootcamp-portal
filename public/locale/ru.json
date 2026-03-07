@@ -9,6 +9,7 @@
 
   "navigationMenu.title": "Главное меню",
   "navigationMenu.description": "Навигационное меню сайта с разделами заданий и гайдов",
+  "navigationMenu.darkTheme": "Тёмная тема",
 
   "navigation.tasks": "Задания",
   "navigation.guides": "Гайды",

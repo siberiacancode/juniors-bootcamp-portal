@@ -53,7 +53,7 @@ const SheetContent = ({
       <SheetOverlay />
       <SheetPrimitive.Content
         className={cn(
-          'fixed z-50 flex flex-col gap-4 bg-background shadow-lg transition ease-in-out data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:animate-in data-[state=open]:duration-500',
+          'fixed z-50 flex flex-col gap-10 bg-background px-6 shadow-lg transition ease-in-out data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:animate-in data-[state=open]:duration-500',
           side === 'right' &&
             'inset-y-0 right-0 h-full w-3/4 border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm',
           side === 'left' &&
@@ -81,18 +81,14 @@ const SheetContent = ({
 
 const SheetHeader = ({ className, ...props }: React.ComponentProps<'div'>) => {
   return (
-    <div
-      className={cn('flex flex-col gap-1.5 p-4', className)}
-      data-slot='sheet-header'
-      {...props}
-    />
+    <div className={cn('flex flex-col gap-1.5', className)} data-slot='sheet-header' {...props} />
   );
 };
 
 const SheetFooter = ({ className, ...props }: React.ComponentProps<'div'>) => {
   return (
     <div
-      className={cn('mt-auto flex flex-col gap-2 p-4', className)}
+      className={cn('mt-auto flex flex-col gap-2', className)}
       data-slot='sheet-footer'
       {...props}
     />

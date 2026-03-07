@@ -5,7 +5,7 @@ import { useIntl } from 'react-intl';
 
 import { GithubIcon, TelegramIcon, TwitchIcon, YoutubeIcon } from '@/components/icons';
 import { IntlText } from '@/components/intl';
-import { Button } from '@/components/ui';
+import { Button, IconButton } from '@/components/ui';
 
 const PRODUCTS = [
   {
@@ -80,14 +80,16 @@ export const Footer = () => {
 
   return (
     <footer className='mx-auto mb-12 w-full max-w-(--max-width) space-y-6 px-6 sm:mb-16'>
-      <div className='flex flex-col gap-10 rounded-2xl bg-muted px-4 py-6 sm:flex-row sm:flex-wrap sm:items-center sm:px-6 sm:py-10'>
+      <div className='flex flex-col gap-6 rounded-2xl bg-muted px-4 py-6 sm:flex-row sm:flex-wrap sm:items-center sm:gap-10 sm:px-6 sm:py-10'>
         <span className='font-pixelify-sans text-3xl font-bold'>juniorsbootcamp</span>
 
-        {PRODUCTS.map((product) => (
-          <span key={product.href} className='text-sm font-semibold'>
-            Ссылка на продукт
-          </span>
-        ))}
+        <div className='flex flex-col gap-4 sm:flex-row sm:gap-10'>
+          {PRODUCTS.map((product) => (
+            <span key={product.href} className='text-sm font-semibold'>
+              Ссылка на продукт
+            </span>
+          ))}
+        </div>
       </div>
 
       <div className='space-y-6 rounded-2xl bg-muted px-4 py-6 sm:space-y-10 sm:px-6 sm:py-10'>
@@ -105,11 +107,11 @@ export const Footer = () => {
 
             <div className='flex gap-6'>
               {SOCIALS.map((social) => (
-                <Button asChild iconOnly key={social.href} variant='ghost'>
+                <IconButton asChild key={social.href} variant='ghost'>
                   <Link href={social.href} rel='noopener noreferrer' target='_blank'>
                     <social.Icon aria-label={intl.formatMessage({ id: social.alt })} />
                   </Link>
-                </Button>
+                </IconButton>
               ))}
             </div>
           </div>
