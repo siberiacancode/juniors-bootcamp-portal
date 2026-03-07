@@ -68,5 +68,7 @@
   "sheet.menu.description": "Навигационное меню сайта с разделами заданий и гайдов",
 
   "link.editOnGitHub": "Редактировать на GitHub",
-  "link.otpCodes": "ОТП коды"
+  "link.otpCodes": "ОТП коды",
+
+  "link.contact": "Связаться"
 }

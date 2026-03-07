@@ -7,6 +7,21 @@ import { GithubIcon, TelegramIcon, TwitchIcon, YoutubeIcon } from '@/components/
 import { IntlText } from '@/components/intl';
 import { Button } from '@/components/ui';
 
+const PRODUCTS = [
+  {
+    href: '#1',
+    label: ''
+  },
+  {
+    href: '#2',
+    label: ''
+  },
+  {
+    href: '#3',
+    label: ''
+  }
+] as const;
+
 const SOCIALS = [
   {
     href: 'https://github.com/siberiacancode',
@@ -60,94 +75,81 @@ const OPENSOURCE = [
   }
 ] as const;
 
-export const Footer = () => {
+const TopPart = () => {
+  return (
+    <div className='flex flex-col gap-10 rounded-2xl bg-muted px-4 py-6 sm:flex-row sm:flex-wrap sm:items-center sm:px-6 sm:py-10'>
+      <span className='font-pixelify-sans text-3xl font-bold'>juniorsbootcamp</span>
+
+      {PRODUCTS.map((product) => (
+        <span key={product.href} className='text-sm font-semibold'>
+          Ссылка на продукт
+        </span>
+      ))}
+    </div>
+  );
+};
+
+const BottomPart = () => {
   const intl = useIntl();
 
   return (
-    <footer className='z-0 my-20 border-t border-border bg-background'>
-      <div className='mx-auto max-w-(--max-width) px-4 py-16'>
-        <div className='flex flex-col justify-between gap-4 md:flex-row'>
-          <div className='space-y-4'>
-            <Link className='flex items-center font-pixelify-sans text-2xl font-bold' href='/'>
-              juniors bootcamp
-              {/* <Logo alt={intl.formatMessage({ id: 'footer.logo.alt' })} className='w-10' /> */}
+    <div className='space-y-6 rounded-2xl bg-muted px-4 py-6 sm:space-y-10 sm:px-6 sm:py-10'>
+      <div className='flex flex-col gap-6 sm:flex-row sm:gap-10'>
+        <div className='flex flex-col gap-4'>
+          <p className='font-normal'>
+            <IntlText path='footer.description' />
+          </p>
+
+          <Button asChild className='sm:w-fit'>
+            <Link href='https://t.me/siberiacancode' rel='noopener noreferrer' target='_blank'>
+              <IntlText path='link.contact' />
             </Link>
+          </Button>
 
-            <Button asChild>
-              <Link href='https://t.me/siberiacancode' rel='noopener noreferrer' target='_blank'>
-                contact us
-              </Link>
-            </Button>
-            <p className='text-sm text-muted-foreground'>
-              <IntlText path='footer.description' />
-            </p>
-            <div className='flex gap-3'>
-              {SOCIALS.map((social) => (
-                <Link
-                  key={social.href}
-                  href={social.href}
-                  rel='noopener noreferrer'
-                  target='_blank'
-                >
-                  <social.Icon
-                    aria-label={intl.formatMessage({ id: social.alt })}
-                    className='size-5'
-                  />
+          <div className='flex gap-6'>
+            {SOCIALS.map((social) => (
+              <Button asChild iconOnly key={social.href} variant='ghost'>
+                <Link href={social.href} rel='noopener noreferrer' target='_blank'>
+                  <social.Icon aria-label={intl.formatMessage({ id: social.alt })} />
                 </Link>
-              ))}
-            </div>
-          </div>
-
-          <div className='flex flex-col justify-between gap-4 md:flex-row md:gap-20'>
-            <div className='space-y-4'>
-              <h3 className='text-sm font-semibold'>
-                <IntlText path='footer.directions.title' />
-              </h3>
-              <ul className='space-y-2 text-sm'>
-                <li>
-                  <Link
-                    className='text-muted-foreground transition-colors hover:text-foreground'
-                    href='/platform/road-map'
-                  >
-                    <IntlText path='footer.directions.road-map' />
-                  </Link>
-                </li>
-                {NAVIGATION.map((navigation) => (
-                  <li key={navigation.href}>
-                    <Link
-                      className='text-muted-foreground transition-colors hover:text-foreground'
-                      href={navigation.href}
-                    >
-                      <IntlText path={navigation.label as MessagePath} />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className='space-y-4'>
-              <h3 className='text-sm font-semibold'>
-                <IntlText path='footer.opensource.title' />
-              </h3>
-              <ul className='space-y-2 text-sm'>
-                {OPENSOURCE.map((opensource) => (
-                  <li key={opensource.href}>
-                    <Link
-                      className='text-muted-foreground transition-colors hover:text-foreground'
-                      href={opensource.href}
-                      rel='noopener noreferrer'
-                      target='_blank'
-                    >
-                      {opensource.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              </Button>
+            ))}
           </div>
         </div>
 
-        <p className='mt-12 w-full text-center text-sm text-muted-foreground'>
+        <div className='space-y-4'>
+          <h3 className='font-bold'>
+            <IntlText path='footer.directions.title' />
+          </h3>
+          <ul className='space-y-3 text-sm font-medium'>
+            {NAVIGATION.map((navigation) => (
+              <li key={navigation.href}>
+                <Link href={navigation.href}>
+                  <IntlText path={navigation.label} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className='space-y-4'>
+          <h3 className='font-bold'>
+            <IntlText path='footer.opensource.title' />
+          </h3>
+          <ul className='space-y-3 text-sm font-medium'>
+            {OPENSOURCE.map((opensource) => (
+              <li key={opensource.href}>
+                <Link href={opensource.href} rel='noopener noreferrer' target='_blank'>
+                  {opensource.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className='flex flex-col gap-4 sm:flex-row sm:justify-between'>
+        <p className='text-sm font-normal text-muted-foreground'>
           Built by{' '}
           <Link
             className='underline'
@@ -168,7 +170,20 @@ export const Footer = () => {
           </Link>
           .
         </p>
+
+        <p className='text-xs font-normal text-muted-foreground'>
+          Avatars by Alohe via Figma Community
+        </p>
       </div>
+    </div>
+  );
+};
+
+export const Footer = () => {
+  return (
+    <footer className='mx-auto mb-12 w-full max-w-(--max-width) space-y-6 px-6 sm:mb-16'>
+      <TopPart />
+      <BottomPart />
     </footer>
   );
 };
