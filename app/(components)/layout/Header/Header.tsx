@@ -55,7 +55,7 @@ export const Header = () => {
 
   return (
     <header className='mt-3 w-full sm:mt-6'>
-      <div className='mx-auto flex h-10 max-w-(--max-width) items-center justify-between px-6 sm:h-16'>
+      <div className='content-contaier flex h-10 items-center justify-between sm:h-16'>
         <Link className='flex items-center font-pixelify-sans text-3xl font-bold' href='/'>
           jb
         </Link>

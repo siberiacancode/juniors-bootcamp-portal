@@ -43,7 +43,8 @@ export default eslint(
   {
     settings: {
       'better-tailwindcss': {
-        entryPoint: 'app/globals.css'
+        entryPoint: 'app/globals.css',
+        detectComponentClasses: true
       }
     }
   }

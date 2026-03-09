@@ -70,7 +70,7 @@ const GuidesLayout = async ({ children, params }: GuidesLayoutProps) => {
 
   return (
     <main className='flex flex-1 flex-col'>
-      <div className='mx-auto max-w-(--max-width) px-4 py-8'>
+      <div className='content-contaier py-8'>
         <Header breadcrumbs={breadcrumbs} />
 
         <div className='mb-8 flex items-center justify-between'>

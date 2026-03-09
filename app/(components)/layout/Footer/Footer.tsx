@@ -79,7 +79,7 @@ export const Footer = () => {
   const intl = useIntl();
 
   return (
-    <footer className='mx-auto mb-12 w-full max-w-(--max-width) space-y-6 px-6 sm:mb-16'>
+    <footer className='content-contaier mb-12 w-full space-y-6 sm:mb-16'>
       <div className='flex flex-col gap-6 rounded-2xl bg-muted px-4 py-6 sm:flex-row sm:flex-wrap sm:items-center sm:gap-10 sm:px-6 sm:py-10'>
         <span className='font-pixelify-sans text-3xl font-bold'>juniorsbootcamp</span>
 

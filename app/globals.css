@@ -60,8 +60,6 @@
     }
   }
 
-  --max-width: 1280px;
-
   --box-layer-offset-sm: 4px;
   --box-layer-offset-md: 6px;
   --box-layer-offset-lg: 8px;
@@ -74,6 +72,8 @@
 @utility box-layer-color-* {
   --box-layer-color: --value(--color-*);
 }
+
+/* TODO: Add "side" support, change API e.g: "box-layer-md box-layer-rb box-layer-red-500"   */
 
 @utility box-layer-* {
   --box-layer-offset: --value(--box-layer-offset-*);
@@ -166,6 +166,12 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .content-contaier {
+    @apply px-6 max-w-7xl mx-auto;
   }
 }
 

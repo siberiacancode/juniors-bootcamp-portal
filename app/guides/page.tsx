@@ -113,7 +113,7 @@ const GuidesPage = async () => {
   const guides = await getGuides();
 
   return (
-    <main className='mx-auto mt-10 max-w-(--max-width) px-6 sm:mt-12'>
+    <main className='content-contaier mt-10 sm:mt-12'>
       <div className='mb-20 space-y-10'>
         <h1 className='font-nunito text-[56px] font-bold sm:text-[170px]'>
           <PixelifyIntlText path='page.guides.title' />
@@ -129,10 +129,12 @@ const GuidesPage = async () => {
 
       <div className='mb-24 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3'>
         {guides.map((guide) => (
-          <Card asChild key={guide.slug} className='gap-2'>
+          <Card asChild key={guide.slug} className='gap-2 box-layer-md'>
             <Link href={`/guides/${guide.slug}`}>
               <CardHeader>
-                <span className='font-pixelify-sans text-4xl'>{guide.number}</span>
+                <span className='font-pixelify-sans text-4xl text-shadow-[2px_0.5px_0_#000]'>
+                  {guide.number}
+                </span>
                 <CardTitle className='text-2xl wrap-anywhere'>{guide.title}</CardTitle>
               </CardHeader>
               <CardContent className='h-full'>
