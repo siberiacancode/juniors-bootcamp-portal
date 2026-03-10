@@ -45,11 +45,14 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
 
   const debouncedSetSearch = useDebounceCallback(setSearch, 400);
 
-  const filteredGuides = guides.filter(
-    (guide) =>
-      guide.title.toLowerCase().includes(search.trim().toLowerCase()) &&
+  const filteredGuides = guides.filter((guide) => {
+    const trimmedSearch = search.trim().toLowerCase();
+    return (
+      (guide.title.toLowerCase().includes(trimmedSearch) ||
+        guide.description.toLowerCase().includes(trimmedSearch)) &&
       tags.every((tag) => guide.labels.includes(tag))
-  );
+    );
+  });
 
   return (
     <>
