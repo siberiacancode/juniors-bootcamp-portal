@@ -169,10 +169,6 @@ export const Footer = () => {
             </Link>
             .
           </p>
-
-          <p className='text-xs font-normal text-muted-foreground'>
-            Avatars by Alohe via Figma Community
-          </p>
         </div>
       </div>
     </footer>
