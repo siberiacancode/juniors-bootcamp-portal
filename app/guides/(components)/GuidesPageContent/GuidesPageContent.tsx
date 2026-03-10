@@ -67,11 +67,9 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
 
         <ScrollArea>
           <ChipGroup className='sm:flex-wrap' type='multiple' value={tags} onValueChange={setTags}>
-            {tags.length > 0 && (
-              <Chip pressed onClick={() => setTags([])}>
-                <IntlText path='page.guides.chip.clearAll' />
-              </Chip>
-            )}
+            <Chip pressed disabled={tags.length === 0} onClick={() => setTags([])}>
+              <IntlText path='page.guides.chip.clearAll' />
+            </Chip>
 
             {labels.map((filter) => {
               const isNeedful = filter === 'needful';
