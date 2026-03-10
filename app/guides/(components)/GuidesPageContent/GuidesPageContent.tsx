@@ -66,12 +66,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
         </InputGroup>
 
         <ScrollArea>
-          <ChipGroup
-            className='sm:flex-wrap'
-            defaultValue={tags}
-            type='multiple'
-            onValueChange={setTags}
-          >
+          <ChipGroup className='sm:flex-wrap' type='multiple' value={tags} onValueChange={setTags}>
             {tags.length > 0 && (
               <Chip pressed onClick={() => setTags([])}>
                 <IntlText path='page.guides.chip.clearAll' />
