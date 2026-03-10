@@ -1,32 +1,32 @@
-import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import fs from 'node:fs';
 import { join } from 'node:path';
+import { createIntl } from 'react-intl';
 
 import { IntlText } from '@/components/intl';
-import {
-  Badge,
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-  PixelifyIntlText
-} from '@/components/ui';
+import { ChipGroupItem, PixelifyIntlText, ScrollArea, ScrollBar } from '@/components/ui';
+import ruMessages from '@/public/locale/ru.json';
 
-import { SearchInput } from './(components)';
-import { getShadowColor } from './helpers';
+export async function generateMetadata() {
+  const locale = 'ru';
 
-export const metadata = {
-  title: 'Guides - 1001 способ помочь новичкам',
-  description:
-    'Полезные советы и рекомендации для начинающих разработчиков. Примеры кода, объяснения концепций и лучших практик frontend разработки.'
-};
+  const intl = createIntl({
+    locale,
+    messages: ruMessages
+  });
 
-type GuideLabel = 'ai' | 'css' | 'git' | 'javascript' | 'json' | 'needful' | 'react' | 'typescript';
+  const title = intl.formatMessage({ id: 'page.guides.metadata.title' });
+  const description = intl.formatMessage({ id: 'page.guides.metadata.description' });
+
+  return {
+    title,
+    description
+  };
+}
 
 interface GuideMetadata {
   description: string;
-  labels: GuideLabel[];
+  labels: string[];
   title: string;
 }
 
@@ -55,67 +55,27 @@ const getGuides = async () => {
   return guides;
 };
 
-const _GuidesPage = async () => {
-  const guides = await getGuides();
+const SearchInput = dynamic(() => import('./(components)').then((m) => m.SearchInput), {
+  loading: () => 'Loading ...'
+});
 
-  return (
-    <main className='flex flex-1 flex-col'>
-      <div className='px-4 py-8'>
-        <div className='mb-12 text-start'>
-          <h1 className='mb-4 font-pixelify-sans text-8xl font-bold'>
-            <IntlText path='page.guides.title' />
-          </h1>
-          <p className='text-xl'>
-            <IntlText path='page.guides.description' />
-          </p>
-        </div>
+const ChipGroupFilters = dynamic(() => import('./(components)').then((m) => m.ChipGroupFilters), {
+  loading: () => 'Loading ...'
+});
 
-        <div
-          className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'
-          style={{ alignItems: 'stretch' }}
-        >
-          {guides.map((guide, index) => {
-            const number = index + 1;
-            const shadowColor = getShadowColor(number);
-
-            return (
-              <Link key={number} className='h-full' href={`/guides/${guide.slug}`}>
-                <div className='flex h-full flex-col rounded-md border bg-card p-6 transition-all duration-200 hover:scale-101 hover:drop-shadow-[3px_3px_0px_#000]/90 dark:hover:drop-shadow-[3px_3px_0px_#fff]/80'>
-                  <div className='relative mb-4 flex items-center gap-4'>
-                    <div className='font-pixelify-sans text-4xl font-bold' style={shadowColor}>
-                      {number.toString().padStart(2, '0')}
-                    </div>
-                  </div>
-                  <h3 className='mb-3 text-xl font-semibold'>{guide.title}</h3>
-                  <p className='mb-2 flex-1 text-sm/relaxed text-muted-foreground'>
-                    {guide.description}
-                  </p>
-                  {!!guide.labels.length && (
-                    <div className='mt-auto flex flex-wrap gap-2'>
-                      {guide.labels.map((label) => (
-                        <Badge key={label} className='rounded-sm' variant='outline'>
-                          {label}
-                        </Badge>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-      </div>
-    </main>
-  );
-};
+const GuideCards = dynamic(() => import('./(components)').then((m) => m.GuideCards), {
+  loading: () => 'Loading ...'
+});
 
 const GuidesPage = async () => {
   const guides = await getGuides();
 
+  const labels = Array.from(new Set(guides.flatMap((guide) => guide.labels)));
+
   return (
-    <main className='content-contaier mt-10 sm:mt-12'>
-      <div className='mb-20 space-y-10'>
-        <h1 className='font-nunito text-[56px] font-bold sm:text-[170px]'>
+    <main className='mt-10 sm:mt-12'>
+      <div className='content-container mb-20 space-y-10'>
+        <h1 className='font-nunito text-[56px] font-bold md:text-[170px]'>
           <PixelifyIntlText path='page.guides.title' />
         </h1>
         <p className='text-2xl'>
@@ -123,31 +83,30 @@ const GuidesPage = async () => {
         </p>
       </div>
 
-      <div className='mb-10'>
+      <div className='content-container mb-10 space-y-10'>
         <SearchInput />
+
+        <ScrollArea>
+          <ChipGroupFilters>
+            {labels.map((filter) => {
+              const isNeedful = filter === 'needful';
+              return (
+                <ChipGroupItem
+                  key={filter}
+                  value={filter}
+                  variant={isNeedful ? 'accent' : 'primary'}
+                >
+                  {isNeedful ? <IntlText path='page.guides.cardLabel.needful' /> : filter}
+                </ChipGroupItem>
+              );
+            })}
+          </ChipGroupFilters>
+          <ScrollBar orientation='horizontal' />
+        </ScrollArea>
       </div>
 
-      <div className='mb-24 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3'>
-        {guides.map((guide) => (
-          <Card asChild key={guide.slug} className='gap-2 box-layer-md'>
-            <Link href={`/guides/${guide.slug}`}>
-              <CardHeader>
-                <span className='font-pixelify-sans text-4xl text-shadow-[2px_0.5px_0_#000]'>
-                  {guide.number}
-                </span>
-                <CardTitle className='text-2xl wrap-anywhere'>{guide.title}</CardTitle>
-              </CardHeader>
-              <CardContent className='h-full'>
-                <p>{guide.description}</p>
-              </CardContent>
-              <CardFooter className='gap-2'>
-                {guide.labels.map((label) => (
-                  <Badge key={label}>{label}</Badge>
-                ))}
-              </CardFooter>
-            </Link>
-          </Card>
-        ))}
+      <div className='content-container mb-24'>
+        <GuideCards guides={guides} />
       </div>
     </main>
   );

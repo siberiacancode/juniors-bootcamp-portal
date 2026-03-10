@@ -6,7 +6,7 @@ import { useCopy } from '@siberiacancode/reactuse';
 import { ClipboardCheckIcon, ClipboardIcon } from 'lucide-react';
 import { useRef } from 'react';
 
-import { Button } from '@/components/ui';
+import { IconButton } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
 export type CodeBlockProps = ComponentProps<'pre'>;
@@ -30,18 +30,13 @@ export const CodeBlock = (props: CodeBlockProps) => {
       )}
     >
       {props.children}
-      <Button
+      <IconButton
         className='absolute top-2 right-2 opacity-0 transition-opacity'
-        size='icon'
-        variant='outline'
+        variant='ghost'
         onClick={onCopyClick}
       >
-        {copied ? (
-          <ClipboardCheckIcon className='size-5' />
-        ) : (
-          <ClipboardIcon className='size-5 cursor-pointer' />
-        )}
-      </Button>
+        {copied ? <ClipboardCheckIcon /> : <ClipboardIcon className='cursor-pointer' />}
+      </IconButton>
     </pre>
   );
 };

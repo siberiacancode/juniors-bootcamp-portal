@@ -8,7 +8,7 @@ const NotFound = () => (
     <h1 className='text-4xl font-semibold'>
       <IntlText path='notFound.title' />
     </h1>
-    <Button asChild variant='outline'>
+    <Button asChild variant='ghost'>
       <Link href='/'>
         <IntlText path='notFound.backHome' />
       </Link>

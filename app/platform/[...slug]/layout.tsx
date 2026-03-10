@@ -74,7 +74,7 @@ const ContentsLayout = async ({ children, params }: ContentsLayoutProps) => {
 
   return (
     <main className='flex flex-1 flex-col'>
-      <div className='content-contaier py-8'>
+      <div className='content-container py-8'>
         {/* <Header breadcrumbs={breadcrumbs} /> */}
 
         <div className='mb-6 -ml-2.5 text-7xl'>{lastBreadcrumb.emoji}</div>

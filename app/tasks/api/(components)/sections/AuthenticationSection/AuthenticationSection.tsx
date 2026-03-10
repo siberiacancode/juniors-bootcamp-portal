@@ -17,7 +17,7 @@ export const AuthenticationSection = () => {
           <IntlText path='page.tasksApi.authentication.title' />
         </h2>
 
-        <Button asChild variant='secondary'>
+        <Button asChild variant='surface'>
           <Link href='/api/otps'>
             <IntlText path='link.otpCodes' />
             <ArrowRightIcon className='size-4' />

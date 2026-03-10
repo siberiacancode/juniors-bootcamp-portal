@@ -14,9 +14,14 @@
   "navigation.tasks": "Задания",
   "navigation.guides": "Гайды",
 
+  "page.guides.metadata.title": "Guides - 1001 способ помочь новичкам",
+  "page.guides.metadata.description": "Полезные советы и рекомендации для начинающих разработчиков. Примеры кода, объяснения концепций и лучших практик frontend разработки.",
   "page.guides.title": "Г<pixelify>А</pixelify>ЙДЫ",
   "page.guides.description": "Данная страница содержит \"1001 способ помочь новичкам\". Здесь вы найдете полезные советы и рекомендации, примеры кода, объяснения основных концепций и лучших практик, а также распространенные ошибки, которых стоит избегать.",
-  "page.guides.search": "Найти гайд",
+  "page.guides.searchPlaceholder": "Найти гайд",
+  "page.guides.cardLabel.needful": "необходимые",
+  "page.guides.chip.clearAll": "очистить всё",
+  "page.guides.badFilters": "По выбранным фильтрам гайдов не найдено. 😅 Попробуйте убрать часть параметров",
 
   "page.tasks.title": "TASKS",
   "page.tasks.description": "Здесь вы найдете задания для самостоятельного выполнения и проверки своих знаний. Они помогут вам закрепить основные концепции и лучшие практики frontend разработки. Выполняя задания, вы получите практический опыт. Мы предлагаем реалистичные задания, которые можно реализовать на любом стеке технологий.",
@@ -62,7 +67,7 @@
   "footer.social.twitch.alt": "Twitch siberiacancode",
   "footer.social.youtube.alt": "YouTube siberiacancode",
   "footer.directions.title": "Направления",
-  "footer.directions.road-map": "Начать обучение",
+  "footer.directions.roadMap": "Начать обучение",
   "footer.opensource.title": "Opensource siberiacancode",
 
   "button.copy": "Скопировать",

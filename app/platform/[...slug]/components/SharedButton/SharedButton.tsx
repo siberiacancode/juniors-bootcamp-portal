@@ -3,7 +3,15 @@
 import { useCopy, useDisclosure, useMediaQuery, useShare } from '@siberiacancode/reactuse';
 import { CheckIcon, CopyIcon, ShareIcon } from 'lucide-react';
 
-import { Button, Input, Popover, PopoverContent, PopoverTrigger, Skeleton } from '@/components/ui';
+import {
+  Button,
+  IconButton,
+  Input,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  Skeleton
+} from '@/components/ui';
 
 interface SharedButtonProps {
   emoji?: string;
@@ -33,12 +41,12 @@ export const SharedButton = ({ emoji, title }: SharedButtonProps) => {
   return (
     <Popover {...(!isMobile && { onOpenChange: sharePopover.toggle })} open={sharePopover.opened}>
       <PopoverTrigger asChild>
-        <Button size='icon' variant='ghost' onClick={onShare}>
-          <ShareIcon className='size-4' />
-        </Button>
+        <IconButton variant='ghost' onClick={onShare}>
+          <ShareIcon />
+        </IconButton>
       </PopoverTrigger>
 
-      <PopoverContent className='flex w-[300px] flex-col gap-1'>
+      <PopoverContent className='flex w-75 flex-col gap-1'>
         <div className='relative flex flex-col rounded-lg border border-b-0'>
           <div className='flex items-center gap-4 rounded-lg bg-card px-3'>
             <div className='flex items-center gap-1.5'>

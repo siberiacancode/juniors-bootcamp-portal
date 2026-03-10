@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { Nunito, Parisienne, Pixelify_Sans } from 'next/font/google';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 
 import { Footer, GoogleTagManagerScript, Header, YandexMetrikaScript } from './(components)';
 import { getDictionary } from './(contexts)/intl/helpers/getDictionary';
@@ -71,9 +72,11 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
         )}
 
         <Provider intl={{ locale, messages }}>
-          <Header />
-          {children}
-          <Footer />
+          <NuqsAdapter>
+            <Header />
+            {children}
+            <Footer />
+          </NuqsAdapter>
         </Provider>
       </body>
     </html>
