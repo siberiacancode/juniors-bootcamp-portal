@@ -1,3 +1,1 @@
-export * from './ChipGroupFilters/ChipGroupFilters';
-export * from './GuideCards/GuideCards';
-export * from './SearchBar/SearchBar';
+export * from './GuidesPageContent/GuidesPageContent';

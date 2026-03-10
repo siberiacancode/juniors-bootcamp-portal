@@ -1,28 +1,22 @@
-import dynamic from 'next/dynamic';
 import fs from 'node:fs';
 import { join } from 'node:path';
-import { createIntl } from 'react-intl';
 
 import { IntlText } from '@/components/intl';
-import { ChipGroupItem, PixelifyIntlText, ScrollArea, ScrollBar } from '@/components/ui';
-import ruMessages from '@/public/locale/ru.json';
+import { PixelifyIntlText } from '@/components/ui';
 
-export async function generateMetadata() {
-  const locale = 'ru';
+import { getDictionary } from '../(contexts)/intl/helpers/getDictionary';
+import { GuidesPageContent } from './(components)';
 
-  const intl = createIntl({
-    locale,
-    messages: ruMessages
-  });
+const locale = 'ru';
 
-  const title = intl.formatMessage({ id: 'page.guides.metadata.title' });
-  const description = intl.formatMessage({ id: 'page.guides.metadata.description' });
+export const generateMetadata = async () => {
+  const messages = await getDictionary(locale);
 
   return {
-    title,
-    description
+    title: messages['page.guides.metadata.title'],
+    description: messages['page.guides.metadata.description']
   };
-}
+};
 
 interface GuideMetadata {
   description: string;
@@ -55,21 +49,8 @@ const getGuides = async () => {
   return guides;
 };
 
-const SearchInput = dynamic(() => import('./(components)').then((m) => m.SearchInput), {
-  loading: () => 'Loading ...'
-});
-
-const ChipGroupFilters = dynamic(() => import('./(components)').then((m) => m.ChipGroupFilters), {
-  loading: () => 'Loading ...'
-});
-
-const GuideCards = dynamic(() => import('./(components)').then((m) => m.GuideCards), {
-  loading: () => 'Loading ...'
-});
-
 const GuidesPage = async () => {
   const guides = await getGuides();
-
   const labels = Array.from(new Set(guides.flatMap((guide) => guide.labels)));
 
   return (
@@ -83,31 +64,7 @@ const GuidesPage = async () => {
         </p>
       </div>
 
-      <div className='content-container mb-10 space-y-10'>
-        <SearchInput />
-
-        <ScrollArea>
-          <ChipGroupFilters>
-            {labels.map((filter) => {
-              const isNeedful = filter === 'needful';
-              return (
-                <ChipGroupItem
-                  key={filter}
-                  value={filter}
-                  variant={isNeedful ? 'accent' : 'primary'}
-                >
-                  {isNeedful ? <IntlText path='page.guides.cardLabel.needful' /> : filter}
-                </ChipGroupItem>
-              );
-            })}
-          </ChipGroupFilters>
-          <ScrollBar orientation='horizontal' />
-        </ScrollArea>
-      </div>
-
-      <div className='content-container mb-24'>
-        <GuideCards guides={guides} />
-      </div>
+      <GuidesPageContent guides={guides} labels={labels} />
     </main>
   );
 };
