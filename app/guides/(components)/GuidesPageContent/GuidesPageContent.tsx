@@ -3,7 +3,7 @@
 import { useDebounceCallback } from '@siberiacancode/reactuse';
 import { SearchIcon } from 'lucide-react';
 import Link from 'next/link';
-import { parseAsArrayOf, parseAsString, useQueryState } from 'nuqs';
+import { parseAsArrayOf, parseAsString, useQueryStates } from 'nuqs';
 import { useIntl } from 'react-intl';
 
 import { IntlText } from '@/components/intl';
@@ -32,48 +32,54 @@ interface Guide {
   slug: string;
   title: string;
 }
+
 interface GuidesPageContentProps {
   guides: Guide[];
   labels: string[];
 }
 
+const guidesSearchParams = {
+  search: parseAsString.withDefault(''),
+  tags: parseAsArrayOf(parseAsString).withDefault([])
+};
+
 export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) => {
   const intl = useIntl();
 
-  const [tags, setTags] = useQueryState('tags', parseAsArrayOf(parseAsString).withDefault([]));
-  const [search, setSearch] = useQueryState('search', parseAsString.withDefault(''));
+  const [searchParams, setSearchParams] = useQueryStates(guidesSearchParams);
 
-  const debouncedSetSearch = useDebounceCallback(setSearch, 400);
+  const onSearchChange = useDebounceCallback((search: string) => setSearchParams({ search }), 400);
 
   const filteredGuides = guides.filter((guide) => {
-    const trimmedSearch = search.trim().toLowerCase();
+    const trimmedSearch = searchParams.search.trim().toLowerCase();
     return (
       (guide.title.toLowerCase().includes(trimmedSearch) ||
         guide.description.toLowerCase().includes(trimmedSearch)) &&
-      tags.every((tag) => guide.labels.includes(tag))
+      searchParams.tags.every((tag) => guide.labels.includes(tag))
     );
   });
 
   return (
-    <>
+    <section>
       <div className='content-container mb-10 space-y-10'>
         <InputGroup className='w-full sm:w-1/2'>
           <InputGroupAddon>
             <SearchIcon />
           </InputGroupAddon>
           <InputGroupInput
-            defaultValue={search}
+            defaultValue={searchParams.search}
             placeholder={intl.formatMessage({ id: 'page.guides.searchPlaceholder' })}
-            onChange={(e) => debouncedSetSearch(e.target.value)}
+            onChange={(event) => onSearchChange(event.target.value)}
           />
         </InputGroup>
 
         <ScrollArea>
-          <ChipGroup className='sm:flex-wrap' type='multiple' value={tags} onValueChange={setTags}>
-            <Chip pressed disabled={tags.length === 0} onClick={() => setTags([])}>
-              <IntlText path='page.guides.chip.clearAll' />
-            </Chip>
-
+          <ChipGroup
+            className='sm:flex-wrap'
+            type='multiple'
+            value={searchParams.tags}
+            onValueChange={(tags: string[]) => setSearchParams({ tags })}
+          >
             {labels.map((filter) => {
               const isNeedful = filter === 'needful';
               return (
@@ -86,12 +92,20 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
                 </ChipGroupItem>
               );
             })}
+
+            <Chip
+              pressed
+              disabled={!searchParams.tags.length}
+              onClick={() => setSearchParams({ tags: [] })}
+            >
+              <IntlText path='page.guides.chip.clearAll' />
+            </Chip>
           </ChipGroup>
 
           <ScrollBar orientation='horizontal' />
         </ScrollArea>
 
-        {filteredGuides.length === 0 && (
+        {!filteredGuides.length && (
           <p className='text-center text-lg'>
             <IntlText path='page.guides.badFilters' />
           </p>
@@ -99,47 +113,48 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
       </div>
 
       <div className='content-container mb-24 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3'>
-        {filteredGuides.map((guide) => (
-          <Card
-            asChild
-            key={guide.slug}
-            className={cn(
-              'gap-2 transition-[color,box-shadow] hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-foreground)]',
-              guide.labels.includes('needful') ? 'hover:border-accent' : 'hover:border-secondary'
-            )}
-          >
-            <Link href={`/guides/${guide.slug}`}>
-              <CardHeader>
-                <span
-                  className={cn(
-                    'font-pixelify-sans text-4xl text-shadow-[2px_1px_0_var(--color-foreground)]',
-                    guide.labels.includes('needful')
-                      ? 'text-shadow-accent'
-                      : 'text-shadow-secondary'
-                  )}
-                >
-                  {guide.number}
-                </span>
-                <CardTitle className='text-2xl'>{guide.title}</CardTitle>
-              </CardHeader>
-              <CardContent className='h-full'>
-                <p>{guide.description}</p>
-              </CardContent>
-              <CardFooter className='gap-2'>
-                {guide.labels.map((label) => (
-                  <Badge key={label} variant={label === 'needful' ? 'accent' : 'outline'}>
-                    {label === 'needful' ? (
-                      <IntlText path='page.guides.cardLabel.needful' />
-                    ) : (
-                      label
+        {filteredGuides.map((guide) => {
+          const isNeedful = guide.labels.includes('needful');
+
+          return (
+            <Link key={guide.slug} href={`/guides/${guide.slug}`}>
+              <Card
+                asChild
+                className={cn(
+                  'gap-2 transition-[color,box-shadow] hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-foreground)]',
+                  isNeedful ? 'hover:border-accent' : 'hover:border-secondary'
+                )}
+              >
+                <CardHeader>
+                  <span
+                    className={cn(
+                      'font-pixelify-sans text-4xl text-shadow-[2px_1px_0_var(--color-foreground)]',
+                      isNeedful ? 'text-shadow-accent' : 'text-shadow-secondary'
                     )}
-                  </Badge>
-                ))}
-              </CardFooter>
+                  >
+                    {guide.number}
+                  </span>
+                  <CardTitle className='text-2xl'>{guide.title}</CardTitle>
+                </CardHeader>
+                <CardContent className='h-full'>
+                  <p>{guide.description}</p>
+                </CardContent>
+                <CardFooter className='gap-2'>
+                  {guide.labels.map((label) => (
+                    <Badge key={label} variant={isNeedful ? 'accent' : 'outline'}>
+                      {label === 'needful' ? (
+                        <IntlText path='page.guides.cardLabel.needful' />
+                      ) : (
+                        label
+                      )}
+                    </Badge>
+                  ))}
+                </CardFooter>
+              </Card>
             </Link>
-          </Card>
-        ))}
+          );
+        })}
       </div>
-    </>
+    </section>
   );
 };

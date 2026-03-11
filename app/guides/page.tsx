@@ -49,6 +49,8 @@ const getGuides = async () => {
   return guides;
 };
 
+export const dynamic = 'force-dynamic';
+
 const GuidesPage = async () => {
   const guides = await getGuides();
   const labels = Array.from(new Set(guides.flatMap((guide) => guide.labels)));
