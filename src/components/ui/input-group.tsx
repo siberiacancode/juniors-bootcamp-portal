@@ -5,10 +5,11 @@ import type { VariantProps } from 'class-variance-authority';
 import { cva } from 'class-variance-authority';
 import * as React from 'react';
 
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
+
+import { IconButton } from './icon-button';
 
 const InputGroup = ({ className, ...props }: React.ComponentProps<'div'>) => {
   return (
@@ -79,32 +80,19 @@ const InputGroupAddon = ({
   );
 };
 
-const inputGroupButtonVariants = cva('flex items-center gap-2 text-sm shadow-none', {
-  variants: {
-    size: {
-      xs: "h-6 gap-1 rounded-[calc(var(--radius)-5px)] px-2 has-[>svg]:px-2 [&>svg:not([class*='size-'])]:size-3.5",
-      sm: 'h-8 gap-1.5 rounded-md px-2.5 has-[>svg]:px-2.5',
-      'icon-xs': 'size-6 rounded-[calc(var(--radius)-5px)] p-0 has-[>svg]:p-0',
-      'icon-sm': 'size-8 p-0 has-[>svg]:p-0'
-    }
-  },
-  defaultVariants: {
-    size: 'xs'
-  }
-});
-
-const InputGroupButton = ({
+const InputGroupIconButton = ({
   className,
   type = 'button',
   variant = 'ghost',
-  size = 'xs',
   ...props
-}: Omit<React.ComponentProps<typeof Button>, 'size'> &
-  VariantProps<typeof inputGroupButtonVariants>) => {
+}: Omit<React.ComponentProps<typeof IconButton>, 'size'>) => {
   return (
-    <Button
-      className={cn(inputGroupButtonVariants({ size }), className)}
-      data-size={size}
+    <IconButton
+      className={cn(
+        `flex items-center rounded-full p-0 shadow-none has-[>svg]:p-0 [&_svg:not([class*='size-'])]:size-5`,
+        className
+      )}
+      size='sm'
       type={type}
       variant={variant}
       {...props}
@@ -153,7 +141,7 @@ const InputGroupTextarea = ({ className, ...props }: React.ComponentProps<'texta
 export {
   InputGroup,
   InputGroupAddon,
-  InputGroupButton,
+  InputGroupIconButton,
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea

@@ -1,10 +1,11 @@
 'use client';
 
-import { useDebounceCallback } from '@siberiacancode/reactuse';
-import { SearchIcon, SquareArrowOutUpRightIcon } from 'lucide-react';
+import { useDebounceEffect } from '@siberiacancode/reactuse';
+import { SearchIcon, SquareArrowOutUpRightIcon, XIcon } from 'lucide-react';
 import { Geist } from 'next/font/google';
 import Link from 'next/link';
 import { parseAsArrayOf, parseAsString, useQueryStates } from 'nuqs';
+import { useState } from 'react';
 import { useIntl } from 'react-intl';
 
 import { VercelIcon } from '@/components/icons/VercelIcon';
@@ -25,6 +26,7 @@ import {
   EmptyTitle,
   InputGroup,
   InputGroupAddon,
+  InputGroupIconButton,
   InputGroupInput,
   ScrollArea,
   ScrollBar
@@ -94,7 +96,15 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
 
   const [searchParams, setSearchParams] = useQueryStates(guidesSearchParams);
 
-  const onSearchChange = useDebounceCallback((search: string) => setSearchParams({ search }), 400);
+  const [searchValue, setSearchValue] = useState(searchParams.search);
+
+  useDebounceEffect(
+    () => {
+      setSearchParams({ search: searchValue });
+    },
+    300,
+    [searchValue]
+  );
 
   const filteredGuides = guides.filter((guide) => {
     const trimmedSearch = searchParams.search.trim().toLowerCase();
@@ -113,10 +123,17 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
             <SearchIcon />
           </InputGroupAddon>
           <InputGroupInput
-            defaultValue={searchParams.search}
             placeholder={intl.formatMessage({ id: 'page.guides.searchPlaceholder' })}
-            onChange={(event) => onSearchChange(event.target.value)}
+            value={searchValue}
+            onChange={(event) => setSearchValue(event.target.value)}
           />
+          {!!searchValue && (
+            <InputGroupAddon align='inline-end'>
+              <InputGroupIconButton onClick={() => setSearchValue('')}>
+                <XIcon />
+              </InputGroupIconButton>
+            </InputGroupAddon>
+          )}
         </InputGroup>
 
         <ScrollArea>
