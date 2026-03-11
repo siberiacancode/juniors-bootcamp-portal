@@ -70,7 +70,7 @@ const SkillsCard = ({ style }: { style?: React.CSSProperties }) => (
             geist.className
           )}
         >
-          <VercelIcon className='size-3.5' /> Skills.sh{' '}
+          <VercelIcon className='size-3.5' /> Skills.sh
           <SquareArrowOutUpRightIcon className='ml-auto size-5' />
         </span>
         <CardTitle className='text-2xl'>
