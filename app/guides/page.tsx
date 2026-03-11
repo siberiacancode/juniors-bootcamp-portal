@@ -25,6 +25,7 @@ interface GuideMetadata {
 }
 
 const getGuides = async () => {
+  'use cache';
   const contentDir = join(process.cwd(), 'app', 'guides', '(contents)');
   const files = await fs.promises.readdir(contentDir);
   const guides = await Promise.all(
