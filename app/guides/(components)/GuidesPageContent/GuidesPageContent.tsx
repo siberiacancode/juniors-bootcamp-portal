@@ -93,13 +93,11 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
               );
             })}
 
-            <Chip
-              pressed
-              disabled={!searchParams.tags.length}
-              onClick={() => setSearchParams({ tags: [] })}
-            >
-              <IntlText path='page.guides.chip.clearAll' />
-            </Chip>
+            {!!searchParams.tags.length && (
+              <Chip pressed onClick={() => setSearchParams({ tags: [] })}>
+                <IntlText path='page.guides.chip.clearAll' />
+              </Chip>
+            )}
           </ChipGroup>
 
           <ScrollBar orientation='horizontal' />
@@ -114,22 +112,20 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
 
       <div className='content-container mb-24 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3'>
         {filteredGuides.map((guide) => {
-          const isNeedful = guide.labels.includes('needful');
-
+          const isNeedfulGuide = guide.labels.includes('needful');
           return (
-            <Link key={guide.slug} href={`/guides/${guide.slug}`}>
+            <Link key={guide.slug} className='flex' href={`/guides/${guide.slug}`}>
               <Card
-                asChild
                 className={cn(
                   'gap-2 transition-[color,box-shadow] hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-foreground)]',
-                  isNeedful ? 'hover:border-accent' : 'hover:border-secondary'
+                  isNeedfulGuide ? 'hover:border-accent' : 'hover:border-secondary'
                 )}
               >
                 <CardHeader>
                   <span
                     className={cn(
                       'font-pixelify-sans text-4xl text-shadow-[2px_1px_0_var(--color-foreground)]',
-                      isNeedful ? 'text-shadow-accent' : 'text-shadow-secondary'
+                      isNeedfulGuide ? 'text-shadow-accent' : 'text-shadow-secondary'
                     )}
                   >
                     {guide.number}
@@ -140,15 +136,14 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
                   <p>{guide.description}</p>
                 </CardContent>
                 <CardFooter className='gap-2'>
-                  {guide.labels.map((label) => (
-                    <Badge key={label} variant={isNeedful ? 'accent' : 'outline'}>
-                      {label === 'needful' ? (
-                        <IntlText path='page.guides.cardLabel.needful' />
-                      ) : (
-                        label
-                      )}
-                    </Badge>
-                  ))}
+                  {guide.labels.map((label) => {
+                    const isNeedfulLabel = label === 'needful';
+                    return (
+                      <Badge key={label} variant={isNeedfulLabel ? 'accent' : 'outline'}>
+                        {isNeedfulLabel ? <IntlText path='page.guides.cardLabel.needful' /> : label}
+                      </Badge>
+                    );
+                  })}
                 </CardFooter>
               </Card>
             </Link>

@@ -34,10 +34,7 @@ const ChipGroupItem = ({
 }: React.ComponentProps<typeof ChipGroupPrimitive.Item> & VariantProps<typeof chipVariants>) => {
   return (
     <ChipGroupPrimitive.Item
-      className={cn(
-        chipVariants({ variant, className }),
-        'group/chip-group-item data-[state=on]:px-4.75'
-      )}
+      className={cn(chipVariants({ variant, className }), 'group/chip-group-item')}
       data-slot='chip-group-item'
       {...props}
     >

@@ -10,7 +10,7 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 
 const chipVariants = cva(
-  "inline-flex h-13 min-w-13 items-center justify-center gap-1.5 rounded-full bg-muted px-8 text-xl font-bold whitespace-nowrap text-foreground transition-colors outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-danger aria-invalid:ring-danger/20 dark:aria-invalid:ring-danger/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-5",
+  "inline-flex h-13 min-w-13 items-center justify-center gap-2 rounded-full bg-muted px-8 text-xl font-bold whitespace-nowrap text-foreground transition-colors outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-danger aria-invalid:ring-danger/20 data-[state=on]:px-4.5 dark:aria-invalid:ring-danger/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-5",
   {
     variants: {
       variant: {
@@ -29,17 +29,16 @@ const Chip = ({
   className,
   variant,
   children,
-  pressed,
   ...props
 }: React.ComponentProps<typeof ChipPrimitive.Root> & VariantProps<typeof chipVariants>) => {
   return (
     <ChipPrimitive.Root
-      className={cn(chipVariants({ variant, className }))}
+      className={cn(chipVariants({ variant, className }), 'group/chip')}
       data-slot='chip'
       {...props}
     >
       {children}
-      {pressed && <XIcon />}
+      <XIcon className={cn('hidden group-data-[state=on]/chip:block')} />
     </ChipPrimitive.Root>
   );
 };
