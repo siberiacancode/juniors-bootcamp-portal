@@ -8,7 +8,6 @@ import remarkGfm from 'remark-gfm';
 const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
-  cacheComponents: true,
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx']
 };
 

@@ -24,8 +24,9 @@ interface GuideMetadata {
   title: string;
 }
 
+export const dynamic = 'force-dynamic';
+
 const getGuides = async () => {
-  'use cache';
   const contentDir = join(process.cwd(), 'app', 'guides', '(contents)');
   const files = await fs.promises.readdir(contentDir);
   const guides = await Promise.all(
@@ -49,8 +50,6 @@ const getGuides = async () => {
 
   return guides;
 };
-
-export const dynamic = 'force-dynamic';
 
 const GuidesPage = async () => {
   const guides = await getGuides();
