@@ -1,11 +1,13 @@
 'use client';
 
 import { useDebounceCallback } from '@siberiacancode/reactuse';
-import { SearchIcon } from 'lucide-react';
+import { SearchIcon, SquareArrowOutUpRightIcon } from 'lucide-react';
+import { Geist } from 'next/font/google';
 import Link from 'next/link';
 import { parseAsArrayOf, parseAsString, useQueryStates } from 'nuqs';
 import { useIntl } from 'react-intl';
 
+import { VercelIcon } from '@/components/icons/VercelIcon';
 import { IntlText } from '@/components/intl';
 import {
   Badge,
@@ -17,6 +19,10 @@ import {
   Chip,
   ChipGroup,
   ChipGroupItem,
+  Empty,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyTitle,
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
@@ -42,6 +48,46 @@ const guidesSearchParams = {
   search: parseAsString.withDefault(''),
   tags: parseAsArrayOf(parseAsString).withDefault([])
 };
+
+const geist = Geist({
+  subsets: ['latin'],
+  weight: '400'
+});
+
+const SkillsCard = ({ style }: { style?: React.CSSProperties }) => (
+  <Link
+    key='skills'
+    href='https://skills.sh/siberiacancode/agent-skills'
+    rel='noopener noreferrer'
+    style={style}
+    target='_blank'
+  >
+    <Card className='h-70 gap-2 transition-[color,box-shadow] hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-foreground)]'>
+      <CardHeader>
+        <span
+          className={cn(
+            'inline-flex h-10 items-center gap-2 text-lg text-foreground',
+            geist.className
+          )}
+        >
+          <VercelIcon className='size-3.5' /> Skills.sh{' '}
+          <SquareArrowOutUpRightIcon className='ml-auto size-5' />
+        </span>
+        <CardTitle className='text-2xl'>
+          <IntlText path='page.guides.skillsCard.title' />
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p className='line-clamp-3'>
+          <IntlText path='page.guides.skillsCard.description' />
+        </p>
+      </CardContent>
+      <CardFooter className='mt-auto'>
+        <Badge variant='primary'>ai</Badge>
+      </CardFooter>
+    </Card>
+  </Link>
+);
 
 export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) => {
   const intl = useIntl();
@@ -88,7 +134,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
                   value={filter}
                   variant={isNeedful ? 'accent' : 'primary'}
                 >
-                  {isNeedful ? <IntlText path='page.guides.cardLabel.needful' /> : filter}
+                  {isNeedful ? <IntlText path='page.guides.tag.needful' /> : filter}
                 </ChipGroupItem>
               );
             })}
@@ -104,43 +150,53 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
         </ScrollArea>
 
         {!filteredGuides.length && (
-          <p className='text-center text-lg'>
-            <IntlText path='page.guides.badFilters' />
-          </p>
+          <Empty>
+            <EmptyHeader>
+              <EmptyTitle>
+                <IntlText path='page.guides.epmty.title' />
+              </EmptyTitle>
+              <EmptyDescription>
+                <IntlText path='page.guides.epmty.description' />
+              </EmptyDescription>
+            </EmptyHeader>
+          </Empty>
         )}
       </div>
 
       <div className='content-container mb-24 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3'>
-        {filteredGuides.map((guide) => {
+        {filteredGuides.map((guide, index) => {
           const isNeedfulGuide = guide.labels.includes('needful');
           return (
-            <Link key={guide.slug} className='flex' href={`/guides/${guide.slug}`}>
+            <Link key={guide.slug} href={`/guides/${guide.slug}`} style={{ order: index }}>
               <Card
                 className={cn(
-                  'gap-2 transition-[color,box-shadow] hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-foreground)]',
+                  'h-70 gap-2 transition-[color,box-shadow] hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-foreground)]',
                   isNeedfulGuide ? 'hover:border-accent' : 'hover:border-secondary'
                 )}
               >
                 <CardHeader>
                   <span
                     className={cn(
-                      'font-pixelify-sans text-4xl text-shadow-[2px_1px_0_var(--color-foreground)]',
-                      isNeedfulGuide ? 'text-shadow-accent' : 'text-shadow-secondary'
+                      'font-pixelify-sans text-4xl',
+                      isNeedfulGuide
+                        ? 'text-shadow-[2px_1px_0_var(--color-accent)]'
+                        : 'text-shadow-[2px_1px_0_var(--color-secondary)]'
                     )}
                   >
                     {guide.number}
                   </span>
                   <CardTitle className='text-2xl'>{guide.title}</CardTitle>
                 </CardHeader>
-                <CardContent className='h-full'>
-                  <p>{guide.description}</p>
+
+                <CardContent>
+                  <p className='line-clamp-3'>{guide.description}</p>
                 </CardContent>
-                <CardFooter className='gap-2'>
+                <CardFooter className='mt-auto gap-2'>
                   {guide.labels.map((label) => {
                     const isNeedfulLabel = label === 'needful';
                     return (
                       <Badge key={label} variant={isNeedfulLabel ? 'accent' : 'outline'}>
-                        {isNeedfulLabel ? <IntlText path='page.guides.cardLabel.needful' /> : label}
+                        {isNeedfulLabel ? <IntlText path='page.guides.tag.needful' /> : label}
                       </Badge>
                     );
                   })}
@@ -149,6 +205,13 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
             </Link>
           );
         })}
+        {!!filteredGuides.length && (
+          <SkillsCard
+            style={{
+              order: filteredGuides.length >= 2 ? 1 : filteredGuides.length
+            }}
+          />
+        )}
       </div>
     </section>
   );

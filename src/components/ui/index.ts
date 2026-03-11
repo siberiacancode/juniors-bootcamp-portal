@@ -11,6 +11,7 @@ export * from './code-block';
 export * from './dock';
 export * from './drawer';
 export * from './dropdown-menu';
+export * from './empty';
 export * from './icon-button';
 export * from './input';
 export * from './input-group';
