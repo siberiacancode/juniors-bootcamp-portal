@@ -20,7 +20,7 @@ const Empty = ({ className, ...props }: React.ComponentProps<'div'>) => {
 const EmptyHeader = ({ className, ...props }: React.ComponentProps<'div'>) => {
   return (
     <div
-      className={cn('flex max-w-sm flex-col items-center gap-2', className)}
+      className={cn('flex max-w-3xl flex-col items-center gap-2', className)}
       data-slot='empty-header'
       {...props}
     />
@@ -60,7 +60,7 @@ const EmptyMedia = ({
 const EmptyTitle = ({ className, ...props }: React.ComponentProps<'div'>) => {
   return (
     <div
-      className={cn('text-sm font-medium tracking-tight', className)}
+      className={cn('text-3xl font-extrabold tracking-tight text-muted-foreground', className)}
       data-slot='empty-title'
       {...props}
     />
@@ -71,7 +71,7 @@ const EmptyDescription = ({ className, ...props }: React.ComponentProps<'p'>) =>
   return (
     <div
       className={cn(
-        'text-sm/relaxed text-muted-foreground [&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-primary',
+        'text-xl/relaxed text-muted-foreground [&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-primary',
         className
       )}
       data-slot='empty-description'

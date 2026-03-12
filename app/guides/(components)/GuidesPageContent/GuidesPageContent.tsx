@@ -45,7 +45,7 @@ interface GuidesPageContentProps {
   labels: string[];
 }
 
-const guidesSearchParams = {
+const guidesQueryParams = {
   search: parseAsString.withDefault(''),
   tags: parseAsArrayOf(parseAsString).withDefault([])
 };
@@ -53,26 +53,26 @@ const guidesSearchParams = {
 export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) => {
   const intl = useIntl();
 
-  const [searchParams, setSearchParams] = useQueryStates(guidesSearchParams);
+  const [queryParams, setQueryParams] = useQueryStates(guidesQueryParams);
 
-  const [searchValue, setSearchValue] = useState(searchParams.search);
+  const [searchValue, setSearchValue] = useState(queryParams.search);
 
-  const debouncedSearchValue = useDebounceCallback(
-    (search: string) => setSearchParams({ search }),
+  const debouncedSetSearchParam = useDebounceCallback(
+    (search: string) => setQueryParams({ search }),
     300
   );
 
   const onSearchChange = (search: string) => {
-    debouncedSearchValue(search);
+    debouncedSetSearchParam(search);
     setSearchValue(search);
   };
 
   const filteredGuides = guides.filter((guide) => {
-    const trimmedSearch = searchParams.search.trim().toLowerCase();
+    const trimmedSearch = queryParams.search.trim().toLowerCase();
     return (
       (guide.title.toLowerCase().includes(trimmedSearch) ||
         guide.description.toLowerCase().includes(trimmedSearch)) &&
-      searchParams.tags.every((tag) => guide.labels.includes(tag))
+      queryParams.tags.every((tag) => guide.labels.includes(tag))
     );
   });
 
@@ -103,8 +103,8 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
           <ChipGroup
             className='sm:flex-wrap'
             type='multiple'
-            value={searchParams.tags}
-            onValueChange={(tags: string[]) => setSearchParams({ tags })}
+            value={queryParams.tags}
+            onValueChange={(tags) => setQueryParams({ tags })}
           >
             {labels.map((filter) => {
               const isNeedful = filter === 'needful';
@@ -119,8 +119,8 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
               );
             })}
 
-            {!!searchParams.tags.length && (
-              <Chip pressed onClick={() => setSearchParams({ tags: [] })}>
+            {!!queryParams.tags.length && (
+              <Chip pressed onClick={() => setQueryParams({ tags: [] })}>
                 <IntlText path='page.guides.chip.clearAll' />
               </Chip>
             )}

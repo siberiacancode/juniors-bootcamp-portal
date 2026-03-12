@@ -148,10 +148,9 @@ export const Footer = () => {
         </div>
 
         <div className='flex flex-col gap-4 sm:flex-row sm:justify-between'>
-          <p className='text-sm font-normal text-surface-foreground'>
+          <p className='text-sm font-normal text-surface-foreground [&>a]:underline'>
             Built by{' '}
             <Link
-              className='underline'
               href='https://github.com/siberiacancode'
               rel='noopener noreferrer'
               target='_blank'
@@ -160,7 +159,6 @@ export const Footer = () => {
             </Link>
             . The source code is available on{' '}
             <Link
-              className='underline'
               href='https://github.com/siberiacancode/juniors-bootcamp-portal'
               rel='noopener noreferrer'
               target='_blank'
