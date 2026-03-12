@@ -25,16 +25,14 @@ export const useMDXComponents = (components?: MDXComponents): MDXComponents => (
       className='mt-10 mb-4 text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-100'
     />
   ),
-  p: (props) => (
-    <p {...props} className='mb-4 text-lg leading-8 text-gray-700 dark:text-gray-300' />
-  ),
+  p: (props) => <p {...props} className='mb-4 text-lg/8 text-gray-700 dark:text-gray-300' />,
   ul: (props) => (
     <ul {...props} className='mb-4 ml-8 list-disc text-lg text-gray-700 dark:text-gray-300' />
   ),
   ol: (props) => (
     <ol {...props} className='mb-4 ml-8 list-decimal text-lg text-gray-700 dark:text-gray-300' />
   ),
-  li: (props) => <li {...props} className='mb-1 text-lg leading-8' />,
+  li: (props) => <li {...props} className='mb-1 text-lg/8' />,
   blockquote: (props) => (
     <blockquote
       {...props}
@@ -46,7 +44,7 @@ export const useMDXComponents = (components?: MDXComponents): MDXComponents => (
       {...props}
       className={cn(
         props.className,
-        'mb-3 [&>code]:bg-transparent [&>code]:px-0 dark:[&>code]:bg-transparent'
+        `mb-3 [&>code]:bg-transparent [&>code]:px-0 dark:[&>code]:bg-transparent`
       )}
     />
   ),

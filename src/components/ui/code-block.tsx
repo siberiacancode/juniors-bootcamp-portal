@@ -6,7 +6,7 @@ import { useCopy } from '@siberiacancode/reactuse';
 import { ClipboardCheckIcon, ClipboardIcon } from 'lucide-react';
 import { useRef } from 'react';
 
-import { Button } from '@/components/ui';
+import { IconButton } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
 export type CodeBlockProps = ComponentProps<'pre'>;
@@ -25,23 +25,18 @@ export const CodeBlock = (props: CodeBlockProps) => {
       {...props}
       ref={ref}
       className={cn(
-        'relative rounded-sm py-4 pr-8 pl-4 text-wrap [&>button]:hover:opacity-100',
+        `relative rounded-sm py-4 pr-8 pl-4 text-wrap [&>button]:hover:opacity-100`,
         props.className
       )}
     >
       {props.children}
-      <Button
+      <IconButton
         className='absolute top-2 right-2 opacity-0 transition-opacity'
-        size='icon'
-        variant='outline'
+        variant='ghost'
         onClick={onCopyClick}
       >
-        {copied ? (
-          <ClipboardCheckIcon className='size-5' />
-        ) : (
-          <ClipboardIcon className='size-5 cursor-pointer' />
-        )}
-      </Button>
+        {copied ? <ClipboardCheckIcon /> : <ClipboardIcon className='cursor-pointer' />}
+      </IconButton>
     </pre>
   );
 };

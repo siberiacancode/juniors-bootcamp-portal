@@ -5,7 +5,22 @@ import { useIntl } from 'react-intl';
 
 import { GithubIcon, TelegramIcon, TwitchIcon, YoutubeIcon } from '@/components/icons';
 import { IntlText } from '@/components/intl';
-import { Button } from '@/components/ui';
+import { Button, IconButton } from '@/components/ui';
+
+const PRODUCTS = [
+  {
+    href: '#1',
+    label: ''
+  },
+  {
+    href: '#2',
+    label: ''
+  },
+  {
+    href: '#3',
+    label: ''
+  }
+] as const;
 
 const SOCIALS = [
   {
@@ -64,110 +79,95 @@ export const Footer = () => {
   const intl = useIntl();
 
   return (
-    <footer className='bg-background border-border z-0 my-20 border-t'>
-      <div className='mx-auto max-w-[var(--max-width)] px-4 py-16'>
-        <div className='flex flex-col justify-between gap-4 md:flex-row'>
-          <div className='space-y-4'>
-            <Link className='font-pixelify-sans flex items-center text-2xl font-bold' href='/'>
-              juniors bootcamp
-              {/* <Logo alt={intl.formatMessage({ id: 'footer.logo.alt' })} className='w-10' /> */}
-            </Link>
+    <footer className='content-container mb-12 flex w-full flex-col gap-6 sm:mb-16'>
+      <div className='flex flex-col gap-6 rounded-2xl bg-muted px-4 py-6 sm:flex-row sm:flex-wrap sm:items-center sm:gap-10 sm:px-6 sm:py-10'>
+        <span className='font-pixelify-sans text-3xl font-bold'>juniorsbootcamp</span>
 
-            <Button asChild>
-              <Link href='https://t.me/siberiacancode' rel='noopener noreferrer' target='_blank'>
-                contact us
-              </Link>
-            </Button>
-            <p className='text-muted-foreground text-sm'>
+        <div className='flex flex-col gap-4 sm:flex-row sm:gap-10'>
+          {PRODUCTS.map((product) => (
+            <span key={product.href} className='text-sm font-semibold'>
+              Ссылка на продукт
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className='flex flex-col gap-6 rounded-2xl bg-muted px-4 py-6 sm:gap-10 sm:px-6 sm:py-10'>
+        <div className='flex flex-col gap-6 sm:flex-row sm:gap-10'>
+          <div className='flex flex-col gap-4'>
+            <p className='font-normal'>
               <IntlText path='footer.description' />
             </p>
-            <div className='flex gap-3'>
+
+            <Button asChild className='sm:w-fit'>
+              <Link href='https://t.me/siberiacancode' rel='noopener noreferrer' target='_blank'>
+                <IntlText path='link.contact' />
+              </Link>
+            </Button>
+
+            <div className='flex gap-6'>
               {SOCIALS.map((social) => (
-                <Link
-                  key={social.href}
-                  href={social.href}
-                  rel='noopener noreferrer'
-                  target='_blank'
-                >
-                  <social.Icon
-                    aria-label={intl.formatMessage({ id: social.alt })}
-                    className='size-5'
-                  />
-                </Link>
+                <IconButton asChild key={social.href} variant='ghost'>
+                  <Link href={social.href} rel='noopener noreferrer' target='_blank'>
+                    <social.Icon aria-label={intl.formatMessage({ id: social.alt })} />
+                  </Link>
+                </IconButton>
               ))}
             </div>
           </div>
 
-          <div className='flex flex-col justify-between gap-4 md:flex-row md:gap-20'>
-            <div className='space-y-4'>
-              <h3 className='text-sm font-semibold'>
-                <IntlText path='footer.directions.title' />
-              </h3>
-              <ul className='space-y-2 text-sm'>
-                <li>
-                  <Link
-                    className='text-muted-foreground hover:text-foreground transition-colors'
-                    href='/platform/road-map'
-                  >
-                    <IntlText path='footer.directions.road-map' />
+          <div className='flex flex-col gap-4'>
+            <h3 className='font-bold'>
+              <IntlText path='footer.directions.title' />
+            </h3>
+            <ul className='flex flex-col gap-3 text-sm font-medium'>
+              {NAVIGATION.map((navigation) => (
+                <li key={navigation.href}>
+                  <Link href={navigation.href}>
+                    <IntlText path={navigation.label} />
                   </Link>
                 </li>
-                {NAVIGATION.map((navigation) => (
-                  <li key={navigation.href}>
-                    <Link
-                      className='text-muted-foreground hover:text-foreground transition-colors'
-                      href={navigation.href}
-                    >
-                      <IntlText path={navigation.label as MessagePath} />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              ))}
+            </ul>
+          </div>
 
-            <div className='space-y-4'>
-              <h3 className='text-sm font-semibold'>
-                <IntlText path='footer.opensource.title' />
-              </h3>
-              <ul className='space-y-2 text-sm'>
-                {OPENSOURCE.map((opensource) => (
-                  <li key={opensource.href}>
-                    <Link
-                      className='text-muted-foreground hover:text-foreground transition-colors'
-                      href={opensource.href}
-                      rel='noopener noreferrer'
-                      target='_blank'
-                    >
-                      {opensource.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className='flex flex-col gap-4'>
+            <h3 className='font-bold'>
+              <IntlText path='footer.opensource.title' />
+            </h3>
+            <ul className='flex flex-col gap-3 text-sm font-medium'>
+              {OPENSOURCE.map((opensource) => (
+                <li key={opensource.href}>
+                  <Link href={opensource.href} rel='noopener noreferrer' target='_blank'>
+                    {opensource.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        <p className='text-muted-foreground mt-12 w-full text-center text-sm'>
-          Built by{' '}
-          <Link
-            className='underline'
-            href='https://github.com/siberiacancode'
-            rel='noopener noreferrer'
-            target='_blank'
-          >
-            siberiacancode
-          </Link>
-          . The source code is available on{' '}
-          <Link
-            className='underline'
-            href='https://github.com/siberiacancode/juniors-bootcamp-portal'
-            rel='noopener noreferrer'
-            target='_blank'
-          >
-            GitHub
-          </Link>
-          .
-        </p>
+        <div className='flex flex-col gap-4 sm:flex-row sm:justify-between'>
+          <p className='text-sm font-normal text-surface-foreground [&>a]:underline'>
+            Built by{' '}
+            <Link
+              href='https://github.com/siberiacancode'
+              rel='noopener noreferrer'
+              target='_blank'
+            >
+              siberiacancode
+            </Link>
+            . The source code is available on{' '}
+            <Link
+              href='https://github.com/siberiacancode/juniors-bootcamp-portal'
+              rel='noopener noreferrer'
+              target='_blank'
+            >
+              GitHub
+            </Link>
+            .
+          </p>
+        </div>
       </div>
     </footer>
   );

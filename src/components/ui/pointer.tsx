@@ -1,14 +1,11 @@
 'use client';
 
 import type { HTMLMotionProps } from 'motion/react';
-import type { JSX } from 'react';
 
 import { AnimatePresence, motion, useMotionValue } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 
 import { cn } from '@/lib/utils';
-
-interface PointerProps extends Omit<HTMLMotionProps<'div'>, 'ref'> {}
 
 /**
  * A custom pointer component that displays an animated cursor.
@@ -16,9 +13,14 @@ interface PointerProps extends Omit<HTMLMotionProps<'div'>, 'ref'> {}
  * You can pass custom children to render as the pointer.
  *
  * @component
- * @param {PointerProps} props - The component props
+ * @param {HTMLMotionProps<"div">} props - The component props
  */
-export const Pointer = ({ className, style, children, ...props }: PointerProps): JSX.Element => {
+export const Pointer = ({
+  className,
+  style,
+  children,
+  ...props
+}: HTMLMotionProps<'div'>): React.ReactNode => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -37,9 +39,12 @@ export const Pointer = ({ className, style, children, ...props }: PointerProps):
         const handleMouseMove = (e: MouseEvent) => {
           x.set(e.clientX);
           y.set(e.clientY);
+          setIsActive(true);
         };
 
-        const handleMouseEnter = () => {
+        const handleMouseEnter = (e: MouseEvent) => {
+          x.set(e.clientX);
+          y.set(e.clientY);
           setIsActive(true);
         };
 

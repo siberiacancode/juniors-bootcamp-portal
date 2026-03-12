@@ -148,7 +148,7 @@ export const MobileHeader = ({ breadcrumbs }: HeaderProps) => {
         <Button variant='ghost' onClick={() => navigationDropdown.toggle()}>
           <span>{lastBreadcrumb.emoji}</span>
           <span>{lastBreadcrumb.title}</span>
-          <ChevronDownIcon className='h-4 w-4' />
+          <ChevronDownIcon className='size-4' />
         </Button>
 
         <DynamicSharedButton emoji={lastBreadcrumb.emoji} title={lastBreadcrumb.title} />

@@ -7,10 +7,10 @@ import { SECTIONS } from '@/app/(constants)';
 import { useTheme } from '@/app/(contexts)/theme';
 import { GithubIcon } from '@/components/icons';
 import {
-  Button,
-  buttonVariants,
   Dock,
   DockIcon,
+  IconButton,
+  iconButtonVariants,
   Separator,
   Tooltip,
   TooltipContent,
@@ -30,11 +30,11 @@ export const DockPanel = () => {
         <DockIcon>
           <Tooltip>
             <TooltipTrigger>
-              <Button asChild className='size-12 rounded-full' size='icon' variant='ghost'>
+              <IconButton asChild className='size-12 rounded-full' variant='ghost'>
                 <Link aria-label='main' href='/'>
                   <HouseIcon className='size-4' />
                 </Link>
-              </Button>
+              </IconButton>
             </TooltipTrigger>
             <TooltipContent>main</TooltipContent>
           </Tooltip>
@@ -46,11 +46,8 @@ export const DockPanel = () => {
             <Tooltip>
               <TooltipTrigger>
                 <Link
-                  className={cn(
-                    buttonVariants({ variant: 'ghost', size: 'icon' }),
-                    'size-12 rounded-full'
-                  )}
                   aria-label={href.slice(1)}
+                  className={cn(iconButtonVariants({ variant: 'ghost' }), 'size-12 rounded-full')}
                   href={href}
                 >
                   <Icon className='size-4' />
@@ -66,7 +63,7 @@ export const DockPanel = () => {
         <DockIcon>
           <Tooltip>
             <TooltipTrigger>
-              <Button asChild className='size-12 rounded-full' size='icon' variant='ghost'>
+              <IconButton asChild className='size-12 rounded-full' variant='ghost'>
                 <Link
                   href='https://github.com/siberiacancode'
                   rel='noopener noreferrer'
@@ -74,7 +71,7 @@ export const DockPanel = () => {
                 >
                   <GithubIcon aria-label='github' />
                 </Link>
-              </Button>
+              </IconButton>
             </TooltipTrigger>
             <TooltipContent>
               <p>github</p>
@@ -84,15 +81,14 @@ export const DockPanel = () => {
         <DockIcon>
           <Tooltip>
             <TooltipTrigger>
-              <Button
+              <IconButton
                 asChild
                 className='size-12 rounded-full'
-                size='icon'
                 variant='ghost'
                 onClick={onThemeClick}
               >
                 <span>{theme.value === 'dark' ? <SunIcon /> : <MoonIcon />}</span>
-              </Button>
+              </IconButton>
             </TooltipTrigger>
             <TooltipContent>
               <p>theme</p>

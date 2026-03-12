@@ -43,7 +43,7 @@ export const ApiTypesSection = () => (
                 <div className='relative mb-4 flex items-center gap-4' style={apiType.shadowColor}>
                   <div className='font-pixelify-sans text-6xl font-bold'>{apiType.label}</div>
                 </div>
-                <p className='mb-2 flex-1 text-lg leading-relaxed'>
+                <p className='mb-2 flex-1 text-lg/relaxed'>
                   <IntlText path={apiType.descriptionPath as MessagePath} />
                 </p>
               </MagicCard>
