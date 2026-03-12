@@ -196,7 +196,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
             <Card className='h-70 gap-2 transition-[color,box-shadow] hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-foreground)]'>
               <CardHeader>
                 <span className={cn('inline-flex h-10 items-center gap-2 text-lg text-foreground')}>
-                  <VercelIcon className='size-3.5' /> Skills.sh
+                  <VercelIcon />
                   <SquareArrowOutUpRightIcon className='ml-auto size-5' />
                 </span>
                 <CardTitle className='text-2xl'>
