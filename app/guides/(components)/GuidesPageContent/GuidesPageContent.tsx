@@ -117,6 +117,8 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
     );
   });
 
+  const skillsCardOrder = filteredGuides.length >= 2 ? 1 : filteredGuides.length;
+
   return (
     <section>
       <div className='content-container mb-10 space-y-10'>
@@ -227,7 +229,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
         {!!filteredGuides.length && (
           <SkillsCard
             style={{
-              order: filteredGuides.length >= 2 ? 1 : filteredGuides.length
+              order: skillsCardOrder
             }}
           />
         )}
