@@ -96,6 +96,7 @@
   --radius: 1rem;
 
   --default-font-family: var(--font-nunito);
+  --default-transition-duration: 300ms;
 }
 
 .dark {
@@ -148,7 +149,7 @@
 
 @layer components {
   .content-container {
-    @apply px-6 max-w-7xl mx-auto;
+    @apply px-6 max-w-7xl mx-auto w-full;
   }
 }
 

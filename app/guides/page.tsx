@@ -56,15 +56,15 @@ const GuidesPage = async () => {
   const labels = Array.from(new Set(guides.flatMap((guide) => guide.labels)));
 
   return (
-    <main className='mt-10 sm:mt-12'>
-      <div className='content-container mb-20 space-y-10'>
+    <main className='content-container mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
+      <section className='flex flex-col gap-8 sm:gap-10'>
         <h1 className='font-nunito text-[56px] font-bold md:text-[170px]'>
           <PixelifyIntlText path='page.guides.title' />
         </h1>
         <p className='text-2xl'>
           <IntlText path='page.guides.description' />
         </p>
-      </div>
+      </section>
 
       <GuidesPageContent guides={guides} labels={labels} />
     </main>

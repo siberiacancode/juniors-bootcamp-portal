@@ -79,7 +79,7 @@ export const Footer = () => {
   const intl = useIntl();
 
   return (
-    <footer className='content-container mb-12 w-full space-y-6 sm:mb-16'>
+    <footer className='content-container mb-12 flex w-full flex-col gap-6 sm:mb-16'>
       <div className='flex flex-col gap-6 rounded-2xl bg-muted px-4 py-6 sm:flex-row sm:flex-wrap sm:items-center sm:gap-10 sm:px-6 sm:py-10'>
         <span className='font-pixelify-sans text-3xl font-bold'>juniorsbootcamp</span>
 
@@ -92,7 +92,7 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className='space-y-6 rounded-2xl bg-muted px-4 py-6 sm:space-y-10 sm:px-6 sm:py-10'>
+      <div className='flex flex-col gap-6 rounded-2xl bg-muted px-4 py-6 sm:gap-10 sm:px-6 sm:py-10'>
         <div className='flex flex-col gap-6 sm:flex-row sm:gap-10'>
           <div className='flex flex-col gap-4'>
             <p className='font-normal'>
@@ -116,11 +116,11 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className='space-y-4'>
+          <div className='flex flex-col gap-4'>
             <h3 className='font-bold'>
               <IntlText path='footer.directions.title' />
             </h3>
-            <ul className='space-y-3 text-sm font-medium'>
+            <ul className='flex flex-col gap-3 text-sm font-medium'>
               {NAVIGATION.map((navigation) => (
                 <li key={navigation.href}>
                   <Link href={navigation.href}>
@@ -131,11 +131,11 @@ export const Footer = () => {
             </ul>
           </div>
 
-          <div className='space-y-4'>
+          <div className='flex flex-col gap-4'>
             <h3 className='font-bold'>
               <IntlText path='footer.opensource.title' />
             </h3>
-            <ul className='space-y-3 text-sm font-medium'>
+            <ul className='flex flex-col gap-3 text-sm font-medium'>
               {OPENSOURCE.map((opensource) => (
                 <li key={opensource.href}>
                   <Link href={opensource.href} rel='noopener noreferrer' target='_blank'>

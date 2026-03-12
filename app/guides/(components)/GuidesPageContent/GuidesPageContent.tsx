@@ -79,8 +79,8 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
   const skillsCardOrder = filteredGuides.length >= 2 ? 1 : filteredGuides.length;
 
   return (
-    <section>
-      <div className='content-container mb-10 space-y-10'>
+    <section className='flex flex-col gap-8 sm:gap-10'>
+      <div className='flex flex-col gap-6 sm:gap-10'>
         <InputGroup className='w-full sm:w-1/2'>
           <InputGroupAddon>
             <SearchIcon />
@@ -120,7 +120,12 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
             })}
 
             {!!queryParams.tags.length && (
-              <Chip pressed onClick={() => setQueryParams({ tags: [] })}>
+              <Chip
+                pressed
+                key='clear-all-chip'
+                className='order-first sm:order-last'
+                onClick={() => setQueryParams({ tags: [] })}
+              >
                 <IntlText path='page.guides.chip.clearAll' />
               </Chip>
             )}
@@ -143,14 +148,14 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
         )}
       </div>
 
-      <div className='content-container mb-24 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3'>
+      <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3'>
         {filteredGuides.map((guide, index) => {
           const isNeedfulGuide = guide.labels.includes('needful');
           return (
             <Link key={guide.slug} href={`/guides/${guide.slug}`} style={{ order: index }}>
               <Card
                 className={cn(
-                  'h-70 gap-2 transition-[color,box-shadow] hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-foreground)]',
+                  'h-70 gap-2 transition hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-foreground)]',
                   isNeedfulGuide ? 'hover:border-accent' : 'hover:border-secondary'
                 )}
               >
@@ -185,19 +190,20 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
             </Link>
           );
         })}
+
         {!!filteredGuides.length && (
           <Link
-            key='skills'
+            key='00-siberiacancode-skills'
             href='https://skills.sh/siberiacancode/agent-skills'
             rel='noopener noreferrer'
             style={{ order: skillsCardOrder }}
             target='_blank'
           >
-            <Card className='h-70 gap-2 transition-[color,box-shadow] hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-foreground)]'>
+            <Card className='h-70 gap-2 transition hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-foreground)]'>
               <CardHeader>
-                <span className={cn('inline-flex h-10 items-center gap-2 text-lg text-foreground')}>
+                <span className='inline-flex h-10 items-center justify-between'>
                   <VercelIcon />
-                  <SquareArrowOutUpRightIcon className='ml-auto size-5' />
+                  <SquareArrowOutUpRightIcon className='size-5' />
                 </span>
                 <CardTitle className='text-2xl'>
                   <IntlText path='page.guides.skillsCard.title' />
