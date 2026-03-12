@@ -1,6 +1,6 @@
 'use client';
 
-import { useDebounceEffect } from '@siberiacancode/reactuse';
+import { useDebounceCallback } from '@siberiacancode/reactuse';
 import { SearchIcon, SquareArrowOutUpRightIcon, XIcon } from 'lucide-react';
 import { Geist } from 'next/font/google';
 import Link from 'next/link';
@@ -98,13 +98,15 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
 
   const [searchValue, setSearchValue] = useState(searchParams.search);
 
-  useDebounceEffect(
-    () => {
-      setSearchParams({ search: searchValue });
-    },
-    300,
-    [searchValue]
+  const debouncedSearchValue = useDebounceCallback(
+    (search: string) => setSearchParams({ search }),
+    300
   );
+
+  const onSearchChange = (search: string) => {
+    debouncedSearchValue(search);
+    setSearchValue(search);
+  };
 
   const filteredGuides = guides.filter((guide) => {
     const trimmedSearch = searchParams.search.trim().toLowerCase();
@@ -125,11 +127,11 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
           <InputGroupInput
             placeholder={intl.formatMessage({ id: 'page.guides.searchPlaceholder' })}
             value={searchValue}
-            onChange={(event) => setSearchValue(event.target.value)}
+            onChange={(event) => onSearchChange(event.target.value)}
           />
           {!!searchValue && (
             <InputGroupAddon align='inline-end'>
-              <InputGroupIconButton onClick={() => setSearchValue('')}>
+              <InputGroupIconButton onClick={() => onSearchChange('')}>
                 <XIcon />
               </InputGroupIconButton>
             </InputGroupAddon>
