@@ -2,7 +2,6 @@
 
 import { useDebounceCallback } from '@siberiacancode/reactuse';
 import { SearchIcon, SquareArrowOutUpRightIcon, XIcon } from 'lucide-react';
-import { Geist } from 'next/font/google';
 import Link from 'next/link';
 import { parseAsArrayOf, parseAsString, useQueryStates } from 'nuqs';
 import { useState } from 'react';
@@ -50,46 +49,6 @@ const guidesSearchParams = {
   search: parseAsString.withDefault(''),
   tags: parseAsArrayOf(parseAsString).withDefault([])
 };
-
-const geist = Geist({
-  subsets: ['latin'],
-  weight: '400'
-});
-
-const SkillsCard = ({ style }: { style?: React.CSSProperties }) => (
-  <Link
-    key='skills'
-    href='https://skills.sh/siberiacancode/agent-skills'
-    rel='noopener noreferrer'
-    style={style}
-    target='_blank'
-  >
-    <Card className='h-70 gap-2 transition-[color,box-shadow] hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-foreground)]'>
-      <CardHeader>
-        <span
-          className={cn(
-            'inline-flex h-10 items-center gap-2 text-lg text-foreground',
-            geist.className
-          )}
-        >
-          <VercelIcon className='size-3.5' /> Skills.sh
-          <SquareArrowOutUpRightIcon className='ml-auto size-5' />
-        </span>
-        <CardTitle className='text-2xl'>
-          <IntlText path='page.guides.skillsCard.title' />
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className='line-clamp-3'>
-          <IntlText path='page.guides.skillsCard.description' />
-        </p>
-      </CardContent>
-      <CardFooter className='mt-auto'>
-        <Badge variant='primary'>ai</Badge>
-      </CardFooter>
-    </Card>
-  </Link>
-);
 
 export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) => {
   const intl = useIntl();
@@ -227,11 +186,33 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
           );
         })}
         {!!filteredGuides.length && (
-          <SkillsCard
-            style={{
-              order: skillsCardOrder
-            }}
-          />
+          <Link
+            key='skills'
+            href='https://skills.sh/siberiacancode/agent-skills'
+            rel='noopener noreferrer'
+            style={{ order: skillsCardOrder }}
+            target='_blank'
+          >
+            <Card className='h-70 gap-2 transition-[color,box-shadow] hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-foreground)]'>
+              <CardHeader>
+                <span className={cn('inline-flex h-10 items-center gap-2 text-lg text-foreground')}>
+                  <VercelIcon className='size-3.5' /> Skills.sh
+                  <SquareArrowOutUpRightIcon className='ml-auto size-5' />
+                </span>
+                <CardTitle className='text-2xl'>
+                  <IntlText path='page.guides.skillsCard.title' />
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className='line-clamp-3'>
+                  <IntlText path='page.guides.skillsCard.description' />
+                </p>
+              </CardContent>
+              <CardFooter className='mt-auto'>
+                <Badge variant='primary'>ai</Badge>
+              </CardFooter>
+            </Card>
+          </Link>
         )}
       </div>
     </section>
