@@ -16,6 +16,8 @@ const iconButtonVariants = cva(
         accent: 'bg-accent text-accent-foreground hover:bg-accent/80',
         surface: 'bg-surface text-surface-foreground hover:bg-surface/80',
         ghost: 'hover:bg-surface hover:text-surface-foreground dark:hover:bg-surface/50',
+        outline:
+          'border border-border bg-background text-foreground hover:border-secondary hover:shadow-[-2px_2px_0px_0px_var(--color-secondary)] dark:border-input',
         danger:
           'bg-danger text-white hover:bg-danger/90 focus-visible:ring-danger/20 dark:bg-danger/60 dark:focus-visible:ring-danger/40'
       },

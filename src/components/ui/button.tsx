@@ -7,7 +7,7 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  `inline-flex shrink-0 items-center justify-center rounded-full text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-danger aria-invalid:ring-danger/20 dark:aria-invalid:ring-danger/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4`,
+  `inline-flex shrink-0 items-center justify-center rounded-full text-sm font-medium whitespace-nowrap transition outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-danger aria-invalid:ring-danger/20 dark:aria-invalid:ring-danger/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4`,
   {
     variants: {
       variant: {
@@ -16,6 +16,8 @@ const buttonVariants = cva(
         accent: 'bg-accent text-accent-foreground hover:bg-accent/80',
         surface: 'bg-surface text-surface-foreground hover:bg-surface/80',
         ghost: 'hover:bg-surface hover:text-surface-foreground dark:hover:bg-surface/50',
+        outline:
+          'border border-border bg-background text-foreground hover:border-secondary hover:shadow-[-2px_2px_0px_0px_var(--color-secondary)] dark:border-input',
         danger:
           'bg-danger text-white hover:bg-danger/90 focus-visible:ring-danger/20 dark:bg-danger/60 dark:focus-visible:ring-danger/40'
       },

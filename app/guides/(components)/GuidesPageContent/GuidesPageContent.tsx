@@ -1,7 +1,7 @@
 'use client';
 
 import { useDebounceCallback } from '@siberiacancode/reactuse';
-import { SearchIcon, SquareArrowOutUpRightIcon, XIcon } from 'lucide-react';
+import { ExternalLinkIcon, SearchIcon, XIcon } from 'lucide-react';
 import Link from 'next/link';
 import { parseAsArrayOf, parseAsString, useQueryStates } from 'nuqs';
 import { useState } from 'react';
@@ -203,7 +203,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
               <CardHeader>
                 <span className='inline-flex h-10 items-center justify-between'>
                   <VercelIcon />
-                  <SquareArrowOutUpRightIcon className='size-5' />
+                  <ExternalLinkIcon className='size-5' />
                 </span>
                 <CardTitle className='text-2xl'>
                   <IntlText path='page.guides.skillsCard.title' />
