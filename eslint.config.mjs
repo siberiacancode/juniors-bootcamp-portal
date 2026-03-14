@@ -23,6 +23,12 @@ export default eslint(
           strictness: 'loose'
         }
       ]
+    },
+    settings: {
+      'better-tailwindcss': {
+        entryPoint: 'app/globals.css',
+        detectComponentClasses: true
+      }
     }
   },
   {
@@ -38,14 +44,6 @@ export default eslint(
     files: ['src/components/ui/**/*.tsx'],
     rules: {
       'react-refresh/only-export-components': 'off'
-    }
-  },
-  {
-    settings: {
-      'better-tailwindcss': {
-        entryPoint: 'app/globals.css',
-        detectComponentClasses: true
-      }
     }
   }
 );

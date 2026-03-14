@@ -2,6 +2,7 @@ import type { NextConfig } from 'next';
 
 import createMDX from '@next/mdx';
 import rehypeShiki from '@shikijs/rehype';
+import rehypeMdxCodeProps from 'rehype-mdx-code-props';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
@@ -59,7 +60,8 @@ const withMDX = createMDX({
           ],
           defaultColor: false
         }
-      ]
+      ],
+      rehypeMdxCodeProps
     ],
     remarkPlugins: [remarkGfm]
   }
