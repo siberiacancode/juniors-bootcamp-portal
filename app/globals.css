@@ -57,9 +57,9 @@
     }
   }
 
-  --font-parisienne: var(--font-parisienne);
-  --font-pixelify-sans: var(--font-pixelify-sans);
-  --font-nunito: var(--font-nunito);
+  --font-nunito: var(--nunito);
+  --font-parisienne: var(--parisienne);
+  --font-pixelify-sans: var(--pixelify-sans);
 }
 
 :root {
@@ -95,7 +95,8 @@
 
   --radius: 1rem;
 
-  --default-font-family: var(--font-nunito);
+  --default-font-family: var(--nunito);
+  --default-mono-font-family: var(--overpass-mono);
   --default-transition-duration: 300ms;
 }
 

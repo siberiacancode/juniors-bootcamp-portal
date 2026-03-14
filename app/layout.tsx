@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Nunito, Parisienne, Pixelify_Sans } from 'next/font/google';
+import { Nunito, Overpass_Mono, Parisienne, Pixelify_Sans } from 'next/font/google';
 
 import { Footer, GoogleTagManagerScript, Header, YandexMetrikaScript } from './(components)';
 import { getDictionary } from './(contexts)/intl/helpers/getDictionary';
@@ -8,17 +8,23 @@ import { Provider } from './provider';
 import './globals.css';
 
 const nunito = Nunito({
-  variable: '--font-nunito',
+  variable: '--nunito',
   subsets: ['latin', 'cyrillic']
 });
 
 const pixelifySans = Pixelify_Sans({
-  variable: '--font-pixelify-sans',
+  variable: '--pixelify-sans',
   subsets: ['latin', 'cyrillic']
 });
 
 const parisienne = Parisienne({
-  variable: '--font-parisienne',
+  variable: '--parisienne',
+  weight: '400',
+  subsets: ['latin']
+});
+
+const overpassMono = Overpass_Mono({
+  variable: '--overpass-mono',
   weight: '400',
   subsets: ['latin']
 });
@@ -43,7 +49,12 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
   return (
     <html
       suppressHydrationWarning
-      className={clsx(nunito.variable, pixelifySans.variable, parisienne.variable)}
+      className={clsx(
+        nunito.variable,
+        pixelifySans.variable,
+        parisienne.variable,
+        overpassMono.variable
+      )}
       lang={locale}
     >
       <head>
