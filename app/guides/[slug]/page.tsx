@@ -1,13 +1,14 @@
-import { ChevronLeftIcon, ChevronRightIcon, GithubIcon, ShareIcon } from 'lucide-react';
+import { ChevronLeftIcon, ChevronRightIcon, GithubIcon } from 'lucide-react';
 import Link from 'next/link';
 
 import { getDictionary } from '@/app/(contexts)/intl/helpers/getDictionary';
 import { IntlText } from '@/components/intl';
-import { Button, IconButton } from '@/components/ui';
+import { Button } from '@/components/ui';
 
 import type { GuideMetadata } from '../(helpers)/getGuides';
 
 import { getGuides } from '../(helpers)/getGuides';
+import { ShareButtton } from './(components)/ShareButton';
 
 export const generateStaticParams = async () => {
   const guides = await getGuides();
@@ -53,10 +54,12 @@ const GuidesPage = async ({ params }: PageProps<'/guides/[slug]'>) => {
           </Link>
         </Button>
 
-        <h1 className='text-8xl font-extrabold'>{metadata.title}</h1>
+        <h1 className='text-4xl font-extrabold sm:text-8xl'>{metadata.title}</h1>
       </section>
 
-      <Guide.default />
+      <section>
+        <Guide.default />
+      </section>
 
       <section className='flex flex-col items-start gap-6'>
         <div className='flex w-full items-center justify-between'>
@@ -78,9 +81,7 @@ const GuidesPage = async ({ params }: PageProps<'/guides/[slug]'>) => {
               </Button>
             )}
           </nav>
-          <IconButton variant='ghost'>
-            <ShareIcon />
-          </IconButton>
+          <ShareButtton />
         </div>
 
         <Button asChild variant='ghost'>
