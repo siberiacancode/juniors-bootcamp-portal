@@ -10,7 +10,7 @@ export default eslint(
     tailwind: true
   },
   {
-    name: 'junior-bootcamp/rewrite',
+    name: 'juniors-bootcamp/rewrite',
     rules: {
       'node/prefer-global/process': 'off',
       'react/no-context-provider': 'off',
@@ -32,7 +32,7 @@ export default eslint(
     }
   },
   {
-    name: 'junior-bootcamp/bugs',
+    name: 'juniors-bootcamp/bugs',
     rules: {
       'react/no-comment-textnodes': 'off',
       'react-hooks-extra/no-unnecessary-use-prefix': 'off',
@@ -40,7 +40,7 @@ export default eslint(
     }
   },
   {
-    name: 'junior-bootcamp/shadcn',
+    name: 'juniors-bootcamp/shadcn',
     files: ['src/components/ui/**/*.tsx'],
     rules: {
       'react-refresh/only-export-components': 'off'
