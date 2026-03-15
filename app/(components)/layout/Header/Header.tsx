@@ -1,5 +1,7 @@
 'use client';
 
+import type { MouseEvent } from 'react';
+
 import { Github, Loader2Icon, MenuIcon, MoonIcon, XIcon } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
@@ -47,7 +49,7 @@ export const Header = () => {
 
   const theme = useTheme();
 
-  const onThemeClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onThemeClick = async (event: MouseEvent<HTMLButtonElement>) => {
     const x = event.clientX;
     const y = event.clientY;
     theme.animate(x, y, theme.value === 'dark' ? 'light' : 'dark');

@@ -3,7 +3,6 @@ import type { ShikiTransformer } from 'shiki';
 
 import createMDX from '@next/mdx';
 import rehypeShiki from '@shikijs/rehype';
-import { transformerNotationDiff, transformerNotationHighlight } from '@shikijs/transformers';
 import remarkDirective from 'remark-directive';
 import remarkGfm from 'remark-gfm';
 import { visit } from 'unist-util-visit';
@@ -23,17 +22,32 @@ function remarkCodeGroup() {
   };
 }
 
-const fileNameRegex = /\[([^\]]+)\]/;
-
-const propsTransformer: ShikiTransformer = {
+const attrsRegex = /([a-z_][\w-]*)(=(["'])(.*?)\3)?/gi;
+const attrsMatchRegex = /\{([^}]*)\}/;
+export const transformerProps: ShikiTransformer = {
   pre(node) {
-    if (this.options.meta?.__raw) {
-      const fileNameMatch = this.options.meta.__raw.match(fileNameRegex);
-      if (fileNameMatch) {
-        node.properties.fileName = fileNameMatch[1];
-        node.properties.language = this.options.lang;
-      }
+    const rawMeta = this.options.meta?.__raw;
+    if (!rawMeta) return node;
+
+    const attrsMatch = rawMeta.match(attrsMatchRegex);
+    if (!attrsMatch) {
+      node.properties ??= {};
+      node.properties.language = this.options.lang;
+      return node;
     }
+
+    const [attrs] = attrsMatch;
+    node.properties ??= {};
+
+    for (const match of attrs.matchAll(attrsRegex)) {
+      const key = match[1];
+      const value = match[4];
+      if (!key) continue;
+
+      node.properties[key] = value ?? true;
+    }
+
+    node.properties.language = this.options.lang;
 
     return node;
   }
@@ -53,11 +67,12 @@ const withMDX = createMDX({
           langs: SUPPORTED_LANGUAGES,
           ...OPTIONS_MULTIPLE_THEMES,
           transformers: [
-            propsTransformer,
+            transformerProps
             // https://shiki.style/packages/transformers#transformers
             // Transformers only applies classes and does not come with styles; you can provide your own CSS rules to style them properly.
-            transformerNotationDiff(),
-            transformerNotationHighlight()
+            // transformerNotationDiff(),
+            // transformerNotationHighlight(),
+            // transformerNotationWordHighlight()
           ]
         }
       ]

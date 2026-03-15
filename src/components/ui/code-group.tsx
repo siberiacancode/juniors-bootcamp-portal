@@ -1,6 +1,6 @@
 'use client';
 
-import type { CSSProperties, Fragment, ReactNode } from 'react';
+import type { CSSProperties, Fragment, ReactElement, ReactNode } from 'react';
 
 import { useCopy } from '@siberiacancode/reactuse';
 import { CheckIcon, CopyIcon } from 'lucide-react';
@@ -21,7 +21,7 @@ import { LANGUAGE_DISPLAY_NAMES } from '@/constants';
 import { cn } from '@/lib/utils';
 
 interface CodeBlockGroupProps {
-  children: React.ReactElement<typeof Fragment>[];
+  children: ReactElement<typeof Fragment>[];
 }
 
 interface BlockProps {
@@ -45,22 +45,22 @@ export const CodeGroup = ({ children }: CodeBlockGroupProps) => {
     };
   });
 
+  const preRef = useRef<HTMLPreElement>(null);
   const [currentLanguage, setCurrentLanguage] = useState<SupportedLanguage>(blocks[0].language);
 
-  const preRef = useRef<HTMLPreElement>(null);
-
   const { copied, copy } = useCopy(2000);
+
   const onCopyClick = () => {
     if (!preRef.current || !preRef.current.textContent || copied) return;
     copy(preRef.current.textContent);
   };
 
-  const { fileName, className, language, key, ...rest } = blocks.find(
+  const { fileName, className, language, key, ...props } = blocks.find(
     (block) => block.language === currentLanguage
   )!;
 
   return (
-    <figure className='rounded-xl border-2 border-foreground'>
+    <figure className='mb-4 rounded-xl border-2 border-foreground'>
       <div className='flex h-16 items-center border-b-2 border-foreground px-6'>
         {fileName && <span className='text-sm text-muted-foreground'>{fileName}</span>}
         <div className='ml-auto flex items-center gap-2'>
@@ -95,10 +95,10 @@ export const CodeGroup = ({ children }: CodeBlockGroupProps) => {
         key={key}
         ref={preRef}
         className={cn(
-          'overflow-x-auto rounded-b-xl p-6 text-base [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+          'overflow-x-auto rounded-b-xl bg-muted p-6 text-base [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
           className
         )}
-        {...rest}
+        {...props}
       />
     </figure>
   );

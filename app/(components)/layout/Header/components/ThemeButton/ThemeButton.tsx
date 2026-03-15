@@ -1,6 +1,6 @@
 'use client';
 
-import type { ComponentProps } from 'react';
+import type { ComponentProps, MouseEvent } from 'react';
 
 import { MoonIcon, SunIcon } from 'lucide-react';
 
@@ -14,7 +14,7 @@ type ThemeButtonProps = ComponentProps<typeof Button>;
 export const ThemeButton = (props: ThemeButtonProps) => {
   const theme = useTheme();
 
-  const onThemeClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onThemeClick = async (event: MouseEvent<HTMLButtonElement>) => {
     const x = event.clientX;
     const y = event.clientY;
     theme.animate(x, y, theme.value === 'dark' ? 'light' : 'dark');
