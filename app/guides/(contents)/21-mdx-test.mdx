@@ -1,0 +1,59 @@
+export const metadata = {
+  title: 'MDX Test',
+  description: '',
+  labels: ['mdx']
+};
+
+<h1>Lorem ipsum</h1>
+<h2>Dolor sit amet 😪</h2>
+<h3>consectetur &amp; adipisicing</h3>
+<h4>elit</h4>
+<h5>elit</h5>
+
+// CodeBlock by default имеет CopyBtn
+
+// Имя файла, выбор языка, кнопка скопировать
+
+<CodeGroup>
+<CodeBlock fileName='example.ts' language="ts">
+{`
+type Message = string
+
+const message: Message= 'Hello from TypeScript';
+
+console.log(message);
+`}
+
+</CodeBlock>
+
+<CodeBlock fileName='example.js' language="js">
+{`
+const message = 'Hello from JavaScript';
+
+console.log(message);
+`}
+
+</CodeBlock>
+</CodeGroup>
+
+// Имя файла, кнопка скопировать
+
+<CodeBlock fileName='package.json' language='json'>
+  {`
+  "scripts": {
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "test": "npm run test",
+    "lint": "npm run lint"
+  }
+  `}
+</CodeBlock>
+
+// Plain text
+
+```text
+project-root/
+├── package.json
+├── package-lock.json  # Единственный lock-файл от npm
+├── node_modules/
+```
