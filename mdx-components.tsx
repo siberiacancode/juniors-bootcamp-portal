@@ -1,6 +1,6 @@
 import type { MDXComponents } from 'mdx/types';
 
-import { CodeBlock, CodeGroup } from '@/components/ui';
+import { CodeBlock, CodeGroup } from '@/markdown/ui';
 
 export const useMDXComponents = (components?: MDXComponents): MDXComponents => ({
   h1: (props) => (

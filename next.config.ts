@@ -7,7 +7,7 @@ import remarkDirective from 'remark-directive';
 import remarkGfm from 'remark-gfm';
 import { visit } from 'unist-util-visit';
 
-import { OPTIONS_MULTIPLE_THEMES, SUPPORTED_LANGUAGES } from '@/lib/shiki';
+import { OPTIONS_MULTIPLE_THEMES, SUPPORTED_LANGUAGES } from '@/markdown/shiki';
 
 function remarkCodeGroup() {
   return (tree: any) => {

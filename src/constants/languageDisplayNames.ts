@@ -1,4 +1,4 @@
-import type { SupportedLanguage } from '@/lib/shiki';
+import type { SupportedLanguage } from '@/markdown/shiki';
 
 export const LANGUAGE_DISPLAY_NAMES: Record<SupportedLanguage, string> = {
   javascript: 'JavaScript',
