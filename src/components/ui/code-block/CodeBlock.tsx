@@ -1,29 +1,40 @@
-import React from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 
 import type { SupportedLanguage } from '@/lib/shiki';
 
-import { CopyButton } from './components';
-import { getElement } from './helpers';
+import { cn } from '@/lib/utils';
 
-export interface CodeBlockProps {
-  children: React.ReactNode;
+import { CopyButton } from './components';
+
+export interface CodeBlockProps extends ComponentProps<'pre'> {
+  children: ReactNode;
   copy?: boolean;
   fileName?: string;
   language: SupportedLanguage;
 }
 
-export const CodeBlock = async ({ children, language, fileName, copy = true }: CodeBlockProps) => {
-  const code = typeof children === 'string' ? children : String(children);
+export const CodeBlock = async ({
+  children,
+  language,
+  fileName,
+  copy = true,
+  className,
+  ...props
+}: CodeBlockProps) => (
+  <figure className={'rounded-xl border-2 border-foreground'}>
+    <div className='flex h-16 items-center border-b-2 border-foreground px-6'>
+      <span className='text-sm text-muted-foreground'>{fileName}</span>
+      {copy && <CopyButton className='ml-auto' text={children} />}
+    </div>
 
-  const element = await getElement(code.trim(), language);
-
-  return (
-    <figure className='rounded-xl border-2 border-foreground'>
-      <div className='flex h-16 items-center border-b-2 border-foreground px-6'>
-        <span className='text-sm text-muted-foreground'>{fileName}</span>
-        {copy && <CopyButton className='ml-auto' text={code} />}
-      </div>
-      {element}
-    </figure>
-  );
-};
+    <pre
+      className={cn(
+        'overflow-x-auto rounded-b-xl p-6 text-base [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </pre>
+  </figure>
+);

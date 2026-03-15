@@ -10,6 +10,7 @@ import type { ParsedBlock } from '../types';
 
 import { LANGUAGE_DISPLAY_NAMES } from '../constants';
 import { CopyButton } from './CopyButton';
+import { cn } from '@/lib/utils';
 
 interface CodeBlockContentProps {
   blocks: ParsedBlock[];
@@ -20,6 +21,7 @@ export const CodeBlockGroupContent = ({ copy, blocks }: CodeBlockContentProps) =
   const [language, setLanguage] = useState<SupportedLanguage>(blocks[0].language);
 
   const currentBlock = blocks.find((block) => block.language === language)!;
+  console.log('currentBlock', blocks.length, language);
 
   return (
     <>
@@ -29,6 +31,7 @@ export const CodeBlockGroupContent = ({ copy, blocks }: CodeBlockContentProps) =
         )}
         <div className='ml-auto flex items-center gap-2'>
           <Select
+            defaultValue={language}
             value={currentBlock?.language}
             onValueChange={(value) => setLanguage(value as SupportedLanguage)}
           >
@@ -46,8 +49,14 @@ export const CodeBlockGroupContent = ({ copy, blocks }: CodeBlockContentProps) =
           {copy && <CopyButton className='ml-auto' text={currentBlock.code} />}
         </div>
       </div>
-
-      {currentBlock.element}
+      <pre
+        className={cn(
+          'p-6 text-base [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+          currentBlock.className
+        )}
+      >
+        {currentBlock.children}
+      </pre>
     </>
   );
 };

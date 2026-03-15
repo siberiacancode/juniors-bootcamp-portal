@@ -12,60 +12,56 @@ export const metadata = {
 
 // Имя файла, выбор языка, кнопка скопировать
 
-<CodeGroup>
-<CodeBlock fileName='ts-example.ts' language="ts">
-{`
-type Message = string
+:::code-group
 
-const message: Message= 'Hello from TypeScript';
+```ts fileName='ts-example.ts' language='ts'
+type Message = string;
+
+const message: Message = 'Hello from TypeScript';
 
 console.log(message);
-`}
+```
 
-</CodeBlock>
-
-<CodeBlock fileName='js-example.js' language="js">
-{`
+```js fileName='js-example.js' language='js'
 const message = 'Hello from JavaScript';
 
 console.log(message);
-`}
+```
 
-</CodeBlock>
-</CodeGroup>
+:::
 
 // Имя файла, кнопка скопировать
 
-<CodeBlock fileName='package.json' language='json'>
-  {`
+```json fileName='package.json'
+{
   "scripts": {
     "dev": "npm run dev",
     "build": "npm run build",
     "test": "npm run test",
     "lint": "npm run lint"
   }
-  `}
-</CodeBlock>
+}
+```
 
 // Кнопка скопировать
 
-<CodeBlock language='json'>
-  {`
+```json
+{
   "scripts": {
-    "dev": "npm run dev",
+    "dev": "npm run dev"
   }
-  `}
-</CodeBlock>
+}
+```
 
 // Имя файла
 
-<CodeBlock language='json' fileName='test.json' copy={false}>
-  {`
+```json fileName='test.json'
+{
   "scripts": {
-    "dev": "npm run dev",
+    "dev": "npm run dev"
   }
-  `}
-</CodeBlock>
+}
+```
 
 // Plain text
 
