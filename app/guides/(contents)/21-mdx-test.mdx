@@ -10,12 +10,10 @@ export const metadata = {
 <h4>elit</h4>
 <h5>elit</h5>
 
-// CodeBlock by default имеет CopyBtn
-
 // Имя файла, выбор языка, кнопка скопировать
 
 <CodeGroup>
-<CodeBlock fileName='example.ts' language="ts">
+<CodeBlock fileName='ts-example.ts' language="ts">
 {`
 type Message = string
 
@@ -26,7 +24,7 @@ console.log(message);
 
 </CodeBlock>
 
-<CodeBlock fileName='example.js' language="js">
+<CodeBlock fileName='js-example.js' language="js">
 {`
 const message = 'Hello from JavaScript';
 
@@ -45,6 +43,26 @@ console.log(message);
     "build": "npm run build",
     "test": "npm run test",
     "lint": "npm run lint"
+  }
+  `}
+</CodeBlock>
+
+// Кнопка скопировать
+
+<CodeBlock language='json'>
+  {`
+  "scripts": {
+    "dev": "npm run dev",
+  }
+  `}
+</CodeBlock>
+
+// Имя файла
+
+<CodeBlock language='json' fileName='test.json' copy={false}>
+  {`
+  "scripts": {
+    "dev": "npm run dev",
   }
   `}
 </CodeBlock>
