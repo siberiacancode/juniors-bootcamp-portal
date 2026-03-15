@@ -5,11 +5,10 @@ import { useCopy } from '@siberiacancode/reactuse';
 import { CheckIcon, CopyIcon } from 'lucide-react';
 import { useRef } from 'react';
 
-import type { SupportedLanguage } from '@/lib/shiki';
+import type { SupportedLanguage } from '@/markdown/shiki';
 
+import { IconButton } from '@/components/ui';
 import { cn } from '@/lib/utils';
-
-import { IconButton } from './icon-button';
 
 export interface CodeBlockProps extends ComponentProps<'pre'> {
   fileName?: string;

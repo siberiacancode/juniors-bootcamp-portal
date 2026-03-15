@@ -7,8 +7,6 @@ export * from './button';
 export * from './card';
 export * from './chip';
 export * from './chip-group';
-export * from './code-block';
-export * from './code-group';
 export * from './dock';
 export * from './drawer';
 export * from './dropdown-menu';

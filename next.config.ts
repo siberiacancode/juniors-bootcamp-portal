@@ -8,7 +8,7 @@ import remarkDirective from 'remark-directive';
 import remarkGfm from 'remark-gfm';
 import { visit } from 'unist-util-visit';
 
-import { OPTIONS_MULTIPLE_THEMES, SUPPORTED_LANGUAGES } from '@/lib/shiki';
+import { OPTIONS_MULTIPLE_THEMES, SUPPORTED_LANGUAGES } from '@/markdown/shiki';
 
 function remarkCodeGroup() {
   return (tree: any) => {
@@ -55,7 +55,7 @@ const withMDX = createMDX({
           transformers: [
             propsTransformer,
             // https://shiki.style/packages/transformers#transformers
-            // Transformers only applies classes and does not come with styles; you can provide your own CSS rules to style them properly.
+            // Transformers only applies classes and does not come with styles.
             transformerNotationDiff(),
             transformerNotationHighlight()
           ]
