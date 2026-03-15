@@ -10,11 +10,11 @@ export const metadata = {
 <h4>elit</h4>
 <h5>elit</h5>
 
-// Имя файла, выбор языка, кнопка скопировать
+// Имя файла, выбор языка
 
 :::code-group
 
-```ts fileName='ts-example.ts' language='ts'
+```ts [ts-example.ts]
 type Message = string;
 
 const message: Message = 'Hello from TypeScript';
@@ -22,7 +22,7 @@ const message: Message = 'Hello from TypeScript';
 console.log(message);
 ```
 
-```js fileName='js-example.js' language='js'
+```js [js-example.js]
 const message = 'Hello from JavaScript';
 
 console.log(message);
@@ -30,35 +30,15 @@ console.log(message);
 
 :::
 
-// Имя файла, кнопка скопировать
-
-```json fileName='package.json'
-{
-  "scripts": {
-    "dev": "npm run dev",
-    "build": "npm run build",
-    "test": "npm run test",
-    "lint": "npm run lint"
-  }
-}
-```
-
-// Кнопка скопировать
-
-```json
-{
-  "scripts": {
-    "dev": "npm run dev"
-  }
-}
-```
-
 // Имя файла
 
-```json fileName='test.json'
+```json [package.json]
 {
   "scripts": {
-    "dev": "npm run dev"
+    "dev": "npm run dev", // [!code --]
+    "build": "npm run build", // [!code ++]
+    "test": "npm run test",
+    "lint": "npm run lint"
   }
 }
 ```

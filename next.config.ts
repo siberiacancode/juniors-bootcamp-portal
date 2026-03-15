@@ -1,15 +1,18 @@
 import type { NextConfig } from 'next';
+import type { ShikiTransformer } from 'shiki';
 
 import createMDX from '@next/mdx';
 import rehypeShiki from '@shikijs/rehype';
+import { transformerNotationDiff, transformerNotationHighlight } from '@shikijs/transformers';
 import remarkDirective from 'remark-directive';
+import remarkGfm from 'remark-gfm';
 import { visit } from 'unist-util-visit';
 
 import { OPTIONS_MULTIPLE_THEMES, SUPPORTED_LANGUAGES } from '@/lib/shiki';
 
-export function remarkCodeGroup() {
+function remarkCodeGroup() {
   return (tree: any) => {
-    visit(tree, (node: any) => {
+    visit(tree, (node) => {
       if (node.type === 'containerDirective' && node.name === 'code-group') {
         node.data = {
           hName: 'CodeGroup',
@@ -20,19 +23,18 @@ export function remarkCodeGroup() {
   };
 }
 
-const propsTransformer = {
-  name: 'code-block-props',
-  // Этот метод вызывается для корневого элемента <pre>
-  pre(node) {
-    const meta = this.options.meta?.__raw || '';
-    // Регулярка выцепляет все пары ключ="значение" или ключ='значение'
-    const matches = meta.matchAll(/(\w+)=['"](.*?)['"]/g);
+const fileNameRegex = /\[([^\]]+)\]/;
 
-    for (const match of matches) {
-      const [_, key, value] = match;
-      // Добавляем их как data-атрибуты, чтобы они дошли до React-компонента
-      node.properties[`${key}`] = value;
+const propsTransformer: ShikiTransformer = {
+  pre(node) {
+    if (this.options.meta?.__raw) {
+      const fileNameMatch = this.options.meta.__raw.match(fileNameRegex);
+      if (fileNameMatch) {
+        node.properties.fileName = fileNameMatch[1];
+        node.properties.language = this.options.lang;
+      }
     }
+
     return node;
   }
 };
@@ -50,12 +52,17 @@ const withMDX = createMDX({
         {
           langs: SUPPORTED_LANGUAGES,
           ...OPTIONS_MULTIPLE_THEMES,
-          transformers: [propsTransformer]
+          transformers: [
+            propsTransformer,
+            // https://shiki.style/packages/transformers#transformers
+            // Transformers only applies classes and does not come with styles; you can provide your own CSS rules to style them properly.
+            transformerNotationDiff(),
+            transformerNotationHighlight()
+          ]
         }
       ]
     ],
-    remarkPlugins: [remarkDirective, remarkCodeGroup]
-    // remarkPlugins: [remarkGfm]
+    remarkPlugins: [remarkGfm, remarkDirective, remarkCodeGroup]
   }
 });
 

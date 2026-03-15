@@ -1,6 +1,6 @@
 import type { MDXComponents } from 'mdx/types';
 
-import { CodeBlock, CodeBlockGroup } from '@/components/ui';
+import { CodeBlock, CodeGroup } from '@/components/ui';
 
 export const useMDXComponents = (components?: MDXComponents): MDXComponents => ({
   h1: (props) => (
@@ -36,7 +36,6 @@ export const useMDXComponents = (components?: MDXComponents): MDXComponents => (
     />
   ),
   pre: (props) => <CodeBlock {...props} />,
-  CodeGroup: (props) => <CodeBlockGroup className='mb-4' {...props} />,
-  CodeBlock: (props) => <CodeBlock className='mb-4' {...props} />,
+  CodeGroup: (props) => <CodeGroup {...props} />,
   ...components
 });
