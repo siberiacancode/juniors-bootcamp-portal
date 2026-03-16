@@ -6,8 +6,6 @@ import { useCopy } from '@siberiacancode/reactuse';
 import { CheckIcon, CopyIcon } from 'lucide-react';
 import { isValidElement, useRef, useState } from 'react';
 
-import type { SupportedLanguage } from '@/lib/shiki';
-
 import {
   IconButton,
   Select,
@@ -19,6 +17,8 @@ import {
 } from '@/components/ui';
 import { LANGUAGE_DISPLAY_NAMES } from '@/constants';
 import { cn } from '@/lib/utils';
+
+import type { SupportedLanguage } from '../shiki';
 
 interface CodeBlockGroupProps {
   children: ReactElement<typeof Fragment>[];
