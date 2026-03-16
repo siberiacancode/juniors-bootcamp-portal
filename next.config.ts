@@ -7,20 +7,18 @@ import remarkDirective from 'remark-directive';
 import remarkGfm from 'remark-gfm';
 import { visit } from 'unist-util-visit';
 
-import { OPTIONS_MULTIPLE_THEMES, SUPPORTED_LANGUAGES } from './shiki';
+import { OPTIONS_MULTIPLE_THEMES, SUPPORTED_LANGUAGES } from './src/markdown/shiki';
 
-function remarkCodeGroup() {
-  return (tree: any) => {
-    visit(tree, (node) => {
-      if (node.type === 'containerDirective' && node.name === 'code-group') {
-        node.data = {
-          hName: 'CodeGroup',
-          hProperties: {}
-        };
-      }
-    });
-  };
-}
+const remarkCodeGroup = () => (tree: any) => {
+  visit(tree, (node) => {
+    if (node.type === 'containerDirective' && node.name === 'code-group') {
+      node.data = {
+        hName: 'CodeGroup',
+        hProperties: {}
+      };
+    }
+  });
+};
 
 const attrsRegex = /([a-z_][\w-]*)(=(["'])(.*?)\3)?/gi;
 const attrsMatchRegex = /\{([^}]*)\}/;
