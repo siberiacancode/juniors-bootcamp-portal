@@ -5,19 +5,34 @@ export default eslint(
   {
     typescript: true,
     react: true,
-    jsx: true,
-    'jsx-a11y': true,
-    nextjs: true
+    nextjs: true,
+    // jsxA11y: true,
+    tailwind: true
   },
   {
-    name: 'junior-bootcamp/rewrite',
+    name: 'juniors-bootcamp/rewrite',
     rules: {
       'node/prefer-global/process': 'off',
-      'react/no-context-provider': 'off'
+      'react/no-context-provider': 'off',
+      'siberiacancode-tailwind/enforce-consistent-line-wrapping': [
+        'warn',
+        {
+          group: 'never',
+          preferSingleLine: true,
+          printWidth: 0,
+          strictness: 'loose'
+        }
+      ]
+    },
+    settings: {
+      'better-tailwindcss': {
+        entryPoint: 'app/globals.css',
+        detectComponentClasses: true
+      }
     }
   },
   {
-    name: 'junior-bootcamp/bugs',
+    name: 'juniors-bootcamp/bugs',
     rules: {
       'react/no-comment-textnodes': 'off',
       'react-hooks-extra/no-unnecessary-use-prefix': 'off',
@@ -25,6 +40,7 @@ export default eslint(
     }
   },
   {
+    name: 'juniors-bootcamp/shadcn',
     files: ['src/components/ui/**/*.tsx'],
     rules: {
       'react-refresh/only-export-components': 'off'

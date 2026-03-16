@@ -11,13 +11,13 @@ export const AuthenticationSection = () => {
   const intl = useIntl();
 
   return (
-    <section className='bg-card flex flex-col gap-5 rounded-lg border p-6'>
+    <section className='flex flex-col gap-5 rounded-lg border bg-card p-6'>
       <div className='flex items-center justify-between'>
         <h2 className='font-pixelify-sans text-5xl font-bold'>
           <IntlText path='page.tasksApi.authentication.title' />
         </h2>
 
-        <Button asChild variant='secondary'>
+        <Button asChild variant='surface'>
           <Link href='/api/otps'>
             <IntlText path='link.otpCodes' />
             <ArrowRightIcon className='size-4' />
@@ -25,7 +25,7 @@ export const AuthenticationSection = () => {
         </Button>
       </div>
 
-      <div className='prose prose-sm dark:prose-invert max-w-none text-lg text-pretty'>
+      <div className='prose prose-sm max-w-none text-lg text-pretty dark:prose-invert'>
         <ReactMarkdown>
           {intl.formatMessage({ id: 'page.tasksApi.authentication.description' })}
         </ReactMarkdown>

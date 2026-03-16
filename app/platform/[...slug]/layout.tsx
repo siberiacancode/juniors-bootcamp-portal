@@ -70,15 +70,15 @@ interface ContentsLayoutProps {
 const ContentsLayout = async ({ children, params }: ContentsLayoutProps) => {
   const { slug } = await params;
   const breadcrumbs = await getBreadcrumbs(slug);
-  const lastBreadcrumb = breadcrumbs[breadcrumbs.length - 1];
+  const lastBreadcrumb = breadcrumbs.at(-1);
 
   return (
     <main className='flex flex-1 flex-col'>
-      <div className='mx-auto max-w-[var(--max-width)] px-4 py-8'>
+      <div className='content-container py-8'>
         {/* <Header breadcrumbs={breadcrumbs} /> */}
 
-        <div className='mb-6 ml-[-10px] text-7xl'>{lastBreadcrumb.emoji}</div>
-        <h1 className='mb-8 text-5xl font-bold tracking-tight'>{lastBreadcrumb.title}</h1>
+        <div className='mb-6 -ml-2.5 text-7xl'>{lastBreadcrumb!.emoji}</div>
+        <h1 className='mb-8 text-5xl font-bold tracking-tight'>{lastBreadcrumb!.title}</h1>
 
         {children}
       </div>

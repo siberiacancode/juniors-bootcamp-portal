@@ -1,41 +1,28 @@
 'use client';
 
-import type { ComponentProps } from 'react';
+import type { ComponentProps, MouseEvent } from 'react';
 
 import { MoonIcon, SunIcon } from 'lucide-react';
 
+import type { Button } from '@/components/ui';
+
 import { useTheme } from '@/app/(contexts)/theme';
-import { Button } from '@/components/ui';
+import { IconButton } from '@/components/ui';
 
 type ThemeButtonProps = ComponentProps<typeof Button>;
 
 export const ThemeButton = (props: ThemeButtonProps) => {
   const theme = useTheme();
 
-  const onThemeClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onThemeClick = async (event: MouseEvent<HTMLButtonElement>) => {
     const x = event.clientX;
     const y = event.clientY;
-    const radius = Math.hypot(window.innerWidth, window.innerHeight);
-
-    await document.startViewTransition(() => {
-      theme.set(theme.value === 'dark' ? 'light' : 'dark');
-    }).ready;
-
-    document.documentElement.animate(
-      {
-        clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`]
-      },
-      {
-        duration: 700,
-        easing: 'ease-in-out',
-        pseudoElement: '::view-transition-new(root)'
-      }
-    );
+    theme.animate(x, y, theme.value === 'dark' ? 'light' : 'dark');
   };
 
   return (
-    <Button size='icon' variant='ghost' onClick={onThemeClick} {...props}>
+    <IconButton variant='ghost' onClick={onThemeClick} {...props}>
       {theme.value === 'dark' ? <SunIcon /> : <MoonIcon />}
-    </Button>
+    </IconButton>
   );
 };

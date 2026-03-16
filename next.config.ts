@@ -1,65 +1,83 @@
 import type { NextConfig } from 'next';
+import type { ShikiTransformer } from 'shiki';
 
 import createMDX from '@next/mdx';
 import rehypeShiki from '@shikijs/rehype';
-import rehypeSlug from 'rehype-slug';
+import remarkDirective from 'remark-directive';
 import remarkGfm from 'remark-gfm';
+import { visit } from 'unist-util-visit';
+
+import { OPTIONS_MULTIPLE_THEMES, SUPPORTED_LANGUAGES } from '@/markdown/shiki';
+
+function remarkCodeGroup() {
+  return (tree: any) => {
+    visit(tree, (node) => {
+      if (node.type === 'containerDirective' && node.name === 'code-group') {
+        node.data = {
+          hName: 'CodeGroup',
+          hProperties: {}
+        };
+      }
+    });
+  };
+}
+
+const attrsRegex = /([a-z_][\w-]*)(=(["'])(.*?)\3)?/gi;
+const attrsMatchRegex = /\{([^}]*)\}/;
+export const transformerProps: ShikiTransformer = {
+  pre(node) {
+    const rawMeta = this.options.meta?.__raw;
+    if (!rawMeta) return node;
+
+    const attrsMatch = rawMeta.match(attrsMatchRegex);
+    if (!attrsMatch) {
+      node.properties ??= {};
+      node.properties.language = this.options.lang;
+      return node;
+    }
+
+    const [attrs] = attrsMatch;
+    node.properties ??= {};
+
+    for (const match of attrs.matchAll(attrsRegex)) {
+      const key = match[1];
+      const value = match[4];
+      if (!key) continue;
+
+      node.properties[key] = value ?? true;
+    }
+
+    node.properties.language = this.options.lang;
+
+    return node;
+  }
+};
 
 const nextConfig: NextConfig = {
-  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx']
+  reactCompiler: true,
+  pageExtensions: ['jsx', 'mdx', 'tsx']
 };
 
 const withMDX = createMDX({
   options: {
     rehypePlugins: [
-      rehypeSlug,
       [
         rehypeShiki,
         {
-          themes: {
-            light: 'github-light',
-            dark: 'github-dark'
-          },
-          // ✅ important:
-          // load only required languages https://shiki.style/languages
-          // to prevent shiki initialization performance starving
-          langs: [
-            'apache',
-            '1c',
-            'c',
-            'cmake',
-            'cpp',
-            'c#',
-            'css',
-            'csv',
-            'docker',
-            'dotenv',
-            'go',
-            'graphql',
-            'groovy',
-            'html',
-            'java',
-            'javascript',
-            'json',
-            'jsx',
-            'latex',
-            'nginx',
-            'php',
-            'python',
-            'regexp',
-            'shellscript',
-            'sql',
-            'swift',
-            'tsx',
-            'typescript',
-            'xml',
-            'yaml'
-          ],
-          defaultColor: false
+          langs: SUPPORTED_LANGUAGES,
+          ...OPTIONS_MULTIPLE_THEMES,
+          transformers: [
+            transformerProps
+            // https://shiki.style/packages/transformers#transformers
+            // Transformers only applies classes and does not come with styles; you can provide your own CSS rules to style them properly.
+            // transformerNotationDiff(),
+            // transformerNotationHighlight(),
+            // transformerNotationWordHighlight()
+          ]
         }
       ]
     ],
-    remarkPlugins: [remarkGfm]
+    remarkPlugins: [remarkGfm, remarkDirective, remarkCodeGroup]
   }
 });
 

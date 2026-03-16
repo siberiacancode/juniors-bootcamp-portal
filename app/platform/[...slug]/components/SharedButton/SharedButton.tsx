@@ -3,7 +3,15 @@
 import { useCopy, useDisclosure, useMediaQuery, useShare } from '@siberiacancode/reactuse';
 import { CheckIcon, CopyIcon, ShareIcon } from 'lucide-react';
 
-import { Button, Input, Popover, PopoverContent, PopoverTrigger, Skeleton } from '@/components/ui';
+import {
+  Button,
+  IconButton,
+  Input,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  Skeleton
+} from '@/components/ui';
 
 interface SharedButtonProps {
   emoji?: string;
@@ -21,7 +29,7 @@ export const SharedButton = ({ emoji, title }: SharedButtonProps) => {
     copy(window.location.href);
   };
 
-  const onShare = () => {
+  const onShare = async () => {
     if (!isMobile) return sharePopover.toggle();
     return share.trigger({
       title,
@@ -33,14 +41,14 @@ export const SharedButton = ({ emoji, title }: SharedButtonProps) => {
   return (
     <Popover {...(!isMobile && { onOpenChange: sharePopover.toggle })} open={sharePopover.opened}>
       <PopoverTrigger asChild>
-        <Button size='icon' variant='ghost' onClick={onShare}>
-          <ShareIcon className='size-4' />
-        </Button>
+        <IconButton variant='ghost' onClick={onShare}>
+          <ShareIcon />
+        </IconButton>
       </PopoverTrigger>
 
-      <PopoverContent className='flex w-[300px] flex-col gap-1'>
+      <PopoverContent className='flex w-75 flex-col gap-1'>
         <div className='relative flex flex-col rounded-lg border border-b-0'>
-          <div className='bg-card flex items-center gap-4 rounded-lg px-3'>
+          <div className='flex items-center gap-4 rounded-lg bg-card px-3'>
             <div className='flex items-center gap-1.5'>
               <div className='size-3 rounded-full bg-red-400' />
               <div className='size-3 rounded-full bg-yellow-400' />
@@ -64,7 +72,7 @@ export const SharedButton = ({ emoji, title }: SharedButtonProps) => {
             </div>
           </div>
 
-          <div className='absolute right-0 bottom-0 left-0 h-10 rounded-b-lg bg-gradient-to-b from-transparent to-black/10' />
+          <div className='absolute inset-x-0 bottom-0 h-10 rounded-b-lg bg-linear-to-b from-transparent to-black/10' />
         </div>
 
         <div className='mt-4 flex gap-2'>

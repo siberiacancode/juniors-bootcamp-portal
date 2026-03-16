@@ -12,7 +12,7 @@ import { ApiTypesSection, AuthenticationSection, FAQSection, GoalsSection } from
 
 const TasksApiPage = () => (
   <main className='flex flex-1 flex-col'>
-    <div className='mx-auto max-w-[var(--max-width)] px-4 py-8'>
+    <div className='content-container py-8'>
       <Breadcrumb className='mb-5'>
         <BreadcrumbList>
           <BreadcrumbItem>

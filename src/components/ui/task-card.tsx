@@ -13,7 +13,7 @@ export const TaskCard = ({ title, description, emoji, className, ...props }: Tas
       <div className='text-4xl'>{emoji}</div>
       <div className='flex-1'>
         <h3 className='mb-1 text-2xl'>{title}</h3>
-        <p className='text-muted-foreground text-sm'>{description}</p>
+        <p className='text-sm text-muted-foreground'>{description}</p>
       </div>
     </div>
   </Card>
