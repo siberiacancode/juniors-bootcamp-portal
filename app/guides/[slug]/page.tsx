@@ -1,6 +1,7 @@
 import { ChevronLeftIcon, ChevronRightIcon, GithubIcon } from 'lucide-react';
 import Link from 'next/link';
 
+import { LOCALE } from '@/app/(constants)';
 import { getDictionary } from '@/app/(contexts)/intl/helpers/getDictionary';
 import { IntlText } from '@/components/intl';
 import { Button } from '@/components/ui';
@@ -10,6 +11,14 @@ import type { GuideMetadata } from '../(helpers)/getGuides';
 import { getGuides } from '../(helpers)/getGuides';
 import { ShareButtton } from './(components)/ShareButton';
 
+export interface GuidePageParams {
+  slug: string;
+}
+
+export interface GuidePageProps {
+  params: Promise<GuidePageParams>;
+}
+
 export const generateStaticParams = async () => {
   const guides = await getGuides();
 
@@ -18,14 +27,12 @@ export const generateStaticParams = async () => {
   }));
 };
 
-const locale = 'ru';
-
-export const generateMetadata = async ({ params }: PageProps<'/guides/[slug]'>) => {
+export const generateMetadata = async ({ params }: GuidePageProps) => {
   const { slug } = await params;
-  const m = await import(`../(contents)/${slug}.mdx`);
-  const metadata = m.metadata as GuideMetadata;
+  const Guide = await import(`../../../public/contents/guides/${slug}.mdx`);
+  const metadata = Guide.metadata as GuideMetadata;
 
-  const messages = await getDictionary(locale);
+  const messages = await getDictionary(LOCALE);
 
   return {
     title: `${metadata.title} | ${messages['page.guide.metadata.title']}`,
@@ -34,13 +41,13 @@ export const generateMetadata = async ({ params }: PageProps<'/guides/[slug]'>) 
   };
 };
 
-const GuidesPage = async ({ params }: PageProps<'/guides/[slug]'>) => {
+const GuidesPage = async ({ params }: GuidePageProps) => {
   const { slug } = await params;
-  const Guide = await import(`../(contents)/${slug}.mdx`);
+  const Guide = await import(`../../../public/contents/guides/${slug}.mdx`);
   const metadata = Guide.metadata as GuideMetadata;
 
   const guides = await getGuides();
-  const currentIndex = guides.findIndex((g) => g.slug === slug);
+  const currentIndex = guides.findIndex((guide) => guide.slug === slug);
   const prevGuide = currentIndex > 0 ? guides[currentIndex - 1] : null;
   const nextGuide = currentIndex < guides.length - 1 ? guides[currentIndex + 1] : null;
 

@@ -1,3 +1,4 @@
+import { LOCALE } from '@/app/(constants)';
 import { IntlText } from '@/components/intl';
 import { PixelifyIntlText } from '@/components/ui';
 
@@ -5,10 +6,8 @@ import { getDictionary } from '../(contexts)/intl/helpers/getDictionary';
 import { GuidesPageContent } from './(components)';
 import { getGuides } from './(helpers)/getGuides';
 
-const locale = 'ru';
-
 export const generateMetadata = async () => {
-  const messages = await getDictionary(locale);
+  const messages = await getDictionary(LOCALE);
 
   return {
     title: messages['page.guides.metadata.title'],

@@ -8,7 +8,7 @@ export interface GuideMetadata {
 }
 
 export const getGuides = async () => {
-  const contentDir = join(process.cwd(), 'app', 'guides', '(contents)');
+  const contentDir = join(process.cwd(), 'public', 'contents', 'guides');
   const files = await fs.promises.readdir(contentDir);
   const guides = await Promise.all(
     files
@@ -16,7 +16,7 @@ export const getGuides = async () => {
       .sort()
       .map(async (file) => {
         const slug = file.replace('.mdx', '');
-        const m = await import(`../(contents)/${slug}.mdx`);
+        const m = await import(`../../../public/contents/guides/${slug}.mdx`);
         const metadata = m.metadata as GuideMetadata;
 
         return {

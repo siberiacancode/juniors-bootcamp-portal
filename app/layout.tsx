@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 import { Nunito, Overpass_Mono, Parisienne, Pixelify_Sans } from 'next/font/google';
 
+import { LOCALE } from '@/app/(constants)';
+
 import { Footer, GoogleTagManagerScript, Header, YandexMetrikaScript } from './(components)';
 import { getDictionary } from './(contexts)/intl/helpers/getDictionary';
 import { Provider } from './provider';
@@ -29,10 +31,8 @@ const overpassMono = Overpass_Mono({
   subsets: ['latin']
 });
 
-const locale = 'ru';
-
 export const generateMetadata = async () => {
-  const messages = await getDictionary(locale);
+  const messages = await getDictionary(LOCALE);
 
   return {
     title: messages['seo.main.title']
@@ -44,7 +44,7 @@ interface RootLayoutProps {
 }
 
 const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
-  const messages = await getDictionary(locale);
+  const messages = await getDictionary(LOCALE);
 
   return (
     <html
@@ -55,7 +55,7 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
         parisienne.variable,
         overpassMono.variable
       )}
-      lang={locale}
+      lang={LOCALE}
     >
       <head>
         <link href='/metadata/favicon.ico' rel='icon' sizes='any' />
@@ -81,7 +81,7 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
           </>
         )}
 
-        <Provider intl={{ locale, messages }}>
+        <Provider intl={{ locale: LOCALE, messages }}>
           <Header />
           <div className='flex flex-1 flex-col'>{children}</div>
           <Footer />
