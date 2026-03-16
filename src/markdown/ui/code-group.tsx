@@ -18,7 +18,7 @@ import {
 import { LANGUAGE_DISPLAY_NAMES } from '@/constants';
 import { cn } from '@/lib/utils';
 
-import type { SupportedLanguage } from '../shiki';
+import type { SupportedLanguage } from '../../../shiki';
 
 interface CodeBlockGroupProps {
   children: ReactElement<typeof Fragment>[];
