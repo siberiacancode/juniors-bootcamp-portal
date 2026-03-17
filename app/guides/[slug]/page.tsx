@@ -92,7 +92,7 @@ const GuidePage = async ({ params }: GuidePageProps) => {
           )}
         </nav>
 
-        <Button asChild variant='ghost'>
+        <Button asChild className='w-full sm:w-fit' variant='ghost'>
           <Link
             href='https://github.com/siberiacancode/juniors-bootcamp-portal/issues/new'
             rel='noopener noreferrer'
