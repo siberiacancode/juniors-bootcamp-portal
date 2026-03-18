@@ -14,7 +14,7 @@ export const YandexMetrikaScript = () => (
     k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-    ym(102264524, "init", {
+    ym(108002818, "init", {
         clickmap:true,
         trackLinks:true,
         accurateTrackBounce:true,
