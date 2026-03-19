@@ -14,7 +14,7 @@ const Card = ({
   return (
     <Comp
       className={cn(
-        `flex flex-col rounded-2xl border-2 border-foreground bg-card py-6 text-card-foreground`,
+        `flex flex-col rounded-24 border-2 border-foreground py-6 text-foreground`,
         className
       )}
       data-slot='card'
@@ -45,7 +45,7 @@ const CardTitle = ({ className, ...props }: React.ComponentProps<'div'>) => {
 const CardDescription = ({ className, ...props }: React.ComponentProps<'div'>) => {
   return (
     <div
-      className={cn('text-sm text-muted-foreground', className)}
+      className={cn('text-sm text-muted-fg', className)}
       data-slot='card-description'
       {...props}
     />

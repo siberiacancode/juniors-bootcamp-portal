@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useIntl } from 'react-intl';
 
 import { useTheme } from '@/app/(contexts)/theme';
+import { TelegramIcon } from '@/components/icons';
 import { IntlText } from '@/components/intl';
 import {
   Button,
@@ -16,6 +17,7 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
+  navigationMenuTriggerStyle,
   Separator,
   Sheet,
   SheetClose,
@@ -66,11 +68,11 @@ export const Header = () => {
           <NavigationMenuList>
             {NAVIGATION.map((navigation) => (
               <NavigationMenuItem key={navigation.href}>
-                <Button asChild variant='ghost'>
-                  <NavigationMenuLink href={navigation.href}>
+                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                  <Link href={navigation.href}>
                     <IntlText path={navigation.label} />
-                  </NavigationMenuLink>
-                </Button>
+                  </Link>
+                </NavigationMenuLink>
               </NavigationMenuItem>
             ))}
           </NavigationMenuList>
@@ -92,17 +94,17 @@ export const Header = () => {
           </div>
 
           <div className='flex items-center gap-2'>
-            {/* <Button data-icon='inline-end'>
-              <IntlText path='button.login-via' />
+            <Button disabled data-icon='inline-end'>
+              <IntlText path='button.loginVia' />
               <TelegramIcon />
-            </Button> */}
+            </Button>
             <Sheet>
               <SheetTrigger asChild>
-                <IconButton className='rounded-full sm:hidden'>
+                <IconButton rounded className='sm:hidden'>
                   <MenuIcon className='size-4' />
                 </IconButton>
               </SheetTrigger>
-              <SheetContent className='w-full' showCloseButton={false}>
+              <SheetContent showCloseButton={false}>
                 <SheetHeader className='mt-3 flex h-10 flex-row items-center justify-between'>
                   <SheetTitle className='sr-only'>
                     <IntlText path='navigationMenu.title' />

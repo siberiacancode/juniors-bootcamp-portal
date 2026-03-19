@@ -23,11 +23,11 @@ const Iframe = ({ className, title, url, type, ...props }: IframeProps) => {
 
       {isLoading && (
         <div className='absolute inset-0'>
-          <Skeleton className='h-150 w-full rounded-lg' />
+          <Skeleton className='h-150 w-full rounded-20' />
         </div>
       )}
       <iframe
-        className='h-150 w-full rounded-lg border border-border bg-background'
+        className='h-150 w-full rounded-20 border border-border bg-background'
         src={url}
         title={title}
         onLoad={() => setIsLoading(false)}

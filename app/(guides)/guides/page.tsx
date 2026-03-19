@@ -1,10 +1,10 @@
 import { LOCALE } from '@/app/(constants)';
+import { getDictionary } from '@/app/(contexts)/intl/helpers/getDictionary';
+import { getGuides } from '@/app/(guides)/_helpers/getGuides';
 import { IntlText } from '@/components/intl';
 import { PixelifyIntlText } from '@/components/ui';
 
-import { getDictionary } from '../(contexts)/intl/helpers/getDictionary';
-import { GuidesPageContent } from './(components)';
-import { getGuides } from './(helpers)/getGuides';
+import { GuidesPageContent } from './_components';
 
 export const generateMetadata = async () => {
   const messages = await getDictionary(LOCALE);

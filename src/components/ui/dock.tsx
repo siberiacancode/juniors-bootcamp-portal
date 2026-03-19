@@ -67,7 +67,7 @@ const DockIcon = ({
       ref={ref}
       className={cn(
         `flex aspect-square cursor-pointer items-center justify-center rounded-full`,
-        disableMagnification && `transition-colors hover:bg-muted-foreground`,
+        disableMagnification && `transition-colors hover:bg-muted-fg`,
         className
       )}
       style={{ width: scaleSize, height: scaleSize, padding }}
@@ -91,7 +91,7 @@ export interface DockProps extends VariantProps<typeof dockVariants> {
 }
 
 const dockVariants = cva(
-  `mx-auto mt-8 flex h-[58px] w-max items-center justify-center gap-2 rounded-2xl border p-2 backdrop-blur-md supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10`
+  `mx-auto mt-8 flex h-[58px] w-max items-center justify-center gap-2 rounded-24 border p-2 backdrop-blur-md supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10`
 );
 
 const Dock = ({

@@ -155,8 +155,8 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
             <Link key={guide.slug} href={`/guides/${guide.slug}`} style={{ order: index }}>
               <Card
                 className={cn(
-                  'h-70 gap-2 transition hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-foreground)]',
-                  isNeedfulGuide ? 'hover:border-accent' : 'hover:border-secondary'
+                  'h-70 gap-2 transition hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-border)]',
+                  isNeedfulGuide ? 'hover:border-accent-primary' : 'hover:border-action-primary'
                 )}
               >
                 <CardHeader>
@@ -164,8 +164,8 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
                     className={cn(
                       'font-pixelify-sans text-4xl',
                       isNeedfulGuide
-                        ? 'text-shadow-[2px_1px_0_var(--color-accent)]'
-                        : 'text-shadow-[2px_1px_0_var(--color-secondary)]'
+                        ? 'drop-shadow-[2px_1px_0_var(--color-accent-primary)]'
+                        : 'drop-shadow-[2px_1px_0_var(--color-action-primary)]'
                     )}
                   >
                     {guide.number}

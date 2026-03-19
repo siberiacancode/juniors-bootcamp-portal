@@ -47,14 +47,14 @@ export const SharedButton = ({ emoji, title }: SharedButtonProps) => {
       </PopoverTrigger>
 
       <PopoverContent className='flex w-75 flex-col gap-1'>
-        <div className='relative flex flex-col rounded-lg border border-b-0'>
-          <div className='flex items-center gap-4 rounded-lg bg-card px-3'>
+        <div className='relative flex flex-col rounded-20 border border-b-0'>
+          <div className='flex items-center gap-4 rounded-20 bg-background px-3'>
             <div className='flex items-center gap-1.5'>
               <div className='size-3 rounded-full bg-red-400' />
               <div className='size-3 rounded-full bg-yellow-400' />
               <div className='size-3 rounded-full bg-green-400' />
             </div>
-            <div className='flex flex-1 items-center gap-2 rounded-md px-3 py-1'>
+            <div className='flex flex-1 items-center gap-2 rounded-16 px-3 py-1'>
               {emoji && <div className='text-gray-400'>{emoji}</div>}
               <div className='text-sm text-ellipsis whitespace-nowrap'>{title}</div>
             </div>
@@ -72,7 +72,7 @@ export const SharedButton = ({ emoji, title }: SharedButtonProps) => {
             </div>
           </div>
 
-          <div className='absolute inset-x-0 bottom-0 h-10 rounded-b-lg bg-linear-to-b from-transparent to-black/10' />
+          <div className='absolute inset-x-0 bottom-0 h-10 rounded-b-20 bg-linear-to-b from-transparent to-black/10' />
         </div>
 
         <div className='mt-4 flex gap-2'>

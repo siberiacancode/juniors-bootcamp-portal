@@ -21,24 +21,25 @@ import { cn } from '@/lib/utils';
 import type { SupportedLanguage } from '../shiki';
 
 interface CodeBlockGroupProps {
-  children: ReactElement<typeof Fragment>[];
+  children: ReactElement<typeof Fragment> | ReactElement<typeof Fragment>[];
 }
 
 interface BlockProps {
   children?: ReactNode;
-  className?: string | undefined | undefined;
-  fileName?: string | undefined;
+  className?: string;
+  fileName?: string;
   language: SupportedLanguage;
-  style?: CSSProperties | undefined;
-  tabIndex?: number | undefined | undefined;
+  style?: CSSProperties;
+  tabIndex?: number;
 }
 
 export const CodeGroup = ({ children }: CodeBlockGroupProps) => {
+  if ('type' in children) throw new Error('Must be an array of elements');
+
   const blocks = children.map((element, index) => {
     const props = element.props as unknown as BlockProps;
     if (!isValidElement(props.children)) throw new Error('Invalid child element');
-    const key = props.fileName ?? `${props.language}-${index}`;
-
+    const key = `${props.language}-${index}`;
     return {
       key,
       ...props
@@ -60,9 +61,9 @@ export const CodeGroup = ({ children }: CodeBlockGroupProps) => {
   )!;
 
   return (
-    <figure className='mb-4 rounded-xl border-2 border-foreground'>
-      <div className='flex h-16 items-center border-b-2 border-foreground px-6'>
-        {fileName && <span className='text-sm text-muted-foreground'>{fileName}</span>}
+    <figure className='mb-4 rounded-20 border-2 border-border'>
+      <div className='flex h-16 items-center rounded-t-20 border-b-2 border-border px-6'>
+        {fileName && <span className='text-sm text-muted-fg'>{fileName}</span>}
         <div className='ml-auto flex items-center gap-2'>
           <Select
             value={currentLanguage}
@@ -81,12 +82,7 @@ export const CodeGroup = ({ children }: CodeBlockGroupProps) => {
               </SelectGroup>
             </SelectContent>
           </Select>
-          <IconButton
-            className='text-muted-foreground'
-            size='sm'
-            variant='ghost'
-            onClick={onCopyClick}
-          >
+          <IconButton className='text-muted-fg' size='sm' variant='ghost' onClick={onCopyClick}>
             {copied ? <CheckIcon /> : <CopyIcon />}
           </IconButton>
         </div>
@@ -95,7 +91,7 @@ export const CodeGroup = ({ children }: CodeBlockGroupProps) => {
         key={key}
         ref={preRef}
         className={cn(
-          'overflow-x-auto rounded-b-xl bg-muted p-6 text-base [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+          'overflow-x-auto rounded-b-20 p-6 text-base [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
           className
         )}
         {...props}

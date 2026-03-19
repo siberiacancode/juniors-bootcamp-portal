@@ -28,7 +28,7 @@ export const CodeBlock = ({ children, fileName, className, ...props }: CodeBlock
     return (
       <pre
         className={cn(
-          'mb-4 overflow-x-auto rounded-xl border-2 border-foreground bg-muted! p-6 text-base [scrollbar-width:none] dark:border-muted [&::-webkit-scrollbar]:hidden',
+          'mb-4 overflow-x-auto rounded-20 border-2 border-border p-6 text-base [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
           className
         )}
         {...props}
@@ -39,11 +39,11 @@ export const CodeBlock = ({ children, fileName, className, ...props }: CodeBlock
   }
 
   return (
-    <figure className='mb-4 rounded-xl border-2 border-foreground dark:border-muted'>
-      <div className='flex h-16 items-center border-b-2 border-foreground px-6'>
-        <span className='text-sm text-muted-foreground'>{fileName}</span>
+    <figure className='mb-4 rounded-20 border-2 border-border'>
+      <div className='flex h-16 items-center border-b-2 border-border'>
+        <span className='text-sm text-muted-fg'>{fileName}</span>
         <IconButton
-          className={cn('ml-auto text-muted-foreground', className)}
+          className={cn('ml-auto text-muted-fg', className)}
           size='sm'
           variant='ghost'
           onClick={onCopyClick}
@@ -55,7 +55,7 @@ export const CodeBlock = ({ children, fileName, className, ...props }: CodeBlock
       <pre
         ref={preRef}
         className={cn(
-          'overflow-x-auto rounded-b-xl p-6 text-base [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+          'overflow-x-auto rounded-b-20 p-6 text-base [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
           className
         )}
       >

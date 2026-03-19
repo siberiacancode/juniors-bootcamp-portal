@@ -6,56 +6,79 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Base */
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
 
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
+  /* Primary */
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-fg: var(--color-primary-fg);
 
-  --color-surface: var(--surface);
-  --color-surface-foreground: var(--surface-foreground);
+  /* Ghost */
+  --color-ghost-hover: var(--color-ghost-hover);
+  --color-ghost-fg: var(--color-ghost-fg);
 
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
+  /* Secondary */
+  --color-secondary: var(--color-secondary);
+  --color-secondary-hover: var(--color-secondary-hover);
+  --color-secondary-fg: var(--color-secondary-fg);
 
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
+  /* Muted */
+  --color-muted: var(--color-muted);
+  --color-muted-fg: var(--color-muted-fg);
 
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
+  /* Surface */
+  --color-surface: var(--color-surface);
+  --color-surface-fg: var(--color-surface-fg);
 
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
+  /* Borders & UI */
+  --color-border: var(--color-border);
+  --color-border-secondary: var(--color-border-secondary);
+  --color-outline: var(--color-outline);
+  --color-input: var(--color-input);
+  --color-ring: var(--color-ring);
 
+  /* Accent */
+  --color-accent-primary: var(--color-accent-primary);
+  --color-accent-primary-hover: var(--color-accent-primary-hover);
+  --color-accent-primary-fg: var(--color-accent-primary-fg);
+
+  --color-accent-secondary: var(--color-accent-secondary);
+  --color-accent-secondary-hover: var(--color-accent-secondary-hover);
+  --color-accent-secondary-fg: var(--color-accent-secondary-fg);
+
+  --color-accent-tertiary: var(--color-accent-tertiary);
+  --color-accent-tertiary-hover: var(--color-accent-tertiary-hover);
+  --color-accent-tertiary-fg: var(--color-accent-tertiary-fg);
+
+  --color-accent-quaternary: var(--color-accent-quaternary);
+  --color-accent-quaternary-hover: var(--color-accent-quaternary-hover);
+  --color-accent-quaternary-fg: var(--color-accent-quaternary-fg);
+
+  /* Action */
+  --color-action-primary: var(--color-action-primary);
+  --color-action-primary-hover: var(--color-action-primary-hover);
+  --color-action-primary-fg: var(--color-action-primary-fg);
+
+  /* Status */
   --color-danger: var(--danger);
 
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
+  --shadow-*: initial;
+  --text-shadow-*: initial;
 
-  --radius-sm: calc(var(--radius) - 8px);
-  --radius-md: calc(var(--radius) - 4px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 16px);
-  --radius-4xl: calc(var(--radius) + 24px);
-
-  --animate-shiny-text: shiny-text 8s infinite;
-
-  @keyframes shiny-text {
-    0%,
-    90%,
-    100% {
-      background-position: calc(-100% - var(--shiny-width)) 0;
-    }
-    30%,
-    60% {
-      background-position: calc(100% + var(--shiny-width)) 0;
-    }
-  }
+  --radius-*: initial;
+  --radius-2: 0.125rem;
+  --radius-4: 0.25rem;
+  --radius-6: 0.375rem;
+  --radius-8: 0.5rem;
+  --radius-10: 0.625rem;
+  --radius-12: 0.75rem;
+  --radius-14: 0.875rem;
+  --radius-16: 1rem;
+  --radius-20: 1.25rem;
+  --radius-24: 1.5rem;
+  --radius-full: calc(infinity * 1px);
 
   --font-nunito: var(--nunito);
   --font-parisienne: var(--parisienne);
@@ -63,37 +86,63 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  /* Base */
+  --color-background: var(--color-neutral-50);
+  --color-foreground: var(--color-neutral-900);
 
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  /* Primary */
+  --color-primary: var(--color-neutral-900);
+  --color-primary-hover: var(--color-neutral-800);
+  --color-primary-fg: var(--color-neutral-50);
 
-  --surface: oklch(0.97 0 0);
-  --surface-foreground: oklch(0.205 0 0);
+  /* Ghost */
+  --color-ghost-hover: var(--color-neutral-100);
+  --color-ghost-fg: var(--color-neutral-900);
 
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
+  /* Secondary */
+  --color-secondary: var(--color-neutral-100);
+  --color-secondary-hover: var(--color-neutral-200);
+  --color-secondary-fg: var(--color-neutral-700);
 
-  --secondary: rgba(139, 92, 246, 1);
-  --secondary-foreground: oklch(1 0 0);
+  /* Muted */
+  --color-muted: var(--color-neutral-200);
+  --color-muted-fg: var(--color-neutral-600);
 
-  --accent: rgba(255, 221, 0, 1);
-  --accent-foreground: oklch(0.145 0 0);
+  /* Surface */
+  --color-surface: var(--color-neutral-700);
+  --color-surface-fg: var(--color-neutral-100);
 
-  --danger: oklch(0.577 0.245 27.325);
+  /* Borders & UI */
+  --color-border: var(--color-neutral-900);
+  --color-border-secondary: var(--color-neutral-300);
+  --color-outline: var(--color-neutral-100);
+  --color-input: var(--color-neutral-600);
+  --color-ring: var(--color-neutral-700);
 
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  /* Accent */
+  --color-accent-primary: var(--color-yellow-300);
+  --color-accent-primary-hover: var(--color-yellow-400);
+  --color-accent-primary-fg: var(--color-neutral-900);
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --color-accent-secondary: var(--color-violet-500);
+  --color-accent-secondary-hover: var(--color-violet-600);
+  --color-accent-secondary-fg: var(--color-neutral-50);
 
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
+  --color-accent-tertiary: var(--color-orange-600);
+  --color-accent-tertiary-hover: var(--color-orange-700);
+  --color-accent-tertiary-fg: var(--color-neutral-50);
 
-  --radius: 1rem;
+  --color-accent-quaternary: var(--color-pink-600);
+  --color-accent-quaternary-hover: var(--color-pink-700);
+  --color-accent-quaternary-fg: var(--color-neutral-50);
+
+  /* Action */
+  --color-action-primary: var(--color-primary);
+  --color-action-primary-hover: var(--color-primary-hover);
+  --color-action-primary-fg: var(--color-primary-fg);
+
+  /* Status */
+  --color-danger: var(--color-red-500);
 
   --default-font-family: var(--nunito);
   --default-mono-font-family: var(--overpass-mono);
@@ -101,35 +150,58 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
+  /* Base - инверсия фона и текста */
+  --color-background: var(--color-neutral-900);
+  --color-foreground: var(--color-neutral-50);
 
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
+  /* Primary - светлая кнопка на тёмном фоне */
+  --color-primary: var(--color-neutral-100);
+  --color-primary-hover: var(--color-neutral-200);
+  --color-primary-fg: var(--color-neutral-900);
 
-  --surface: oklch(0.371 0 0);
-  --surface-foreground: oklch(0.985 0 0);
+  /* Ghost */
+  --color-ghost-hover: var(--color-neutral-800);
+  --color-ghost-fg: var(--color-neutral-100);
 
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+  /* Secondary */
+  --color-secondary: var(--color-neutral-800);
+  --color-secondary-hover: var(--color-neutral-700);
+  --color-secondary-fg: var(--color-neutral-200);
 
-  --secondary: rgba(139, 92, 246, 1);
-  --secondary-foreground: oklch(1 0 0);
+  /* Muted */
+  --color-muted: var(--color-neutral-700);
+  --color-muted-fg: var(--color-neutral-300);
 
-  --accent: rgba(255, 221, 0, 1);
-  --accent-foreground: oklch(0.145 0 0);
+  /* Surface - более светлая поверхность */
+  --color-surface: var(--color-neutral-800);
+  --color-surface-fg: var(--color-neutral-200);
 
-  --destructive: oklch(0.704 0.191 22.216);
+  /* Borders & UI - более мягкие границы */
+  --color-border: var(--color-neutral-300);
+  --color-border-secondary: var(--color-neutral-700);
+  --color-outline: var(--color-neutral-800);
+  --color-input: var(--color-neutral-500);
+  --color-ring: var(--color-neutral-400);
 
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  /* Accent - чуть светлее для контраста на тёмном */
+  --color-accent-primary: var(--color-yellow-400);
+  --color-accent-primary-hover: var(--color-yellow-500);
+  --color-accent-primary-fg: var(--color-neutral-900);
 
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
+  --color-accent-secondary: var(--color-violet-400);
+  --color-accent-secondary-hover: var(--color-violet-500);
+  --color-accent-secondary-fg: var(--color-neutral-50);
 
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
+  --color-accent-tertiary: var(--color-orange-500);
+  --color-accent-tertiary-hover: var(--color-orange-600);
+  --color-accent-tertiary-fg: var(--color-neutral-50);
+
+  --color-accent-quaternary: var(--color-pink-500);
+  --color-accent-quaternary-hover: var(--color-pink-600);
+  --color-accent-quaternary-fg: var(--color-neutral-50);
+
+  /* Status - ярче для видимости */
+  --color-danger: var(--color-red-400);
 }
 
 @layer base {
@@ -160,19 +232,17 @@
 }
 
 pre.shiki {
-  --shiki-light-bg: #f6f6f7 !important;
-
   background-color: var(--shiki-light-bg);
+
+  span {
+    color: var(--shiki-light);
+  }
 }
 
 .dark pre.shiki {
   background-color: var(--shiki-dark-bg);
-}
 
-pre.shiki span {
-  color: var(--shiki-light);
-}
-
-.dark pre.shiki span {
-  color: var(--shiki-dark);
+  span {
+    color: var(--shiki-dark);
+  }
 }

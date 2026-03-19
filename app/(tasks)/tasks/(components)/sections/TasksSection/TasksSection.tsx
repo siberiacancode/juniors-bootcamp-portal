@@ -98,7 +98,7 @@ export const TasksSection = () => (
         className='group block'
         href={card.href}
       >
-        <div className='relative flex flex-col overflow-hidden rounded-2xl border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:filter-[drop-shadow(8px_8px_0px_var(--task-shadow))]'>
+        <div className='relative flex flex-col overflow-hidden rounded-24 border bg-background p-6 transition-all duration-300 hover:-translate-y-1 hover:filter-[drop-shadow(8px_8px_0px_var(--task-shadow))]'>
           <div className='pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
             {createPixelCluster(card.slug, index).map((pixel) => (
               <span
@@ -117,12 +117,12 @@ export const TasksSection = () => (
           </div>
           <div className='flex items-center justify-between'>
             <div
-              className='flex size-18 items-center justify-center rounded-2xl font-pixelify-sans text-3xl transition-all duration-300'
+              className='flex size-18 items-center justify-center rounded-24 font-pixelify-sans text-3xl transition-all duration-300'
               style={{ backgroundColor: card.colors.iconBg, color: card.colors.icon }}
             >
               <card.icon className='size-14' />
             </div>
-            <span className='font-pixelify-sans text-6xl text-muted-foreground/60 transition-all duration-300 group-hover:text-foreground'>
+            <span className='font-pixelify-sans text-6xl text-muted-fg/60 transition-all duration-300 group-hover:text-foreground'>
               {String(index + 1).padStart(2, '0')}
             </span>
           </div>
@@ -131,7 +131,7 @@ export const TasksSection = () => (
             <h3 className='font-pixelify-sans text-6xl/tight font-bold transition-[text-shadow] group-hover:[text-shadow:4px_4px_0px_var(--task-shadow)]'>
               <IntlText path={card.title as MessagePath} />
             </h3>
-            <p className='mt-3 text-base/relaxed text-muted-foreground'>
+            <p className='mt-3 text-base/relaxed text-muted-fg'>
               <IntlText path={card.description as MessagePath} />
             </p>
           </div>

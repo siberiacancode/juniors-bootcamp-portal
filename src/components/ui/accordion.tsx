@@ -18,7 +18,7 @@ const AccordionItem = ({
 }: React.ComponentProps<typeof AccordionPrimitive.Item>) => {
   return (
     <AccordionPrimitive.Item
-      className={cn('rounded-2xl border-2 border-foreground p-4', className)}
+      className={cn('rounded-24 border-2 border-foreground p-4', className)}
       data-slot='accordion-item'
       {...props}
     />

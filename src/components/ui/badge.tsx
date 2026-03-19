@@ -11,10 +11,9 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        outline: `border-border text-foreground`,
-        primary: `bg-primary text-primary-foreground`,
-        accent: `bg-accent text-accent-foreground`,
-        danger: `bg-danger text-white focus-visible:ring-danger/20 dark:bg-danger/60 dark:focus-visible:ring-danger/40`
+        outline: `border border-border-secondary`,
+        accent: `bg-accent-primary text-accent-primary-fg`,
+        primary: `bg-primary text-primary-fg`
       }
     },
     defaultVariants: {

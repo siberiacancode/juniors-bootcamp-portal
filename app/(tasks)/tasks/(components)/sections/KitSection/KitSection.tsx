@@ -22,7 +22,7 @@ export const KitSection = () => (
         <Badge
           asChild
           key={item.key}
-          className='flex items-center gap-2 bg-card text-base'
+          className='flex items-center gap-2 bg-background text-base'
           variant='outline'
         >
           <Link href={item.href}>

@@ -3,13 +3,12 @@ import Link from 'next/link';
 
 import { LOCALE } from '@/app/(constants)';
 import { getDictionary } from '@/app/(contexts)/intl/helpers/getDictionary';
+import { getGuides } from '@/app/(guides)/_helpers/getGuides';
 import { IntlText } from '@/components/intl';
 import { Button } from '@/components/ui';
 
-import type { GuideMetadata } from '../(helpers)/getGuides';
-
-import { getGuides } from '../(helpers)/getGuides';
-import { ShareButtton } from './(components)/ShareButton';
+import { getGuideModule } from '../../_helpers';
+import { ShareButtton } from './_components';
 
 export interface GuidePageParams {
   slug: string;
@@ -29,9 +28,7 @@ export const generateStaticParams = async () => {
 
 export const generateMetadata = async ({ params }: GuidePageProps) => {
   const { slug } = await params;
-  const Guide = await import(`../../../public/contents/guides/${slug}.mdx`);
-  const metadata = Guide.metadata as GuideMetadata;
-
+  const { metadata } = await getGuideModule(slug);
   const messages = await getDictionary(LOCALE);
 
   return {
@@ -43,8 +40,8 @@ export const generateMetadata = async ({ params }: GuidePageProps) => {
 
 const GuidePage = async ({ params }: GuidePageProps) => {
   const { slug } = await params;
-  const Guide = await import(`../../../public/contents/guides/${slug}.mdx`);
-  const metadata = Guide.metadata as GuideMetadata;
+  const GuideModule = await getGuideModule(slug);
+  const metadata = GuideModule.metadata;
 
   const guides = await getGuides();
   const currentIndex = guides.findIndex((guide) => guide.slug === slug);
@@ -69,7 +66,7 @@ const GuidePage = async ({ params }: GuidePageProps) => {
       </section>
 
       <section>
-        <Guide.default />
+        <GuideModule.default />
       </section>
 
       <section className='flex flex-col items-start gap-6'>

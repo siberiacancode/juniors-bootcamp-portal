@@ -89,5 +89,7 @@
 
   "link.editOnGitHub": "Редактировать на GitHub",
   "link.otpCodes": "ОТП коды",
-  "link.contact": "Связаться"
+  "link.contact": "Связаться",
+
+  "translation.notFound": "Перевод не найден"
 }
