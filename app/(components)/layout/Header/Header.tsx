@@ -10,12 +10,8 @@ import { useIntl } from 'react-intl';
 import { useTheme } from '@/app/(contexts)/theme';
 import { IntlText } from '@/components/intl';
 import {
+  Button,
   IconButton,
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
   Separator,
   Sheet,
   SheetClose,
@@ -32,7 +28,7 @@ const ThemeButton = dynamic(
   {
     ssr: false,
     loading: () => (
-      <IconButton variant='ghost'>
+      <IconButton rounded variant='ghost'>
         <Loader2Icon className='animate-spin' />
       </IconButton>
     )
@@ -62,23 +58,19 @@ export const Header = () => {
           jb
         </Link>
 
-        <NavigationMenu className='hidden sm:flex'>
-          <NavigationMenuList>
-            {NAVIGATION.map((navigation) => (
-              <NavigationMenuItem key={navigation.href}>
-                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                  <Link href={navigation.href}>
-                    <IntlText path={navigation.label} />
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
+        <div className='hidden sm:flex'>
+          {NAVIGATION.map((navigation) => (
+            <Button asChild key={navigation.href} variant='ghost'>
+              <Link href={navigation.href}>
+                <IntlText path={navigation.label} />
+              </Link>
+            </Button>
+          ))}
+        </div>
 
         <div className='flex items-center gap-6'>
           <div className='hidden items-center gap-2 sm:flex'>
-            <IconButton asChild variant='ghost'>
+            <IconButton asChild rounded variant='ghost'>
               <Link
                 href='https://github.com/siberiacancode'
                 rel='noopener noreferrer'

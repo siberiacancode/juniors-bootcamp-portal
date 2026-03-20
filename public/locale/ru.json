@@ -84,12 +84,15 @@
   "button.copy": "Скопировать",
   "button.share": "Поделиться",
   "button.loginVia": "Войти через",
+  "button.accept": "Принять",
 
   "faq.title": "Частые вопросы",
 
   "link.editOnGitHub": "Редактировать на GitHub",
   "link.otpCodes": "ОТП коды",
   "link.contact": "Связаться",
+
+  "cookieConsent.description": "Мы используем файлы cookies 🍪 — это улучшает работу сайта и делает его более эффективным. Продолжая использовать этот сайт, вы соглашаетесь с нашей <link>политикой обработки данных</link>.",
 
   "translation.notFound": "Перевод не найден"
 }

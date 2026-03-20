@@ -9,7 +9,7 @@ type PixelifyIntlTextProps = Omit<ComponentProps<typeof IntlText>, 'values'>;
 export const PixelifyIntlText = (props: PixelifyIntlTextProps) => (
   <IntlText
     values={{
-      pixelify: (chunks: React.ReactNode) => (
+      pixelify: (chunks) => (
         <span className='font-pixelify-sans text-[1.141em] font-medium'>{chunks}</span>
       )
     }}

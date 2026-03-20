@@ -30,6 +30,7 @@ import {
   ScrollBar
 } from '@/components/ui';
 import { cn } from '@/lib/utils';
+import { yandexMetrika } from '@/lib/yandex-metrika';
 
 interface Guide {
   description: string;
@@ -51,19 +52,40 @@ const guidesQueryParams = {
 
 export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) => {
   const intl = useIntl();
-
   const [queryParams, setQueryParams] = useQueryStates(guidesQueryParams);
 
   const [searchValue, setSearchValue] = useState(queryParams.search);
 
-  const debouncedSetSearchParam = useDebounceCallback(
-    (search: string) => setQueryParams({ search }),
-    300
-  );
+  const debouncedSetSearchParam = useDebounceCallback((search: string) => {
+    setQueryParams({ search });
+    yandexMetrika({
+      eventName: 'reachGoal',
+      target: 'guide_search_input',
+      params: { search }
+    });
+  }, 300);
 
   const onSearchChange = (search: string) => {
     debouncedSetSearchParam(search);
     setSearchValue(search);
+  };
+
+  const onChipClick = (tags: string[]) => {
+    setQueryParams({ tags });
+
+    const tag = tags.find((tag) => !queryParams.tags.includes(tag))!;
+    if (!tag) return;
+    yandexMetrika({
+      eventName: 'reachGoal',
+      target: 'guide_badge_click',
+      params: { tag }
+    });
+  };
+
+  const onClearAllChipClick = () => setQueryParams({ tags: [] });
+  const onClearSearchClick = () => {
+    setSearchValue('');
+    setQueryParams({ search: '' });
   };
 
   const filteredGuides = guides.filter((guide) => {
@@ -91,7 +113,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
           />
           {!!searchValue && (
             <InputGroupAddon align='end'>
-              <InputGroupIconButton onClick={() => onSearchChange('')}>
+              <InputGroupIconButton onClick={onClearSearchClick}>
                 <XIcon />
               </InputGroupIconButton>
             </InputGroupAddon>
@@ -103,7 +125,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
             className='sm:flex-wrap'
             type='multiple'
             value={queryParams.tags}
-            onValueChange={(tags) => setQueryParams({ tags })}
+            onValueChange={onChipClick}
           >
             {labels.map((filter) => {
               const isNeedful = filter === 'needful';
@@ -123,7 +145,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
                 pressed
                 key='clear-all-chip'
                 className='order-first sm:order-last'
-                onClick={() => setQueryParams({ tags: [] })}
+                onClick={onClearAllChipClick}
               >
                 <IntlText path='page.guides.chip.clearAll' />
               </Chip>
@@ -149,13 +171,17 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
         {filteredGuides.map((guide, index) => {
           const isNeedfulGuide = guide.labels.includes('needful');
           return (
-            <Link key={guide.slug} href={`/guides/${guide.slug}`} style={{ order: index }}>
-              <Card
-                className={cn(
-                  'h-70 gap-2 transition hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-border-hard)]',
-                  isNeedfulGuide ? 'hover:border-accent-primary' : 'hover:border-action-primary'
-                )}
-              >
+            <Card
+              asChild
+              key={guide.slug}
+              className={cn(
+                'h-70 gap-2 transition hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-border-hard)] focus:-translate-0.5 focus:shadow-[6px_6px_0_0_var(--color-border-hard)] focus:outline-none',
+                isNeedfulGuide
+                  ? 'hover:border-accent-primary focus:border-accent-primary'
+                  : 'hover:border-action-primary focus:border-action-primary'
+              )}
+            >
+              <Link href={`/guides/${guide.slug}`} style={{ order: index }}>
                 <CardHeader>
                   <span
                     className={cn(
@@ -183,20 +209,23 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
                     );
                   })}
                 </CardFooter>
-              </Card>
-            </Link>
+              </Link>
+            </Card>
           );
         })}
 
         {!!filteredGuides.length && (
-          <Link
-            key='00-siberiacancode-skills'
-            href='https://skills.sh/siberiacancode/agent-skills'
-            rel='noopener noreferrer'
-            style={{ order: skillsCardOrder }}
-            target='_blank'
+          <Card
+            asChild
+            className='h-70 gap-2 transition hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-foreground)] focus:-translate-0.5 focus:shadow-[6px_6px_0_0_var(--color-foreground)]'
           >
-            <Card className='h-70 gap-2 transition hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-foreground)]'>
+            <Link
+              key='00-siberiacancode-skills'
+              href='https://skills.sh/siberiacancode/agent-skills'
+              rel='noopener noreferrer'
+              style={{ order: skillsCardOrder }}
+              target='_blank'
+            >
               <CardHeader>
                 <span className='inline-flex h-10 items-center justify-between'>
                   <VercelIcon />
@@ -214,8 +243,8 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
               <CardFooter className='mt-auto'>
                 <Badge variant='primary'>ai</Badge>
               </CardFooter>
-            </Card>
-          </Link>
+            </Link>
+          </Card>
         )}
       </div>
     </section>

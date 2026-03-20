@@ -19,7 +19,9 @@ export const dynamic = 'force-dynamic';
 
 const GuidesPage = async () => {
   const guides = await getGuides();
-  const labels = [...new Set(guides.flatMap((guide) => guide.labels))];
+  const labels = [
+    ...new Set(guides.flatMap((guide) => guide.labels).sort((a) => (a === 'needful' ? -1 : 1)))
+  ];
 
   return (
     <main className='content-container mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>

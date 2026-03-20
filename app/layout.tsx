@@ -4,6 +4,7 @@ import { Nunito, Overpass_Mono, Parisienne, Pixelify_Sans } from 'next/font/goog
 import { LOCALE } from '@/app/(constants)';
 
 import {
+  CookieConsent,
   Footer,
   GoogleTagManagerScript,
   Header,
@@ -84,6 +85,8 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
           <Header />
           <div className='flex flex-1 flex-col'>{children}</div>
           <Footer />
+
+          <CookieConsent />
         </Provider>
       </body>
     </html>

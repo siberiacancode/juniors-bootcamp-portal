@@ -17,16 +17,12 @@ const InputGroup = ({ className, ...props }: React.ComponentProps<'div'>) => {
         'group/input-group relative flex w-full items-center rounded-full border border-input transition-[color,box-shadow] outline-none dark:bg-input/30',
         'h-13 min-w-0',
 
-        // Variants based on alignment.
         'has-[>[data-align=start]]:[&>input]:pl-2',
         'has-[>[data-align=end]]:[&>input]:pr-2',
 
-        // Focus state.
         'has-[[data-slot=input-group-control]:focus-visible]:border-border-soft has-[[data-slot=input-group-control]:focus-visible]:ring-[3px] has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50',
 
-        // Error state.
         'has-[[data-slot][aria-invalid=true]]:border-danger has-[[data-slot][aria-invalid=true]]:ring-danger/20 dark:has-[[data-slot][aria-invalid=true]]:ring-danger/40',
-
         className
       )}
       data-slot='input-group'

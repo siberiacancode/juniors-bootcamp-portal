@@ -1927,6 +1927,11 @@
   dependencies:
     screenfull "^6.0.2"
 
+"@siberiacancode/yandex-metrika@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@siberiacancode/yandex-metrika/-/yandex-metrika-1.0.1.tgz#9c8351da9a86bc99818e64324560f0179c41ddfd"
+  integrity sha512-hTxJqiX2EpOE7k+/SjvElYRWtM4YnaazEU4hst6k9YgwycM6uJY3pqaPpUJC2AzTRTB3HBezGWfFL3E1+7W15Q==
+
 "@sindresorhus/base62@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/base62/-/base62-1.0.0.tgz#c47c42410e5212e4fa4657670e118ddfba39acd6"

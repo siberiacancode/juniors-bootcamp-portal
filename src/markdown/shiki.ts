@@ -68,10 +68,10 @@ export const REHYPE_SHIKI_OPTIONS: RehypeShikiOptions = {
   },
   colorReplacements: {
     'github-light': {
-      '#fff': 'var(--color-muted)'
+      '#fff': 'var(--color-secondary)'
     },
     'github-dark': {
-      '#24292e': 'var(--color-muted)'
+      '#24292e': 'var(--color-secondary)'
     }
   },
   defaultColor: false,

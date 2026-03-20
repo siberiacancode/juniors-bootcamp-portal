@@ -18,6 +18,7 @@
     "@next/mdx": "^16.1.6",
     "@shikijs/rehype": "^4.0.2",
     "@siberiacancode/reactuse": "^0.3.14",
+    "@siberiacancode/yandex-metrika": "^1.0.1",
     "@types/mdx": "^2.0.13",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
