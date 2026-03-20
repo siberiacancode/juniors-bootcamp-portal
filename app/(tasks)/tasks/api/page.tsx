@@ -61,7 +61,7 @@ const TasksApiPage = () => (
       <div className='flex flex-col gap-6 sm:flex-row'>
         {API_CARDS.map(({ description, href, title }) => (
           <Link key={href} className='w-full' href={href} rel='noopener noreferrer' target='_blank'>
-            <Card className='h-full gap-6 transition hover:-translate-0.5 hover:border-action-primary hover:shadow-[3px_3px_0_0_var(--color-foreground)] sm:py-16'>
+            <Card className='h-full gap-6 transition hover:-translate-0.5 hover:border-action-primary hover:shadow-[3px_3px_0_0_var(--color-border-hard)] sm:py-16'>
               <CardHeader className='px-4 sm:px-12'>
                 <h2 className='font-nunito text-5xl font-extrabold drop-shadow-[3px_0_0_var(--color-action-primary)] xl:text-8xl'>
                   {title}

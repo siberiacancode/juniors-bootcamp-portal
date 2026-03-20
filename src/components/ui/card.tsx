@@ -14,7 +14,7 @@ const Card = ({
   return (
     <Comp
       className={cn(
-        `flex flex-col rounded-24 border-2 border-foreground py-6 text-foreground`,
+        `flex flex-col rounded-24 border-2 border-border-hard py-6 text-foreground`,
         className
       )}
       data-slot='card'
