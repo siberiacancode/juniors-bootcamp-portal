@@ -8,10 +8,8 @@ import Link from 'next/link';
 import { useIntl } from 'react-intl';
 
 import { useTheme } from '@/app/(contexts)/theme';
-import { TelegramIcon } from '@/components/icons';
 import { IntlText } from '@/components/intl';
 import {
-  Button,
   IconButton,
   NavigationMenu,
   NavigationMenuItem,
@@ -93,80 +91,77 @@ export const Header = () => {
             <ThemeButton />
           </div>
 
-          <div className='flex items-center gap-2'>
-            <Button disabled data-icon='inline-end'>
-              <IntlText path='button.loginVia' />
-              <TelegramIcon />
-            </Button>
-            <Sheet>
-              <SheetTrigger asChild>
-                <IconButton rounded className='sm:hidden'>
-                  <MenuIcon className='size-4' />
-                </IconButton>
-              </SheetTrigger>
-              <SheetContent showCloseButton={false}>
-                <SheetHeader className='mt-3 flex h-10 flex-row items-center justify-between'>
-                  <SheetTitle className='sr-only'>
-                    <IntlText path='navigationMenu.title' />
-                  </SheetTitle>
-                  <SheetDescription className='sr-only'>
-                    <IntlText path='navigationMenu.description' />
-                  </SheetDescription>
+          <Sheet>
+            <SheetTrigger asChild>
+              <IconButton rounded className='sm:hidden'>
+                <MenuIcon className='size-4' />
+              </IconButton>
+            </SheetTrigger>
+            <SheetContent showCloseButton={false}>
+              <SheetHeader className='mt-3 flex h-10 flex-row items-center justify-between'>
+                <SheetTitle className='sr-only'>
+                  <IntlText path='navigationMenu.title' />
+                </SheetTitle>
+                <SheetDescription className='sr-only'>
+                  <IntlText path='navigationMenu.description' />
+                </SheetDescription>
 
-                  <Link
-                    className='flex items-center font-pixelify-sans text-3xl font-bold'
-                    href='/'
-                  >
-                    jb
-                  </Link>
+                <Link className='flex items-center font-pixelify-sans text-3xl font-bold' href='/'>
+                  jb
+                </Link>
 
-                  <div className='flex items-center gap-2'>
-                    <SheetClose asChild>
-                      <IconButton className='rounded-full'>
-                        <XIcon className='size-4' />
-                      </IconButton>
-                    </SheetClose>
-                  </div>
-                </SheetHeader>
-
-                <div className='flex flex-col gap-3 uppercase'>
-                  {NAVIGATION.map((navigation) => (
-                    <SheetClose asChild key={navigation.href}>
-                      <Link
-                        className='px-4 py-2 text-5xl font-bold text-primary'
-                        href={navigation.href}
-                      >
-                        <IntlText path={navigation.label} />
-                      </Link>
-                    </SheetClose>
-                  ))}
-
-                  <Separator />
-
+                <div className='flex items-center gap-2'>
                   <SheetClose asChild>
+                    <IconButton className='rounded-full'>
+                      <XIcon className='size-4' />
+                    </IconButton>
+                  </SheetClose>
+                </div>
+              </SheetHeader>
+
+              <div className='flex flex-col gap-3 uppercase'>
+                {NAVIGATION.map((navigation) => (
+                  <SheetClose asChild key={navigation.href}>
                     <Link
-                      className='inline-flex items-center gap-2 px-4 py-2 text-2xl font-bold'
-                      href='https://github.com/siberiacancode'
-                      rel='noopener noreferrer'
-                      target='_blank'
+                      className='px-4 py-2 text-5xl font-bold text-primary'
+                      href={navigation.href}
                     >
-                      <Github aria-label={intl.formatMessage({ id: 'header.github.alt' })} />
-                      GITHUB
+                      <IntlText path={navigation.label} />
                     </Link>
                   </SheetClose>
+                ))}
 
-                  <div className='flex items-center justify-between'>
-                    <span className='inline-flex items-center gap-2 px-4 py-2 text-2xl font-bold'>
-                      <MoonIcon />
-                      <IntlText path='navigationMenu.darkTheme' />
-                    </span>
+                <Separator />
 
-                    <Switch checked={theme.value === 'dark'} onClick={onThemeClick} />
-                  </div>
+                <SheetClose asChild>
+                  <Link
+                    className='inline-flex items-center gap-2 px-4 py-2 text-2xl font-bold'
+                    href='https://github.com/siberiacancode'
+                    rel='noopener noreferrer'
+                    target='_blank'
+                  >
+                    <Github aria-label={intl.formatMessage({ id: 'header.github.alt' })} />
+                    GITHUB
+                  </Link>
+                </SheetClose>
+
+                <div className='flex items-center justify-between'>
+                  <span className='inline-flex items-center gap-2 px-4 py-2 text-2xl font-bold'>
+                    <MoonIcon />
+                    <IntlText path='navigationMenu.darkTheme' />
+                  </span>
+
+                  <Switch checked={theme.value === 'dark'} onClick={onThemeClick} />
                 </div>
-              </SheetContent>
-            </Sheet>
-          </div>
+              </div>
+            </SheetContent>
+          </Sheet>
+          {/* <div className='flex items-center gap-2'>
+             <Button disabled data-icon='inline-end'>
+              <IntlText path='button.loginVia' />
+              <TelegramIcon />
+            </Button> 
+          </div> */}
         </div>
       </div>
     </header>

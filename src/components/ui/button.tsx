@@ -14,8 +14,8 @@ const buttonVariants = cva(
         primary: 'bg-primary text-primary-fg hover:bg-primary-hover',
         secondary: 'bg-secondary text-secondary-fg hover:bg-secondary-hover',
         outline:
-          'border border-border-secondary bg-outline text-foreground hover:border-action-primary hover:shadow-[-2px_2px_0px_0px_var(--color-action-primary)]',
-        ghost: 'text-ghost-fg hover:bg-ghost-hover',
+          'border border-ring bg-background text-foreground hover:border-action-primary hover:shadow-[-2px_2px_0px_0px_var(--color-action-primary)] disabled:border-border-hard',
+        ghost: 'text-foreground hover:bg-secondary',
         danger:
           'bg-danger text-white hover:bg-danger/90 focus-visible:ring-danger/20 dark:bg-danger/60 dark:focus-visible:ring-danger/40'
       },

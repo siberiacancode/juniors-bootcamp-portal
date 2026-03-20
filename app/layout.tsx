@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import { Nunito, Overpass_Mono, Parisienne, Pixelify_Sans } from 'next/font/google';
 
 import { LOCALE } from '@/app/(constants)';
-import { cn } from '@/lib/utils';
 
 import { Footer, GoogleTagManagerScript, Header, YandexMetrikaScript } from './(components)';
 import { getDictionary } from './(contexts)/intl/helpers/getDictionary';
@@ -74,7 +73,7 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
           }}
         />
       </head>
-      <body className={cn('flex min-h-screen flex-col')}>
+      <body className='flex min-h-screen flex-col'>
         {process.env.NODE_ENV === 'production' && (
           <>
             <YandexMetrikaScript />

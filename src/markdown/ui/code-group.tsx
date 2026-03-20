@@ -34,7 +34,7 @@ interface BlockProps {
 }
 
 export const CodeGroup = ({ children }: CodeBlockGroupProps) => {
-  if ('type' in children) throw new Error('Must be an array of elements');
+  if (!Array.isArray(children)) throw new Error('Must be an array of elements');
 
   const blocks = children.map((element, index) => {
     const props = element.props as unknown as BlockProps;
@@ -61,8 +61,8 @@ export const CodeGroup = ({ children }: CodeBlockGroupProps) => {
   )!;
 
   return (
-    <figure className='mb-4 rounded-20 border-2 border-border'>
-      <div className='flex h-16 items-center rounded-t-20 border-b-2 border-border px-6'>
+    <figure className='mb-4 rounded-20 border-2 border-border-hard'>
+      <div className='flex h-16 items-center rounded-t-20 border-b-2 border-border-hard px-6'>
         {fileName && <span className='text-sm text-muted-fg'>{fileName}</span>}
         <div className='ml-auto flex items-center gap-2'>
           <Select

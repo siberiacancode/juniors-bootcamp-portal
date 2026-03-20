@@ -12,16 +12,14 @@ export const getGuides = async () => {
       .sort()
       .map(async (file) => {
         const slug = file.replace('.mdx', '');
-        const {
-          metadata: { description, labels, title }
-        } = await getGuideModule(slug);
+        const guideModule = await getGuideModule(slug);
 
         return {
           number: slug.slice(0, 2),
           slug,
-          title,
-          description,
-          labels
+          title: guideModule.metadata.title,
+          description: guideModule.metadata.description,
+          labels: guideModule.metadata.labels
         };
       })
   );

@@ -143,7 +143,7 @@ const NavigationMenuIndicator = ({
       data-slot='navigation-menu-indicator'
       {...props}
     >
-      <div className='relative top-[60%] size-2 rotate-45 rounded-tl-6 bg-border' />
+      <div className='relative top-[60%] size-2 rotate-45 rounded-tl-6 bg-border-soft' />
     </NavigationMenuPrimitive.Indicator>
   );
 };

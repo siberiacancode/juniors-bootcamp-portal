@@ -23,7 +23,7 @@ const ScrollBar = ({
       {...props}
     >
       <ScrollAreaPrimitive.ScrollAreaThumb
-        className='relative flex-1 rounded-full bg-border'
+        className='relative flex-1 rounded-full bg-border-soft'
         data-slot='scroll-area-thumb'
       />
     </ScrollAreaPrimitive.ScrollAreaScrollbar>

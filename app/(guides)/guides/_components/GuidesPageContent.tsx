@@ -21,7 +21,6 @@ import {
   ChipGroupItem,
   Empty,
   EmptyDescription,
-  EmptyHeader,
   EmptyTitle,
   InputGroup,
   InputGroupAddon,
@@ -82,7 +81,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
     <section className='flex flex-col gap-8 sm:gap-10'>
       <div className='flex flex-col gap-6 sm:gap-10'>
         <InputGroup className='w-full sm:w-1/2'>
-          <InputGroupAddon>
+          <InputGroupAddon align='start'>
             <SearchIcon />
           </InputGroupAddon>
           <InputGroupInput
@@ -91,7 +90,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
             onChange={(event) => onSearchChange(event.target.value)}
           />
           {!!searchValue && (
-            <InputGroupAddon align='inline-end'>
+            <InputGroupAddon align='end'>
               <InputGroupIconButton onClick={() => onSearchChange('')}>
                 <XIcon />
               </InputGroupIconButton>
@@ -136,14 +135,12 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
 
         {!filteredGuides.length && (
           <Empty>
-            <EmptyHeader>
-              <EmptyTitle>
-                <IntlText path='page.guides.epmty.title' />
-              </EmptyTitle>
-              <EmptyDescription>
-                <IntlText path='page.guides.epmty.description' />
-              </EmptyDescription>
-            </EmptyHeader>
+            <EmptyTitle>
+              <IntlText path='page.guides.epmty.title' />
+            </EmptyTitle>
+            <EmptyDescription>
+              <IntlText path='page.guides.epmty.description' />
+            </EmptyDescription>
           </Empty>
         )}
       </div>
@@ -155,7 +152,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
             <Link key={guide.slug} href={`/guides/${guide.slug}`} style={{ order: index }}>
               <Card
                 className={cn(
-                  'h-70 gap-2 transition hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-border)]',
+                  'h-70 gap-2 transition hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-border-hard)]',
                   isNeedfulGuide ? 'hover:border-accent-primary' : 'hover:border-action-primary'
                 )}
               >

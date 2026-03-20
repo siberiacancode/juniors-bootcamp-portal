@@ -35,8 +35,8 @@ const API_CARDS = [
         R<span className='font-pixelify-sans text-[1.141em] font-medium'>e</span>st
       </>
     ),
-    description: 'page.tasksApi.rest.description',
-    href: 'https://juniors-bootcamp.ru/api/rest/'
+    description: 'page.tasksApi.banner.rest',
+    href: 'https://juniorsbootcamp.ru/api/rest#tag/pages'
   },
   {
     title: (
@@ -44,8 +44,8 @@ const API_CARDS = [
         Gra<span className='font-pixelify-sans text-[1.141em] font-medium'>p</span>hQL
       </>
     ),
-    description: 'page.tasksApi.graphql.description',
-    href: 'https://juniors-bootcamp.ru/api/graphql/'
+    description: 'page.tasksApi.banner.graphql',
+    href: 'https://juniorsbootcamp.ru/api/graphql'
   }
 ] as const;
 

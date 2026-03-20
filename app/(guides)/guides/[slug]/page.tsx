@@ -3,11 +3,10 @@ import Link from 'next/link';
 
 import { LOCALE } from '@/app/(constants)';
 import { getDictionary } from '@/app/(contexts)/intl/helpers/getDictionary';
-import { getGuides } from '@/app/(guides)/_helpers/getGuides';
+import { getGuideModule, getGuides } from '@/app/(guides)/_helpers';
 import { IntlText } from '@/components/intl';
 import { Button } from '@/components/ui';
 
-import { getGuideModule } from '../../_helpers';
 import { ShareButtton } from './_components';
 
 export interface GuidePageParams {

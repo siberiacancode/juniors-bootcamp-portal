@@ -15,10 +15,6 @@
   --color-primary-hover: var(--color-primary-hover);
   --color-primary-fg: var(--color-primary-fg);
 
-  /* Ghost */
-  --color-ghost-hover: var(--color-ghost-hover);
-  --color-ghost-fg: var(--color-ghost-fg);
-
   /* Secondary */
   --color-secondary: var(--color-secondary);
   --color-secondary-hover: var(--color-secondary-hover);
@@ -33,9 +29,8 @@
   --color-surface-fg: var(--color-surface-fg);
 
   /* Borders & UI */
-  --color-border: var(--color-border);
-  --color-border-secondary: var(--color-border-secondary);
-  --color-outline: var(--color-outline);
+  --color-border-hard: var(--color-border-hard);
+  --color-border-soft: var(--color-border-soft);
   --color-input: var(--color-input);
   --color-ring: var(--color-ring);
 
@@ -95,10 +90,6 @@
   --color-primary-hover: var(--color-neutral-800);
   --color-primary-fg: var(--color-neutral-50);
 
-  /* Ghost */
-  --color-ghost-hover: var(--color-neutral-100);
-  --color-ghost-fg: var(--color-neutral-900);
-
   /* Secondary */
   --color-secondary: var(--color-neutral-100);
   --color-secondary-hover: var(--color-neutral-200);
@@ -113,11 +104,10 @@
   --color-surface-fg: var(--color-neutral-100);
 
   /* Borders & UI */
-  --color-border: var(--color-neutral-900);
-  --color-border-secondary: var(--color-neutral-300);
-  --color-outline: var(--color-neutral-100);
-  --color-input: var(--color-neutral-600);
-  --color-ring: var(--color-neutral-700);
+  --color-border-hard: var(--color-neutral-900);
+  --color-border-soft: var(--color-neutral-700);
+  --color-input: var(--color-neutral-500);
+  --color-ring: var(--color-neutral-300);
 
   /* Accent */
   --color-accent-primary: var(--color-yellow-300);
@@ -159,10 +149,6 @@
   --color-primary-hover: var(--color-neutral-200);
   --color-primary-fg: var(--color-neutral-900);
 
-  /* Ghost */
-  --color-ghost-hover: var(--color-neutral-800);
-  --color-ghost-fg: var(--color-neutral-100);
-
   /* Secondary */
   --color-secondary: var(--color-neutral-800);
   --color-secondary-hover: var(--color-neutral-700);
@@ -177,9 +163,8 @@
   --color-surface-fg: var(--color-neutral-200);
 
   /* Borders & UI - более мягкие границы */
-  --color-border: var(--color-neutral-300);
-  --color-border-secondary: var(--color-neutral-700);
-  --color-outline: var(--color-neutral-800);
+  --color-border-hard: var(--color-neutral-300);
+  --color-border-soft: var(--color-neutral-500);
   --color-input: var(--color-neutral-500);
   --color-ring: var(--color-neutral-400);
 
@@ -213,7 +198,7 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border-hard outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;

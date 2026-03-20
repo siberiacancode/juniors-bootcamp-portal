@@ -27,7 +27,7 @@ const Iframe = ({ className, title, url, type, ...props }: IframeProps) => {
         </div>
       )}
       <iframe
-        className='h-150 w-full rounded-20 border border-border bg-background'
+        className='h-150 w-full rounded-20 border border-border-hard bg-background'
         src={url}
         title={title}
         onLoad={() => setIsLoading(false)}
