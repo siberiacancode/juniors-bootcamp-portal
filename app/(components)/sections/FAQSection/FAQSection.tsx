@@ -21,11 +21,11 @@ export const FAQSection = ({ items }: FAQSectionProps) => (
       <div className='flex w-full flex-col items-center justify-center'>
         <Accordion collapsible className='flex w-full flex-col gap-4' type='single'>
           {items.map((item, index) => (
-            <AccordionItem key={index} className='rounded-lg border px-6' value={index.toString()}>
+            <AccordionItem key={index} className='rounded-20 border px-6' value={index.toString()}>
               <AccordionTrigger className='text-left text-lg font-medium hover:no-underline'>
                 {item.question}
               </AccordionTrigger>
-              <AccordionContent className='pb-4 text-muted-foreground'>
+              <AccordionContent className='pb-4 text-muted-fg'>
                 <div className='prose prose-sm max-w-none text-lg dark:prose-invert'>
                   <ReactMarkdown>{item.answer}</ReactMarkdown>
                 </div>

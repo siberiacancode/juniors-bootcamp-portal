@@ -160,7 +160,7 @@ export const MobileHeader = ({ breadcrumbs }: HeaderProps) => {
             {breadcrumbs.toReversed().map((item) => (
               <Link
                 key={item.path}
-                className='flex items-center gap-2 rounded-md p-2 hover:bg-gray-100'
+                className='flex items-center gap-2 p-2 hover:bg-gray-100'
                 href={item.path}
                 onClick={() => navigationDropdown.toggle()}
               >

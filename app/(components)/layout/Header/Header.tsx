@@ -10,12 +10,12 @@ import { useIntl } from 'react-intl';
 import { useTheme } from '@/app/(contexts)/theme';
 import { IntlText } from '@/components/intl';
 import {
-  Button,
   IconButton,
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
+  navigationMenuTriggerStyle,
   Separator,
   Sheet,
   SheetClose,
@@ -66,11 +66,11 @@ export const Header = () => {
           <NavigationMenuList>
             {NAVIGATION.map((navigation) => (
               <NavigationMenuItem key={navigation.href}>
-                <Button asChild variant='ghost'>
-                  <NavigationMenuLink href={navigation.href}>
+                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                  <Link href={navigation.href}>
                     <IntlText path={navigation.label} />
-                  </NavigationMenuLink>
-                </Button>
+                  </Link>
+                </NavigationMenuLink>
               </NavigationMenuItem>
             ))}
           </NavigationMenuList>
@@ -91,80 +91,77 @@ export const Header = () => {
             <ThemeButton />
           </div>
 
-          <div className='flex items-center gap-2'>
-            {/* <Button data-icon='inline-end'>
-              <IntlText path='button.login-via' />
-              <TelegramIcon />
-            </Button> */}
-            <Sheet>
-              <SheetTrigger asChild>
-                <IconButton className='rounded-full sm:hidden'>
-                  <MenuIcon className='size-4' />
-                </IconButton>
-              </SheetTrigger>
-              <SheetContent className='w-full' showCloseButton={false}>
-                <SheetHeader className='mt-3 flex h-10 flex-row items-center justify-between'>
-                  <SheetTitle className='sr-only'>
-                    <IntlText path='navigationMenu.title' />
-                  </SheetTitle>
-                  <SheetDescription className='sr-only'>
-                    <IntlText path='navigationMenu.description' />
-                  </SheetDescription>
+          <Sheet>
+            <SheetTrigger asChild>
+              <IconButton rounded className='sm:hidden'>
+                <MenuIcon className='size-4' />
+              </IconButton>
+            </SheetTrigger>
+            <SheetContent showCloseButton={false}>
+              <SheetHeader className='mt-3 flex h-10 flex-row items-center justify-between'>
+                <SheetTitle className='sr-only'>
+                  <IntlText path='navigationMenu.title' />
+                </SheetTitle>
+                <SheetDescription className='sr-only'>
+                  <IntlText path='navigationMenu.description' />
+                </SheetDescription>
 
-                  <Link
-                    className='flex items-center font-pixelify-sans text-3xl font-bold'
-                    href='/'
-                  >
-                    jb
-                  </Link>
+                <Link className='flex items-center font-pixelify-sans text-3xl font-bold' href='/'>
+                  jb
+                </Link>
 
-                  <div className='flex items-center gap-2'>
-                    <SheetClose asChild>
-                      <IconButton className='rounded-full'>
-                        <XIcon className='size-4' />
-                      </IconButton>
-                    </SheetClose>
-                  </div>
-                </SheetHeader>
-
-                <div className='flex flex-col gap-3 uppercase'>
-                  {NAVIGATION.map((navigation) => (
-                    <SheetClose asChild key={navigation.href}>
-                      <Link
-                        className='px-4 py-2 text-5xl font-bold text-primary'
-                        href={navigation.href}
-                      >
-                        <IntlText path={navigation.label} />
-                      </Link>
-                    </SheetClose>
-                  ))}
-
-                  <Separator />
-
+                <div className='flex items-center gap-2'>
                   <SheetClose asChild>
+                    <IconButton className='rounded-full'>
+                      <XIcon className='size-4' />
+                    </IconButton>
+                  </SheetClose>
+                </div>
+              </SheetHeader>
+
+              <div className='flex flex-col gap-3 uppercase'>
+                {NAVIGATION.map((navigation) => (
+                  <SheetClose asChild key={navigation.href}>
                     <Link
-                      className='inline-flex items-center gap-2 px-4 py-2 text-2xl font-bold'
-                      href='https://github.com/siberiacancode'
-                      rel='noopener noreferrer'
-                      target='_blank'
+                      className='px-4 py-2 text-5xl font-bold text-primary'
+                      href={navigation.href}
                     >
-                      <Github aria-label={intl.formatMessage({ id: 'header.github.alt' })} />
-                      GITHUB
+                      <IntlText path={navigation.label} />
                     </Link>
                   </SheetClose>
+                ))}
 
-                  <div className='flex items-center justify-between'>
-                    <span className='inline-flex items-center gap-2 px-4 py-2 text-2xl font-bold'>
-                      <MoonIcon />
-                      <IntlText path='navigationMenu.darkTheme' />
-                    </span>
+                <Separator />
 
-                    <Switch checked={theme.value === 'dark'} onClick={onThemeClick} />
-                  </div>
+                <SheetClose asChild>
+                  <Link
+                    className='inline-flex items-center gap-2 px-4 py-2 text-2xl font-bold'
+                    href='https://github.com/siberiacancode'
+                    rel='noopener noreferrer'
+                    target='_blank'
+                  >
+                    <Github aria-label={intl.formatMessage({ id: 'header.github.alt' })} />
+                    GITHUB
+                  </Link>
+                </SheetClose>
+
+                <div className='flex items-center justify-between'>
+                  <span className='inline-flex items-center gap-2 px-4 py-2 text-2xl font-bold'>
+                    <MoonIcon />
+                    <IntlText path='navigationMenu.darkTheme' />
+                  </span>
+
+                  <Switch checked={theme.value === 'dark'} onClick={onThemeClick} />
                 </div>
-              </SheetContent>
-            </Sheet>
-          </div>
+              </div>
+            </SheetContent>
+          </Sheet>
+          {/* <div className='flex items-center gap-2'>
+             <Button disabled data-icon='inline-end'>
+              <IntlText path='button.loginVia' />
+              <TelegramIcon />
+            </Button> 
+          </div> */}
         </div>
       </div>
     </header>

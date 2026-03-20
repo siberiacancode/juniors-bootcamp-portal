@@ -52,7 +52,7 @@ export const ApiCard = ({
 }: ApiCardProps) => (
   <Card
     className={cn(
-      'flex flex-row gap-2 rounded-lg p-2',
+      'flex flex-row gap-2 rounded-20 p-2',
       inline && 'w-fit border-none shadow-none',
       className
     )}

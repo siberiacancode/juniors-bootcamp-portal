@@ -1,11 +1,7 @@
 import fs from 'node:fs';
 import { join } from 'node:path';
 
-export interface GuideMetadata {
-  description: string;
-  labels: string[];
-  title: string;
-}
+import { getGuideModule } from './getGuideModule';
 
 export const getGuides = async () => {
   const contentDir = join(process.cwd(), 'public', 'contents', 'guides');
@@ -16,15 +12,14 @@ export const getGuides = async () => {
       .sort()
       .map(async (file) => {
         const slug = file.replace('.mdx', '');
-        const m = await import(`../../../public/contents/guides/${slug}.mdx`);
-        const metadata = m.metadata as GuideMetadata;
+        const guideModule = await getGuideModule(slug);
 
         return {
           number: slug.slice(0, 2),
           slug,
-          title: metadata.title,
-          description: metadata.description,
-          labels: metadata.labels
+          title: guideModule.metadata.title,
+          description: guideModule.metadata.description,
+          labels: guideModule.metadata.labels
         };
       })
   );

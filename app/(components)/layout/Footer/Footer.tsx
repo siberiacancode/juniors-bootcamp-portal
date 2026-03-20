@@ -80,7 +80,7 @@ export const Footer = () => {
 
   return (
     <footer className='content-container mb-12 flex w-full flex-col gap-6 sm:mb-16'>
-      <div className='flex flex-col gap-6 rounded-2xl bg-muted px-4 py-6 sm:flex-row sm:flex-wrap sm:items-center sm:gap-10 sm:px-6 sm:py-10'>
+      <div className='flex flex-col gap-6 rounded-24 bg-secondary px-4 py-6 sm:flex-row sm:flex-wrap sm:items-center sm:gap-10 sm:px-6 sm:py-10'>
         <span className='font-pixelify-sans text-3xl font-bold'>juniorsbootcamp</span>
 
         <div className='flex flex-col gap-4 sm:flex-row sm:gap-10'>
@@ -92,7 +92,7 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className='flex flex-col gap-6 rounded-2xl bg-muted px-4 py-6 sm:gap-10 sm:px-6 sm:py-10'>
+      <div className='flex flex-col gap-6 rounded-24 bg-secondary px-4 py-6 sm:gap-10 sm:px-6 sm:py-10'>
         <div className='flex flex-col gap-6 sm:flex-row sm:gap-10'>
           <div className='flex flex-col gap-4'>
             <p className='font-normal'>
@@ -105,7 +105,7 @@ export const Footer = () => {
               </Link>
             </Button>
 
-            <div className='flex gap-6'>
+            <div className='flex gap-2'>
               {SOCIALS.map((social) => (
                 <IconButton asChild key={social.href} variant='ghost'>
                   <Link href={social.href} rel='noopener noreferrer' target='_blank'>
@@ -123,7 +123,7 @@ export const Footer = () => {
             <ul className='flex flex-col gap-3 text-sm font-medium'>
               {NAVIGATION.map((navigation) => (
                 <li key={navigation.href}>
-                  <Link href={navigation.href}>
+                  <Link className='hover:underline hover:underline-offset-2' href={navigation.href}>
                     <IntlText path={navigation.label} />
                   </Link>
                 </li>
@@ -138,7 +138,12 @@ export const Footer = () => {
             <ul className='flex flex-col gap-3 text-sm font-medium'>
               {OPENSOURCE.map((opensource) => (
                 <li key={opensource.href}>
-                  <Link href={opensource.href} rel='noopener noreferrer' target='_blank'>
+                  <Link
+                    className='hover:underline hover:underline-offset-2'
+                    href={opensource.href}
+                    rel='noopener noreferrer'
+                    target='_blank'
+                  >
                     {opensource.label}
                   </Link>
                 </li>
@@ -148,7 +153,7 @@ export const Footer = () => {
         </div>
 
         <div className='flex flex-col gap-4 sm:flex-row sm:justify-between'>
-          <p className='text-sm font-normal text-surface-foreground [&>a]:underline'>
+          <p className='text-sm font-normal text-muted-fg [&>a]:underline'>
             Built by{' '}
             <Link
               href='https://github.com/siberiacancode'

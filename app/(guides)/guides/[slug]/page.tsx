@@ -3,13 +3,11 @@ import Link from 'next/link';
 
 import { LOCALE } from '@/app/(constants)';
 import { getDictionary } from '@/app/(contexts)/intl/helpers/getDictionary';
+import { getGuideModule, getGuides } from '@/app/(guides)/_helpers';
 import { IntlText } from '@/components/intl';
 import { Button } from '@/components/ui';
 
-import type { GuideMetadata } from '../(helpers)/getGuides';
-
-import { getGuides } from '../(helpers)/getGuides';
-import { ShareButtton } from './(components)/ShareButton';
+import { ShareButtton } from './_components';
 
 export interface GuidePageParams {
   slug: string;
@@ -29,9 +27,7 @@ export const generateStaticParams = async () => {
 
 export const generateMetadata = async ({ params }: GuidePageProps) => {
   const { slug } = await params;
-  const Guide = await import(`../../../public/contents/guides/${slug}.mdx`);
-  const metadata = Guide.metadata as GuideMetadata;
-
+  const { metadata } = await getGuideModule(slug);
   const messages = await getDictionary(LOCALE);
 
   return {
@@ -41,10 +37,10 @@ export const generateMetadata = async ({ params }: GuidePageProps) => {
   };
 };
 
-const GuidesPage = async ({ params }: GuidePageProps) => {
+const GuidePage = async ({ params }: GuidePageProps) => {
   const { slug } = await params;
-  const Guide = await import(`../../../public/contents/guides/${slug}.mdx`);
-  const metadata = Guide.metadata as GuideMetadata;
+  const GuideModule = await getGuideModule(slug);
+  const metadata = GuideModule.metadata;
 
   const guides = await getGuides();
   const currentIndex = guides.findIndex((guide) => guide.slug === slug);
@@ -54,44 +50,45 @@ const GuidesPage = async ({ params }: GuidePageProps) => {
   return (
     <main className='content-container mt-10 mb-22 flex flex-col gap-10 sm:mt-12'>
       <section className='flex flex-col items-start gap-6'>
-        <Button asChild size='sm' variant='ghost'>
-          <Link href='/guides'>
-            <ChevronLeftIcon />
-            Назад
-          </Link>
-        </Button>
+        <div className='flex w-full items-center justify-between'>
+          <Button asChild size='sm' variant='ghost'>
+            <Link href='/guides'>
+              <ChevronLeftIcon />
+              Назад
+            </Link>
+          </Button>
+
+          <ShareButtton />
+        </div>
 
         <h1 className='text-4xl font-extrabold sm:text-8xl'>{metadata.title}</h1>
       </section>
 
       <section>
-        <Guide.default />
+        <GuideModule.default />
       </section>
 
       <section className='flex flex-col items-start gap-6'>
-        <div className='flex w-full items-center justify-between'>
-          <nav className='flex items-center gap-4'>
-            {prevGuide && (
-              <Button asChild size='lg' variant='outline'>
-                <Link href={`/guides/${prevGuide.slug}`}>
-                  <ChevronLeftIcon />
-                  {prevGuide.title}
-                </Link>
-              </Button>
-            )}
-            {nextGuide && (
-              <Button asChild size='lg' variant='outline'>
-                <Link href={`/guides/${nextGuide.slug}`}>
-                  {nextGuide.title}
-                  <ChevronRightIcon />
-                </Link>
-              </Button>
-            )}
-          </nav>
-          <ShareButtton />
-        </div>
+        <nav className='flex w-full flex-col items-stretch gap-4 sm:flex-row'>
+          {prevGuide && (
+            <Button asChild size='lg' variant='outline'>
+              <Link href={`/guides/${prevGuide.slug}`}>
+                <ChevronLeftIcon />
+                {prevGuide.title}
+              </Link>
+            </Button>
+          )}
+          {nextGuide && (
+            <Button asChild size='lg' variant='outline'>
+              <Link href={`/guides/${nextGuide.slug}`}>
+                {nextGuide.title}
+                <ChevronRightIcon />
+              </Link>
+            </Button>
+          )}
+        </nav>
 
-        <Button asChild variant='ghost'>
+        <Button asChild className='w-full sm:w-fit' variant='ghost'>
           <Link
             href='https://github.com/siberiacancode/juniors-bootcamp-portal/issues/new'
             rel='noopener noreferrer'
@@ -105,4 +102,4 @@ const GuidesPage = async ({ params }: GuidePageProps) => {
   );
 };
 
-export default GuidesPage;
+export default GuidePage;
