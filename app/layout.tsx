@@ -3,7 +3,13 @@ import { Nunito, Overpass_Mono, Parisienne, Pixelify_Sans } from 'next/font/goog
 
 import { LOCALE } from '@/app/(constants)';
 
-import { Footer, GoogleTagManagerScript, Header, YandexMetrikaScript } from './(components)';
+import {
+  Footer,
+  GoogleTagManagerScript,
+  Header,
+  ThemeScript,
+  YandexMetrikaScript
+} from './(components)';
 import { getDictionary } from './(contexts)/intl/helpers/getDictionary';
 import { Provider } from './provider';
 
@@ -64,14 +70,7 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
         <meta content='1200' property='og:image:width' />
         <meta content='640' property='og:image:height' />
         <meta content='noindex, nofollow' name='robots' />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              const theme = document.cookie.match(/theme=(.*?)(;|$)/)?.[1] || 'light';
-              document.documentElement.classList.add(theme);
-            `
-          }}
-        />
+        <ThemeScript />
       </head>
       <body className='flex min-h-screen flex-col'>
         {process.env.NODE_ENV === 'production' && (
