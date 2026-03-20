@@ -181,7 +181,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
                   : 'hover:border-action-primary focus:border-action-primary'
               )}
             >
-              <Link href={`/guides/${guide.slug}`} style={{ order: index }}>
+              <Link href={`/guides/${guide.slug}`} prefetch={false} style={{ order: index }}>
                 <CardHeader>
                   <span
                     className={cn(
