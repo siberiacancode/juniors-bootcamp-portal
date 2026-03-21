@@ -1,5 +1,6 @@
 import { ChevronRightIcon } from 'lucide-react';
 
+import { intl } from '@/app/(contexts)/intl/helpers/getDictionary';
 import { IntlText } from '@/components/intl';
 import {
   Accordion,
@@ -11,6 +12,12 @@ import {
   CardContent,
   CardHeader
 } from '@/components/ui';
+import { Markdown } from '@/markdown';
+
+export const generateMetadata = async () => ({
+  title: intl.formatMessage({ id: 'page.tasksApi.metadata.title' }),
+  description: intl.formatMessage({ id: 'page.tasksApi.metadata.description' })
+});
 
 const FAQ_ITEMS = [
   {
@@ -24,6 +31,10 @@ const FAQ_ITEMS = [
   {
     question: 'page.tasksApi.section.faq.2.question',
     answer: 'page.tasksApi.section.faq.2.answer'
+  },
+  {
+    question: 'page.tasksApi.section.faq.3.question',
+    answer: 'page.tasksApi.section.faq.3.answer'
   }
 ] as const;
 
@@ -59,8 +70,12 @@ const TasksApiPage = () => (
       </p>
       <div className='flex flex-col gap-6 sm:flex-row'>
         {API_CARDS.map(({ description, href, title }) => (
-          <a key={href} className='w-full' href={href} rel='noopener noreferrer' target='_blank'>
-            <Card className='h-full gap-6 transition hover:-translate-0.5 hover:border-action-primary hover:shadow-[3px_3px_0_0_var(--color-border-hard)] sm:py-16'>
+          <Card
+            asChild
+            key={href}
+            className='h-full gap-6 transition outline-none hover:-translate-0.5 hover:border-action-primary hover:shadow-[3px_3px_0_0_var(--color-border-hard)] focus:-translate-0.5 focus:border-action-primary focus:shadow-[3px_3px_0_0_var(--color-border-hard)] sm:py-16'
+          >
+            <a className='w-full' href={href} rel='noopener noreferrer' target='_blank'>
               <CardHeader className='px-4 sm:px-12'>
                 <h2 className='font-nunito text-5xl font-extrabold drop-shadow-[3px_0_0_var(--color-action-primary)] xl:text-8xl'>
                   {title}
@@ -69,8 +84,8 @@ const TasksApiPage = () => (
               <CardContent className='px-4 sm:px-12'>
                 <IntlText path={description} />
               </CardContent>
-            </Card>
-          </a>
+            </a>
+          </Card>
         ))}
       </div>
     </section>
@@ -125,7 +140,7 @@ const TasksApiPage = () => (
               <IntlText path={question} />
             </AccordionTrigger>
             <AccordionContent>
-              <IntlText path={answer} />
+              <Markdown source={intl.formatMessage({ id: answer })} />
             </AccordionContent>
           </AccordionItem>
         ))}
