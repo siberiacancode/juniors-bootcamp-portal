@@ -59,9 +59,6 @@
   /* Status */
   --color-danger: var(--danger);
 
-  --shadow-*: initial;
-  --text-shadow-*: initial;
-
   --radius-*: initial;
   --radius-2: 0.125rem;
   --radius-4: 0.25rem;
@@ -75,23 +72,28 @@
   --radius-24: 1.5rem;
   --radius-full: calc(infinity * 1px);
 
-  --font-nunito: var(--nunito);
-  --font-parisienne: var(--parisienne);
-  --font-pixelify-sans: var(--pixelify-sans);
+  --shadow-*: initial;
+  --text-shadow-*: initial;
+
+  --font-nunito: var(--font-nunito);
+  --font-nunito-sans: var(--font-nunito-sans);
+  --font-parisienne: var(--font-parisienne);
+  --font-pixelify-sans: var(--font-pixelify-sans);
+  --font-overpass-mono: var(--font-overpass-mono);
 }
 
 :root {
   /* Neutral palette override */
-  --color-neutral-50: #fbfbfb;
-  --color-neutral-100: #f5f5f5;
-  --color-neutral-200: #f3f3f3;
-  --color-neutral-300: #ebebeb;
-  --color-neutral-400: #d4d4d4;
-  --color-neutral-500: #c2c2c2;
-  --color-neutral-600: #b7b7b7;
-  --color-neutral-700: #969696;
-  --color-neutral-800: #2e2e2e;
-  --color-neutral-900: #0b0b0b;
+  --color-neutral-50: rgb(251, 251, 251);
+  --color-neutral-100: rgb(245, 245, 245);
+  --color-neutral-200: rgb(243, 243, 243);
+  --color-neutral-300: rgb(235, 235, 235);
+  --color-neutral-400: rgb(212, 212, 212);
+  --color-neutral-500: rgb(194, 194, 194);
+  --color-neutral-600: rgb(183, 183, 183);
+  --color-neutral-700: rgb(150, 150, 150);
+  --color-neutral-800: rgb(46, 46, 46);
+  --color-neutral-900: rgb(11, 11, 11);
 
   /* Base */
   --color-background: var(--color-neutral-50);
@@ -146,8 +148,8 @@
   /* Status */
   --color-danger: var(--color-red-500);
 
-  --default-font-family: var(--nunito);
-  --default-mono-font-family: var(--overpass-mono);
+  --default-font-family: var(--font-nunito);
+  --default-mono-font-family: var(--font-overpass-mono);
   --default-transition-duration: 300ms;
 }
 
@@ -206,12 +208,11 @@
   [role='button']:not([disabled]) {
     cursor: pointer;
   }
-}
 
-@layer base {
   * {
     @apply border-border-hard outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -220,6 +221,14 @@
 @layer components {
   .content-container {
     @apply px-6 max-w-7xl mx-auto w-full;
+  }
+
+  .display-3xl {
+    @apply font-nunito text-[170px] leading-none font-bold tracking-normal uppercase;
+  }
+
+  .display-2xl {
+    @apply font-nunito text-[96px] leading-none font-bold tracking-normal;
   }
 }
 
