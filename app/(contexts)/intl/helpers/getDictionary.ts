@@ -1,4 +1,6 @@
-import type ruMessage from '@/public/locale/ru.json';
+import { createIntl } from 'react-intl';
+
+import ruMessage from '@/public/locale/ru.json';
 
 import 'server-only';
 
@@ -9,3 +11,8 @@ const dictionaries = {
 } as unknown as Record<string, () => Promise<Message>>;
 
 export const getDictionary = async (locale: 'ru') => dictionaries[locale]();
+
+export const intl = createIntl({
+  locale: 'ru',
+  messages: ruMessage
+});

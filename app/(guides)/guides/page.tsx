@@ -1,19 +1,14 @@
-import { LOCALE } from '@/app/(constants)';
-import { getDictionary } from '@/app/(contexts)/intl/helpers/getDictionary';
+import { intl } from '@/app/(contexts)/intl/helpers/getDictionary';
 import { getGuides } from '@/app/(guides)/_helpers/getGuides';
 import { IntlText } from '@/components/intl';
 import { PixelifyIntlText } from '@/components/ui';
 
 import { GuidesPageContent } from './_components';
 
-export const generateMetadata = async () => {
-  const messages = await getDictionary(LOCALE);
-
-  return {
-    title: messages['page.guides.metadata.title'],
-    description: messages['page.guides.metadata.description']
-  };
-};
+export const generateMetadata = async () => ({
+  title: intl.formatMessage({ id: 'page.guides.metadata.title' }),
+  description: intl.formatMessage({ id: 'page.guides.metadata.description' })
+});
 
 export const dynamic = 'force-dynamic';
 

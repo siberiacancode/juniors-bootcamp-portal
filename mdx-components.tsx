@@ -2,7 +2,7 @@ import type { MDXComponents } from 'mdx/types';
 
 import { CodeBlock, CodeGroup } from '@/markdown/ui';
 
-export const useMDXComponents = (components?: MDXComponents): MDXComponents => ({
+export const getMDXComponents = (components?: MDXComponents): MDXComponents => ({
   h1: (props) => (
     <h1
       {...props}
@@ -21,6 +21,7 @@ export const useMDXComponents = (components?: MDXComponents): MDXComponents => (
       className='mt-10 mb-4 text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-100'
     />
   ),
+  a: (props) => <a {...props} className='underline' />,
   p: (props) => <p {...props} className='mb-4 text-lg/8 text-gray-700 dark:text-gray-300' />,
   ul: (props) => (
     <ul {...props} className='mb-4 ml-8 list-disc text-lg text-gray-700 dark:text-gray-300' />
@@ -39,3 +40,5 @@ export const useMDXComponents = (components?: MDXComponents): MDXComponents => (
   CodeGroup: (props) => <CodeGroup {...props} />,
   ...components
 });
+
+export const useMDXComponents = getMDXComponents;
