@@ -73,7 +73,7 @@ const TasksApiPage = () => (
           <Card
             asChild
             key={href}
-            className='gap-6 transition outline-none hover:-translate-0.5 hover:border-action-primary hover:shadow-[3px_3px_0_0_var(--color-border-hard)] focus:-translate-0.5 focus:border-action-primary focus:shadow-[3px_3px_0_0_var(--color-border-hard)] sm:px-12 sm:py-16'
+            className='gap-6 px-6 transition outline-none hover:-translate-0.5 hover:border-action-primary hover:shadow-[3px_3px_0_0_var(--color-border-hard)] focus:-translate-0.5 focus:border-action-primary focus:shadow-[3px_3px_0_0_var(--color-border-hard)] sm:px-12 sm:py-16'
           >
             <a href={href} rel='noopener noreferrer' target='_blank'>
               <Typography
