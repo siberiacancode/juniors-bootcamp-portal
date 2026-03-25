@@ -16,7 +16,7 @@
 
   "page.guides.metadata.title": "Гайды - 1001 способ помочь новичкам",
   "page.guides.metadata.description": "Полезные советы и рекомендации для начинающих разработчиков. Примеры кода, объяснения концепций и лучших практик frontend разработки.",
-  "page.guides.title": "Г<pixelify>А</pixelify>ЙДЫ",
+  "page.guides.title": "Г<span>А</span>ЙДЫ",
   "page.guides.description": "Данная страница содержит \"1001 способ помочь новичкам\". Здесь вы найдете полезные советы и рекомендации, примеры кода, объяснения основных концепций и лучших практик, а также распространенные ошибки, которых стоит избегать.",
   "page.guides.searchPlaceholder": "Найти гайд",
   "page.guides.tag.needful": "необходимые",
@@ -52,16 +52,16 @@
   "page.tasksApi.section.faq.3.question": "Полное ли API для разных архитектур: REST и GraphQL?",
   "page.tasksApi.section.faq.3.answer": "Для REST и GraphQL доступна одна и та же продуманная доменная функциональность: вы можете выбрать удобный для вас стиль и не упираться в «урезанную» версию API на одном из стеков.",
 
-  "page.tasks.title": "З<pixelify>А</pixelify>ДАНИЯ",
+  "page.tasks.title": "З<span>А</span>ДАНИЯ",
   "page.tasks.description": "Коллекция уникальных заданий для новичков frontend-разработчиков. Каждое задание — это возможность прокачать свои навыки в React, работе с API, стейт-менеджментом и создании адаптивных интерфейсов.",
 
-  "page.tasks.cards.delivery.title": "С<pixelify>е</pixelify>рвис доста<pixelify>в</pixelify>ки",
+  "page.tasks.cards.delivery.title": "С<span>е</span>рвис доста<span>в</span>ки",
   "page.tasks.cards.delivery.description": "Сервис для оформления доставки: калькулятор стоимости, формы для отправителя и получателя и полноценный процесс оплаты.",
-  "page.tasks.cards.car.title": "А<pixelify>р</pixelify>енда <pixelify>м</pixelify>ашин",
+  "page.tasks.cards.car.title": "А<span>р</span>енда <span>м</span>ашин",
   "page.tasks.cards.car.description": "Платформа аренды машин с поиском по направлениям, сравнениями тарифов и оформлением бронирования.",
-  "page.tasks.cards.cinema.title": "Онла<pixelify>й</pixelify>н-кин<pixelify>о</pixelify>театр",
+  "page.tasks.cards.cinema.title": "Онла<span>й</span>н-кин<span>о</span>театр",
   "page.tasks.cards.cinema.description": "Кинотеатр с афишей, расписанием сеансов, выбором мест в зале и покупкой электронных билетов.",
-  "page.tasks.cards.pizza.title": "Достав<pixelify>к</pixelify>а п<pixelify>и</pixelify>ццы",
+  "page.tasks.cards.pizza.title": "Достав<span>к</span>а п<span>и</span>ццы",
   "page.tasks.cards.pizza.description": "Интернет-пиццерия с каталогом, кастомными топпингами, корзиной и оформлением заказа с оплатой.",
 
   "page.tasks.tag.disigne": "ДИЗАЙН",
@@ -77,7 +77,7 @@
   "page.tasks.section.roadmap.step.4": "Поделись результатом",
 
   "page.tasks.section.philosophy.title": "Философия проекта",
-  "page.tasks.section.philosophy.description": "Обучение через практику — самый эффективный способ развития навыков разработки. Мы верим, что каждый разработчик должен не просто знать теорию, но и уметь применять её в реальных проектах.{br}Эти задания созданы не для галочки в резюме, а для того, чтобы ты создавал настоящие приложения, решал реальные проблемы и получал удовольствие от процесса. Каждое задание — это маленький проект, который можно добавить в портфолио.",
+  "page.tasks.section.philosophy.description": "Обучение через практику — самый эффективный способ развития навыков разработки. Мы верим, что каждый разработчик должен не просто знать теорию, но и уметь применять её в реальных проектах.<br></br>Эти задания созданы не для галочки в резюме, а для того, чтобы ты создавал настоящие приложения, решал реальные проблемы и получал удовольствие от процесса. Каждое задание — это маленький проект, который можно добавить в портфолио.",
 
   "page.tasks.section.faq.0.question": "Куда можно выложить проект?",
   "page.tasks.section.faq.0.answer": "Свой готовый проект можно выложить на GitHub",

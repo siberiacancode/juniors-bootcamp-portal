@@ -7,7 +7,8 @@ export default eslint(
     react: true,
     nextjs: true,
     // jsxA11y: true,
-    tailwind: true
+    tailwind: true,
+    ignores: ['temp/**/*']
   },
   {
     name: 'juniors-bootcamp/rewrite',

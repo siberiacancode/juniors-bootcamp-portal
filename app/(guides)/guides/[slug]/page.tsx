@@ -5,7 +5,7 @@ import { LOCALE } from '@/app/(constants)';
 import { getDictionary } from '@/app/(contexts)/intl/helpers/getDictionary';
 import { getGuideModule, getGuides } from '@/app/(guides)/_helpers';
 import { IntlText } from '@/components/intl';
-import { Button } from '@/components/ui';
+import { Button, Typography } from '@/components/ui';
 
 import { ShareButtton } from './_components';
 
@@ -61,7 +61,9 @@ const GuidePage = async ({ params }: GuidePageProps) => {
           <ShareButtton />
         </div>
 
-        <h1 className='text-4xl font-extrabold sm:text-8xl'>{metadata.title}</h1>
+        <Typography as='h1' variant='heading-2xl'>
+          {metadata.title}
+        </Typography>
       </section>
 
       <section>

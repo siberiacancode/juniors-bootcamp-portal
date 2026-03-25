@@ -1,7 +1,8 @@
 import clsx from 'clsx';
-import { Nunito, Nunito_Sans, Overpass_Mono, Parisienne, Pixelify_Sans } from 'next/font/google';
+import { Nunito, Overpass_Mono, Parisienne, Pixelify_Sans } from 'next/font/google';
+import { cookies } from 'next/headers';
 
-import { LOCALE } from '@/app/(constants)';
+import { COOKIES, LOCALE } from '@/app/(constants)';
 
 import {
   CookieConsent,
@@ -18,11 +19,6 @@ import './globals.css';
 
 const nunito = Nunito({
   variable: '--font-nunito',
-  subsets: ['latin', 'cyrillic']
-});
-
-const nunitoSans = Nunito_Sans({
-  variable: '--font-nunito-sans',
   subsets: ['latin', 'cyrillic']
 });
 
@@ -57,13 +53,13 @@ interface RootLayoutProps {
 
 const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
   const messages = await getDictionary(LOCALE);
+  const hasConsent = (await cookies()).get(COOKIES.COOKIE_CONSENT)?.value === 'true';
 
   return (
     <html
       suppressHydrationWarning
       className={clsx(
         nunito.variable,
-        nunitoSans.variable,
         pixelifySans.variable,
         parisienne.variable,
         overpassMono.variable
@@ -92,7 +88,7 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
           <div className='flex flex-1 flex-col'>{children}</div>
           <Footer />
 
-          <CookieConsent />
+          {!hasConsent && <CookieConsent />}
         </Provider>
       </body>
     </html>

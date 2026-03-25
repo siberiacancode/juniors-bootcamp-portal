@@ -9,8 +9,7 @@ import {
   AccordionTrigger,
   Button,
   Card,
-  CardContent,
-  CardHeader
+  Typography
 } from '@/components/ui';
 import { Markdown } from '@/markdown';
 
@@ -62,28 +61,31 @@ const API_CARDS = [
 const TasksApiPage = () => (
   <main className='content-container mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-22 sm:gap-22'>
     <section className='flex flex-col gap-8 sm:gap-10'>
-      <h1 className='font-nunito text-[56px] leading-none font-bold sm:text-[170px]'>
-        A<span className='font-pixelify-sans text-[1.141em] font-medium'>P</span>I
-      </h1>
-      <p className='text-2xl'>
+      <Typography pixelify as='h1' variant='display'>
+        A<span>P</span>I
+      </Typography>
+
+      <Typography variant='body-lg'>
         <IntlText path='page.tasksApi.description' />
-      </p>
-      <div className='flex flex-col gap-6 sm:flex-row'>
+      </Typography>
+      <div className='grid grid-cols-1 gap-6 sm:grid-cols-2'>
         {API_CARDS.map(({ description, href, title }) => (
           <Card
             asChild
             key={href}
-            className='h-full gap-6 transition outline-none hover:-translate-0.5 hover:border-action-primary hover:shadow-[3px_3px_0_0_var(--color-border-hard)] focus:-translate-0.5 focus:border-action-primary focus:shadow-[3px_3px_0_0_var(--color-border-hard)] sm:py-16'
+            className='gap-6 transition outline-none hover:-translate-0.5 hover:border-action-primary hover:shadow-[3px_3px_0_0_var(--color-border-hard)] focus:-translate-0.5 focus:border-action-primary focus:shadow-[3px_3px_0_0_var(--color-border-hard)] sm:px-12 sm:py-16'
           >
-            <a className='w-full' href={href} rel='noopener noreferrer' target='_blank'>
-              <CardHeader className='px-4 sm:px-12'>
-                <h2 className='font-nunito text-5xl font-extrabold drop-shadow-[3px_0_0_var(--color-action-primary)] xl:text-8xl'>
-                  {title}
-                </h2>
-              </CardHeader>
-              <CardContent className='px-4 sm:px-12'>
+            <a href={href} rel='noopener noreferrer' target='_blank'>
+              <Typography
+                as='h2'
+                className='drop-shadow-[3px_0_0_var(--color-action-primary)]'
+                variant='heading-2xl'
+              >
+                {title}
+              </Typography>
+              <Typography as='p' variant='body-lg'>
                 <IntlText path={description} />
-              </CardContent>
+              </Typography>
             </a>
           </Card>
         ))}
@@ -91,13 +93,12 @@ const TasksApiPage = () => (
     </section>
 
     <section className='flex flex-col gap-8 sm:gap-10'>
-      <h3 className='font-nunito text-5xl font-bold'>
+      <Typography as='h3' variant='heading-md'>
         <IntlText path='page.tasksApi.section.auth.title' />
-      </h3>
-
-      <p className='text-2xl'>
+      </Typography>
+      <Typography as='p' variant='body-lg'>
         <IntlText path='page.tasksApi.section.auth.description' />
-      </p>
+      </Typography>
 
       <Button asChild className='sm:w-fit' variant='outline'>
         <a href='https://juniorsbootcamp.ru/api/otps' rel='noopener noreferrer' target='_blank'>
@@ -108,13 +109,12 @@ const TasksApiPage = () => (
     </section>
 
     <section className='flex flex-col gap-8 sm:gap-10'>
-      <h3 className='font-nunito text-5xl font-bold'>
+      <Typography as='h3' variant='heading-md'>
         <IntlText path='page.tasksApi.section.goals.title' />
-      </h3>
-
-      <p className='text-2xl'>
+      </Typography>
+      <Typography as='p' variant='body-lg'>
         <IntlText path='page.tasksApi.section.goals.description' />
-      </p>
+      </Typography>
 
       <Button asChild className='sm:w-fit' variant='outline'>
         <a
@@ -129,9 +129,9 @@ const TasksApiPage = () => (
     </section>
 
     <section className='flex flex-col gap-8 sm:gap-6'>
-      <h3 className='font-nunito text-5xl font-bold'>
+      <Typography as='h3' variant='heading-md'>
         <IntlText path='faq.title' />
-      </h3>
+      </Typography>
 
       <Accordion collapsible defaultValue={FAQ_ITEMS[0].question} type='single'>
         {FAQ_ITEMS.map(({ answer, question }) => (

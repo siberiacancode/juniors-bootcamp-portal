@@ -5,7 +5,7 @@ import { useIntl } from 'react-intl';
 
 import { GithubIcon, TelegramIcon, TwitchIcon, YoutubeIcon } from '@/components/icons';
 import { IntlText } from '@/components/intl';
-import { Button, IconButton } from '@/components/ui';
+import { Button, IconButton, Typography, typographyVariants } from '@/components/ui';
 
 const PRODUCTS = [
   {
@@ -81,13 +81,15 @@ export const Footer = () => {
   return (
     <footer className='content-container mb-12 flex w-full flex-col gap-6 sm:mb-16'>
       <div className='flex flex-col gap-6 rounded-24 bg-secondary px-4 py-6 sm:flex-row sm:flex-wrap sm:items-center sm:gap-10 sm:px-6 sm:py-10'>
-        <span className='font-pixelify-sans text-3xl font-bold'>juniorsbootcamp</span>
+        <span className='font-pixelify-sans text-[32px]/10 font-bold tracking-[5%]'>
+          juniorsbootcamp
+        </span>
 
         <div className='flex flex-col gap-4 sm:flex-row sm:gap-10'>
           {PRODUCTS.map((product) => (
-            <span key={product.href} className='text-sm font-semibold'>
+            <Typography key={product.href} as='span' variant='body-md'>
               Ссылка на продукт
-            </span>
+            </Typography>
           ))}
         </div>
       </div>
@@ -95,9 +97,9 @@ export const Footer = () => {
       <div className='flex flex-col gap-6 rounded-24 bg-secondary px-4 py-6 sm:gap-10 sm:px-6 sm:py-10'>
         <div className='flex flex-col gap-6 sm:flex-row sm:gap-10'>
           <div className='flex flex-col gap-4'>
-            <p className='font-normal'>
+            <Typography as='p' variant='body-md'>
               <IntlText path='footer.description' />
-            </p>
+            </Typography>
 
             <Button asChild className='sm:w-fit'>
               <Link href='https://t.me/siberiacancode' rel='noopener noreferrer' target='_blank'>
@@ -109,7 +111,10 @@ export const Footer = () => {
               {SOCIALS.map((social) => (
                 <IconButton asChild key={social.href} variant='ghost'>
                   <Link href={social.href} rel='noopener noreferrer' target='_blank'>
-                    <social.Icon aria-label={intl.formatMessage({ id: social.alt })} />
+                    <social.Icon
+                      aria-label={intl.formatMessage({ id: social.alt })}
+                      className='size-6'
+                    />
                   </Link>
                 </IconButton>
               ))}
@@ -117,12 +122,18 @@ export const Footer = () => {
           </div>
 
           <div className='flex flex-col gap-4'>
-            <h3 className='font-bold'>
+            <Typography variant='body-md'>
               <IntlText path='footer.directions.title' />
-            </h3>
-            <ul className='flex flex-col gap-3 text-sm font-medium'>
+            </Typography>
+
+            <ul className='flex flex-col gap-3'>
               {NAVIGATION.map((navigation) => (
-                <li key={navigation.href}>
+                <li
+                  key={navigation.href}
+                  className={typographyVariants({
+                    variant: 'caption'
+                  })}
+                >
                   <Link className='hover:underline hover:underline-offset-2' href={navigation.href}>
                     <IntlText path={navigation.label} />
                   </Link>
@@ -132,12 +143,18 @@ export const Footer = () => {
           </div>
 
           <div className='flex flex-col gap-4'>
-            <h3 className='font-bold'>
+            <Typography variant='body-md'>
               <IntlText path='footer.opensource.title' />
-            </h3>
-            <ul className='flex flex-col gap-3 text-sm font-medium'>
+            </Typography>
+
+            <ul className='flex flex-col gap-3'>
               {OPENSOURCE.map((opensource) => (
-                <li key={opensource.href}>
+                <li
+                  key={opensource.href}
+                  className={typographyVariants({
+                    variant: 'caption'
+                  })}
+                >
                   <Link
                     className='hover:underline hover:underline-offset-2'
                     href={opensource.href}
@@ -153,9 +170,10 @@ export const Footer = () => {
         </div>
 
         <div className='flex flex-col gap-4 sm:flex-row sm:justify-between'>
-          <p className='text-sm font-normal text-muted-fg [&>a]:underline'>
+          <Typography as='p' className='text-muted-fg' variant='caption'>
             Built by{' '}
             <Link
+              className={typographyVariants({ variant: 'link' })}
               href='https://github.com/siberiacancode'
               rel='noopener noreferrer'
               target='_blank'
@@ -164,6 +182,7 @@ export const Footer = () => {
             </Link>
             . The source code is available on{' '}
             <Link
+              className={typographyVariants({ variant: 'link' })}
               href='https://github.com/siberiacancode/juniors-bootcamp-portal'
               rel='noopener noreferrer'
               target='_blank'
@@ -171,7 +190,7 @@ export const Footer = () => {
               GitHub
             </Link>
             .
-          </p>
+          </Typography>
         </div>
       </div>
     </footer>

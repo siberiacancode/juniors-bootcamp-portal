@@ -38,7 +38,7 @@ const SelectTrigger = ({
   return (
     <SelectPrimitive.Trigger
       className={cn(
-        "flex w-fit items-center justify-between gap-1.5 rounded-full bg-secondary px-3 py-1.25 text-sm whitespace-nowrap transition-colors outline-none select-none focus-visible:ring-3 focus-visible:ring-action-primary disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:ring-3 aria-invalid:ring-danger/20 data-placeholder:text-muted-fg data-[size=default]:h-10 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5 dark:bg-input/30 dark:hover:bg-input/50 dark:aria-invalid:ring-danger/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "flex w-fit items-center justify-between gap-1.5 rounded-full bg-secondary px-3 py-1.25 font-nunito text-[14px]/5.5 tracking-wide whitespace-nowrap transition-colors outline-none select-none focus-visible:ring-3 focus-visible:ring-action-primary disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:ring-3 aria-invalid:ring-danger/20 data-placeholder:text-muted-fg data-[size=default]:h-10 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5 dark:bg-input/30 dark:hover:bg-input/50 dark:aria-invalid:ring-danger/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       data-size={size}
@@ -133,7 +133,7 @@ const SelectLabel = ({
 }: React.ComponentProps<typeof SelectPrimitive.Label>) => {
   return (
     <SelectPrimitive.Label
-      className={cn('px-1.5 py-1 text-xs text-muted-fg', className)}
+      className={cn('px-1.5 py-1 text-[12px] text-muted-fg', className)}
       data-slot='select-label'
       {...props}
     />
@@ -148,7 +148,7 @@ const SelectItem = ({
   return (
     <SelectPrimitive.Item
       className={cn(
-        "relative flex h-8 w-full cursor-default items-center justify-center gap-1.5 rounded-14 px-2 py-1.25 text-sm outline-hidden select-none focus:bg-action-primary focus:text-action-primary-fg not-data-[variant=danger]:focus:**:text-action-primary-fg data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+        "relative flex h-8 w-full cursor-default items-center justify-center gap-1.5 rounded-14 px-2 py-1.25 font-nunito text-[14px]/5.5 tracking-wide outline-hidden select-none focus:bg-action-primary focus:text-action-primary-fg not-data-[variant=danger]:focus:**:text-action-primary-fg data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
         className
       )}
       data-slot='select-item'

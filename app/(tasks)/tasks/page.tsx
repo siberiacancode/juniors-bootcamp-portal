@@ -1,7 +1,8 @@
-import { ArrowRightIcon, AsteriskIcon } from 'lucide-react';
+import { ArrowRightIcon } from 'lucide-react';
 import Link from 'next/link';
 import { Tabs } from 'radix-ui';
 
+import { FigmaIcon, UnicStarIcon } from '@/components/icons';
 import { IntlText } from '@/components/intl';
 import {
   Accordion,
@@ -10,10 +11,10 @@ import {
   AccordionTrigger,
   Button,
   IconButton,
-  PixelifyIntlText,
   ScrollArea,
   ScrollBar,
-  Separator
+  Separator,
+  Typography
 } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
@@ -25,7 +26,7 @@ const TASKS = [
     href: ''
   },
   {
-    emoji: '🚗',
+    emoji: '🏎️',
     title: 'page.tasks.cards.car.title',
     description: 'page.tasks.cards.car.description',
     href: ''
@@ -46,14 +47,14 @@ const TASKS = [
 
 const TITLE_COLORS_MAP = {
   '📦': 'drop-shadow-[3px_0_0_rgb(80_201_114)]',
-  '🚗': 'drop-shadow-[3px_0_0_rgb(29_114_241)]',
+  '🏎️': 'drop-shadow-[3px_0_0_rgb(29_114_241)]',
   '🍿': 'drop-shadow-[3px_0_0_rgb(232_91_254)]',
   '🍕': 'drop-shadow-[3px_0_0_rgb(241_78_29)]'
 };
 
 const TAB_COLORS_MAP = {
   '📦': 'data-[state=active]:bg-[rgb(222_247_229)]',
-  '🚗': 'data-[state=active]:bg-[rgb(212_227_255)]',
+  '🏎️': 'data-[state=active]:bg-[rgb(212_227_255)]',
   '🍿': 'data-[state=active]:bg-[rgb(251_226_255)]',
   '🍕': 'data-[state=active]:bg-[rgb(255_220_212)]'
 };
@@ -93,12 +94,12 @@ const TasksPage = () => {
     <main className='content-container mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
       <div className='flex flex-col gap-8 sm:gap-10'>
         <section className='flex flex-col gap-8 sm:gap-10'>
-          <h1 className='font-nunito text-[56px] leading-none font-bold md:text-[170px]'>
-            <PixelifyIntlText path='page.tasks.title' />
-          </h1>
-          <p className='text-2xl'>
+          <Typography pixelify as='h1' variant='display'>
+            <IntlText path='page.tasks.title' />
+          </Typography>
+          <Typography as='p' variant='body-lg'>
             <IntlText path='page.tasks.description' />
-          </p>
+          </Typography>
         </section>
 
         <section className='flex flex-col gap-6'>
@@ -108,7 +109,7 @@ const TasksPage = () => {
                 <Tabs.Trigger
                   key={task.emoji}
                   className={cn(
-                    'size-16 rounded-full bg-muted text-4xl sm:size-22',
+                    'size-16 rounded-full bg-muted text-[32px] leading-none sm:size-22 sm:text-[40px]',
                     TAB_COLORS_MAP[task.emoji]
                   )}
                   value={task.emoji}
@@ -125,23 +126,27 @@ const TasksPage = () => {
                 value={task.emoji}
               >
                 <div className='flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center'>
-                  <h2
+                  <Typography
+                    pixelify
                     className={cn(
                       'order-last font-nunito text-[48px] leading-none font-bold sm:order-first sm:text-[96px]',
                       TITLE_COLORS_MAP[task.emoji]
                     )}
+                    as='h2'
+                    variant='heading-xl'
                   >
-                    <PixelifyIntlText path={task.title} />
-                  </h2>
-                  <IconButton size='lg' variant='ghost'>
-                    F
+                    <IntlText path={task.title} />
+                  </Typography>
+                  <IconButton className='size-16 rounded-16' size='lg' variant='ghost'>
+                    <FigmaIcon className='size-8' />
                   </IconButton>
                 </div>
 
                 <div className='flex flex-col items-stretch gap-6 sm:flex-row sm:items-end sm:justify-between'>
-                  <p className='max-w-225 text-2xl font-medium'>
+                  <Typography as='p' className='max-w-225' variant='body-lg'>
                     <IntlText path={task.description} />
-                  </p>
+                  </Typography>
+
                   <Button asChild>
                     <Link href={task.href}>
                       <IntlText path='link.goTo' />
@@ -156,14 +161,15 @@ const TasksPage = () => {
           <ScrollArea>
             <div className='flex gap-6'>
               {TAGS.map((tag) => (
-                <div
+                <Typography
                   key={tag}
-                  className='inline-flex h-12 items-center rounded-16 bg-muted px-4 font-nunito text-2xl font-bold text-nowrap text-foreground'
+                  className='inline-flex h-12 items-center rounded-16 bg-muted px-4 font-nunito font-bold text-nowrap text-foreground'
+                  variant='title-md'
                 >
                   <IntlText path={tag} />
-                </div>
+                </Typography>
               ))}
-              <div className='inline-flex h-12 items-center rounded-16 bg-[rgb(240_251_255)] px-4 font-pixelify-sans text-3xl font-bold text-[rgb(82_189_233)]'>
+              <div className='order-first inline-flex h-12 items-center rounded-16 bg-[rgb(240_251_255)] px-4 font-pixelify-sans text-[30px]/8 font-bold text-[rgb(82_189_233)] sm:order-last'>
                 REACTUSE
               </div>
             </div>
@@ -173,48 +179,42 @@ const TasksPage = () => {
       </div>
 
       <section className='flex flex-col gap-8 sm:gap-6'>
-        <h3 className='font-nunito text-4xl font-bold sm:text-5xl'>
+        <Typography as='h3' variant='heading-md'>
           <IntlText path='page.tasks.section.roadmap.title' />
-        </h3>
+        </Typography>
 
         <div className='grid grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-x-50 md:gap-y-6'>
           {ROADMAP.map((step, index) => (
             <div key={step} className='flex flex-col gap-0 sm:gap-4'>
               <div className='flex items-center gap-4'>
-                <AsteriskIcon className='size-7 shrink-0 text-action-primary' />
+                <UnicStarIcon className='size-6 shrink-0 text-action-primary' />
                 <Separator className='shrink' />
-                <span className='rounded-full bg-action-primary px-4 py-1 text-xl leading-none font-bold text-action-primary-fg sm:px-6 sm:py-2 sm:text-2xl'>
+                <span className='rounded-full bg-action-primary px-4 py-1 text-[20px]/5 font-bold text-action-primary-fg sm:px-6 sm:py-2 sm:text-[24px]/7'>
                   {index + 1}
                 </span>
               </div>
 
-              <h4 className='text-2xl font-medium sm:text-4xl'>
+              <Typography as='p' variant='body-lg'>
                 <IntlText path={step} />
-              </h4>
+              </Typography>
             </div>
           ))}
         </div>
       </section>
 
       <section className='flex flex-col gap-8 sm:gap-6'>
-        <h3 className='font-nunito text-4xl font-bold sm:text-5xl'>
+        <Typography as='h3' variant='heading-md'>
           <IntlText path='page.tasks.section.philosophy.title' />
-        </h3>
-        <p className='text-2xl'>
-          <IntlText
-            values={{
-              br: <br />
-            }}
-            path='page.tasks.section.philosophy.description'
-          />
-        </p>
-        <br />
+        </Typography>
+        <Typography as='p' variant='body-lg'>
+          <IntlText path='page.tasks.section.philosophy.description' />
+        </Typography>
       </section>
 
       <section className='flex flex-col gap-8 sm:gap-6'>
-        <h3 className='font-nunito text-4xl font-bold sm:text-5xl'>
+        <Typography as='h3' variant='heading-md'>
           <IntlText path='faq.title' />
-        </h3>
+        </Typography>
 
         <Accordion collapsible defaultValue={FAQ_ITEMS[0].question} type='single'>
           {FAQ_ITEMS.map(({ answer, question }) => (

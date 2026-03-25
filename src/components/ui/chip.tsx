@@ -10,7 +10,7 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 
 const chipVariants = cva(
-  "inline-flex h-13 min-w-13 items-center justify-center gap-2 rounded-full bg-secondary px-8 text-xl font-bold whitespace-nowrap text-foreground outline-none hover:bg-secondary-hover focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-danger aria-invalid:ring-danger/20 data-[state=on]:px-4.5 dark:aria-invalid:ring-danger/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-5",
+  "inline-flex h-13 min-w-13 items-center justify-center gap-2 rounded-full bg-secondary px-8 text-[20px]/7 font-bold tracking-wider whitespace-nowrap text-foreground outline-none hover:bg-secondary-hover focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-danger aria-invalid:ring-danger/20 data-[state=on]:px-4.5 dark:aria-invalid:ring-danger/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-5",
   {
     variants: {
       variant: {

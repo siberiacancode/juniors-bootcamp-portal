@@ -7,15 +7,11 @@ import { parseAsArrayOf, parseAsString, useQueryStates } from 'nuqs';
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
 
-import { VercelIcon } from '@/components/icons/VercelIcon';
+import { FullVercelIcon } from '@/components/icons/FullVercelIcon';
 import { IntlText } from '@/components/intl';
 import {
   Badge,
   Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
   Chip,
   ChipGroup,
   ChipGroupItem,
@@ -27,7 +23,8 @@ import {
   InputGroupIconButton,
   InputGroupInput,
   ScrollArea,
-  ScrollBar
+  ScrollBar,
+  Typography
 } from '@/components/ui';
 import { cn } from '@/lib/utils';
 import { yandexMetrika } from '@/lib/yandex-metrika';
@@ -175,17 +172,17 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
               asChild
               key={guide.slug}
               className={cn(
-                'h-70 gap-2 transition hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-border-hard)] focus:-translate-0.5 focus:shadow-[6px_6px_0_0_var(--color-border-hard)] focus:outline-none',
+                'h-70 gap-2 px-10 transition hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-border-hard)] focus:-translate-0.5 focus:shadow-[6px_6px_0_0_var(--color-border-hard)] focus:outline-none',
                 isNeedfulGuide
                   ? 'hover:border-accent-primary focus:border-accent-primary'
                   : 'hover:border-action-primary focus:border-action-primary'
               )}
             >
               <Link href={`/guides/${guide.slug}`} prefetch={false} style={{ order: index }}>
-                <CardHeader>
+                <div className='flex flex-col'>
                   <span
                     className={cn(
-                      'font-pixelify-sans text-4xl',
+                      'font-pixelify-sans text-[40px]/12',
                       isNeedfulGuide
                         ? 'drop-shadow-[2px_1px_0_var(--color-accent-primary)]'
                         : 'drop-shadow-[2px_1px_0_var(--color-action-primary)]'
@@ -193,13 +190,14 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
                   >
                     {guide.number}
                   </span>
-                  <CardTitle className='text-2xl'>{guide.title}</CardTitle>
-                </CardHeader>
+                  <Typography variant='title-md'>{guide.title}</Typography>
+                </div>
 
-                <CardContent>
-                  <p className='line-clamp-3'>{guide.description}</p>
-                </CardContent>
-                <CardFooter className='mt-auto gap-2'>
+                <Typography as='p' className='line-clamp-3' variant='caption'>
+                  {guide.description}
+                </Typography>
+
+                <div className='mt-auto flex items-center gap-2'>
                   {guide.labels.map((label) => {
                     const isNeedfulLabel = label === 'needful';
                     return (
@@ -208,7 +206,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
                       </Badge>
                     );
                   })}
-                </CardFooter>
+                </div>
               </Link>
             </Card>
           );
@@ -217,33 +215,32 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
         {!!filteredGuides.length && (
           <Card
             asChild
-            className='h-70 gap-2 transition hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-foreground)] focus:-translate-0.5 focus:shadow-[6px_6px_0_0_var(--color-foreground)]'
+            className='h-70 gap-2 px-10 transition hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-foreground)] focus:-translate-0.5 focus:shadow-[6px_6px_0_0_var(--color-foreground)]'
           >
-            <Link
+            <a
               key='00-siberiacancode-skills'
               href='https://skills.sh/siberiacancode/agent-skills'
               rel='noopener noreferrer'
               style={{ order: skillsCardOrder }}
               target='_blank'
             >
-              <CardHeader>
+              <div className='flex flex-col'>
                 <span className='inline-flex h-10 items-center justify-between'>
-                  <VercelIcon />
+                  <FullVercelIcon className='h-6.5 w-21.5' />
                   <ExternalLinkIcon className='size-5' />
                 </span>
-                <CardTitle className='text-2xl'>
+                <Typography variant='title-md'>
                   <IntlText path='page.guides.skillsCard.title' />
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className='line-clamp-3'>
-                  <IntlText path='page.guides.skillsCard.description' />
-                </p>
-              </CardContent>
-              <CardFooter className='mt-auto'>
+                </Typography>
+              </div>
+              <Typography as='p' className='line-clamp-3' variant='caption'>
+                <IntlText path='page.guides.skillsCard.description' />
+              </Typography>
+
+              <div className='mt-auto'>
                 <Badge variant='primary'>ai</Badge>
-              </CardFooter>
-            </Link>
+              </div>
+            </a>
           </Card>
         )}
       </div>

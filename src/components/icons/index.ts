@@ -8,5 +8,6 @@ export * from './RobotIcon';
 export * from './TelegramIcon';
 export * from './TestTubeIcon';
 export * from './TwitchIcon';
+export * from './UnicStarIcon';
 export * from './VkIcon';
 export * from './YoutubeIcon';
