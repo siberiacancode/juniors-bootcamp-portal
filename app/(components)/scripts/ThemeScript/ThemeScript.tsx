@@ -1,3 +1,5 @@
+import { COOKIES } from '@/constants';
+
 export const ThemeScript = () => (
   <script
     dangerouslySetInnerHTML={{
@@ -14,9 +16,10 @@ export const ThemeScript = () => (
           return null;
         };
         
-        const theme = getCookie('theme') || 'light';
+        const theme = getCookie('${COOKIES.THEME}') || 'system';
         const activeTheme = theme === 'system' ? getSystemTheme() : theme;
         
+        console.log(activeTheme, theme);
         document.documentElement.classList.add(activeTheme);
       })();
     `

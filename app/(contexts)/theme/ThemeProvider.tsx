@@ -3,6 +3,8 @@ import type { ReactNode } from 'react';
 import { getCookie, setCookie, usePreferredColorScheme } from '@siberiacancode/reactuse';
 import { useLayoutEffect, useMemo, useState } from 'react';
 
+import { COOKIES } from '@/constants';
+
 import type { Theme } from './ThemeContext';
 
 import { ThemeContext } from './ThemeContext';
@@ -25,14 +27,14 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const colorScheme = usePreferredColorScheme();
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window === 'undefined') return 'system';
-    return (getCookie('theme') as Theme) ?? 'system';
+    return (getCookie(COOKIES.THEME) as Theme) ?? 'system';
   });
 
   useLayoutEffect(() => {
     const root = document.documentElement;
     const activeTheme = getTheme(theme);
 
-    setCookie('theme', theme, {
+    setCookie(COOKIES.THEME, theme, {
       path: '/'
     });
     root.classList.remove('light', 'dark');
@@ -58,7 +60,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     );
   };
 
-  const value = useMemo(() => ({ value: theme, set: setTheme, animate }), [theme]);
+  const value = useMemo(() => ({ value: getTheme(theme), set: setTheme, animate }), [theme]);
 
   return <ThemeContext value={value}>{children}</ThemeContext>;
 };

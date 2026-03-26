@@ -3,7 +3,7 @@ import { createContext } from 'react';
 export type Theme = 'dark' | 'light' | 'system';
 
 export interface ThemeContextValue {
-  value: Theme;
+  value: Exclude<Theme, 'system'>;
   animate: (x: number, y: number, theme: Theme) => Promise<void>;
   set: (theme: Theme) => void;
 }
