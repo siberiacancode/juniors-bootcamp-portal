@@ -1,6 +1,5 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import * as React from 'react';
 
@@ -14,17 +13,10 @@ interface ProviderProps {
   intl: IntlProviderProps;
 }
 
-const CookieConsent = dynamic(() => import('./(components)').then((mod) => mod.CookieConsent), {
-  ssr: false
-});
-
-export const Provider = ({ children, intl }: ProviderProps) => (
+export const Providers = ({ children, intl }: ProviderProps) => (
   <IntlProvider {...intl}>
     <ThemeProvider>
-      <NuqsAdapter>
-        {children}
-        <CookieConsent />
-      </NuqsAdapter>
+      <NuqsAdapter>{children}</NuqsAdapter>
     </ThemeProvider>
   </IntlProvider>
 );

@@ -3,15 +3,9 @@ import { Nunito, Overpass_Mono, Parisienne, Pixelify_Sans } from 'next/font/goog
 import { LOCALE } from '@/app/(constants)';
 import { cn } from '@/lib/utils';
 
-import {
-  Footer,
-  GoogleTagManagerScript,
-  Header,
-  ThemeScript,
-  YandexMetrikaScript
-} from './(components)';
+import { CookieConsent, Footer, Header, ThemeScript } from './(components)';
 import { getDictionary } from './(contexts)/intl/helpers/getDictionary';
-import { Provider } from './provider';
+import { Providers } from './providers';
 
 import './globals.css';
 
@@ -73,18 +67,12 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
         <ThemeScript />
       </head>
       <body className='flex min-h-screen flex-col'>
-        {process.env.NODE_ENV === 'production' && (
-          <>
-            <YandexMetrikaScript />
-            <GoogleTagManagerScript />
-          </>
-        )}
-
-        <Provider intl={{ locale: LOCALE, messages }}>
+        <Providers intl={{ locale: LOCALE, messages }}>
           <Header />
           <div className='flex flex-1 flex-col'>{children}</div>
           <Footer />
-        </Provider>
+          <CookieConsent />
+        </Providers>
       </body>
     </html>
   );
