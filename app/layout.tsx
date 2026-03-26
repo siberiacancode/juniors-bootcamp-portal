@@ -1,7 +1,7 @@
-import clsx from 'clsx';
 import { Nunito, Overpass_Mono, Parisienne, Pixelify_Sans } from 'next/font/google';
 
 import { LOCALE } from '@/app/(constants)';
+import { cn } from '@/lib/utils';
 
 import {
   CookieConsent,
@@ -56,7 +56,7 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
   return (
     <html
       suppressHydrationWarning
-      className={clsx(
+      className={cn(
         nunito.variable,
         pixelifySans.variable,
         parisienne.variable,
