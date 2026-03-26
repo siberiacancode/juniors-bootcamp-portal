@@ -8,7 +8,7 @@ import { IntlText } from '@/components/intl';
 import { Button, Typography, typographyVariants } from '@/components/ui';
 
 export const CookieConsent = () => {
-  const cookieConsent = useCookie<boolean>(COOKIES.COOKIE_CONSENT, {
+  const cookieConsent = useCookie(COOKIES.COOKIE_CONSENT, {
     path: '/',
     initialValue: false
   });
@@ -16,8 +16,8 @@ export const CookieConsent = () => {
   if (cookieConsent.value) return null;
 
   return (
-    <div className='fixed inset-x-0 bottom-0 z-50 mx-auto w-full max-w-7xl p-5'>
-      <div className='flex flex-col gap-6 rounded-16 border border-border-hard bg-secondary p-6 md:flex-row'>
+    <div className='fixed bottom-0 left-0 z-50 m-5'>
+      <div className='flex max-w-120 flex-col gap-6 rounded-16 border border-border-hard bg-white p-6 dark:bg-secondary'>
         <Typography as='p' variant='body-sm'>
           <IntlText
             values={{

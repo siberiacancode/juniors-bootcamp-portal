@@ -1,11 +1,9 @@
 import clsx from 'clsx';
 import { Nunito, Overpass_Mono, Parisienne, Pixelify_Sans } from 'next/font/google';
-import { cookies } from 'next/headers';
 
-import { COOKIES, LOCALE } from '@/app/(constants)';
+import { LOCALE } from '@/app/(constants)';
 
 import {
-  CookieConsent,
   Footer,
   GoogleTagManagerScript,
   Header,
@@ -53,7 +51,6 @@ interface RootLayoutProps {
 
 const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
   const messages = await getDictionary(LOCALE);
-  const hasConsent = (await cookies()).get(COOKIES.COOKIE_CONSENT)?.value === 'true';
 
   return (
     <html
@@ -87,8 +84,6 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
           <Header />
           <div className='flex flex-1 flex-col'>{children}</div>
           <Footer />
-
-          {!hasConsent && <CookieConsent />}
         </Provider>
       </body>
     </html>
