@@ -6,7 +6,7 @@ FROM base AS builder
 WORKDIR /app
 COPY package*.json yarn.lock ./
 RUN yarn --production --frozen-lockfile && \
-    yarn add typescript
+    yarn add typescript@5.9.3
 
 COPY . .
 
