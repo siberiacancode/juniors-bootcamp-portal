@@ -17,7 +17,7 @@ import {
 } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
-import { FAQ_ITEMS, ROADMAP, TAB_COLORS_MAP, TAGS, TASKS, TITLE_COLORS_MAP } from './_constants';
+import { FAQ_ITEMS, LINKS, ROADMAP, TAB_COLORS_MAP, TASKS, TITLE_COLORS_MAP } from './_constants';
 
 const TasksPage = () => (
   <main className='content-container mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
@@ -71,7 +71,7 @@ const TasksPage = () => (
                 </IconButton>
               </div>
 
-              <div className='flex flex-col items-stretch gap-6 sm:flex-row sm:items-end sm:justify-between'>
+              <div className='flex flex-col items-stretch gap-6 sm:items-start'>
                 <Typography as='p' className='max-w-225' variant='body-lg'>
                   <IntlText path={task.description} />
                 </Typography>
@@ -87,20 +87,26 @@ const TasksPage = () => (
           ))}
         </Tabs.Root>
 
-        <ScrollArea>
-          <div className='flex gap-6'>
-            {TAGS.map((tag) => (
-              <Typography
-                key={tag}
-                className='inline-flex h-12 items-center rounded-16 bg-muted px-4 font-nunito font-bold text-nowrap text-foreground'
-                variant='title-md'
-              >
-                <IntlText path={tag} />
-              </Typography>
+        <ScrollArea type='auto'>
+          <div className='flex gap-6 pb-3 sm:pb-0'>
+            {LINKS.map((link) => (
+              <Button asChild key={link.title} size='sm' variant='secondary'>
+                <a href={link.href} rel='noopener noreferrer' target='_blank'>
+                  <IntlText path={link.title} />
+                </a>
+              </Button>
             ))}
-            <div className='order-first inline-flex h-12 items-center rounded-16 bg-[rgb(240_251_255)] px-4 font-pixelify-sans text-[30px]/8 font-bold text-[rgb(82_189_233)] sm:order-last'>
-              REACTUSE
-            </div>
+
+            <Button
+              asChild
+              key='reactuse'
+              className='order-first bg-brand-reactuse font-pixelify-sans text-[18px] text-brand-reactuse-fg hover:bg-brand-reactuse-hover sm:order-last'
+              size='sm'
+            >
+              <a href='' rel='noopener noreferrer' target='_blank'>
+                REACTUSE
+              </a>
+            </Button>
           </div>
           <ScrollBar orientation='horizontal' />
         </ScrollArea>

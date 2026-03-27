@@ -117,9 +117,9 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
           )}
         </InputGroup>
 
-        <ScrollArea>
+        <ScrollArea type='auto'>
           <ChipGroup
-            className='sm:flex-wrap'
+            className='pb-3 sm:flex-wrap sm:pb-0'
             type='multiple'
             value={queryParams.tags}
             onValueChange={onChipClick}
@@ -238,7 +238,9 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
               </Typography>
 
               <div className='mt-auto'>
-                <Badge variant='primary'>ai</Badge>
+                <Badge className='bg-brand-vercel text-brand-vercel-fg' variant='accent'>
+                  ai
+                </Badge>
               </div>
             </a>
           </Card>

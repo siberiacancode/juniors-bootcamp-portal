@@ -27,22 +27,20 @@ const chipVariants = cva(
   }
 );
 
-const Chip = ({
-  className,
-  variant,
-  children,
-  ...props
-}: React.ComponentProps<typeof ChipPrimitive.Root> & VariantProps<typeof chipVariants>) => {
-  return (
-    <ChipPrimitive.Root
-      className={cn(chipVariants({ variant, className }), 'group/chip')}
-      data-slot='chip'
-      {...props}
-    >
-      {children}
-      <XIcon className={cn('hidden group-data-[state=on]/chip:block')} />
-    </ChipPrimitive.Root>
-  );
-};
+export type ChipProps = React.ComponentProps<typeof ChipPrimitive.Root> &
+  VariantProps<typeof chipVariants> & {
+    icon?: React.ReactNode;
+  };
+
+const Chip = ({ className, variant, children, icon, ...props }: ChipProps) => (
+  <ChipPrimitive.Root
+    className={cn(chipVariants({ variant, className }), 'group/chip')}
+    data-slot='chip'
+    {...props}
+  >
+    {children}
+    <span className='hidden group-data-[state=on]/chip:block'>{icon || <XIcon />}</span>
+  </ChipPrimitive.Root>
+);
 
 export { Chip, chipVariants };
