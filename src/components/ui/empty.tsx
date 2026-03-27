@@ -1,7 +1,5 @@
 import { cn } from '@/lib/utils';
 
-import { Typography } from './typography';
-
 const Empty = ({ className, ...props }: React.ComponentProps<'div'>) => {
   return (
     <div
@@ -15,12 +13,22 @@ const Empty = ({ className, ...props }: React.ComponentProps<'div'>) => {
   );
 };
 
-const EmptyTitle = ({ ...props }: React.ComponentProps<'div'>) => {
-  return <Typography as='div' data-slot='empty-title' variant='title-lg' {...props} />;
+const EmptyTitle = ({ className, ...props }: React.ComponentProps<'div'>) => {
+  return (
+    <div
+      className={cn('text-[32px]/10 font-extrabold tracking-wide', className)}
+      data-slot='empty-title'
+      {...props}
+    />
+  );
 };
 
-const EmptyDescription = ({ ...props }: React.ComponentProps<'p'>) => (
-  <Typography as='p' data-slot='empty-description' variant='body-lg' {...props} />
+const EmptyDescription = ({ className, ...props }: React.ComponentProps<'p'>) => (
+  <p
+    className={cn('text-[24px]/8 font-medium tracking-wide', className)}
+    data-slot='empty-description'
+    {...props}
+  />
 );
 
 export { Empty, EmptyDescription, EmptyTitle };

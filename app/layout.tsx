@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 import { CookieConsent, Footer, Header, ThemeScript } from './(components)';
 import { getDictionary } from './(contexts)/intl/helpers/getDictionary';
-import { Providers } from './providers';
+import { Provider } from './provider';
 
 import './globals.css';
 
@@ -67,12 +67,12 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
         <ThemeScript />
       </head>
       <body className='flex min-h-screen flex-col'>
-        <Providers intl={{ locale: LOCALE, messages }}>
+        <Provider intl={{ locale: LOCALE, messages }}>
           <Header />
           <div className='flex flex-1 flex-col'>{children}</div>
           <Footer />
           <CookieConsent />
-        </Providers>
+        </Provider>
       </body>
     </html>
   );

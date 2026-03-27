@@ -5,7 +5,7 @@ import { useIntl } from 'react-intl';
 
 import { GithubIcon, TelegramIcon, TwitchIcon, YoutubeIcon } from '@/components/icons';
 import { IntlText } from '@/components/intl';
-import { Button, IconButton, Typography, typographyVariants } from '@/components/ui';
+import { Button, IconButton, Typography } from '@/components/ui';
 
 const PRODUCTS = [
   {
@@ -128,15 +128,12 @@ export const Footer = () => {
 
             <ul className='flex flex-col gap-3'>
               {NAVIGATION.map((navigation) => (
-                <li
-                  key={navigation.href}
-                  className={typographyVariants({
-                    variant: 'caption'
-                  })}
-                >
-                  <Link className='hover:underline hover:underline-offset-2' href={navigation.href}>
-                    <IntlText path={navigation.label} />
-                  </Link>
+                <li key={navigation.href}>
+                  <Typography asChild variant='link'>
+                    <Link href={navigation.href}>
+                      <IntlText path={navigation.label} />
+                    </Link>
+                  </Typography>
                 </li>
               ))}
             </ul>
@@ -149,20 +146,16 @@ export const Footer = () => {
 
             <ul className='flex flex-col gap-3'>
               {OPENSOURCE.map((opensource) => (
-                <li
-                  key={opensource.href}
-                  className={typographyVariants({
-                    variant: 'caption'
-                  })}
-                >
-                  <Link
-                    className='hover:underline hover:underline-offset-2'
+                <li key={opensource.href}>
+                  <Typography
+                    as='a'
                     href={opensource.href}
                     rel='noopener noreferrer'
                     target='_blank'
+                    variant='link'
                   >
                     {opensource.label}
-                  </Link>
+                  </Typography>
                 </li>
               ))}
             </ul>
@@ -172,23 +165,25 @@ export const Footer = () => {
         <div className='flex flex-col gap-4 sm:flex-row sm:justify-between'>
           <Typography as='p' className='text-muted-fg' variant='caption'>
             Built by{' '}
-            <Link
-              className={typographyVariants({ variant: 'link' })}
+            <Typography
+              as='a'
               href='https://github.com/siberiacancode'
               rel='noopener noreferrer'
               target='_blank'
+              variant='link'
             >
               siberiacancode
-            </Link>
+            </Typography>
             . The source code is available on{' '}
-            <Link
-              className={typographyVariants({ variant: 'link' })}
+            <Typography
+              as='a'
               href='https://github.com/siberiacancode/juniors-bootcamp-portal'
               rel='noopener noreferrer'
               target='_blank'
+              variant='link'
             >
               GitHub
-            </Link>
+            </Typography>
             .
           </Typography>
         </div>

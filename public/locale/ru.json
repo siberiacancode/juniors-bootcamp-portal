@@ -64,7 +64,7 @@
   "page.tasks.cards.pizza.title": "Достав<span>к</span>а п<span>и</span>ццы",
   "page.tasks.cards.pizza.description": "Интернет-пиццерия с каталогом, кастомными топпингами, корзиной и оформлением заказа с оплатой.",
 
-  "page.tasks.tag.disigne": "ДИЗАЙН",
+  "page.tasks.tag.designe": "ДИЗАЙН",
   "page.tasks.tag.api": "API",
   "page.tasks.tag.github": "GITHUB",
   "page.tasks.tag.actualStack": "АКТУАЛЬНЫЙ СТЕК",
@@ -82,9 +82,9 @@
   "page.tasks.section.faq.0.question": "Куда можно выложить проект?",
   "page.tasks.section.faq.0.answer": "Свой готовый проект можно выложить на GitHub",
   "page.tasks.section.faq.1.question": "Сколько времени даётся на каждое задание?",
-  "page.tasks.section.faq.1.answer": "ANSWER",
+  "page.tasks.section.faq.1.answer": "TODO",
   "page.tasks.section.faq.2.question": "Можно получить обратную связь по моему проекту?",
-  "page.tasks.section.faq.2.answer": "ANSWER",
+  "page.tasks.section.faq.2.answer": "TODO",
 
   "footer.logo.alt": "Логотип JUNIORS BOOTCAMP",
   "footer.description": "Бесплатный развивающий контент для начинающих айтишников",

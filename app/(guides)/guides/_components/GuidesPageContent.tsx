@@ -7,7 +7,7 @@ import { parseAsArrayOf, parseAsString, useQueryStates } from 'nuqs';
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
 
-import { FullVercelIcon } from '@/components/icons/FullVercelIcon';
+import { SkillsshIcon } from '@/components/icons';
 import { IntlText } from '@/components/intl';
 import {
   Badge,
@@ -226,7 +226,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
             >
               <div className='flex flex-col'>
                 <span className='inline-flex h-10 items-center justify-between'>
-                  <FullVercelIcon className='h-6.5 w-21.5' />
+                  <SkillsshIcon className='h-6.5 w-21.5' />
                   <ExternalLinkIcon className='size-5' />
                 </span>
                 <Typography variant='title-md'>

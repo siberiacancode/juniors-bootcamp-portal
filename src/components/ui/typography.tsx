@@ -2,6 +2,7 @@ import type { VariantProps } from 'class-variance-authority';
 import type { ComponentProps } from 'react';
 
 import { cva } from 'class-variance-authority';
+import { Slot } from 'radix-ui';
 
 import { cn } from '@/lib/utils';
 
@@ -37,26 +38,33 @@ const typographyVariants = cva('font-nunito', {
     pixelify: false
   }
 });
-type AllowedTag = 'div' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
 
-type TypographyProps<Tag extends AllowedTag> = ComponentProps<Tag> &
+export type TypographyTag = 'a' | 'div' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
+
+type TypographyProps<Tag extends TypographyTag> = ComponentProps<Tag> &
   VariantProps<typeof typographyVariants> & {
     as?: Tag;
+    asChild?: boolean;
   };
 
-const Typography = <Tag extends AllowedTag>({
-  as: Component = 'div' as Tag,
+const Typography = <Tag extends TypographyTag>({
+  as = 'div' as Tag,
   className,
+  asChild = false,
   variant = 'body-md',
   pixelify = false,
   ...props
-}: TypographyProps<Tag>) => (
-  <Component
-    className={cn(typographyVariants({ pixelify, variant, className }))}
-    data-slot='typography'
-    data-variant={variant}
-    {...(props as any)}
-  />
-);
+}: TypographyProps<Tag>) => {
+  const Component = asChild ? Slot.Root : as;
+
+  return (
+    <Component
+      className={cn(typographyVariants({ pixelify, variant, className }))}
+      data-slot='typography'
+      data-variant={variant}
+      {...(props as any)}
+    />
+  );
+};
 
 export { Typography, typographyVariants };

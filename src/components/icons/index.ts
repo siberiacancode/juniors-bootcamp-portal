@@ -5,6 +5,7 @@ export * from './FrenchFries';
 export * from './GithubIcon';
 export * from './PizzaIcon';
 export * from './RobotIcon';
+export * from './SkillsshIcon';
 export * from './TelegramIcon';
 export * from './TestTubeIcon';
 export * from './TwitchIcon';

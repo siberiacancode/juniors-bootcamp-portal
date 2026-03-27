@@ -22,8 +22,7 @@ import {
   SheetTitle,
   SheetTrigger,
   Switch,
-  Typography,
-  typographyVariants
+  Typography
 } from '@/components/ui';
 
 const ThemeButton = dynamic(
@@ -120,36 +119,31 @@ export const Header = () => {
               <div className='flex flex-col gap-3'>
                 {NAVIGATION.map((navigation) => (
                   <SheetClose asChild key={navigation.href}>
-                    <Link
-                      className={typographyVariants({
-                        className: 'px-4 py-2 uppercase',
-                        variant: 'heading-md'
-                      })}
-                      href={navigation.href}
-                    >
-                      <IntlText path={navigation.label} />
-                    </Link>
+                    <Typography asChild className='px-4 py-2 uppercase' variant='heading-md'>
+                      <Link href={navigation.href}>
+                        <IntlText path={navigation.label} />
+                      </Link>
+                    </Typography>
                   </SheetClose>
                 ))}
 
-                <Separator className='bg-border-soft' />
+                <Separator />
 
                 <SheetClose asChild>
-                  <Link
-                    className={typographyVariants({
-                      className: 'inline-flex items-center gap-2 px-4 py-2',
-                      variant: 'body-lg'
-                    })}
+                  <Typography
+                    as='a'
+                    className='inline-flex items-center gap-2 px-4 py-2'
                     href='https://github.com/siberiacancode'
                     rel='noopener noreferrer'
                     target='_blank'
+                    variant='body-lg'
                   >
                     <GithubIcon
                       aria-label={intl.formatMessage({ id: 'header.github.alt' })}
                       className='size-6'
                     />
                     Github
-                  </Link>
+                  </Typography>
                 </SheetClose>
 
                 <div className='flex items-center justify-between'>

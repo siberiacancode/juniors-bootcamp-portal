@@ -13,7 +13,7 @@ interface ProviderProps {
   intl: IntlProviderProps;
 }
 
-export const Providers = ({ children, intl }: ProviderProps) => (
+export const Provider = ({ children, intl }: ProviderProps) => (
   <IntlProvider {...intl}>
     <ThemeProvider>
       <NuqsAdapter>{children}</NuqsAdapter>

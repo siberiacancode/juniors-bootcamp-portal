@@ -1,1 +1,1 @@
-export * from './TrackingScripts/TrackingScripts';
+export * from './YandexMetricaScript';

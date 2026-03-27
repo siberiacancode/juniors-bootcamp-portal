@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react';
 
-export const FullVercelIcon = (props: SVGProps<SVGSVGElement>) => (
+export const SkillsshIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg {...props} fill='currentColor' viewBox='0 0 86 26' xmlns='http://www.w3.org/2000/svg'>
     <g clipPath='url(#clip0_40000624_20384)'>
       <path d='M13.953 19H0L6.977 7z' />

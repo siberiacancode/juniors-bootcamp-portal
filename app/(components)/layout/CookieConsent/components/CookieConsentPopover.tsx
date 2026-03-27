@@ -3,7 +3,7 @@
 import Link from 'next/link';
 
 import { IntlText } from '@/components/intl';
-import { Button, Typography, typographyVariants } from '@/components/ui';
+import { Button, Typography } from '@/components/ui';
 
 import { useCookieConsent } from '../hooks';
 
@@ -17,9 +17,13 @@ export const CookieConsentPopover = () => {
           <IntlText
             values={{
               link: (chunks) => (
-                <Link className={typographyVariants({ variant: 'link' })} href='#'>
-                  {chunks}
-                </Link>
+                <Typography asChild variant='link'>
+                  <Link
+                    href='#' // TODO add href
+                  >
+                    {chunks}
+                  </Link>
+                </Typography>
               )
             }}
             path='cookieConsent.description'

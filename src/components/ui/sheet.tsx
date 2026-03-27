@@ -6,8 +6,6 @@ import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-import { typographyVariants } from './typography';
-
 const Sheet = ({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) => {
   return <SheetPrimitive.Root data-slot='sheet' {...props} />;
 };
@@ -109,7 +107,7 @@ const SheetDescription = ({
 }: React.ComponentProps<typeof SheetPrimitive.Description>) => {
   return (
     <SheetPrimitive.Description
-      className={cn(typographyVariants({ variant: 'caption', className }), 'text-muted-fg')}
+      className={cn('text-[14px]/5.5 font-medium tracking-wide text-muted-fg', className)}
       data-slot='sheet-description'
       {...props}
     />
