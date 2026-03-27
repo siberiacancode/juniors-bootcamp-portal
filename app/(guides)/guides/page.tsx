@@ -1,7 +1,7 @@
 import { intl } from '@/app/(contexts)/intl/helpers/getDictionary';
 import { getGuides } from '@/app/(guides)/_helpers/getGuides';
 import { IntlText } from '@/components/intl';
-import { PixelifyIntlText } from '@/components/ui';
+import { Typography } from '@/components/ui';
 
 import { GuidesPageContent } from './_components';
 
@@ -21,12 +21,12 @@ const GuidesPage = async () => {
   return (
     <main className='content-container mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
       <section className='flex flex-col gap-8 sm:gap-10'>
-        <h1 className='font-nunito text-[56px] leading-none font-bold md:text-[170px]'>
-          <PixelifyIntlText path='page.guides.title' />
-        </h1>
-        <p className='text-2xl'>
+        <Typography pixelify as='h1' variant='display'>
+          <IntlText path='page.guides.title' />
+        </Typography>
+        <Typography as='p' variant='body-lg'>
           <IntlText path='page.guides.description' />
-        </p>
+        </Typography>
       </section>
 
       <GuidesPageContent guides={guides} labels={labels} />

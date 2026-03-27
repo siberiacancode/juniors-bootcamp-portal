@@ -16,17 +16,19 @@ const Empty = ({ className, ...props }: React.ComponentProps<'div'>) => {
 const EmptyTitle = ({ className, ...props }: React.ComponentProps<'div'>) => {
   return (
     <div
-      className={cn('text-3xl font-extrabold tracking-tight', className)}
+      className={cn('text-[32px]/10 font-extrabold tracking-wide', className)}
       data-slot='empty-title'
       {...props}
     />
   );
 };
 
-const EmptyDescription = ({ className, ...props }: React.ComponentProps<'p'>) => {
-  return (
-    <p className={cn('text-2xl/relaxed', className)} data-slot='empty-description' {...props} />
-  );
-};
+const EmptyDescription = ({ className, ...props }: React.ComponentProps<'p'>) => (
+  <p
+    className={cn('text-[24px]/8 font-medium tracking-wide', className)}
+    data-slot='empty-description'
+    {...props}
+  />
+);
 
 export { Empty, EmptyDescription, EmptyTitle };

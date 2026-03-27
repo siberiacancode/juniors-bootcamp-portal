@@ -63,7 +63,7 @@ export const CodeGroup = ({ children }: CodeBlockGroupProps) => {
   return (
     <figure className='mb-4 rounded-20 border-2 border-border-hard'>
       <div className='flex h-16 items-center rounded-t-20 border-b-2 border-border-hard px-6'>
-        {fileName && <span className='text-sm text-muted-fg'>{fileName}</span>}
+        {fileName && <span className='text-[14px]/5.5 text-muted-fg'>{fileName}</span>}
         <div className='ml-auto flex items-center gap-2'>
           <Select
             value={currentLanguage}
@@ -91,7 +91,7 @@ export const CodeGroup = ({ children }: CodeBlockGroupProps) => {
         key={key}
         ref={preRef}
         className={cn(
-          'overflow-x-auto rounded-b-20 p-6 text-base [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+          'overflow-x-auto rounded-b-20 p-6 text-[16px]/6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
           className
         )}
         {...props}

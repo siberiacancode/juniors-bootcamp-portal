@@ -4,18 +4,29 @@ import type { ComponentProps } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
+type IntlTextValues = ComponentProps<typeof FormattedMessage>['values'];
+
 interface IntlTextProps {
   html?: boolean;
   id?: string;
   path: MessagePath;
-  values?: ComponentProps<typeof FormattedMessage>['values'];
+  values?: IntlTextValues;
 }
 
-export const IntlText = ({ html, id, path, values }: IntlTextProps) =>
-  html ? (
-    <FormattedMessage id={path} values={values}>
-      {(txt: string | TrustedHTML) => <span dangerouslySetInnerHTML={{ __html: txt }} id={id} />}
-    </FormattedMessage>
-  ) : (
-    <FormattedMessage id={path} values={values} />
-  );
+const VALUES: IntlTextValues = {
+  span: (text) => <span>{text}</span>,
+  br: () => <br />
+};
+
+export const IntlText = ({ html, id, path, values }: IntlTextProps) => {
+  const mergedValues = { ...VALUES, ...values };
+
+  if (html)
+    return (
+      <FormattedMessage id={path} values={mergedValues}>
+        {(txt: string | TrustedHTML) => <span dangerouslySetInnerHTML={{ __html: txt }} id={id} />}
+      </FormattedMessage>
+    );
+
+  return <FormattedMessage id={path} values={mergedValues} />;
+};

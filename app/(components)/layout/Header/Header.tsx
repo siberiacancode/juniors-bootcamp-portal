@@ -2,12 +2,13 @@
 
 import type { MouseEvent } from 'react';
 
-import { Github, Loader2Icon, MenuIcon, MoonIcon, XIcon } from 'lucide-react';
+import { Loader2Icon, MenuIcon, MoonIcon, XIcon } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useIntl } from 'react-intl';
 
 import { useTheme } from '@/app/(contexts)/theme';
+import { GithubIcon } from '@/components/icons';
 import { IntlText } from '@/components/intl';
 import {
   Button,
@@ -20,7 +21,8 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-  Switch
+  Switch,
+  Typography
 } from '@/components/ui';
 
 const ThemeButton = dynamic(
@@ -54,7 +56,7 @@ export const Header = () => {
   return (
     <header className='mt-3 w-full sm:mt-6'>
       <div className='content-container flex h-10 items-center justify-between sm:h-16'>
-        <Link className='flex items-center font-pixelify-sans text-3xl font-bold' href='/'>
+        <Link className='font-pixelify-sans text-[32px]/10 font-bold tracking-[5%]' href='/'>
           jb
         </Link>
 
@@ -76,7 +78,7 @@ export const Header = () => {
                 rel='noopener noreferrer'
                 target='_blank'
               >
-                <Github aria-label={intl.formatMessage({ id: 'header.github.alt' })} />
+                <GithubIcon aria-label={intl.formatMessage({ id: 'header.github.alt' })} />
               </Link>
             </IconButton>
 
@@ -98,7 +100,10 @@ export const Header = () => {
                   <IntlText path='navigationMenu.description' />
                 </SheetDescription>
 
-                <Link className='flex items-center font-pixelify-sans text-3xl font-bold' href='/'>
+                <Link
+                  className='font-pixelify-sans text-[32px]/10 font-bold tracking-[5%]'
+                  href='/'
+                >
                   jb
                 </Link>
 
@@ -111,37 +116,45 @@ export const Header = () => {
                 </div>
               </SheetHeader>
 
-              <div className='flex flex-col gap-3 uppercase'>
+              <div className='flex flex-col gap-3'>
                 {NAVIGATION.map((navigation) => (
                   <SheetClose asChild key={navigation.href}>
-                    <Link
-                      className='px-4 py-2 text-5xl font-bold text-primary'
-                      href={navigation.href}
-                    >
-                      <IntlText path={navigation.label} />
-                    </Link>
+                    <Typography asChild className='px-4 py-2 uppercase' variant='heading-md'>
+                      <Link href={navigation.href}>
+                        <IntlText path={navigation.label} />
+                      </Link>
+                    </Typography>
                   </SheetClose>
                 ))}
 
                 <Separator />
 
                 <SheetClose asChild>
-                  <Link
-                    className='inline-flex items-center gap-2 px-4 py-2 text-2xl font-bold'
+                  <Typography
+                    as='a'
+                    className='inline-flex items-center gap-2 px-4 py-2'
                     href='https://github.com/siberiacancode'
                     rel='noopener noreferrer'
                     target='_blank'
+                    variant='body-lg'
                   >
-                    <Github aria-label={intl.formatMessage({ id: 'header.github.alt' })} />
-                    GITHUB
-                  </Link>
+                    <GithubIcon
+                      aria-label={intl.formatMessage({ id: 'header.github.alt' })}
+                      className='size-6'
+                    />
+                    Github
+                  </Typography>
                 </SheetClose>
 
                 <div className='flex items-center justify-between'>
-                  <span className='inline-flex items-center gap-2 px-4 py-2 text-2xl font-bold'>
-                    <MoonIcon />
+                  <Typography
+                    as='span'
+                    className='inline-flex items-center gap-2 px-4 py-2'
+                    variant='body-lg'
+                  >
+                    <MoonIcon className='size-6' />
                     <IntlText path='navigationMenu.darkTheme' />
-                  </span>
+                  </Typography>
 
                   <Switch checked={theme.value === 'dark'} onClick={onThemeClick} />
                 </div>

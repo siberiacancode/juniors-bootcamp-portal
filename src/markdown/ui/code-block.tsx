@@ -28,7 +28,7 @@ export const CodeBlock = ({ children, fileName, className, ...props }: CodeBlock
     return (
       <pre
         className={cn(
-          'mb-4 overflow-x-auto rounded-20 border-2 border-border-hard p-6 text-base [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+          'mb-4 overflow-x-auto rounded-20 border-2 border-border-hard p-6 text-[16px]/6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
           className
         )}
         {...props}
@@ -41,7 +41,7 @@ export const CodeBlock = ({ children, fileName, className, ...props }: CodeBlock
   return (
     <figure className='mb-4 rounded-20 border-2 border-border-hard'>
       <div className='flex h-16 items-center border-b-2 border-border-hard'>
-        <span className='text-sm text-muted-fg'>{fileName}</span>
+        <span className='text-[14px]/5.5 text-muted-fg'>{fileName}</span>
         <IconButton
           className={cn('ml-auto text-muted-fg', className)}
           size='sm'
@@ -55,7 +55,7 @@ export const CodeBlock = ({ children, fileName, className, ...props }: CodeBlock
       <pre
         ref={preRef}
         className={cn(
-          'overflow-x-auto rounded-b-20 p-6 text-base [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+          'overflow-x-auto rounded-b-20 p-6 text-[16px]/6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
           className
         )}
       >

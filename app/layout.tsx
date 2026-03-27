@@ -3,37 +3,30 @@ import { Nunito, Overpass_Mono, Parisienne, Pixelify_Sans } from 'next/font/goog
 import { LOCALE } from '@/app/(constants)';
 import { cn } from '@/lib/utils';
 
-import {
-  CookieConsent,
-  Footer,
-  GoogleTagManagerScript,
-  Header,
-  ThemeScript,
-  YandexMetrikaScript
-} from './(components)';
+import { CookieConsent, Footer, Header, ThemeScript } from './(components)';
 import { getDictionary } from './(contexts)/intl/helpers/getDictionary';
 import { Provider } from './provider';
 
 import './globals.css';
 
 const nunito = Nunito({
-  variable: '--nunito',
+  variable: '--font-nunito',
   subsets: ['latin', 'cyrillic']
 });
 
 const pixelifySans = Pixelify_Sans({
-  variable: '--pixelify-sans',
+  variable: '--font-pixelify-sans',
   subsets: ['latin', 'cyrillic']
 });
 
 const parisienne = Parisienne({
-  variable: '--parisienne',
+  variable: '--font-parisienne',
   weight: '400',
   subsets: ['latin']
 });
 
 const overpassMono = Overpass_Mono({
-  variable: '--overpass-mono',
+  variable: '--font-overpass-mono',
   weight: '400',
   subsets: ['latin']
 });
@@ -74,18 +67,10 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
         <ThemeScript />
       </head>
       <body className='flex min-h-screen flex-col'>
-        {process.env.NODE_ENV === 'production' && (
-          <>
-            <YandexMetrikaScript />
-            <GoogleTagManagerScript />
-          </>
-        )}
-
         <Provider intl={{ locale: LOCALE, messages }}>
           <Header />
           <div className='flex flex-1 flex-col'>{children}</div>
           <Footer />
-
           <CookieConsent />
         </Provider>
       </body>

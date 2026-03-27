@@ -74,7 +74,7 @@ const NavigationMenuItem = ({
 };
 
 const navigationMenuTriggerStyle = cva(
-  'group inline-flex h-9 w-max items-center justify-center rounded-8 bg-background px-4 py-2 text-sm font-medium transition-[color,box-shadow] outline-none hover:bg-secondary hover:text-secondary-fg focus:bg-secondary focus:text-secondary-fg focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-secondary/50 data-[state=open]:text-secondary-fg data-[state=open]:hover:bg-secondary data-[state=open]:focus:bg-secondary'
+  'group text-sm inline-flex h-9 w-max items-center justify-center rounded-8 bg-background px-4 py-2 font-medium transition-[color,box-shadow] outline-none hover:bg-secondary hover:text-secondary-fg focus:bg-secondary focus:text-secondary-fg focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-secondary/50 data-[state=open]:text-secondary-fg data-[state=open]:hover:bg-secondary data-[state=open]:focus:bg-secondary'
 );
 
 const NavigationMenuTrigger = ({
@@ -121,7 +121,7 @@ const NavigationMenuLink = ({
   return (
     <NavigationMenuPrimitive.Link
       className={cn(
-        "flex flex-col gap-1 rounded-6 p-2 text-sm transition-all outline-none hover:bg-secondary hover:text-secondary-fg focus:bg-secondary focus:text-secondary-fg focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 data-[active=true]:bg-secondary/50 data-[active=true]:text-secondary-fg data-[active=true]:hover:bg-secondary data-[active=true]:focus:bg-secondary [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-fg",
+        "text-sm flex flex-col gap-1 rounded-6 p-2 transition-all outline-none hover:bg-secondary hover:text-secondary-fg focus:bg-secondary focus:text-secondary-fg focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 data-[active=true]:bg-secondary/50 data-[active=true]:text-secondary-fg data-[active=true]:hover:bg-secondary data-[active=true]:focus:bg-secondary [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-fg",
         className
       )}
       data-slot='navigation-menu-link'
