@@ -12,12 +12,28 @@ export const TAB_COLORS_MAP = {
   '🍕': 'data-[state=active]:bg-[rgb(255_220_212)]'
 };
 
-export const TAGS = [
-  'page.tasks.tag.design',
-  'page.tasks.tag.api',
-  'page.tasks.tag.github',
-  'page.tasks.tag.actualStack',
-  'page.tasks.tag.workWithGit'
+// TODO add hrefs
+export const LINKS = [
+  {
+    href: '',
+    title: 'page.tasks.tag.design'
+  },
+  {
+    href: '',
+    title: 'page.tasks.tag.api'
+  },
+  {
+    href: '',
+    title: 'page.tasks.tag.github'
+  },
+  {
+    href: '',
+    title: 'page.tasks.tag.actualStack'
+  },
+  {
+    href: '',
+    title: 'page.tasks.tag.workWithGit'
+  }
 ] as const;
 
 export const FAQ_ITEMS = [
@@ -42,7 +58,7 @@ export const ROADMAP = [
   'page.tasks.section.roadmap.step.4'
 ] as const;
 
-// TODO add hrefs for tasks
+// TODO add hrefs
 export const TASKS = [
   {
     emoji: '📦',

@@ -12,8 +12,7 @@ const badgeVariants = cva(
     variants: {
       variant: {
         outline: `border-ring`,
-        accent: `bg-accent-primary text-accent-primary-fg`,
-        primary: `bg-primary text-primary-fg`
+        accent: `bg-accent-primary text-accent-primary-fg`
       }
     },
     defaultVariants: {
@@ -24,7 +23,7 @@ const badgeVariants = cva(
 
 const Badge = ({
   className,
-  variant = 'primary',
+  variant = 'outline',
   asChild = false,
   ...props
 }: React.ComponentProps<'span'> & VariantProps<typeof badgeVariants> & { asChild?: boolean }) => {
