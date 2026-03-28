@@ -51,7 +51,7 @@ const TasksPage = () => (
           {TASKS.map((task) => (
             <Tabs.Content
               key={task.emoji}
-              className='flex flex-col gap-6 rounded-24 border-3 border-border-hard p-6 transition hover:shadow-[0_6px_0_0_var(--color-border-hard)] sm:h-127.5 sm:justify-center sm:gap-12 sm:px-12'
+              className='flex flex-col gap-6 rounded-24 border-3 border-border-hard bg-background p-6 transition hover:shadow-[0_6px_0_0_var(--color-border-hard)] sm:h-127.5 sm:justify-center sm:gap-12 sm:px-12'
               value={task.emoji}
             >
               <div className='flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center'>

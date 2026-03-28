@@ -13,7 +13,10 @@ const Card = ({
   const Comp = asChild ? Slot.Root : 'div';
   return (
     <Comp
-      className={cn('flex flex-col rounded-24 border-2 border-border-hard py-6', className)}
+      className={cn(
+        'flex flex-col rounded-24 border-2 border-border-hard bg-background py-6',
+        className
+      )}
       data-slot='card'
       {...props}
     />
