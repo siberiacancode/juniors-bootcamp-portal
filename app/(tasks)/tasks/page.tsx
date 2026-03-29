@@ -17,7 +17,14 @@ import {
 } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
-import { FAQ_ITEMS, LINKS, ROADMAP, TAB_COLORS_MAP, TASKS, TITLE_COLORS_MAP } from './_constants';
+import {
+  FAQ_ITEMS,
+  LINKS,
+  ROADMAP,
+  TAB_CONTENT_TITLE_SHADOW_COLOR_MAP,
+  TAB_TRIGGER_BG_COLOR_MAP,
+  TASKS
+} from './_constants';
 
 const TasksPage = () => (
   <main className='content-container mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
@@ -38,8 +45,8 @@ const TasksPage = () => (
               <Tabs.Trigger
                 key={task.emoji}
                 className={cn(
-                  'size-16 rounded-full bg-muted text-[32px] leading-none sm:size-22 sm:text-[40px]',
-                  TAB_COLORS_MAP[task.emoji]
+                  'size-16 rounded-full bg-secondary text-[32px] leading-none sm:size-22 sm:text-[40px]',
+                  TAB_TRIGGER_BG_COLOR_MAP[task.emoji]
                 )}
                 value={task.emoji}
               >
@@ -59,7 +66,7 @@ const TasksPage = () => (
                   pixelify
                   className={cn(
                     'order-last font-nunito text-[48px] leading-none font-bold sm:order-first sm:text-[96px]',
-                    TITLE_COLORS_MAP[task.emoji]
+                    TAB_CONTENT_TITLE_SHADOW_COLOR_MAP[task.emoji]
                   )}
                   as='h2'
                   variant='heading-xl'
