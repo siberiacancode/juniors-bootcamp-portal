@@ -66,7 +66,7 @@ const TasksPage = () => (
                 >
                   <IntlText path={task.title} />
                 </Typography>
-                <IconButton className='size-16 rounded-16' size='lg' variant='ghost'>
+                <IconButton className='size-16 rounded-16' size='lg' variant='outline'>
                   <FigmaIcon className='size-8' />
                 </IconButton>
               </div>
