@@ -1,4 +1,4 @@
-import { createIntl } from 'react-intl';
+import { createIntl } from 'react-intl/server';
 
 import ruMessage from '@/public/locale/ru.json';
 
