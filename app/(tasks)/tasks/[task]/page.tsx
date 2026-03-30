@@ -1,0 +1,260 @@
+import { Tabs as RadixTabs } from 'radix-ui';
+
+import { LOCALE } from '@/app/(constants)';
+import { getDictionary } from '@/app/(contexts)/intl/helpers/getDictionary';
+import { IntlText } from '@/components/intl';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+  Button,
+  Card,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  Typography
+} from '@/components/ui';
+import { cn } from '@/lib/utils';
+
+import type { TaskName } from './_constants';
+
+import { ActionBadge } from './_components';
+import {
+  FAQ_ITEMS,
+  LEVEL_DESCRIPTION_MAP,
+  LEVEL_ICON_MAP,
+  LEVEL_TITLE_MAP,
+  TAB_TRIGGER_BG_COLOR_MAP,
+  TASKS_MAP
+} from './_constants';
+
+export interface TaskPageParams {
+  task: TaskName;
+}
+
+export interface TaskPageProps {
+  params: Promise<TaskPageParams>;
+}
+
+export const generateStaticParams = async () => Object.keys(TASKS_MAP).map((task) => ({ task }));
+
+export const generateMetadata = async ({ params }: TaskPageProps) => {
+  const { task } = await params;
+  const { title, description } = TASKS_MAP[task];
+  const messages = await getDictionary(LOCALE);
+
+  return {
+    title: `${messages[title]} | ${messages['page.task.metadata.title']}`,
+    description
+  };
+};
+
+const TaskPage = async ({ params }: TaskPageProps) => {
+  const { task } = await params;
+
+  const taskInfo = TASKS_MAP[task];
+
+  return (
+    <main className='content-container mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
+      <section className='flex flex-col gap-8 sm:gap-10'>
+        <Typography as='h1' variant='heading-2xl'>
+          {taskInfo.emoji}
+          <IntlText path={taskInfo.title} />
+        </Typography>
+
+        <Typography as='p' variant='body-lg'>
+          <IntlText path={taskInfo.description} />
+        </Typography>
+      </section>
+
+      <section className='flex flex-col gap-8 sm:gap-10'>
+        <div className='flex flex-col gap-6'>
+          <Typography as='h2' variant='heading-md'>
+            <IntlText path='page.task.section.level.title' />
+          </Typography>
+          <Typography as='p' variant='body-lg'>
+            <IntlText path='page.task.section.level.description' />
+          </Typography>
+        </div>
+
+        <RadixTabs.Root defaultValue={taskInfo.levels[0].name}>
+          <RadixTabs.List className='mb-8 grid grid-cols-3 gap-4 sm:mb-10'>
+            {taskInfo.levels.map((level) => {
+              const LevelIcon = LEVEL_ICON_MAP[level.name];
+              return (
+                <RadixTabs.Trigger
+                  asChild
+                  key={level.name}
+                  className={cn(
+                    'group/trigger cursor-pointer transition hover:shadow-[3px_3px_0_0_var(--color-border-hard)] [&>svg]:size-10',
+                    TAB_TRIGGER_BG_COLOR_MAP[level.name]
+                  )}
+                  value={level.name}
+                >
+                  <Card className='gap-4 px-6 sm:px-10'>
+                    <LevelIcon className='size-10 text-(--color-special)' />
+
+                    <Typography
+                      pixelify
+                      className='group-data-[state=active]/trigger:drop-shadow-[3px_0_0_var(--color-special)]'
+                      variant='heading-2xl'
+                    >
+                      {LEVEL_TITLE_MAP[level.name]}
+                    </Typography>
+
+                    <Typography as='p' variant='body-md'>
+                      <IntlText path={LEVEL_DESCRIPTION_MAP[level.name]} />
+                    </Typography>
+                  </Card>
+                </RadixTabs.Trigger>
+              );
+            })}
+          </RadixTabs.List>
+
+          {taskInfo.levels.map((level) => (
+            <RadixTabs.Content
+              key={level.name}
+              className='flex flex-col gap-8 sm:gap-10'
+              value={level.name}
+            >
+              <div className='flex flex-col gap-6 sm:hidden'>
+                <Button asChild size='lg' variant='outline'>
+                  <a href={level.figmaLink} rel='noopener noreferrer' target='_blank'>
+                    <IntlText path='page.task.section.level.link.figma' />
+                  </a>
+                </Button>
+
+                <Button asChild size='lg' variant='outline'>
+                  <a href={level.requirementsLink} rel='noopener noreferrer' target='_blank'>
+                    <IntlText path='page.task.section.level.link.requirements' />
+                  </a>
+                </Button>
+
+                <Button asChild size='lg' variant='outline'>
+                  <a href={level.backendLink} rel='noopener noreferrer' target='_blank'>
+                    <IntlText path='page.task.section.level.link.backend' />
+                  </a>
+                </Button>
+              </div>
+
+              <div className='hidden gap-6 sm:flex'>
+                <Button asChild size='sm' variant='outline'>
+                  <a href={level.figmaLink} rel='noopener noreferrer' target='_blank'>
+                    <IntlText path='page.task.section.level.link.figma' />
+                  </a>
+                </Button>
+
+                <Button asChild size='sm' variant='outline'>
+                  <a href={level.requirementsLink} rel='noopener noreferrer' target='_blank'>
+                    <IntlText path='page.task.section.level.link.requirements' />
+                  </a>
+                </Button>
+
+                <Button asChild size='sm' variant='outline'>
+                  <a href={level.backendLink} rel='noopener noreferrer' target='_blank'>
+                    <IntlText path='page.task.section.level.link.backend' />
+                  </a>
+                </Button>
+              </div>
+
+              <div className='flex flex-col gap-6'>
+                <Typography as='h4' variant='title-lg'>
+                  <IntlText path='page.task.section.level.expectedResult' />
+                </Typography>
+                <Typography as='p' variant='body-lg'>
+                  <IntlText path={level.expectedResult} />
+                </Typography>
+              </div>
+
+              <div className='flex flex-col gap-6'>
+                <Typography as='h4' variant='title-lg'>
+                  <IntlText path='page.task.section.level.flow' />
+                </Typography>
+                <ol>
+                  {level.flow.map((step, index) => (
+                    <li key={step}>
+                      <Typography as='span' className='inline-flex gap-2' variant='body-lg'>
+                        {index + 1}. <IntlText path={step} />
+                      </Typography>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              <div className='flex flex-col gap-6'>
+                <Typography as='h4' variant='title-lg'>
+                  API
+                </Typography>
+                <Typography as='p' variant='body-lg'>
+                  <IntlText path='page.task.section.level.api.description' />
+                </Typography>
+
+                <Tabs defaultValue='rest'>
+                  <TabsList className='w-full sm:w-fit'>
+                    <TabsTrigger value='rest'>Rest</TabsTrigger>
+                    <TabsTrigger value='graphQL'>GraphQL</TabsTrigger>
+                  </TabsList>
+
+                  <TabsContent value='rest'>
+                    <ul className='flex flex-col gap-4'>
+                      {level.rest.map((item) => (
+                        <li
+                          key={`${item.operation}-${item.field}`}
+                          className='flex items-center gap-2'
+                        >
+                          <ActionBadge operation={item.operation}>{item.operation}</ActionBadge>
+                          <Typography as='span' className='font-overpass-mono' variant='body-sm'>
+                            {item.field}
+                          </Typography>
+                        </li>
+                      ))}
+                    </ul>
+                  </TabsContent>
+
+                  <TabsContent value='graphQL'>
+                    <ul className='flex flex-col gap-4'>
+                      {level.graphQL.map((item) => (
+                        <li
+                          key={`${item.operation}-${item.field}`}
+                          className='flex items-center gap-2'
+                        >
+                          <ActionBadge operation={item.operation}>{item.operation}</ActionBadge>
+                          <Typography as='span' className='font-overpass-mono' variant='body-sm'>
+                            {item.field}
+                          </Typography>
+                        </li>
+                      ))}
+                    </ul>
+                  </TabsContent>
+                </Tabs>
+              </div>
+            </RadixTabs.Content>
+          ))}
+        </RadixTabs.Root>
+      </section>
+
+      <section className='flex flex-col gap-8 sm:gap-6'>
+        <Typography as='h3' variant='heading-md'>
+          <IntlText path='faq.title' />
+        </Typography>
+
+        <Accordion collapsible defaultValue={FAQ_ITEMS[0].question} type='single'>
+          {FAQ_ITEMS.map(({ answer, question }) => (
+            <AccordionItem key={question} value={question}>
+              <AccordionTrigger>
+                <IntlText path={question} />
+              </AccordionTrigger>
+              <AccordionContent>
+                <IntlText path={answer} />
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </section>
+    </main>
+  );
+};
+
+export default TaskPage;

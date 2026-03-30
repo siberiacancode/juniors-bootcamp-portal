@@ -57,8 +57,8 @@
 
   "page.tasks.cards.delivery.title": "С<span>е</span>рвис доста<span>в</span>ки",
   "page.tasks.cards.delivery.description": "Соберёте сервис доставки с расчётом цены, формами и оформлением заказа. В этом задании вы спокойно отработаете работу с формами и последовательность шагов от начала до финала.",
-  "page.tasks.cards.car.title": "А<span>р</span>енда <span>м</span>ашин",
-  "page.tasks.cards.car.description": "Сделаете сервис аренды авто с поиском, фильтрами и бронированием. В этом задании вы спокойно отработаете поиск и фильтры, плюс последовательность шагов от начала до финала.",
+  "page.tasks.cards.cars.title": "А<span>р</span>енда <span>м</span>ашин",
+  "page.tasks.cards.cars.description": "Сделаете сервис аренды авто с поиском, фильтрами и бронированием. В этом задании вы спокойно отработаете поиск и фильтры, плюс последовательность шагов от начала до финала.",
   "page.tasks.cards.cinema.title": "Онла<span>й</span>н кин<span>о</span>театр",
   "page.tasks.cards.cinema.description": "Реализуете онлайн-кинотеатр с афишей, сеансами, залами и покупкой билетов. В этом задании вы спокойно отработаете работу с контентом и схемой залов, а также последовательность шагов от начала до финала.",
   "page.tasks.cards.pizza.title": "Достав<span>к</span>а п<span>и</span>ццы",
@@ -85,6 +85,87 @@
   "page.tasks.section.faq.1.answer": "Задания спроектированы так, чтобы их можно было реализовать за 1-2 недели на разных стеках, но вы можете выполнять их в своём темпе.",
   "page.tasks.section.faq.2.question": "Какое задание лучше выбрать?",
   "page.tasks.section.faq.2.answer": "Каждое задание направлено на решение своих подзадач и развитие конкретных навыков. Лучше выбрать то, что вам сейчас хочется улучшить, а подробнее можно ознакомиться внутри самих заданий.",
+
+  "page.task.metadata.title": "Задание",
+  "page.task.section.level.title": "Уровни сложности",
+  "page.task.section.level.description": "Мы подготовили 3 уровня сложности — Junior, Middle и Senior, чтобы участник любого уровня мог погрузиться в работу.",
+  "page.task.section.level.expectedResult": "Ожидаемый результат:",
+  "page.task.section.level.flow": "Флоу:",
+  "page.task.section.level.api.description": "Здесь представлены необходимые API для выполнения задания.",
+  "page.task.section.level.link.figma": "Ссылка на Figma",
+  "page.task.section.level.link.requirements": "Требования, PDF",
+  "page.task.section.level.link.backend": "Ссылка на бэкенд",
+
+  "page.task.section.level.junior.description": "Лёгкий уровень с минимальным результатом",
+  "page.task.section.level.middle.description": "Средний уровень с оптимальным результатом",
+  "page.task.section.level.senior.description": "Сложный уровень с полноценным результатом",
+
+  "page.task.cinema.title": "Онлайн кинотеатр",
+  "page.task.cinema.description": "TODO",
+
+  "page.task.cinema.level.junior.expectedResult": "TODO",
+  "page.task.cinema.level.junior.flow.1": "TODO",
+  "page.task.cinema.level.junior.flow.2": "TODO",
+
+  "page.task.cinema.level.middle.expectedResult": "TODO",
+  "page.task.cinema.level.middle.flow.1": "TODO",
+  "page.task.cinema.level.middle.flow.2": "TODO",
+
+  "page.task.cinema.level.senior.expectedResult": "TODO",
+  "page.task.cinema.level.senior.flow.1": "TODO",
+  "page.task.cinema.level.senior.flow.2": "TODO",
+
+  "page.task.pizza.title": "Доставка пиццы",
+  "page.task.pizza.description": "TODO",
+
+  "page.task.pizza.level.junior.expectedResult": "TODO",
+  "page.task.pizza.level.junior.flow.1": "TODO",
+  "page.task.pizza.level.junior.flow.2": "TODO",
+
+  "page.task.pizza.level.middle.expectedResult": "TODO",
+  "page.task.pizza.level.middle.flow.1": "TODO",
+  "page.task.pizza.level.middle.flow.2": "TODO",
+
+  "page.task.pizza.level.senior.expectedResult": "TODO",
+  "page.task.pizza.level.senior.flow.1": "TODO",
+  "page.task.pizza.level.senior.flow.2": "TODO",
+
+  "page.task.delivery.title": "Сервис доставки",
+  "page.task.delivery.description": "TODO",
+
+  "page.task.delivery.level.junior.expectedResult": "TODO",
+  "page.task.delivery.level.junior.flow.1": "TODO",
+  "page.task.delivery.level.junior.flow.2": "TODO",
+
+  "page.task.delivery.level.middle.expectedResult": "TODO",
+  "page.task.delivery.level.middle.flow.1": "TODO",
+  "page.task.delivery.level.middle.flow.2": "TODO",
+
+  "page.task.delivery.level.senior.expectedResult": "TODO",
+  "page.task.delivery.level.senior.flow.1": "TODO",
+  "page.task.delivery.level.senior.flow.2": "TODO",
+
+  "page.task.cars.title": "Аренда машин",
+  "page.task.cars.description": "TODO",
+
+  "page.task.cars.level.junior.expectedResult": "TODO",
+  "page.task.cars.level.junior.flow.1": "TODO",
+  "page.task.cars.level.junior.flow.2": "TODO",
+
+  "page.task.cars.level.middle.expectedResult": "TODO",
+  "page.task.cars.level.middle.flow.1": "TODO",
+  "page.task.cars.level.middle.flow.2": "TODO",
+
+  "page.task.cars.level.senior.expectedResult": "TODO",
+  "page.task.cars.level.senior.flow.1": "TODO",
+  "page.task.cars.level.senior.flow.2": "TODO",
+
+  "page.task.section.faq.0.question": "TODO",
+  "page.task.section.faq.0.answer": "TODO",
+  "page.task.section.faq.1.question": "TODO",
+  "page.task.section.faq.1.answer": "TODO",
+  "page.task.section.faq.2.question": "TODO",
+  "page.task.section.faq.2.answer": "TODO",
 
   "footer.logo.alt": "Логотип JUNIORS BOOTCAMP",
   "footer.description": "Бесплатный развивающий контент для начинающих айтишников",

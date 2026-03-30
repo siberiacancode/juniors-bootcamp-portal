@@ -58,30 +58,29 @@ export const ROADMAP = [
   'page.tasks.section.roadmap.step.4'
 ] as const;
 
-// TODO add hrefs
 export const TASKS = [
   {
     emoji: '📦',
     title: 'page.tasks.cards.delivery.title',
     description: 'page.tasks.cards.delivery.description',
-    href: ''
+    href: '/tasks/delivery'
   },
   {
     emoji: '🏍️',
-    title: 'page.tasks.cards.car.title',
-    description: 'page.tasks.cards.car.description',
-    href: ''
+    title: 'page.tasks.cards.cars.title',
+    description: 'page.tasks.cards.cars.description',
+    href: '/tasks/cars'
   },
   {
     emoji: '🍿',
     title: 'page.tasks.cards.cinema.title',
     description: 'page.tasks.cards.cinema.description',
-    href: ''
+    href: '/tasks/cinema'
   },
   {
     emoji: '🍕',
     title: 'page.tasks.cards.pizza.title',
     description: 'page.tasks.cards.pizza.description',
-    href: ''
+    href: '/tasks/pizza'
   }
 ] as const;
