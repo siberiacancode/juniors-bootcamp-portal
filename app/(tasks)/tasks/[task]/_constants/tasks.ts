@@ -1,3 +1,5 @@
+// TODO add information
+
 const cinemaTask = {
   emoji: '🍿',
   title: 'page.task.cinema.title',
