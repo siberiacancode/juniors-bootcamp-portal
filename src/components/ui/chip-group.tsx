@@ -13,18 +13,16 @@ import { chipVariants } from './chip';
 const ChipGroup = ({
   className,
   ...props
-}: React.ComponentProps<typeof ChipGroupPrimitive.Root>) => {
-  return (
-    <ChipGroupPrimitive.Root
-      className={cn(
-        'flex w-fit flex-row items-center gap-2 data-vertical:flex-col data-vertical:items-stretch',
-        className
-      )}
-      data-slot='chip-group'
-      {...props}
-    />
-  );
-};
+}: React.ComponentProps<typeof ChipGroupPrimitive.Root>) => (
+  <ChipGroupPrimitive.Root
+    className={cn(
+      'flex w-fit flex-row items-center gap-2 data-vertical:flex-col data-vertical:items-stretch',
+      className
+    )}
+    data-slot='chip-group'
+    {...props}
+  />
+);
 
 export type ChipGroupItemProps = React.ComponentProps<typeof ChipGroupPrimitive.Item> &
   VariantProps<typeof chipVariants> & {
