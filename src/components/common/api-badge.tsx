@@ -40,7 +40,7 @@ const ApiBadge = ({ className, variant, asChild = false, ...props }: ApiBadgePro
   return (
     <Comp
       className={cn(apiBadgeVariants({ variant }), className)}
-      data-slot='badge'
+      data-slot='api-badge'
       data-variant={variant}
       {...props}
     />
