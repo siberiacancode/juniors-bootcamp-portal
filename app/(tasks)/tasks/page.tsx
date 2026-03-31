@@ -11,8 +11,6 @@ import {
   AccordionTrigger,
   Button,
   IconButton,
-  ScrollArea,
-  ScrollBar,
   Typography
 } from '@/components/ui';
 import { cn } from '@/lib/utils';
@@ -27,9 +25,9 @@ import {
 } from './_constants';
 
 const TasksPage = () => (
-  <main className='content-container mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
+  <main className='mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
     <div className='flex flex-col gap-8 sm:gap-10'>
-      <section className='flex flex-col gap-8 sm:gap-10'>
+      <section className='content-container flex flex-col gap-8 sm:gap-10'>
         <Typography pixelify as='h1' variant='display'>
           <IntlText path='page.tasks.title' />
         </Typography>
@@ -39,7 +37,7 @@ const TasksPage = () => (
       </section>
 
       <section className='flex flex-col gap-6'>
-        <Tabs.Root className='flex flex-col gap-6' defaultValue={TASKS[0].emoji}>
+        <Tabs.Root className='content-container flex flex-col gap-6' defaultValue={TASKS[0].emoji}>
           <Tabs.List className='flex gap-6'>
             {TASKS.map((task) => (
               <Tabs.Trigger
@@ -94,8 +92,8 @@ const TasksPage = () => (
           ))}
         </Tabs.Root>
 
-        <ScrollArea type='auto'>
-          <div className='flex gap-6 pb-3 sm:pb-0'>
+        <div className='no-scrollbar overflow-x-auto'>
+          <div className={cn('flex gap-6', 'mx-auto w-max px-6 sm:w-7xl')}>
             {LINKS.map((link) => (
               <Button asChild key={link.title} size='sm' variant='secondary'>
                 <a href={link.href} rel='noopener noreferrer' target='_blank'>
@@ -115,12 +113,11 @@ const TasksPage = () => (
               </a>
             </Button>
           </div>
-          <ScrollBar orientation='horizontal' />
-        </ScrollArea>
+        </div>
       </section>
     </div>
 
-    <section className='flex flex-col gap-8 sm:gap-6'>
+    <section className='content-container flex flex-col gap-8 sm:gap-6'>
       <Typography as='h3' variant='heading-md'>
         <IntlText path='page.tasks.section.roadmap.title' />
       </Typography>
@@ -144,7 +141,7 @@ const TasksPage = () => (
       </div>
     </section>
 
-    <section className='flex flex-col gap-8 sm:gap-6'>
+    <section className='content-container flex flex-col gap-8 sm:gap-6'>
       <Typography as='h3' variant='heading-md'>
         <IntlText path='page.tasks.section.philosophy.title' />
       </Typography>
@@ -153,7 +150,7 @@ const TasksPage = () => (
       </Typography>
     </section>
 
-    <section className='flex flex-col gap-8 sm:gap-6'>
+    <section className='content-container flex flex-col gap-8 sm:gap-6'>
       <Typography as='h3' variant='heading-md'>
         <IntlText path='faq.title' />
       </Typography>

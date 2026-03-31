@@ -22,8 +22,6 @@ import {
   InputGroupAddon,
   InputGroupIconButton,
   InputGroupInput,
-  ScrollArea,
-  ScrollBar,
   Typography
 } from '@/components/ui';
 import { cn } from '@/lib/utils';
@@ -99,27 +97,29 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
   return (
     <section className='flex flex-col gap-8 sm:gap-10'>
       <div className='flex flex-col gap-6 sm:gap-10'>
-        <InputGroup className='w-full sm:w-1/2'>
-          <InputGroupAddon align='start'>
-            <SearchIcon />
-          </InputGroupAddon>
-          <InputGroupInput
-            placeholder={intl.formatMessage({ id: 'page.guides.searchPlaceholder' })}
-            value={searchValue}
-            onChange={(event) => onSearchChange(event.target.value)}
-          />
-          {!!searchValue && (
-            <InputGroupAddon align='end'>
-              <InputGroupIconButton onClick={onClearSearchClick}>
-                <XIcon />
-              </InputGroupIconButton>
+        <div className='content-container'>
+          <InputGroup className='w-full sm:w-1/2'>
+            <InputGroupAddon align='start'>
+              <SearchIcon />
             </InputGroupAddon>
-          )}
-        </InputGroup>
+            <InputGroupInput
+              placeholder={intl.formatMessage({ id: 'page.guides.searchPlaceholder' })}
+              value={searchValue}
+              onChange={(event) => onSearchChange(event.target.value)}
+            />
+            {!!searchValue && (
+              <InputGroupAddon align='end'>
+                <InputGroupIconButton onClick={onClearSearchClick}>
+                  <XIcon />
+                </InputGroupIconButton>
+              </InputGroupAddon>
+            )}
+          </InputGroup>
+        </div>
 
-        <ScrollArea type='auto'>
+        <div className='no-scrollbar overflow-x-auto'>
           <ChipGroup
-            className='pb-3 sm:flex-wrap sm:pb-0'
+            className={cn('sm:flex-wrap', 'mx-auto w-max px-6 sm:w-full')}
             type='multiple'
             value={queryParams.tags}
             onValueChange={onChipClick}
@@ -148,9 +148,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
               </Chip>
             )}
           </ChipGroup>
-
-          <ScrollBar orientation='horizontal' />
-        </ScrollArea>
+        </div>
 
         {!filteredGuides.length && (
           <Empty>
@@ -164,7 +162,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
         )}
       </div>
 
-      <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3'>
+      <div className='content-container grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3'>
         {filteredGuides.map((guide, index) => {
           const isNeedfulGuide = guide.labels.includes('needful');
           return (
