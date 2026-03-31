@@ -119,7 +119,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
 
         <div className='no-scrollbar overflow-x-auto'>
           <ChipGroup
-            className={cn('sm:flex-wrap', 'mx-auto w-max px-6 sm:w-full')}
+            className='mx-auto w-max px-6 sm:w-full sm:max-w-7xl sm:flex-wrap'
             type='multiple'
             value={queryParams.tags}
             onValueChange={onChipClick}
