@@ -38,7 +38,7 @@ export interface TaskPageProps {
   params: Promise<TaskPageParams>;
 }
 
-export const generateStaticParams = async () => Object.keys(TASKS_MAP).map((task) => ({ task }));
+export const generateStaticParams = () => Object.keys(TASKS_MAP).map((task) => ({ task }));
 
 export const generateMetadata = async ({ params }: TaskPageProps) => {
   const { task } = await params;
@@ -57,8 +57,8 @@ const TaskPage = async ({ params }: TaskPageProps) => {
   const taskInfo = TASKS_MAP[task];
 
   return (
-    <main className='content-container mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
-      <section className='flex flex-col gap-8 sm:gap-10'>
+    <main className='mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
+      <section className='content-container flex flex-col gap-8 sm:gap-10'>
         <Typography as='h1' variant='heading-2xl'>
           {taskInfo.emoji}
           <IntlText path={taskInfo.title} />
@@ -70,7 +70,7 @@ const TaskPage = async ({ params }: TaskPageProps) => {
       </section>
 
       <section className='flex flex-col gap-8 sm:gap-10'>
-        <div className='flex flex-col gap-6'>
+        <div className='content-container flex flex-col gap-6'>
           <Typography as='h2' variant='heading-md'>
             <IntlText path='page.task.section.level.title' />
           </Typography>
@@ -80,43 +80,51 @@ const TaskPage = async ({ params }: TaskPageProps) => {
         </div>
 
         <RadixTabs.Root defaultValue={taskInfo.levels[0].name}>
-          <RadixTabs.List className='mb-8 grid grid-cols-3 gap-4 sm:mb-10'>
-            {taskInfo.levels.map((level) => {
-              const LevelIcon = LEVEL_ICON_MAP[level.name];
-              return (
-                <RadixTabs.Trigger
-                  asChild
-                  key={level.name}
-                  className={cn(
-                    'group/trigger cursor-pointer transition hover:shadow-[3px_3px_0_0_var(--color-border-hard)] [&>svg]:size-10',
-                    TAB_TRIGGER_BG_COLOR_MAP[level.name]
-                  )}
-                  value={level.name}
-                >
-                  <Card className='gap-4 px-6 sm:px-10'>
-                    <LevelIcon className='size-10 text-(--color-special)' />
+          <div className='no-scrollbar overflow-x-auto'>
+            <RadixTabs.List
+              className={cn(
+                'mb-8 flex gap-4 sm:mb-10',
+                'mx-auto w-max px-6 sm:w-7xl',
+                '*:w-80 sm:*:flex-1'
+              )}
+            >
+              {taskInfo.levels.map((level) => {
+                const LevelIcon = LEVEL_ICON_MAP[level.name];
+                return (
+                  <RadixTabs.Trigger
+                    asChild
+                    key={level.name}
+                    className={cn(
+                      'group/trigger cursor-pointer transition hover:shadow-[3px_3px_0_0_var(--color-border-hard)] [&>svg]:size-10',
+                      TAB_TRIGGER_BG_COLOR_MAP[level.name]
+                    )}
+                    value={level.name}
+                  >
+                    <Card className='gap-4 px-6 sm:px-10'>
+                      <LevelIcon className='size-10 text-(--color-special)' />
 
-                    <Typography
-                      pixelify
-                      className='group-data-[state=active]/trigger:drop-shadow-[3px_0_0_var(--color-special)]'
-                      variant='heading-2xl'
-                    >
-                      {LEVEL_TITLE_MAP[level.name]}
-                    </Typography>
+                      <Typography
+                        pixelify
+                        className='group-data-[state=active]/trigger:drop-shadow-[3px_0_0_var(--color-special)]'
+                        variant='heading-2xl'
+                      >
+                        {LEVEL_TITLE_MAP[level.name]}
+                      </Typography>
 
-                    <Typography as='p' variant='body-md'>
-                      <IntlText path={LEVEL_DESCRIPTION_MAP[level.name]} />
-                    </Typography>
-                  </Card>
-                </RadixTabs.Trigger>
-              );
-            })}
-          </RadixTabs.List>
+                      <Typography as='p' variant='body-md'>
+                        <IntlText path={LEVEL_DESCRIPTION_MAP[level.name]} />
+                      </Typography>
+                    </Card>
+                  </RadixTabs.Trigger>
+                );
+              })}
+            </RadixTabs.List>
+          </div>
 
           {taskInfo.levels.map((level) => (
             <RadixTabs.Content
               key={level.name}
-              className='flex flex-col gap-8 sm:gap-10'
+              className='content-container flex flex-col gap-8 sm:gap-10'
               value={level.name}
             >
               <div className='flex flex-col gap-6 sm:hidden'>
@@ -235,7 +243,7 @@ const TaskPage = async ({ params }: TaskPageProps) => {
         </RadixTabs.Root>
       </section>
 
-      <section className='flex flex-col gap-8 sm:gap-6'>
+      <section className='content-container flex flex-col gap-8 sm:gap-6'>
         <Typography as='h3' variant='heading-md'>
           <IntlText path='faq.title' />
         </Typography>
