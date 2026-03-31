@@ -1,3 +1,5 @@
+import { ChevronLeftIcon } from 'lucide-react';
+import Link from 'next/link';
 import { Tabs as RadixTabs } from 'radix-ui';
 
 import { LOCALE } from '@/app/(constants)';
@@ -59,6 +61,15 @@ const TaskPage = async ({ params }: TaskPageProps) => {
   return (
     <main className='mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
       <section className='content-container flex flex-col gap-8 sm:gap-10'>
+        <div className='flex w-full'>
+          <Button asChild size='sm' variant='ghost'>
+            <Link href='/tasks'>
+              <ChevronLeftIcon />
+              Назад
+            </Link>
+          </Button>
+        </div>
+
         <Typography as='h1' variant='heading-2xl'>
           {taskInfo.emoji}
           <IntlText path={taskInfo.title} />
