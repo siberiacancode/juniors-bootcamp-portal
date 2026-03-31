@@ -90,10 +90,7 @@ export const CodeGroup = ({ children }: CodeBlockGroupProps) => {
       <pre
         key={key}
         ref={preRef}
-        className={cn(
-          'overflow-x-auto rounded-b-20 p-6 text-[16px]/6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
-          className
-        )}
+        className={cn('no-scrollbar overflow-x-auto rounded-b-20 p-6 text-[16px]/6', className)}
         {...props}
       />
     </figure>

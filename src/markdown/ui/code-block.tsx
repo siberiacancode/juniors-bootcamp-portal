@@ -28,7 +28,7 @@ export const CodeBlock = ({ children, fileName, className, ...props }: CodeBlock
     return (
       <pre
         className={cn(
-          'mb-4 overflow-x-auto rounded-20 border-2 border-border-hard p-6 text-[16px]/6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+          'mb-4 no-scrollbar overflow-x-auto rounded-20 border-2 border-border-hard p-6 text-[16px]/6',
           className
         )}
         {...props}
@@ -54,10 +54,7 @@ export const CodeBlock = ({ children, fileName, className, ...props }: CodeBlock
 
       <pre
         ref={preRef}
-        className={cn(
-          'overflow-x-auto rounded-b-20 p-6 text-[16px]/6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
-          className
-        )}
+        className={cn('no-scrollbar overflow-x-auto rounded-b-20 p-6 text-[16px]/6', className)}
       >
         {children}
       </pre>
