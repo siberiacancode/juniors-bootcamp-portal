@@ -4,6 +4,7 @@ import { Tabs as RadixTabs } from 'radix-ui';
 
 import { LOCALE } from '@/app/(constants)';
 import { getDictionary } from '@/app/(contexts)/intl/helpers/getDictionary';
+import { ApiBadge } from '@/components/common';
 import { IntlText } from '@/components/intl';
 import {
   Accordion,
@@ -20,17 +21,9 @@ import {
 } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
-import type { TaskName } from './_constants';
+import type { TaskName } from './_types';
 
-import { ActionBadge } from './_components';
-import {
-  FAQ_ITEMS,
-  LEVEL_DESCRIPTION_MAP,
-  LEVEL_ICON_MAP,
-  LEVEL_TITLE_MAP,
-  TAB_TRIGGER_BG_COLOR_MAP,
-  TASKS_MAP
-} from './_constants';
+import { FAQ_ITEMS, LEVELS, TASKS } from './_constants';
 
 export interface TaskPageParams {
   task: TaskName;
@@ -40,11 +33,11 @@ export interface TaskPageProps {
   params: Promise<TaskPageParams>;
 }
 
-export const generateStaticParams = () => Object.keys(TASKS_MAP).map((task) => ({ task }));
+export const generateStaticParams = () => Object.keys(TASKS).map((task) => ({ task }));
 
 export const generateMetadata = async ({ params }: TaskPageProps) => {
   const { task } = await params;
-  const { title, description } = TASKS_MAP[task];
+  const { title, description } = TASKS[task];
   const messages = await getDictionary(LOCALE);
 
   return {
@@ -56,7 +49,7 @@ export const generateMetadata = async ({ params }: TaskPageProps) => {
 const TaskPage = async ({ params }: TaskPageProps) => {
   const { task } = await params;
 
-  const taskInfo = TASKS_MAP[task];
+  const taskContent = TASKS[task];
 
   return (
     <main className='mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
@@ -71,12 +64,12 @@ const TaskPage = async ({ params }: TaskPageProps) => {
         </div>
 
         <Typography as='h1' variant='heading-2xl'>
-          {taskInfo.emoji}
-          <IntlText path={taskInfo.title} />
+          {taskContent.emoji}
+          <IntlText path={taskContent.title} />
         </Typography>
 
         <Typography as='p' variant='body-lg'>
-          <IntlText path={taskInfo.description} />
+          <IntlText path={taskContent.description} />
         </Typography>
       </section>
 
@@ -90,7 +83,7 @@ const TaskPage = async ({ params }: TaskPageProps) => {
           </Typography>
         </div>
 
-        <RadixTabs.Root defaultValue={taskInfo.levels[0].name}>
+        <RadixTabs.Root defaultValue={taskContent.levels[0].name}>
           <div className='no-scrollbar overflow-x-auto'>
             <RadixTabs.List
               className={cn(
@@ -99,15 +92,16 @@ const TaskPage = async ({ params }: TaskPageProps) => {
                 '*:w-80 sm:*:flex-1'
               )}
             >
-              {taskInfo.levels.map((level) => {
-                const LevelIcon = LEVEL_ICON_MAP[level.name];
+              {taskContent.levels.map((level) => {
+                const levelData = LEVELS[level.name];
+                const LevelIcon = levelData.icon;
                 return (
                   <RadixTabs.Trigger
                     asChild
                     key={level.name}
                     className={cn(
                       'group/trigger cursor-pointer transition hover:shadow-[3px_3px_0_0_var(--color-border-hard)] [&>svg]:size-10',
-                      TAB_TRIGGER_BG_COLOR_MAP[level.name]
+                      levelData.tab
                     )}
                     value={level.name}
                   >
@@ -119,11 +113,11 @@ const TaskPage = async ({ params }: TaskPageProps) => {
                         className='group-data-[state=active]/trigger:drop-shadow-[3px_0_0_var(--color-special)]'
                         variant='heading-2xl'
                       >
-                        {LEVEL_TITLE_MAP[level.name]}
+                        {levelData.title}
                       </Typography>
 
                       <Typography as='p' variant='body-md'>
-                        <IntlText path={LEVEL_DESCRIPTION_MAP[level.name]} />
+                        <IntlText path={levelData.description} />
                       </Typography>
                     </Card>
                   </RadixTabs.Trigger>
@@ -132,7 +126,7 @@ const TaskPage = async ({ params }: TaskPageProps) => {
             </RadixTabs.List>
           </div>
 
-          {taskInfo.levels.map((level) => (
+          {taskContent.levels.map((level) => (
             <RadixTabs.Content
               key={level.name}
               className='content-container flex flex-col gap-8 sm:gap-10'
@@ -140,19 +134,23 @@ const TaskPage = async ({ params }: TaskPageProps) => {
             >
               <div className='flex flex-col gap-6 sm:hidden'>
                 <Button asChild size='lg' variant='outline'>
-                  <a href={level.figmaLink} rel='noopener noreferrer' target='_blank'>
+                  <a href={taskContent.links.figma} rel='noopener noreferrer' target='_blank'>
                     <IntlText path='page.task.section.level.link.figma' />
                   </a>
                 </Button>
 
                 <Button asChild size='lg' variant='outline'>
-                  <a href={level.requirementsLink} rel='noopener noreferrer' target='_blank'>
+                  <a
+                    href={taskContent.links.requirements}
+                    rel='noopener noreferrer'
+                    target='_blank'
+                  >
                     <IntlText path='page.task.section.level.link.requirements' />
                   </a>
                 </Button>
 
                 <Button asChild size='lg' variant='outline'>
-                  <a href={level.backendLink} rel='noopener noreferrer' target='_blank'>
+                  <a href={taskContent.links.backend} rel='noopener noreferrer' target='_blank'>
                     <IntlText path='page.task.section.level.link.backend' />
                   </a>
                 </Button>
@@ -160,19 +158,23 @@ const TaskPage = async ({ params }: TaskPageProps) => {
 
               <div className='hidden gap-6 sm:flex'>
                 <Button asChild size='sm' variant='outline'>
-                  <a href={level.figmaLink} rel='noopener noreferrer' target='_blank'>
+                  <a href={taskContent.links.figma} rel='noopener noreferrer' target='_blank'>
                     <IntlText path='page.task.section.level.link.figma' />
                   </a>
                 </Button>
 
                 <Button asChild size='sm' variant='outline'>
-                  <a href={level.requirementsLink} rel='noopener noreferrer' target='_blank'>
+                  <a
+                    href={taskContent.links.requirements}
+                    rel='noopener noreferrer'
+                    target='_blank'
+                  >
                     <IntlText path='page.task.section.level.link.requirements' />
                   </a>
                 </Button>
 
                 <Button asChild size='sm' variant='outline'>
-                  <a href={level.backendLink} rel='noopener noreferrer' target='_blank'>
+                  <a href={taskContent.links.backend} rel='noopener noreferrer' target='_blank'>
                     <IntlText path='page.task.section.level.link.backend' />
                   </a>
                 </Button>
@@ -223,7 +225,7 @@ const TaskPage = async ({ params }: TaskPageProps) => {
                           key={`${item.operation}-${item.field}`}
                           className='flex items-center gap-2'
                         >
-                          <ActionBadge operation={item.operation}>{item.operation}</ActionBadge>
+                          <ApiBadge variant={item.operation}>{item.operation}</ApiBadge>
                           <Typography as='span' className='font-overpass-mono' variant='body-sm'>
                             {item.field}
                           </Typography>
@@ -239,7 +241,7 @@ const TaskPage = async ({ params }: TaskPageProps) => {
                           key={`${item.operation}-${item.field}`}
                           className='flex items-center gap-2'
                         >
-                          <ActionBadge operation={item.operation}>{item.operation}</ActionBadge>
+                          <ApiBadge variant={item.operation}>{item.operation}</ApiBadge>
                           <Typography as='span' className='font-overpass-mono' variant='body-sm'>
                             {item.field}
                           </Typography>

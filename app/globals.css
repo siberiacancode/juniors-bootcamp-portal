@@ -8,6 +8,7 @@
 @theme inline {
   --text-*: initial;
   --radius-*: initial;
+  --color-*: initial;
 
   --color-black: #000;
   --color-white: #fff;
