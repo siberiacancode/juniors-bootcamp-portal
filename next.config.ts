@@ -1,4 +1,6 @@
+import type { Root } from 'mdast';
 import type { NextConfig } from 'next';
+import type { Plugin } from 'unified';
 
 import createMDX from '@next/mdx';
 import rehypeShiki from '@shikijs/rehype';
@@ -8,9 +10,9 @@ import { visit } from 'unist-util-visit';
 
 import { REHYPE_SHIKI_OPTIONS } from './src/markdown/shiki';
 
-const remarkCodeGroup = () => (tree: any) => {
-  visit(tree, (node) => {
-    if (node.type === 'containerDirective' && node.name === 'code-group') {
+const remarkCodeGroup: Plugin<void[], Root> = () => (tree) => {
+  visit(tree, 'containerDirective', (node) => {
+    if (node.name === 'code-group') {
       node.data = {
         hName: 'CodeGroup',
         hProperties: {}

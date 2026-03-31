@@ -11,5 +11,5 @@ export interface GuideModule {
   metadata: GuideMetadata;
 }
 
-export const getGuideModule = async (slug: string): Promise<GuideModule> =>
-  import(`../../../public/contents/guides/${slug}.mdx`);
+export const getGuideModule = async (slug: string) =>
+  import(`../../../public/contents/guides/${slug}.mdx`) as Promise<GuideModule>;
