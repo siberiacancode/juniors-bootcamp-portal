@@ -4,11 +4,9 @@ import { cva } from 'class-variance-authority';
 import { Slot } from 'radix-ui';
 import * as React from 'react';
 
+import type { GraphQLOperation, RestOperation } from '@/types/operation';
+
 import { cn } from '@/lib/utils';
-
-export type RestOperation = 'delete' | 'get' | 'patch' | 'post' | 'put';
-
-export type GraphQLOperation = 'mutation' | 'query' | 'subscription';
 
 const apiBadgeVariants = cva<{ variant: Record<GraphQLOperation | RestOperation, string> }>(
   'rounded-full px-6 py-2 text-[20px]/7 font-bold tracking-wider',
