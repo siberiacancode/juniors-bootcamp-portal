@@ -35,7 +35,7 @@ type ApiBadgeProps = React.ComponentProps<'div'> &
   VariantProps<typeof apiBadgeVariants> & { asChild?: boolean };
 
 const ApiBadge = ({ className, variant, asChild = false, ...props }: ApiBadgeProps) => {
-  const Comp = asChild ? Slot.Root : 'span';
+  const Comp = asChild ? Slot.Root : 'div';
 
   return (
     <Comp
