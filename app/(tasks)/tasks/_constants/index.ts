@@ -6,10 +6,10 @@ export const TAB_CONTENT_TITLE_SHADOW_COLOR_MAP = {
 };
 
 export const TAB_TRIGGER_BG_COLOR_MAP = {
-  '📦': 'data-[state=active]:bg-(--color-green-100) hover:bg-(--color-green-50)',
-  '🏍️': 'data-[state=active]:bg-(--color-blue-100) hover:bg-(--color-blue-50)',
-  '🍿': 'data-[state=active]:bg-(--color-pink-100) hover:bg-(--color-pink-50)',
-  '🍕': 'data-[state=active]:bg-(--color-red-100) hover:bg-(--color-red-50)'
+  '📦': 'data-active:bg-(--color-green-100) hover:bg-(--color-green-50)',
+  '🏍️': 'data-active:bg-(--color-blue-100) hover:bg-(--color-blue-50)',
+  '🍿': 'data-active:bg-(--color-pink-100) hover:bg-(--color-pink-50)',
+  '🍕': 'data-active:bg-(--color-red-100) hover:bg-(--color-red-50)'
 };
 
 // TODO add hrefs
