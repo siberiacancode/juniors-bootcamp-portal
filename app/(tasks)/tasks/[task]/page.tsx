@@ -49,7 +49,7 @@ export const generateMetadata = async ({ params }: TaskPageProps) => {
 
   return {
     title: `${messages[title]} | ${messages['page.task.metadata.title']}`,
-    description
+    description: messages[description]
   };
 };
 
