@@ -1,4 +1,5 @@
 export * from './accordion';
+export * from './api-badge';
 export * from './badge';
 export * from './button';
 export * from './card';
