@@ -40,7 +40,7 @@ export const CodeBlock = ({ children, fileName, className, ...props }: CodeBlock
 
   return (
     <figure className='mb-4 rounded-20 border-2 border-border-hard'>
-      <div className='flex h-16 items-center border-b-2 border-border-hard'>
+      <div className='flex h-16 items-center border-b-2 border-border-hard px-6'>
         <span className='text-[14px]/5.5 text-muted-fg'>{fileName}</span>
         <IconButton
           className={cn('ml-auto text-muted-fg', className)}
