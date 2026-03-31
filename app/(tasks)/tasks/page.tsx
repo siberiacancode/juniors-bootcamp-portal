@@ -15,14 +15,7 @@ import {
 } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
-import {
-  FAQ_ITEMS,
-  LINKS,
-  ROADMAP,
-  TAB_CONTENT_TITLE_SHADOW_COLOR_MAP,
-  TAB_TRIGGER_BG_COLOR_MAP,
-  TASKS
-} from './_constants';
+import { FAQ_ITEMS, LINKS, ROADMAP, TAB_COLOR_MAP, TASKS } from './_constants';
 
 const TasksPage = () => (
   <main className='mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
@@ -44,7 +37,7 @@ const TasksPage = () => (
                 key={task.emoji}
                 className={cn(
                   'size-16 rounded-full bg-secondary text-[32px] leading-none sm:size-22 sm:text-[40px]',
-                  TAB_TRIGGER_BG_COLOR_MAP[task.emoji]
+                  TAB_COLOR_MAP[task.emoji].background
                 )}
                 value={task.emoji}
               >
@@ -62,16 +55,17 @@ const TasksPage = () => (
               <div className='flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center'>
                 <Typography
                   pixelify
-                  className={cn(
-                    'order-last font-nunito text-[48px] leading-none font-bold sm:order-first sm:text-[96px]',
-                    TAB_CONTENT_TITLE_SHADOW_COLOR_MAP[task.emoji]
-                  )}
                   as='h2'
+                  className={TAB_COLOR_MAP[task.emoji].title}
                   variant='heading-xl'
                 >
                   <IntlText path={task.title} />
                 </Typography>
-                <IconButton className='size-16 rounded-16' size='lg' variant='outline'>
+                <IconButton
+                  className='order-first size-16 rounded-16 sm:order-last'
+                  size='lg'
+                  variant='outline'
+                >
                   <FigmaIcon className='size-8' />
                 </IconButton>
               </div>

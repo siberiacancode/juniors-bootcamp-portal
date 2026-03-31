@@ -1,15 +1,20 @@
-export const TAB_CONTENT_TITLE_SHADOW_COLOR_MAP = {
-  '📦': 'drop-shadow-[3px_0_0_rgb(80_201_114)]',
-  '🏍️': 'drop-shadow-[3px_0_0_rgb(29_114_241)]',
-  '🍿': 'drop-shadow-[3px_0_0_rgb(232_91_254)]',
-  '🍕': 'drop-shadow-[3px_0_0_rgb(241_78_29)]'
-};
-
-export const TAB_TRIGGER_BG_COLOR_MAP = {
-  '📦': 'data-active:bg-(--color-green-100) hover:bg-(--color-green-50)',
-  '🏍️': 'data-active:bg-(--color-blue-100) hover:bg-(--color-blue-50)',
-  '🍿': 'data-active:bg-(--color-pink-100) hover:bg-(--color-pink-50)',
-  '🍕': 'data-active:bg-(--color-red-100) hover:bg-(--color-red-50)'
+export const TAB_COLOR_MAP = {
+  '📦': {
+    background: 'data-active:bg-(--color-green-100) hover:bg-(--color-green-50)',
+    title: 'drop-shadow-[3px_0_0_rgb(80_201_114)]'
+  },
+  '🏍️': {
+    background: 'data-active:bg-(--color-blue-100) hover:bg-(--color-blue-50)',
+    title: 'drop-shadow-[3px_0_0_rgb(29_114_241)]'
+  },
+  '🍿': {
+    background: 'data-active:bg-(--color-pink-100) hover:bg-(--color-pink-50)',
+    title: 'drop-shadow-[3px_0_0_rgb(232_91_254)]'
+  },
+  '🍕': {
+    background: 'data-active:bg-(--color-red-100) hover:bg-(--color-red-50)',
+    title: 'drop-shadow-[3px_0_0_rgb(241_78_29)]'
+  }
 };
 
 // TODO add hrefs
