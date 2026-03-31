@@ -4,7 +4,7 @@ import type { CSSProperties, Fragment, ReactElement, ReactNode } from 'react';
 
 import { useCopy } from '@siberiacancode/reactuse';
 import { CheckIcon, CopyIcon } from 'lucide-react';
-import { isValidElement, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import {
   IconButton,
@@ -38,7 +38,6 @@ export const CodeGroup = ({ children }: CodeBlockGroupProps) => {
 
   const blocks = children.map((element, index) => {
     const props = element.props as unknown as BlockProps;
-    if (!isValidElement(props.children)) throw new Error('Invalid child element');
     const key = `${props.language}-${index}`;
     return {
       key,
@@ -62,7 +61,7 @@ export const CodeGroup = ({ children }: CodeBlockGroupProps) => {
 
   return (
     <figure className='mb-4 rounded-20 border-2 border-border-hard'>
-      <div className='flex h-16 items-center rounded-t-20 border-b-2 border-border-hard px-6'>
+      <div className='flex h-16 items-center border-b-2 border-border-hard px-6'>
         {fileName && <span className='text-[14px]/5.5 text-muted-fg'>{fileName}</span>}
         <div className='ml-auto flex items-center gap-2'>
           <Select
