@@ -27,7 +27,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const colorScheme = usePreferredColorScheme();
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window === 'undefined') return 'system';
-    return (getCookie(COOKIES.THEME) as Theme) ?? 'system';
+    return (getCookie(COOKIES.THEME) as Theme | undefined) ?? 'system';
   });
 
   useLayoutEffect(() => {

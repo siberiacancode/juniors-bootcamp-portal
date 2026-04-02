@@ -3,11 +3,16 @@ import { eslint } from '@siberiacancode/eslint';
 /** @type {import('eslint').Linter.Config} */
 export default eslint(
   {
-    typescript: true,
+    typescript: 'engine',
     react: true,
     nextjs: true,
     // jsxA11y: true,
-    tailwind: true,
+    tailwind: {
+      settings: {
+        entryPoint: 'app/globals.css',
+        detectComponentClasses: true
+      }
+    },
     ignores: ['temp/**/*']
   },
   {
@@ -24,12 +29,6 @@ export default eslint(
           strictness: 'loose'
         }
       ]
-    },
-    settings: {
-      'better-tailwindcss': {
-        entryPoint: 'app/globals.css',
-        detectComponentClasses: true
-      }
     }
   },
   {

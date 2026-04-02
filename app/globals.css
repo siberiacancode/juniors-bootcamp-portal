@@ -8,8 +8,7 @@
 @theme inline {
   --text-*: initial;
   --radius-*: initial;
-  --shadow-*: initial;
-  --text-shadow-*: initial;
+  --color-*: initial;
 
   --color-black: #000;
   --color-white: #fff;
@@ -73,7 +72,7 @@
   --color-brand-reactuse-fg: var(--color-brand-reactuse-fg);
 
   /* Status */
-  --color-danger: var(--danger);
+  --color-danger: var(--color-danger);
 
   --radius-2: 0.125rem;
   --radius-4: 0.25rem;
@@ -243,9 +242,9 @@
   --color-brand-vercel: var(--color-black);
   --color-brand-vercel-fg: var(--color-white);
 
-  --color-brand-reactuse: var(--color-sky-50);
-  --color-brand-reactuse-hover: var(--color-sky-100);
-  --color-brand-reactuse-fg: var(--color-sky-400);
+  --color-brand-reactuse: var(--color-sky-400);
+  --color-brand-reactuse-hover: var(--color-sky-500);
+  --color-brand-reactuse-fg: var(--color-sky-50);
 
   /* Action */
   --color-action-primary: var(--color-primary);

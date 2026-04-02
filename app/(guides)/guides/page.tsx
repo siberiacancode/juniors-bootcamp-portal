@@ -19,8 +19,8 @@ const GuidesPage = async () => {
   ];
 
   return (
-    <main className='content-container mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
-      <section className='flex flex-col gap-8 sm:gap-10'>
+    <main className='mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
+      <section className='content-container flex flex-col gap-8 sm:gap-10'>
         <Typography pixelify as='h1' variant='display'>
           <IntlText path='page.guides.title' />
         </Typography>

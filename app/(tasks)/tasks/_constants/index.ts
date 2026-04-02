@@ -1,15 +1,20 @@
-export const TITLE_COLORS_MAP = {
-  '📦': 'drop-shadow-[3px_0_0_rgb(80_201_114)]',
-  '🏍️': 'drop-shadow-[3px_0_0_rgb(29_114_241)]',
-  '🍿': 'drop-shadow-[3px_0_0_rgb(232_91_254)]',
-  '🍕': 'drop-shadow-[3px_0_0_rgb(241_78_29)]'
-};
-
-export const TAB_COLORS_MAP = {
-  '📦': 'data-[state=active]:bg-[rgb(222_247_229)]',
-  '🏍️': 'data-[state=active]:bg-[rgb(212_227_255)]',
-  '🍿': 'data-[state=active]:bg-[rgb(251_226_255)]',
-  '🍕': 'data-[state=active]:bg-[rgb(255_220_212)]'
+export const TAB_COLOR_MAP = {
+  '📦': {
+    background: 'data-active:bg-(--color-green-100) hover:bg-(--color-green-50)',
+    title: 'drop-shadow-[3px_0_0_rgb(80_201_114)]'
+  },
+  '🏍️': {
+    background: 'data-active:bg-(--color-blue-100) hover:bg-(--color-blue-50)',
+    title: 'drop-shadow-[3px_0_0_rgb(29_114_241)]'
+  },
+  '🍿': {
+    background: 'data-active:bg-(--color-pink-100) hover:bg-(--color-pink-50)',
+    title: 'drop-shadow-[3px_0_0_rgb(232_91_254)]'
+  },
+  '🍕': {
+    background: 'data-active:bg-(--color-red-100) hover:bg-(--color-red-50)',
+    title: 'drop-shadow-[3px_0_0_rgb(241_78_29)]'
+  }
 };
 
 // TODO add hrefs
@@ -58,30 +63,29 @@ export const ROADMAP = [
   'page.tasks.section.roadmap.step.4'
 ] as const;
 
-// TODO add hrefs
 export const TASKS = [
   {
     emoji: '📦',
     title: 'page.tasks.cards.delivery.title',
     description: 'page.tasks.cards.delivery.description',
-    href: ''
+    href: '/tasks/delivery'
   },
   {
     emoji: '🏍️',
-    title: 'page.tasks.cards.car.title',
-    description: 'page.tasks.cards.car.description',
-    href: ''
+    title: 'page.tasks.cards.cars.title',
+    description: 'page.tasks.cards.cars.description',
+    href: '/tasks/cars'
   },
   {
     emoji: '🍿',
     title: 'page.tasks.cards.cinema.title',
     description: 'page.tasks.cards.cinema.description',
-    href: ''
+    href: '/tasks/cinema'
   },
   {
     emoji: '🍕',
     title: 'page.tasks.cards.pizza.title',
     description: 'page.tasks.cards.pizza.description',
-    href: ''
+    href: '/tasks/pizza'
   }
 ] as const;

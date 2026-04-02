@@ -11,18 +11,16 @@ import {
   AccordionTrigger,
   Button,
   IconButton,
-  ScrollArea,
-  ScrollBar,
   Typography
 } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
-import { FAQ_ITEMS, LINKS, ROADMAP, TAB_COLORS_MAP, TASKS, TITLE_COLORS_MAP } from './_constants';
+import { FAQ_ITEMS, LINKS, ROADMAP, TAB_COLOR_MAP, TASKS } from './_constants';
 
 const TasksPage = () => (
-  <main className='content-container mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
+  <main className='mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
     <div className='flex flex-col gap-8 sm:gap-10'>
-      <section className='flex flex-col gap-8 sm:gap-10'>
+      <section className='content-container flex flex-col gap-8 sm:gap-10'>
         <Typography pixelify as='h1' variant='display'>
           <IntlText path='page.tasks.title' />
         </Typography>
@@ -32,14 +30,14 @@ const TasksPage = () => (
       </section>
 
       <section className='flex flex-col gap-6'>
-        <Tabs.Root className='flex flex-col gap-6' defaultValue={TASKS[0].emoji}>
+        <Tabs.Root className='content-container flex flex-col gap-6' defaultValue={TASKS[0].emoji}>
           <Tabs.List className='flex gap-6'>
             {TASKS.map((task) => (
               <Tabs.Trigger
                 key={task.emoji}
                 className={cn(
-                  'size-16 rounded-full bg-muted text-[32px] leading-none sm:size-22 sm:text-[40px]',
-                  TAB_COLORS_MAP[task.emoji]
+                  'size-16 rounded-full bg-secondary text-[32px] leading-none sm:size-22 sm:text-[40px]',
+                  TAB_COLOR_MAP[task.emoji].background
                 )}
                 value={task.emoji}
               >
@@ -57,16 +55,17 @@ const TasksPage = () => (
               <div className='flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center'>
                 <Typography
                   pixelify
-                  className={cn(
-                    'order-last font-nunito text-[48px] leading-none font-bold sm:order-first sm:text-[96px]',
-                    TITLE_COLORS_MAP[task.emoji]
-                  )}
                   as='h2'
+                  className={TAB_COLOR_MAP[task.emoji].title}
                   variant='heading-xl'
                 >
                   <IntlText path={task.title} />
                 </Typography>
-                <IconButton className='size-16 rounded-16' size='lg' variant='ghost'>
+                <IconButton
+                  className='order-first size-16 rounded-16 sm:order-last'
+                  size='lg'
+                  variant='outline'
+                >
                   <FigmaIcon className='size-8' />
                 </IconButton>
               </div>
@@ -87,8 +86,8 @@ const TasksPage = () => (
           ))}
         </Tabs.Root>
 
-        <ScrollArea type='auto'>
-          <div className='flex gap-6 pb-3 sm:pb-0'>
+        <div className='no-scrollbar overflow-x-auto'>
+          <div className={cn('flex gap-6', 'mx-auto w-max px-6 sm:w-7xl')}>
             {LINKS.map((link) => (
               <Button asChild key={link.title} size='sm' variant='secondary'>
                 <a href={link.href} rel='noopener noreferrer' target='_blank'>
@@ -108,12 +107,11 @@ const TasksPage = () => (
               </a>
             </Button>
           </div>
-          <ScrollBar orientation='horizontal' />
-        </ScrollArea>
+        </div>
       </section>
     </div>
 
-    <section className='flex flex-col gap-8 sm:gap-6'>
+    <section className='content-container flex flex-col gap-8 sm:gap-6'>
       <Typography as='h3' variant='heading-md'>
         <IntlText path='page.tasks.section.roadmap.title' />
       </Typography>
@@ -137,7 +135,7 @@ const TasksPage = () => (
       </div>
     </section>
 
-    <section className='flex flex-col gap-8 sm:gap-6'>
+    <section className='content-container flex flex-col gap-8 sm:gap-6'>
       <Typography as='h3' variant='heading-md'>
         <IntlText path='page.tasks.section.philosophy.title' />
       </Typography>
@@ -146,7 +144,7 @@ const TasksPage = () => (
       </Typography>
     </section>
 
-    <section className='flex flex-col gap-8 sm:gap-6'>
+    <section className='content-container flex flex-col gap-8 sm:gap-6'>
       <Typography as='h3' variant='heading-md'>
         <IntlText path='faq.title' />
       </Typography>
