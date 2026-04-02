@@ -1,3 +1,5 @@
+import { LINKS } from '@/constants';
+
 export const TAB_COLOR_MAP = {
   '📦': {
     background: 'data-active:bg-(--color-green-100) hover:bg-(--color-green-50)',
@@ -17,28 +19,27 @@ export const TAB_COLOR_MAP = {
   }
 };
 
-// TODO add hrefs
-export const LINKS = [
+export const TAGS = [
   {
-    href: '',
+    href: LINKS.CONTENT.DESIGN,
     title: 'page.tasks.tag.design'
   },
   {
-    href: '',
+    href: LINKS.CONTENT.API,
     title: 'page.tasks.tag.api'
   },
   {
-    href: '',
+    href: LINKS.SOCIAL.GITHUB,
     title: 'page.tasks.tag.github'
-  },
-  {
-    href: '',
-    title: 'page.tasks.tag.actualStack'
-  },
-  {
-    href: '',
-    title: 'page.tasks.tag.workWithGit'
   }
+  // {
+  //   href: '',
+  //   title: 'page.tasks.tag.actualStack'
+  // },
+  // {
+  //   href: '',
+  //   title: 'page.tasks.tag.workWithGit'
+  // }
 ] as const;
 
 export const FAQ_ITEMS = [

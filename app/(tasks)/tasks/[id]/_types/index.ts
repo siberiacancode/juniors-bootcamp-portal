@@ -14,7 +14,7 @@ export type LevelName = 'junior' | 'middle' | 'senior';
 
 export interface LevelData {
   expectedResult: MessagePath;
-  flow: MessagePath[];
+  flow: MessagePath;
   graphQL: GraphQLApiField[];
   rest: RestApiField[];
 }

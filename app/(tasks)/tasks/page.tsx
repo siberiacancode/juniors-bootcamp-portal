@@ -13,9 +13,10 @@ import {
   IconButton,
   Typography
 } from '@/components/ui';
+import { LINKS } from '@/constants';
 import { cn } from '@/lib/utils';
 
-import { FAQ_ITEMS, LINKS, ROADMAP, TAB_COLOR_MAP, TASKS } from './_constants';
+import { FAQ_ITEMS, ROADMAP, TAB_COLOR_MAP, TAGS, TASKS } from './_constants';
 
 const TasksPage = () => (
   <main className='mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
@@ -88,10 +89,10 @@ const TasksPage = () => (
 
         <div className='no-scrollbar overflow-x-auto'>
           <div className={cn('flex gap-6', 'mx-auto w-max px-6 sm:w-7xl')}>
-            {LINKS.map((link) => (
-              <Button asChild key={link.title} size='sm' variant='secondary'>
-                <a href={link.href} rel='noopener noreferrer' target='_blank'>
-                  <IntlText path={link.title} />
+            {TAGS.map((tag) => (
+              <Button asChild key={tag.title} size='sm' variant='secondary'>
+                <a href={tag.href} rel='noopener noreferrer' target='_blank'>
+                  <IntlText path={tag.title} />
                 </a>
               </Button>
             ))}
@@ -102,7 +103,7 @@ const TasksPage = () => (
               className='order-first bg-brand-reactuse font-pixelify-sans text-[18px] text-brand-reactuse-fg hover:bg-brand-reactuse-hover sm:order-last'
               size='sm'
             >
-              <a href='' rel='noopener noreferrer' target='_blank'>
+              <a href={LINKS.OPENSOURCE.REACTUSE} rel='noopener noreferrer' target='_blank'>
                 REACTUSE
               </a>
             </Button>

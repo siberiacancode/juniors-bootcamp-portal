@@ -13,51 +13,123 @@ export const PIZZA: TaskContent = {
     {
       name: 'junior',
       expectedResult: 'page.task.pizza.level.junior.expectedResult',
-      flow: ['page.task.pizza.level.junior.flow.1', 'page.task.pizza.level.junior.flow.2'],
+      flow: 'page.task.pizza.level.junior.flow',
       rest: [
         {
           operation: 'get',
-          field: 'TODO'
+          field: '/pizza/catalog'
         }
       ],
       graphQL: [
         {
           operation: 'query',
-          field: 'TODO'
+          field: 'getPizzasCatalog'
         }
       ]
     },
     {
       name: 'middle',
       expectedResult: 'page.task.pizza.level.middle.expectedResult',
-      flow: ['page.task.pizza.level.middle.flow.1', 'page.task.pizza.level.middle.flow.2'],
+      flow: 'page.task.pizza.level.middle.flow',
       rest: [
         {
           operation: 'get',
-          field: 'TODO'
+          field: '/pizza/catalog'
+        },
+        {
+          operation: 'post',
+          field: '/pizza/payment'
         }
       ],
       graphQL: [
         {
           operation: 'query',
-          field: 'TODO'
+          field: 'getPizzasCatalog'
+        },
+        {
+          operation: 'mutation',
+          field: 'createPizzaPayment'
         }
       ]
     },
     {
       name: 'senior',
       expectedResult: 'page.task.pizza.level.senior.expectedResult',
-      flow: ['page.task.pizza.level.senior.flow.1', 'page.task.pizza.level.senior.flow.2'],
+      flow: 'page.task.pizza.level.senior.flow',
       rest: [
         {
+          operation: 'post',
+          field: '/auth/otp'
+        },
+        {
+          operation: 'post',
+          field: '/users/signin'
+        },
+        {
+          operation: 'post',
+          field: '/users/session'
+        },
+        {
+          operation: 'patch',
+          field: '/users/profile'
+        },
+        {
           operation: 'get',
-          field: 'TODO'
+          field: '/pizza/catalog'
+        },
+        {
+          operation: 'post',
+          field: '/pizza/payment'
+        },
+        {
+          operation: 'get',
+          field: '/pizza/orders'
+        },
+        {
+          operation: 'get',
+          field: '/pizza/orders/:orderId'
+        },
+        {
+          operation: 'put',
+          field: '/pizza/order/cancel'
         }
       ],
       graphQL: [
         {
+          operation: 'mutation',
+          field: 'createOtp'
+        },
+        {
+          operation: 'mutation',
+          field: 'signin'
+        },
+        {
+          operation: 'mutation',
+          field: 'updateProfile'
+        },
+        {
           operation: 'query',
-          field: 'TODO'
+          field: 'session'
+        },
+        {
+          operation: 'query',
+          field: 'getPizzasCatalog'
+        },
+        {
+          operation: 'mutation',
+          field: 'createPizzaPayment'
+        },
+        {
+          operation: 'query',
+          field: 'getPizzaOrders'
+        },
+        {
+          operation: 'query',
+          field: 'getPizzaOrder'
+        },
+        {
+          operation: 'mutation',
+          field: 'cancelPizzaOrder'
         }
       ]
     }

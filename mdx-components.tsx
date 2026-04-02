@@ -12,7 +12,7 @@ export const getMDXComponents = (components?: MDXComponents): MDXComponents => (
   p: (props) => <p {...props} className='mb-6 text-[16px]/6 font-normal text-foreground' />,
   a: (props) => <a {...props} className='font-medium underline underline-offset-2' />,
   ul: (props) => <ul {...props} className='list-disc' />,
-  ol: (props) => <ol {...props} className='list-decimal' />,
+  ol: (props) => <ol {...props} className='list-inside list-decimal' />,
   li: (props) => <li {...props} className='text-[16px]/6 font-normal text-foreground' />,
   blockquote: (props) => (
     <blockquote {...props} className='border-l-4 pl-5 text-[20px]/6 font-medium text-foreground' />

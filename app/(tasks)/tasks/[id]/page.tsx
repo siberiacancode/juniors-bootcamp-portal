@@ -21,17 +21,19 @@ import {
   Typography
 } from '@/components/ui';
 import { cn } from '@/lib/utils';
+import { Markdown } from '@/markdown';
 
 import { FAQ_ITEMS, LEVELS, TASKS } from './_constants';
 import { isValidTaskId } from './_helpers';
 
-export const generateStaticParams = () => Object.keys(TASKS).map((task) => ({ task }));
+export const generateStaticParams = () => Object.keys(TASKS).map((id) => ({ id }));
 
 export const generateMetadata = async ({ params }: PageProps<'/tasks/[id]'>) => {
   const { id } = await params;
-  if (!isValidTaskId(id)) return;
+  const taskId = String(id);
+  if (!isValidTaskId(taskId)) return;
 
-  const task = TASKS[id];
+  const task = TASKS[taskId];
 
   const messages = await getDictionary(LOCALE);
 
@@ -43,9 +45,11 @@ export const generateMetadata = async ({ params }: PageProps<'/tasks/[id]'>) => 
 
 const TaskPage = async ({ params }: PageProps<'/tasks/[id]'>) => {
   const { id } = await params;
-  if (!isValidTaskId(id)) notFound();
+  const taskId = String(id);
+  if (!isValidTaskId(taskId)) notFound();
 
-  const task = TASKS[id];
+  const task = TASKS[taskId];
+  const messages = await getDictionary(LOCALE);
 
   return (
     <main className='mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
@@ -172,24 +176,16 @@ const TaskPage = async ({ params }: PageProps<'/tasks/[id]'>) => {
                 <Typography as='h4' variant='title-lg'>
                   <IntlText path='page.task.section.level.expectedResult' />
                 </Typography>
-                <Typography as='p' variant='body-lg'>
-                  <IntlText path={level.expectedResult} />
-                </Typography>
+
+                <Markdown source={messages[level.expectedResult]} />
               </div>
 
               <div className='flex flex-col gap-6'>
                 <Typography as='h4' variant='title-lg'>
                   <IntlText path='page.task.section.level.flow' />
                 </Typography>
-                <ol>
-                  {level.flow.map((step, index) => (
-                    <li key={step}>
-                      <Typography as='span' className='inline-flex gap-2' variant='body-lg'>
-                        {index + 1}. <IntlText path={step} />
-                      </Typography>
-                    </li>
-                  ))}
-                </ol>
+
+                <Markdown source={messages[level.flow]} />
               </div>
 
               <div className='flex flex-col gap-6'>

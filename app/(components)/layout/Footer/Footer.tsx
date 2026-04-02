@@ -6,6 +6,7 @@ import { useIntl } from 'react-intl';
 import { GithubIcon, TelegramIcon, TwitchIcon, YoutubeIcon } from '@/components/icons';
 import { IntlText } from '@/components/intl';
 import { Button, IconButton, Typography } from '@/components/ui';
+import { LINKS } from '@/constants';
 
 const PRODUCTS = [
   {
@@ -24,22 +25,22 @@ const PRODUCTS = [
 
 const SOCIALS = [
   {
-    href: 'https://github.com/siberiacancode',
+    href: LINKS.SOCIAL.GITHUB,
     Icon: GithubIcon,
     alt: 'footer.social.github.alt'
   },
   {
-    href: 'https://t.me/siberiacancode',
+    href: LINKS.SOCIAL.TELEGRAM,
     Icon: TelegramIcon,
     alt: 'footer.social.telegram.alt'
   },
   {
-    href: 'https://www.twitch.tv/siberiacancode',
+    href: LINKS.SOCIAL.TWITCH,
     Icon: TwitchIcon,
     alt: 'footer.social.twitch.alt'
   },
   {
-    href: 'https://www.youtube.com/@siberiacancode',
+    href: LINKS.SOCIAL.YOUTUBE,
     Icon: YoutubeIcon,
     alt: 'footer.social.youtube.alt'
   }
@@ -58,19 +59,19 @@ const NAVIGATION = [
 
 const OPENSOURCE = [
   {
-    href: 'https://siberiacancode.github.io/reactuse/',
+    href: LINKS.OPENSOURCE.REACTUSE,
     label: 'reactuse'
   },
   {
-    href: 'https://www.npmjs.com/package/@siberiacancode/mock-config-server',
+    href: LINKS.OPENSOURCE.MOCK_CONFIG,
     label: 'mock-config'
   },
   {
-    href: 'https://www.npmjs.com/package/@siberiacancode/apicraft',
+    href: LINKS.OPENSOURCE.APICRAFT,
     label: 'apicraft'
   },
   {
-    href: 'https://www.npmjs.com/package/@siberiacancode/fetches',
+    href: LINKS.OPENSOURCE.FETCHES,
     label: 'fetches'
   }
 ] as const;
