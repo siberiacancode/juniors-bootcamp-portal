@@ -4,7 +4,7 @@ import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import * as React from 'react';
 import { IntlProvider } from 'react-intl';
 
-import { ThemeProvider } from './(contexts)/theme';
+import { ThemeProvider } from './_contexts/theme';
 
 interface ProviderProps {
   children: React.ReactNode;
