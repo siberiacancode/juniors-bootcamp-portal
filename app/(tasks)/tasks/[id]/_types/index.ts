@@ -1,7 +1,5 @@
 import type { GraphQLOperation, RestOperation } from '@/types/operation';
 
-export type TaskName = 'cars' | 'cinema' | 'delivery' | 'pizza';
-
 export interface RestApiField {
   field: string;
   operation: RestOperation;

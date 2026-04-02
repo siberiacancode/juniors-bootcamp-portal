@@ -55,7 +55,7 @@ const GuidePage = async ({ params }: GuidePageProps) => {
           <Button asChild size='sm' variant='ghost'>
             <Link href='/guides'>
               <ChevronLeftIcon />
-              Назад
+              <IntlText path='link.goBack' />
             </Link>
           </Button>
 

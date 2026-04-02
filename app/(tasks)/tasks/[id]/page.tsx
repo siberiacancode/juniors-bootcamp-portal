@@ -1,5 +1,6 @@
 import { ChevronLeftIcon } from 'lucide-react';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { Tabs as RadixTabs } from 'radix-ui';
 
 import { LOCALE } from '@/app/(constants)';
@@ -21,35 +22,30 @@ import {
 } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
-import type { TaskName } from './_types';
-
 import { FAQ_ITEMS, LEVELS, TASKS } from './_constants';
-
-export interface TaskPageParams {
-  task: TaskName;
-}
-
-export interface TaskPageProps {
-  params: Promise<TaskPageParams>;
-}
+import { isValidTaskId } from './_helpers';
 
 export const generateStaticParams = () => Object.keys(TASKS).map((task) => ({ task }));
 
-export const generateMetadata = async ({ params }: TaskPageProps) => {
-  const { task } = await params;
-  const { title, description } = TASKS[task];
+export const generateMetadata = async ({ params }: PageProps<'/tasks/[id]'>) => {
+  const { id } = await params;
+  if (!isValidTaskId(id)) return;
+
+  const task = TASKS[id];
+
   const messages = await getDictionary(LOCALE);
 
   return {
-    title: `${messages[title]} | ${messages['page.task.metadata.title']}`,
-    description: messages[description]
+    title: messages[task.title],
+    description: messages[task.description]
   };
 };
 
-const TaskPage = async ({ params }: TaskPageProps) => {
-  const { task } = await params;
+const TaskPage = async ({ params }: PageProps<'/tasks/[id]'>) => {
+  const { id } = await params;
+  if (!isValidTaskId(id)) notFound();
 
-  const taskContent = TASKS[task];
+  const task = TASKS[id];
 
   return (
     <main className='mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
@@ -58,18 +54,18 @@ const TaskPage = async ({ params }: TaskPageProps) => {
           <Button asChild size='sm' variant='ghost'>
             <Link href='/tasks'>
               <ChevronLeftIcon />
-              Назад
+              <IntlText path='link.goBack' />
             </Link>
           </Button>
         </div>
 
         <Typography as='h1' variant='heading-2xl'>
-          {taskContent.emoji}
-          <IntlText path={taskContent.title} />
+          {task.emoji}
+          <IntlText path={task.title} />
         </Typography>
 
         <Typography as='p' variant='body-lg'>
-          <IntlText path={taskContent.description} />
+          <IntlText path={task.description} />
         </Typography>
       </section>
 
@@ -83,7 +79,7 @@ const TaskPage = async ({ params }: TaskPageProps) => {
           </Typography>
         </div>
 
-        <RadixTabs.Root defaultValue={taskContent.levels[0].name}>
+        <RadixTabs.Root defaultValue={task.levels[0].name}>
           <div className='no-scrollbar overflow-x-auto'>
             <RadixTabs.List
               className={cn(
@@ -92,7 +88,7 @@ const TaskPage = async ({ params }: TaskPageProps) => {
                 '*:w-80 sm:*:flex-1'
               )}
             >
-              {taskContent.levels.map((level) => {
+              {task.levels.map((level) => {
                 const levelData = LEVELS[level.name];
                 const LevelIcon = levelData.icon;
                 return (
@@ -126,7 +122,7 @@ const TaskPage = async ({ params }: TaskPageProps) => {
             </RadixTabs.List>
           </div>
 
-          {taskContent.levels.map((level) => (
+          {task.levels.map((level) => (
             <RadixTabs.Content
               key={level.name}
               className='content-container flex flex-col gap-8 sm:gap-10'
@@ -134,23 +130,19 @@ const TaskPage = async ({ params }: TaskPageProps) => {
             >
               <div className='flex flex-col gap-6 sm:hidden'>
                 <Button asChild size='lg' variant='outline'>
-                  <a href={taskContent.links.figma} rel='noopener noreferrer' target='_blank'>
+                  <a href={task.links.figma} rel='noopener noreferrer' target='_blank'>
                     <IntlText path='page.task.section.level.link.figma' />
                   </a>
                 </Button>
 
                 <Button asChild size='lg' variant='outline'>
-                  <a
-                    href={taskContent.links.requirements}
-                    rel='noopener noreferrer'
-                    target='_blank'
-                  >
+                  <a href={task.links.requirements} rel='noopener noreferrer' target='_blank'>
                     <IntlText path='page.task.section.level.link.requirements' />
                   </a>
                 </Button>
 
                 <Button asChild size='lg' variant='outline'>
-                  <a href={taskContent.links.backend} rel='noopener noreferrer' target='_blank'>
+                  <a href={task.links.backend} rel='noopener noreferrer' target='_blank'>
                     <IntlText path='page.task.section.level.link.backend' />
                   </a>
                 </Button>
@@ -158,23 +150,19 @@ const TaskPage = async ({ params }: TaskPageProps) => {
 
               <div className='hidden gap-6 sm:flex'>
                 <Button asChild size='sm' variant='outline'>
-                  <a href={taskContent.links.figma} rel='noopener noreferrer' target='_blank'>
+                  <a href={task.links.figma} rel='noopener noreferrer' target='_blank'>
                     <IntlText path='page.task.section.level.link.figma' />
                   </a>
                 </Button>
 
                 <Button asChild size='sm' variant='outline'>
-                  <a
-                    href={taskContent.links.requirements}
-                    rel='noopener noreferrer'
-                    target='_blank'
-                  >
+                  <a href={task.links.requirements} rel='noopener noreferrer' target='_blank'>
                     <IntlText path='page.task.section.level.link.requirements' />
                   </a>
                 </Button>
 
                 <Button asChild size='sm' variant='outline'>
-                  <a href={taskContent.links.backend} rel='noopener noreferrer' target='_blank'>
+                  <a href={task.links.backend} rel='noopener noreferrer' target='_blank'>
                     <IntlText path='page.task.section.level.link.backend' />
                   </a>
                 </Button>

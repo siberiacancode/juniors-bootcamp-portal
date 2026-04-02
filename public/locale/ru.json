@@ -86,7 +86,10 @@
   "page.tasks.section.faq.2.question": "Какое задание лучше выбрать?",
   "page.tasks.section.faq.2.answer": "Каждое задание направлено на решение своих подзадач и развитие конкретных навыков. Лучше выбрать то, что вам сейчас хочется улучшить, а подробнее можно ознакомиться внутри самих заданий.",
 
-  "page.task.metadata.title": "Задание",
+  "page.task.notFound.title": "Not Found",
+  "page.task.notFound.description": "Такого задания не существует. Попробуйте выбрать другое.",
+  "page.task.notFound.link": "Вернутся к списку заданий",
+
   "page.task.section.level.title": "Уровни сложности",
   "page.task.section.level.description": "Мы подготовили 3 уровня сложности — Junior, Middle и Senior, чтобы участник любого уровня мог погрузиться в работу.",
   "page.task.section.level.expectedResult": "Ожидаемый результат:",
@@ -188,6 +191,7 @@
   "link.otpCodes": "ОТП коды",
   "link.contact": "Связаться",
   "link.goTo": "Перейти",
+  "link.goBack": "Назад",
 
   "cookieConsent.description": "Мы используем файлы cookies 🍪 — это улучшает работу сайта и делает его более эффективным. Продолжая использовать этот сайт, вы соглашаетесь с нашей <link>политикой обработки данных</link>.",
 
