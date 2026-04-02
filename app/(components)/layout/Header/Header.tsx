@@ -9,7 +9,6 @@ import { useIntl } from 'react-intl';
 
 import { useTheme } from '@/app/(contexts)/theme';
 import { GithubIcon } from '@/components/icons';
-import { IntlText } from '@/components/intl';
 import {
   Button,
   IconButton,
@@ -24,6 +23,7 @@ import {
   Switch,
   Typography
 } from '@/components/ui';
+import { IntlText } from '@/intl';
 
 const ThemeButton = dynamic(
   () => import('./components/ThemeButton/ThemeButton').then((module) => module.ThemeButton),

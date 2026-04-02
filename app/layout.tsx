@@ -1,10 +1,9 @@
 import { Nunito, Overpass_Mono, Parisienne, Pixelify_Sans } from 'next/font/google';
 
-import { LOCALE } from '@/app/(constants)';
+import { intl } from '@/intl';
 import { cn } from '@/lib/utils';
 
 import { DynamicCookieConsent, Footer, Header, ThemeScript } from './(components)';
-import { getDictionary } from './(contexts)/intl/helpers/getDictionary';
 import { Provider } from './provider';
 
 import './globals.css';
@@ -31,51 +30,43 @@ const overpassMono = Overpass_Mono({
   subsets: ['latin']
 });
 
-export const generateMetadata = async () => {
-  const messages = await getDictionary(LOCALE);
-
-  return {
-    title: messages['seo.main.title']
-  };
-};
+export const generateMetadata = () => ({
+  title: intl.formatMessage({ id: 'seo.main.title' })
+});
 
 interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
-  const messages = await getDictionary(LOCALE);
-
-  return (
-    <html
-      suppressHydrationWarning
-      className={cn(
-        nunito.variable,
-        pixelifySans.variable,
-        parisienne.variable,
-        overpassMono.variable
-      )}
-      lang={LOCALE}
-    >
-      <head>
-        <link href='/metadata/favicon.ico' rel='icon' sizes='any' />
-        <meta content='/metadata/open-graph.png' property='og:image' />
-        <meta content='image/png' property='og:image:type' />
-        <meta content='1200' property='og:image:width' />
-        <meta content='640' property='og:image:height' />
-        <meta content='noindex, nofollow' name='robots' />
-        <ThemeScript />
-      </head>
-      <body className='flex min-h-screen flex-col'>
-        <Provider intl={{ locale: LOCALE, messages }}>
-          <Header />
-          <div className='flex flex-1 flex-col'>{children}</div>
-          <Footer />
-          <DynamicCookieConsent />
-        </Provider>
-      </body>
-    </html>
-  );
-};
+const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => (
+  <html
+    suppressHydrationWarning
+    className={cn(
+      nunito.variable,
+      pixelifySans.variable,
+      parisienne.variable,
+      overpassMono.variable
+    )}
+    lang={intl.locale}
+  >
+    <head>
+      <link href='/metadata/favicon.ico' rel='icon' sizes='any' />
+      <meta content='/metadata/open-graph.png' property='og:image' />
+      <meta content='image/png' property='og:image:type' />
+      <meta content='1200' property='og:image:width' />
+      <meta content='640' property='og:image:height' />
+      <meta content='noindex, nofollow' name='robots' />
+      <ThemeScript />
+    </head>
+    <body className='flex min-h-screen flex-col'>
+      <Provider intl={{ locale: intl.locale, messages: intl.messages }}>
+        <Header />
+        <div className='flex flex-1 flex-col'>{children}</div>
+        <Footer />
+        <DynamicCookieConsent />
+      </Provider>
+    </body>
+  </html>
+);
 
 export default RootLayout;

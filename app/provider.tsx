@@ -2,15 +2,13 @@
 
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import * as React from 'react';
+import { IntlProvider } from 'react-intl';
 
-import type { IntlProviderProps } from './(contexts)/intl';
-
-import { IntlProvider } from './(contexts)/intl';
 import { ThemeProvider } from './(contexts)/theme';
 
 interface ProviderProps {
   children: React.ReactNode;
-  intl: IntlProviderProps;
+  intl: React.ComponentProps<typeof IntlProvider>;
 }
 
 export const Provider = ({ children, intl }: ProviderProps) => (

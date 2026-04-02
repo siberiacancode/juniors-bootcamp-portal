@@ -1,9 +1,10 @@
+import type { Metadata } from 'next';
+
 import { ArrowRightIcon } from 'lucide-react';
 import Link from 'next/link';
 import { Tabs } from 'radix-ui';
 
 import { FigmaIcon, UnicStarIcon } from '@/components/icons';
-import { IntlText } from '@/components/intl';
 import {
   Accordion,
   AccordionContent,
@@ -13,9 +14,15 @@ import {
   IconButton,
   Typography
 } from '@/components/ui';
+import { intl, IntlText } from '@/intl';
 import { cn } from '@/lib/utils';
 
 import { FAQ_ITEMS, LINKS, ROADMAP, TAB_COLOR_MAP, TASKS } from './_constants';
+
+export const metadata: Metadata = {
+  title: intl.formatMessage({ id: 'page.tasks.metadata.title' }),
+  description: intl.formatMessage({ id: 'page.tasks.metadata.description' })
+};
 
 const TasksPage = () => (
   <main className='mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>

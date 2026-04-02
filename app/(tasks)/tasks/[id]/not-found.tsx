@@ -1,18 +1,12 @@
 import Link from 'next/link';
 
-import { LOCALE } from '@/app/(constants)';
-import { getDictionary } from '@/app/(contexts)/intl/helpers/getDictionary';
-import { IntlText } from '@/components/intl';
 import { Button, Typography } from '@/components/ui';
+import { intl, IntlText } from '@/intl';
 
-export const generateMetadata = async () => {
-  const messages = await getDictionary(LOCALE);
-
-  return {
-    title: messages['page.task.notFound.title'],
-    description: messages['page.task.notFound.description']
-  };
-};
+export const generateMetadata = () => ({
+  title: intl.formatMessage({ id: 'page.task.notFound.title' }),
+  description: intl.formatMessage({ id: 'page.task.notFound.description' })
+});
 
 const NotFound = () => (
   <main className='flex flex-1 items-center justify-center'>

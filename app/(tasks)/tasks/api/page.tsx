@@ -1,7 +1,5 @@
 import { ChevronRightIcon } from 'lucide-react';
 
-import { intl } from '@/app/(contexts)/intl/helpers/getDictionary';
-import { IntlText } from '@/components/intl';
 import {
   Accordion,
   AccordionContent,
@@ -11,6 +9,7 @@ import {
   Card,
   Typography
 } from '@/components/ui';
+import { intl, IntlText } from '@/intl';
 import { Markdown } from '@/markdown';
 
 export const generateMetadata = async () => ({

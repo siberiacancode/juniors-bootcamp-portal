@@ -3,10 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Tabs as RadixTabs } from 'radix-ui';
 
-import { LOCALE } from '@/app/(constants)';
-import { getDictionary } from '@/app/(contexts)/intl/helpers/getDictionary';
 import { ApiBadge } from '@/components/common';
-import { IntlText } from '@/components/intl';
 import {
   Accordion,
   AccordionContent,
@@ -20,6 +17,7 @@ import {
   TabsTrigger,
   Typography
 } from '@/components/ui';
+import { intl, IntlText } from '@/intl';
 import { cn } from '@/lib/utils';
 
 import { FAQ_ITEMS, LEVELS, TASKS } from './_constants';
@@ -33,11 +31,9 @@ export const generateMetadata = async ({ params }: PageProps<'/tasks/[id]'>) => 
 
   const task = TASKS[id];
 
-  const messages = await getDictionary(LOCALE);
-
   return {
-    title: messages[task.title],
-    description: messages[task.description]
+    title: intl.formatMessage({ id: task.title }),
+    description: intl.formatMessage({ id: task.title })
   };
 };
 

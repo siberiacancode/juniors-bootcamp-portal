@@ -1,12 +1,10 @@
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import Link from 'next/link';
 
-import { LOCALE } from '@/app/(constants)';
-import { getDictionary } from '@/app/(contexts)/intl/helpers/getDictionary';
 import { getGuideModule, getGuides } from '@/app/(guides)/_helpers';
 import { GithubIcon } from '@/components/icons';
-import { IntlText } from '@/components/intl';
 import { Button, Typography } from '@/components/ui';
+import { intl, IntlText } from '@/intl';
 
 import { ShareButtton } from './_components';
 
@@ -29,10 +27,9 @@ export const generateStaticParams = async () => {
 export const generateMetadata = async ({ params }: GuidePageProps) => {
   const { slug } = await params;
   const { metadata } = await getGuideModule(slug);
-  const messages = await getDictionary(LOCALE);
 
   return {
-    title: `${metadata.title} | ${messages['page.guide.metadata.title']}`,
+    title: `${metadata.title} | ${intl.formatMessage({ id: 'page.guide.metadata.title' })}`,
     description: metadata.description,
     keywords: metadata.labels
   };

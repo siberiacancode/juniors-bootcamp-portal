@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 
-import { IntlText } from '@/components/intl';
 import { Button, Typography } from '@/components/ui';
+import { IntlText } from '@/intl';
 
 import { useCookieConsent } from '../hooks';
 
