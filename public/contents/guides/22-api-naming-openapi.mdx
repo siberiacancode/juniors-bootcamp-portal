@@ -1,0 +1,48 @@
+export const metadata = {
+  title: 'Нейминг API',
+  description:
+    'Почему не стоит переопределять названия из OpenAPI и как убрать двойную работу в API-слое',
+  labels: ['javascript']
+};
+
+Главная ошибка в нейминге API - делать двойную работу поверх OpenAPI-схемы.
+Спецификация уже содержит названия сущностей, полей и операций, но в проекте их часто переопределяют вручную.
+
+```typescript
+// openapi schema
+interface User {
+  id: string;
+  name: string;
+}
+
+// project code
+interface IUser {
+  id: string;
+  name: string;
+}
+```
+
+Такой подход создает лишний оверхед: приходится поддерживать два набора одинаковых контрактов и постоянно держать их в синхроне.
+Как только API меняется, вы обновляете и схему, и вручную написанные типы/названия, а это повышает риск ошибок и рассинхрона.
+
+Отдельный момент - наименование функций: рекомендуем собирать его от `path` запроса или от `operationId`, чтобы сохранить простую семантику и предсказуемость в API-клиенте.
+
+```typescript
+import { fetches } from '@siberiacancode/fetches';
+
+// openapi:
+// GET /users/{id}
+// operationId: getUserById
+
+// плохо
+const loadProfile = (id: string) => fetches.get<User>(`/users/${id}`);
+
+// хорошо
+const getUsersById = (id: string) => fetches.get<User>(`/users/${id}`);
+
+// хорошо
+const getUserById = (id: string) => fetches.get<User>(`/users/${id}`);
+```
+
+Таким образом мы убираем двойную работу, уменьшаем количество ручных маппингов и делаем API-слой предсказуемым для всей команды.
+Также рекомендуем использовать [**apicraft**](https://github.com/siberiacancode/core/tree/main/packages/apicraft) - он автоматически генерирует эту структуру, типы и клиентские функции.

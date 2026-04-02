@@ -1,0 +1,41 @@
+export const metadata = {
+  title: 'Масштабируемость API',
+  description:
+    'Почему API-слой должен состоять из абстрактных утилит, а не из хардкода под конкретные endpoint',
+  labels: ['needful', 'javascript']
+};
+
+Проблема чаще не в API, а в понимании философии слоя данных: многие пишут утилитарные функции, но хардкодят в них поведение под конкретный endpoint.
+В итоге "утилита" перестает быть абстракцией и превращается в одноразовый код с дублированием проверок, обработки ошибок и типизации.
+
+```javascript
+const getUser = async () => {
+  const res = await fetch(`${BASE_URL}/user`);
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch`);
+  }
+
+  const json = await res.json();
+
+  return json.data;
+};
+```
+
+Это порождает некоторые ограничения: нельзя прокинуть `signal`, `headers`, `query`, `credentials`, ошибка теряет контекст (`status`, `url`, `payload`), контракт ответа "сужается" прямо в функции и потом дублируется в других запросах, а логика конкретного endpoint смешивается с транспортной логикой.
+
+Если смотреть на масштабируемость, API - это набор **абстрактных утилит**, а не коллекция несвязанных функций.
+
+```javascript
+import { fetches } from '@siberiacancode/fetches';
+
+const instance = fetches.create({
+  baseUrl: 'https://api.example.com'
+});
+
+const getUser = (config) => instance.get('/user', config);
+const createUser = (body, config) => instance.post('/user', body, config);
+```
+
+Таким образом мы получаем простые утилиты, которые не привязаны к конкретному проекту, их можно переиспользовать, расширять и масштабировать без хардкода в каждом endpoint.
+Также рекомендуем использовать [**apicraft**](https://github.com/siberiacancode/core/tree/main/packages/apicraft) - он автоматически генерирует эту структуру, типы и клиентские функции.
