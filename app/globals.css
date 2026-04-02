@@ -149,6 +149,17 @@
   --color-violet-800: rgb(91, 33, 182);
   --color-violet-900: rgb(76, 29, 149);
 
+  --color-purple-50: rgb(250, 245, 255);
+  --color-purple-100: rgb(243, 232, 255);
+  --color-purple-200: rgb(233, 213, 255);
+  --color-purple-300: rgb(216, 180, 254);
+  --color-purple-400: rgb(192, 132, 252);
+  --color-purple-500: rgb(168, 85, 247);
+  --color-purple-600: rgb(147, 51, 234);
+  --color-purple-700: rgb(126, 34, 206);
+  --color-purple-800: rgb(107, 33, 168);
+  --color-purple-900: rgb(88, 28, 135);
+
   --color-pink-50: rgb(255, 244, 251);
   --color-pink-100: rgb(255, 232, 247);
   --color-pink-200: rgb(255, 205, 238);
