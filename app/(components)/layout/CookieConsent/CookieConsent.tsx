@@ -1,12 +1,17 @@
 'use client';
 
-import dynamic from 'next/dynamic';
+import { CookieConsentPopover } from './components';
+import { useCookieConsent } from './hooks';
+import { YandexMetrikaScript } from './scripts';
 
-const ClientCookieConsent = dynamic(
-  () => import('./ClientCookieConsent').then((mod) => mod.ClientCookieConsent),
-  {
-    ssr: false
-  }
-);
+export const CookieConsent = () => {
+  const { hasConsent } = useCookieConsent();
+  const isProduction = process.env.NODE_ENV === 'production';
 
-export const CookieConsent = () => <ClientCookieConsent />;
+  return (
+    <>
+      {!hasConsent && <CookieConsentPopover />}
+      {!hasConsent && isProduction && <YandexMetrikaScript />}
+    </>
+  );
+};

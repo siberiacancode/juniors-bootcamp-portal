@@ -11,7 +11,7 @@ export const useCookieConsent = () => {
   });
 
   return {
-    value: cookieConsent.value,
+    hasConsent: cookieConsent.value,
     accept: () => cookieConsent.set(true, { path: PATH })
   };
 };
