@@ -151,7 +151,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
         </div>
 
         {!filteredGuides.length && (
-          <Empty>
+          <Empty className='content-container'>
             <EmptyTitle>
               <IntlText path='page.guides.epmty.title' />
             </EmptyTitle>
