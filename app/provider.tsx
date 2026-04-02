@@ -6,9 +6,11 @@ import { IntlProvider } from 'react-intl';
 
 import { ThemeProvider } from './_contexts/theme';
 
+type IntlProviderProps = React.ComponentProps<typeof IntlProvider>;
+
 interface ProviderProps {
   children: React.ReactNode;
-  intl: React.ComponentProps<typeof IntlProvider>;
+  intl: IntlProviderProps;
 }
 
 export const Provider = ({ children, intl }: ProviderProps) => (

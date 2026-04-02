@@ -1,6 +1,6 @@
 import { Nunito, Overpass_Mono, Parisienne, Pixelify_Sans } from 'next/font/google';
 
-import { intl } from '@/intl';
+import { intl } from '@/intl/server';
 import { cn } from '@/lib/utils';
 
 import { DynamicCookieConsent, Footer, Header } from './_components';

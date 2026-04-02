@@ -26,8 +26,6 @@
   "page.guides.epmty.title": "По этим фильтрам пока пусто",
   "page.guides.epmty.description": "Сейчас в базе нет материалов, которые подходят под все условия сразу. Попробуйте искать по одному гайду, например только «react» или только «css».",
 
-  "page.guide.metadata.title": "Гайд",
-
   "page.tasksApi.metadata.title": "API для заданий — REST и GraphQL",
   "page.tasksApi.metadata.description": "Общедоступное API для REST и GraphQL: одна доменная модель, без лимитов и платных тарифов — для обучения и pet-проектов.",
 

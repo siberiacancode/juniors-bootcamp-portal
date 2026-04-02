@@ -14,7 +14,8 @@ import {
   IconButton,
   Typography
 } from '@/components/ui';
-import { intl, IntlText } from '@/intl';
+import { IntlText } from '@/intl';
+import { intl } from '@/intl/server';
 import { cn } from '@/lib/utils';
 
 import { FAQ_ITEMS, LINKS, ROADMAP, TAB_COLOR_MAP, TASKS } from './_constants';

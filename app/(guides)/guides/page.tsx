@@ -1,6 +1,7 @@
 import { getGuides } from '@/app/(guides)/_helpers/getGuides';
 import { Typography } from '@/components/ui';
-import { intl, IntlText } from '@/intl';
+import { IntlText } from '@/intl';
+import { intl } from '@/intl/server';
 
 import { GuidesPageContent } from './_components';
 

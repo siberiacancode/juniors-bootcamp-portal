@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { getGuideModule, getGuides } from '@/app/(guides)/_helpers';
 import { GithubIcon } from '@/components/icons';
 import { Button, Typography } from '@/components/ui';
-import { intl, IntlText } from '@/intl';
+import { IntlText } from '@/intl';
 
 import { ShareButtton } from './_components';
 
@@ -29,7 +29,7 @@ export const generateMetadata = async ({ params }: GuidePageProps) => {
   const { metadata } = await getGuideModule(slug);
 
   return {
-    title: `${metadata.title} | ${intl.formatMessage({ id: 'page.guide.metadata.title' })}`,
+    title: metadata.title,
     description: metadata.description,
     keywords: metadata.labels
   };

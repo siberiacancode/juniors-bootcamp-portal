@@ -17,7 +17,8 @@ import {
   TabsTrigger,
   Typography
 } from '@/components/ui';
-import { intl, IntlText } from '@/intl';
+import { IntlText } from '@/intl';
+import { intl } from '@/intl/server';
 import { cn } from '@/lib/utils';
 
 import { FAQ_ITEMS, LEVELS, TASKS } from './_constants';
@@ -33,7 +34,7 @@ export const generateMetadata = async ({ params }: PageProps<'/tasks/[id]'>) => 
 
   return {
     title: intl.formatMessage({ id: task.title }),
-    description: intl.formatMessage({ id: task.title })
+    description: intl.formatMessage({ id: task.description })
   };
 };
 

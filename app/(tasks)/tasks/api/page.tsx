@@ -9,7 +9,8 @@ import {
   Card,
   Typography
 } from '@/components/ui';
-import { intl, IntlText } from '@/intl';
+import { IntlText } from '@/intl';
+import { intl } from '@/intl/server';
 import { Markdown } from '@/markdown';
 
 export const generateMetadata = async () => ({

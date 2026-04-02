@@ -1,7 +1,8 @@
 import Link from 'next/link';
 
 import { Button, Typography } from '@/components/ui';
-import { intl, IntlText } from '@/intl';
+import { IntlText } from '@/intl';
+import { intl } from '@/intl/server';
 
 export const generateMetadata = () => ({
   title: intl.formatMessage({ id: 'page.task.notFound.title' }),
