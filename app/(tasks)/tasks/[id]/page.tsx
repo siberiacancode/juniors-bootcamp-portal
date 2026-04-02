@@ -29,10 +29,9 @@ export const generateStaticParams = () => Object.keys(TASKS).map((id) => ({ id }
 
 export const generateMetadata = async ({ params }: PageProps<'/tasks/[id]'>) => {
   const { id } = await params;
-  const taskId = String(id);
-  if (!isValidTaskId(taskId)) return;
+  if (!isValidTaskId(id)) return;
 
-  const task = TASKS[taskId];
+  const task = TASKS[id];
 
   return {
     title: intl.formatMessage({ id: task.title }),
@@ -42,10 +41,9 @@ export const generateMetadata = async ({ params }: PageProps<'/tasks/[id]'>) => 
 
 const TaskPage = async ({ params }: PageProps<'/tasks/[id]'>) => {
   const { id } = await params;
-  const taskId = String(id);
-  if (!isValidTaskId(taskId)) notFound();
+  if (!isValidTaskId(id)) notFound();
 
-  const task = TASKS[taskId];
+  const task = TASKS[id];
 
   return (
     <main className='mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
