@@ -3,10 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Tabs as RadixTabs } from 'radix-ui';
 
-import { LOCALE } from '@/app/(constants)';
-import { getDictionary } from '@/app/(contexts)/intl/helpers/getDictionary';
 import { ApiBadge } from '@/components/common';
-import { IntlText } from '@/components/intl';
 import {
   Accordion,
   AccordionContent,
@@ -20,6 +17,8 @@ import {
   TabsTrigger,
   Typography
 } from '@/components/ui';
+import { IntlText } from '@/intl';
+import { intl } from '@/intl/server';
 import { cn } from '@/lib/utils';
 import { Markdown } from '@/markdown';
 
@@ -35,11 +34,9 @@ export const generateMetadata = async ({ params }: PageProps<'/tasks/[id]'>) => 
 
   const task = TASKS[taskId];
 
-  const messages = await getDictionary(LOCALE);
-
   return {
-    title: messages[task.title],
-    description: messages[task.description]
+    title: intl.formatMessage({ id: task.title }),
+    description: intl.formatMessage({ id: task.description })
   };
 };
 
@@ -49,7 +46,6 @@ const TaskPage = async ({ params }: PageProps<'/tasks/[id]'>) => {
   if (!isValidTaskId(taskId)) notFound();
 
   const task = TASKS[taskId];
-  const messages = await getDictionary(LOCALE);
 
   return (
     <main className='mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
@@ -177,7 +173,7 @@ const TaskPage = async ({ params }: PageProps<'/tasks/[id]'>) => {
                   <IntlText path='page.task.section.level.expectedResult' />
                 </Typography>
 
-                <Markdown source={messages[level.expectedResult]} />
+                <Markdown source={intl.messages[level.expectedResult]} />
               </div>
 
               <div className='flex flex-col gap-6'>
@@ -185,7 +181,7 @@ const TaskPage = async ({ params }: PageProps<'/tasks/[id]'>) => {
                   <IntlText path='page.task.section.level.flow' />
                 </Typography>
 
-                <Markdown source={messages[level.flow]} />
+                <Markdown source={intl.messages[level.flow]} />
               </div>
 
               <div className='flex flex-col gap-6'>

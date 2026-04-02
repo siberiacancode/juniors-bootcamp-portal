@@ -1,6 +1,6 @@
 import { useCookie } from '@siberiacancode/reactuse';
 
-import { COOKIES } from '@/app/(constants)';
+import { COOKIES } from '@/constants';
 
 const PATH = '/';
 

@@ -1,7 +1,7 @@
-import { intl } from '@/app/(contexts)/intl/helpers/getDictionary';
 import { getGuides } from '@/app/(guides)/_helpers/getGuides';
-import { IntlText } from '@/components/intl';
 import { Typography } from '@/components/ui';
+import { IntlText } from '@/intl';
+import { intl } from '@/intl/server';
 
 import { GuidesPageContent } from './_components';
 

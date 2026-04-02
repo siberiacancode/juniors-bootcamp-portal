@@ -6,7 +6,7 @@ import { MoonIcon, SunIcon } from 'lucide-react';
 
 import type { Button } from '@/components/ui';
 
-import { useTheme } from '@/app/(contexts)/theme';
+import { useTheme } from '@/app/_contexts/theme';
 import { IconButton } from '@/components/ui';
 
 type ThemeButtonProps = ComponentProps<typeof Button>;

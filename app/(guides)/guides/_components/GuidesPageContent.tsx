@@ -8,7 +8,6 @@ import { useState } from 'react';
 import { useIntl } from 'react-intl';
 
 import { SkillsshIcon } from '@/components/icons';
-import { IntlText } from '@/components/intl';
 import {
   Badge,
   Card,
@@ -24,6 +23,7 @@ import {
   InputGroupInput,
   Typography
 } from '@/components/ui';
+import { IntlText } from '@/intl';
 import { cn } from '@/lib/utils';
 import { yandexMetrika } from '@/lib/yandex-metrika';
 
@@ -151,7 +151,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
         </div>
 
         {!filteredGuides.length && (
-          <Empty>
+          <Empty className='content-container'>
             <EmptyTitle>
               <IntlText path='page.guides.epmty.title' />
             </EmptyTitle>

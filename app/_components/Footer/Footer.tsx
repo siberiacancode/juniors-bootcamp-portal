@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { useIntl } from 'react-intl';
 
 import { GithubIcon, TelegramIcon, TwitchIcon, YoutubeIcon } from '@/components/icons';
-import { IntlText } from '@/components/intl';
 import { Button, IconButton, Typography } from '@/components/ui';
 import { LINKS } from '@/constants';
+import { IntlText } from '@/intl';
 
 const PRODUCTS = [
   {

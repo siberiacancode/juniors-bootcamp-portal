@@ -1,12 +1,13 @@
 'use client';
 
+import type { ComponentProps } from 'react';
+
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
-import * as React from 'react';
+import { IntlProvider } from 'react-intl';
 
-import type { IntlProviderProps } from './(contexts)/intl';
+import { ThemeProvider } from './_contexts/theme';
 
-import { IntlProvider } from './(contexts)/intl';
-import { ThemeProvider } from './(contexts)/theme';
+type IntlProviderProps = ComponentProps<typeof IntlProvider>;
 
 interface ProviderProps {
   children: React.ReactNode;

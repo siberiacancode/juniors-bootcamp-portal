@@ -26,8 +26,6 @@
   "page.guides.epmty.title": "По этим фильтрам пока пусто",
   "page.guides.epmty.description": "Сейчас в базе нет материалов, которые подходят под все условия сразу. Попробуйте искать по одному гайду, например только «react» или только «css».",
 
-  "page.guide.metadata.title": "Гайд",
-
   "page.tasksApi.metadata.title": "API для заданий — REST и GraphQL",
   "page.tasksApi.metadata.description": "Общедоступное API для REST и GraphQL: одна доменная модель, без лимитов и платных тарифов — для обучения и pet-проектов.",
 
@@ -51,6 +49,9 @@
   "page.tasksApi.section.faq.2.answer": "Создайте issue в репозитории бэкенда: [juniors-bootcamp-backend](https://github.com/siberiacancode/juniors-bootcamp-backend/issues) — опишите шаги воспроизведения, ожидаемое и фактическое поведение.",
   "page.tasksApi.section.faq.3.question": "Полное ли API для разных архитектур: REST и GraphQL?",
   "page.tasksApi.section.faq.3.answer": "Для REST и GraphQL доступна одна и та же продуманная доменная функциональность: вы можете выбрать удобный для вас стиль и не упираться в «урезанную» версию API на одном из стеков.",
+
+  "page.tasks.metadata.title": "Задания",
+  "page.tasks.metadata.description": "Коллекция уникальных заданий для новичков frontend-разработчиков. Каждое задание — это возможность прокачать свои навыки в React, работе с API, стейт-менеджментом и создании адаптивных интерфейсов.",
 
   "page.tasks.title": "З<span>А</span>ДАНИЯ",
   "page.tasks.description": "Коллекция практических заданий для разработчиков любого стека. Каждое задание основано на реальных продуктовых сценариях и дает прикладной опыт, максимально приближенный к тому, с чем вы сталкиваетесь в реальной разработке.",
