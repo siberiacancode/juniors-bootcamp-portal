@@ -173,7 +173,7 @@ const TaskPage = async ({ params }: PageProps<'/tasks/[id]'>) => {
                   <IntlText path='page.task.section.level.expectedResult' />
                 </Typography>
 
-                <Markdown source={intl.messages[level.expectedResult]} />
+                <Markdown source={intl.formatMessage({ id: level.expectedResult })} />
               </div>
 
               <div className='flex flex-col gap-6'>
@@ -181,7 +181,7 @@ const TaskPage = async ({ params }: PageProps<'/tasks/[id]'>) => {
                   <IntlText path='page.task.section.level.flow' />
                 </Typography>
 
-                <Markdown source={intl.messages[level.flow]} />
+                <Markdown source={intl.formatMessage({ id: level.flow })} />
               </div>
 
               <div className='flex flex-col gap-6'>
