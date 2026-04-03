@@ -12,12 +12,8 @@ import {
 } from '@/components/ui';
 import { IntlText } from '@/intl';
 import { intl } from '@/intl/server';
-import { Markdown } from '@/markdown';
 
-import type { LevelName } from './_types';
-
-import { ApiTabs } from './_components/ApiTabs';
-import { LevelCards } from './_components/LevelCards';
+import { Level } from './_components';
 import { FAQ_ITEMS, TASKS } from './_constants';
 import { getTaskSettingsCookieValue, isValidTaskId } from './_helpers';
 
@@ -40,15 +36,10 @@ export const dynamic = 'force-dynamic';
 const TaskPage = async ({ params }: PageProps<'/tasks/[id]'>) => {
   const { id } = await params;
   if (!isValidTaskId(id)) notFound();
-  const taskSettingsCookieValue = await getTaskSettingsCookieValue();
+
+  const initialTaskSettings = await getTaskSettingsCookieValue();
 
   const task = TASKS[id];
-
-  const levelNames = Object.keys(task.levels) as LevelName[];
-
-  const currentLevel = task.levels[taskSettingsCookieValue.level];
-
-  const externalLinks = Object.entries(task.links) as [keyof typeof task.links, string][];
 
   return (
     <main className='mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
@@ -81,57 +72,7 @@ const TaskPage = async ({ params }: PageProps<'/tasks/[id]'>) => {
             <IntlText path='page.task.section.level.description' />
           </Typography>
         </div>
-
-        <LevelCards levelNames={levelNames} />
-
-        <div className='content-container flex flex-col gap-8 sm:gap-10'>
-          <div className='flex flex-col gap-6 sm:hidden'>
-            {externalLinks.map(([key, href]) => (
-              <Button asChild key={key} size='lg' variant='outline'>
-                <a href={href} rel='noopener noreferrer' target='_blank'>
-                  <IntlText path={`page.task.section.level.link.${key}`} />
-                </a>
-              </Button>
-            ))}
-          </div>
-
-          <div className='hidden gap-6 sm:flex'>
-            {externalLinks.map(([key, href]) => (
-              <Button asChild key={key} size='sm' variant='outline'>
-                <a href={href} rel='noopener noreferrer' target='_blank'>
-                  <IntlText path={`page.task.section.level.link.${key}`} />
-                </a>
-              </Button>
-            ))}
-          </div>
-
-          <div className='flex flex-col gap-6'>
-            <Typography as='h4' variant='title-lg'>
-              <IntlText path='page.task.section.level.expectedResult' />
-            </Typography>
-
-            <Markdown source={intl.formatMessage({ id: currentLevel.expectedResult })} />
-          </div>
-
-          <div className='flex flex-col gap-6'>
-            <Typography as='h4' variant='title-lg'>
-              <IntlText path='page.task.section.level.flow' />
-            </Typography>
-
-            <Markdown source={intl.formatMessage({ id: currentLevel.flow })} />
-          </div>
-
-          <div className='flex flex-col gap-6'>
-            <Typography as='h4' variant='title-lg'>
-              API
-            </Typography>
-            <Typography as='p' variant='body-lg'>
-              <IntlText path='page.task.section.level.api.description' />
-            </Typography>
-
-            <ApiTabs api={currentLevel.api} />
-          </div>
-        </div>
+        <Level initialValue={initialTaskSettings} task={task} />
       </section>
 
       <section className='content-container flex flex-col gap-8 sm:gap-6'>
