@@ -34,3 +34,8 @@ export interface TaskContent {
   };
   title: MessagePath;
 }
+
+export interface TaskSettingsCookieValue {
+  api: ApiType;
+  level: LevelName;
+}
