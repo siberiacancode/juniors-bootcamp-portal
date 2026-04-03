@@ -1,11 +1,6 @@
 import { createContext } from 'react';
 
-import type { ApiType, LevelName } from '../../_types';
-
-export interface TaskSettingsCookieValue {
-  api: ApiType;
-  level: LevelName;
-}
+import type { TaskSettingsCookieValue } from '../../_types';
 
 interface ThemeContextValue {
   value: TaskSettingsCookieValue;

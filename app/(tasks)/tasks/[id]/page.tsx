@@ -19,6 +19,7 @@ import type { LevelName } from './_types';
 import { ApiTabs } from './_components/ApiTabs';
 import { LevelCards } from './_components/LevelCards';
 import { FAQ_ITEMS, TASKS } from './_constants';
+import { TaskSettingsProvider } from './_contexts/taskSettings';
 import { getTaskSettingsCookieValue, isValidTaskId } from './_helpers';
 
 export const generateStaticParams = () => Object.keys(TASKS).map((id) => ({ id }));
@@ -72,67 +73,69 @@ const TaskPage = async ({ params }: PageProps<'/tasks/[id]'>) => {
         </Typography>
       </section>
 
-      <section className='flex flex-col gap-8 sm:gap-10'>
-        <div className='content-container flex flex-col gap-6'>
-          <Typography as='h2' variant='heading-md'>
-            <IntlText path='page.task.section.level.title' />
-          </Typography>
-          <Typography as='p' variant='body-lg'>
-            <IntlText path='page.task.section.level.description' />
-          </Typography>
-        </div>
-
-        <LevelCards levelNames={levelNames} />
-
-        <div className='content-container flex flex-col gap-8 sm:gap-10'>
-          <div className='flex flex-col gap-6 sm:hidden'>
-            {externalLinks.map(([key, href]) => (
-              <Button asChild key={key} size='lg' variant='outline'>
-                <a href={href} rel='noopener noreferrer' target='_blank'>
-                  <IntlText path={`page.task.section.level.link.${key}`} />
-                </a>
-              </Button>
-            ))}
-          </div>
-
-          <div className='hidden gap-6 sm:flex'>
-            {externalLinks.map(([key, href]) => (
-              <Button asChild key={key} size='sm' variant='outline'>
-                <a href={href} rel='noopener noreferrer' target='_blank'>
-                  <IntlText path={`page.task.section.level.link.${key}`} />
-                </a>
-              </Button>
-            ))}
-          </div>
-
-          <div className='flex flex-col gap-6'>
-            <Typography as='h4' variant='title-lg'>
-              <IntlText path='page.task.section.level.expectedResult' />
-            </Typography>
-
-            <Markdown source={intl.formatMessage({ id: currentLevel.expectedResult })} />
-          </div>
-
-          <div className='flex flex-col gap-6'>
-            <Typography as='h4' variant='title-lg'>
-              <IntlText path='page.task.section.level.flow' />
-            </Typography>
-
-            <Markdown source={intl.formatMessage({ id: currentLevel.flow })} />
-          </div>
-
-          <div className='flex flex-col gap-6'>
-            <Typography as='h4' variant='title-lg'>
-              API
+      <TaskSettingsProvider initialValue={taskSettingsCookieValue}>
+        <section className='flex flex-col gap-8 sm:gap-10'>
+          <div className='content-container flex flex-col gap-6'>
+            <Typography as='h2' variant='heading-md'>
+              <IntlText path='page.task.section.level.title' />
             </Typography>
             <Typography as='p' variant='body-lg'>
-              <IntlText path='page.task.section.level.api.description' />
+              <IntlText path='page.task.section.level.description' />
             </Typography>
-
-            <ApiTabs api={currentLevel.api} />
           </div>
-        </div>
-      </section>
+
+          <LevelCards levelNames={levelNames} />
+
+          <div className='content-container flex flex-col gap-8 sm:gap-10'>
+            <div className='flex flex-col gap-6 sm:hidden'>
+              {externalLinks.map(([key, href]) => (
+                <Button asChild key={key} size='lg' variant='outline'>
+                  <a href={href} rel='noopener noreferrer' target='_blank'>
+                    <IntlText path={`page.task.section.level.link.${key}`} />
+                  </a>
+                </Button>
+              ))}
+            </div>
+
+            <div className='hidden gap-6 sm:flex'>
+              {externalLinks.map(([key, href]) => (
+                <Button asChild key={key} size='sm' variant='outline'>
+                  <a href={href} rel='noopener noreferrer' target='_blank'>
+                    <IntlText path={`page.task.section.level.link.${key}`} />
+                  </a>
+                </Button>
+              ))}
+            </div>
+
+            <div className='flex flex-col gap-6'>
+              <Typography as='h4' variant='title-lg'>
+                <IntlText path='page.task.section.level.expectedResult' />
+              </Typography>
+
+              <Markdown source={intl.formatMessage({ id: currentLevel.expectedResult })} />
+            </div>
+
+            <div className='flex flex-col gap-6'>
+              <Typography as='h4' variant='title-lg'>
+                <IntlText path='page.task.section.level.flow' />
+              </Typography>
+
+              <Markdown source={intl.formatMessage({ id: currentLevel.flow })} />
+            </div>
+
+            <div className='flex flex-col gap-6'>
+              <Typography as='h4' variant='title-lg'>
+                API
+              </Typography>
+              <Typography as='p' variant='body-lg'>
+                <IntlText path='page.task.section.level.api.description' />
+              </Typography>
+
+              <ApiTabs api={currentLevel.api} />
+            </div>
+          </div>
+        </section>
+      </TaskSettingsProvider>
 
       <section className='content-container flex flex-col gap-8 sm:gap-6'>
         <Typography as='h3' variant='heading-md'>

@@ -5,7 +5,7 @@ import { useMemo } from 'react';
 
 import { COOKIES } from '@/constants';
 
-import type { TaskSettingsCookieValue } from './TaskSettingsContext';
+import type { TaskSettingsCookieValue } from '../../_types';
 
 import { TaskSettingsContext } from './TaskSettingsContext';
 

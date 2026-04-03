@@ -42,7 +42,7 @@ export const ApiTabs = ({ api }: ApiTabsProps) => {
 
       <TabsContent value='graphQL'>
         <ul className='flex flex-col gap-4'>
-          {api.rest.map((item) => (
+          {api.graphQL.map((item) => (
             <li key={`${item.operation}-${item.field}`} className='flex items-center gap-2'>
               <ApiBadge variant={item.operation}>{item.operation}</ApiBadge>
               <Typography as='span' className='font-overpass-mono' variant='body-sm'>
