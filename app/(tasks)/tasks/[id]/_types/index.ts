@@ -12,19 +12,21 @@ export interface GraphQLApiField {
 
 export type LevelName = 'junior' | 'middle' | 'senior';
 
+export type ApiType = 'graphQL' | 'rest';
+
 export interface LevelData {
+  api: {
+    graphQL: GraphQLApiField[];
+    rest: RestApiField[];
+  };
   expectedResult: MessagePath;
   flow: MessagePath;
-  graphQL: GraphQLApiField[];
-  rest: RestApiField[];
 }
-
-type LevelDataWithName<Name extends LevelName> = LevelData & { name: Name };
 
 export interface TaskContent {
   description: MessagePath;
   emoji: string;
-  levels: [LevelDataWithName<'junior'>, LevelDataWithName<'middle'>, LevelDataWithName<'senior'>];
+  levels: Record<LevelName, LevelData>;
   links: {
     figma: string;
     requirements: string;
