@@ -2,5 +2,5 @@ export const PREFIX = 'juniors_bootcamp';
 export const COOKIES = {
   THEME: `${PREFIX}_theme`,
   COOKIE_CONSENT: `${PREFIX}_cookie_consent`,
-  USER_SETTINGS: `${PREFIX}_user_settings`
+  TASK_SETTINGS: `${PREFIX}_task_settings`
 } as const;

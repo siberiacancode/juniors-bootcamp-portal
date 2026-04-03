@@ -3,7 +3,7 @@ import type { JSX } from 'react';
 
 import { MedalIcon, StarIcon, TrophyIcon } from 'lucide-react';
 
-import type { LevelName } from '../_types';
+import type { LevelName } from '../../_types';
 
 interface LevelData {
   description: MessagePath;
