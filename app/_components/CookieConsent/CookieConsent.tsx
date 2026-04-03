@@ -11,7 +11,7 @@ export const CookieConsent = () => {
   return (
     <>
       {!hasConsent && <CookieConsentPopover />}
-      {!hasConsent && isProduction && <YandexMetrikaScript />}
+      {hasConsent && isProduction && <YandexMetrikaScript />}
     </>
   );
 };
