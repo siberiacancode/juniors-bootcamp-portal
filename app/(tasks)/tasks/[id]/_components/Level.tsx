@@ -1,6 +1,7 @@
 'use client';
 
 import { useCookie } from '@siberiacancode/reactuse';
+import { useIntl } from 'react-intl';
 
 import { ApiBadge } from '@/components/common';
 import {
@@ -15,16 +16,15 @@ import {
 import { COOKIES } from '@/constants';
 import { IntlText } from '@/intl';
 import { cn } from '@/lib/utils';
-import { MDXClient } from '@/markdown';
+import { Markdown } from '@/markdown';
 
-import type { SerializedTaskContent } from '../_helpers';
-import type { ApiType, LevelName, TaskSettingsCookieValue } from '../_types';
+import type { ApiType, LevelName, TaskContent, TaskSettingsCookieValue } from '../_types';
 
 import { LEVELS } from './constants';
 
 interface LevelProps {
   initialValue: TaskSettingsCookieValue;
-  task: SerializedTaskContent;
+  task: TaskContent;
 }
 
 const TASK_SETTINGS_OPTIONS = {
@@ -32,6 +32,8 @@ const TASK_SETTINGS_OPTIONS = {
 } as const;
 
 export const Level = ({ task, initialValue }: LevelProps) => {
+  const intl = useIntl();
+
   const taskSettings = useCookie(COOKIES.TASK_SETTINGS, {
     ...TASK_SETTINGS_OPTIONS,
     initialValue
@@ -123,7 +125,7 @@ export const Level = ({ task, initialValue }: LevelProps) => {
             <IntlText path='page.task.section.level.expectedResult' />
           </Typography>
 
-          <MDXClient code={currentLevel.expectedResult} />
+          <Markdown>{intl.formatMessage({ id: currentLevel.expectedResult })}</Markdown>
         </div>
 
         <div className='flex flex-col gap-6'>
@@ -131,7 +133,7 @@ export const Level = ({ task, initialValue }: LevelProps) => {
             <IntlText path='page.task.section.level.flow' />
           </Typography>
 
-          <MDXClient code={currentLevel.flow} />
+          <Markdown>{intl.formatMessage({ id: currentLevel.flow })}</Markdown>
         </div>
 
         <div className='flex flex-col gap-6'>

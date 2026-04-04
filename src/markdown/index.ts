@@ -1,1 +1,1 @@
-export * from './MDXClient';
+export * from './Markdown';

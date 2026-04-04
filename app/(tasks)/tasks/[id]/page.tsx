@@ -15,7 +15,7 @@ import { intl } from '@/intl/server';
 
 import { Level } from './_components';
 import { FAQ_ITEMS, TASKS } from './_constants';
-import { getTaskSettingsCookieValue, isValidTaskId, serializeTask } from './_helpers';
+import { getTaskSettingsCookieValue, isValidTaskId } from './_helpers';
 
 export const generateStaticParams = () => Object.keys(TASKS).map((id) => ({ id }));
 
@@ -40,8 +40,6 @@ const TaskPage = async ({ params }: PageProps<'/tasks/[id]'>) => {
   const initialTaskSettings = await getTaskSettingsCookieValue();
 
   const task = TASKS[id];
-
-  const serializedTask = await serializeTask(task);
 
   return (
     <main className='mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
@@ -75,7 +73,7 @@ const TaskPage = async ({ params }: PageProps<'/tasks/[id]'>) => {
           </Typography>
         </div>
 
-        <Level initialValue={initialTaskSettings} task={serializedTask} />
+        <Level initialValue={initialTaskSettings} task={task} />
       </section>
 
       <section className='content-container flex flex-col gap-8 sm:gap-6'>
