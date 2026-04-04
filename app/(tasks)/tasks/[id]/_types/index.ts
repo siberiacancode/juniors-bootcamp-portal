@@ -10,9 +10,9 @@ export interface GraphQLApiField {
   operation: GraphQLOperation;
 }
 
-export type LevelName = 'junior' | 'middle' | 'senior';
-
 export type ApiType = 'graphQL' | 'rest';
+
+export type LevelName = 'junior' | 'middle' | 'senior';
 
 export interface LevelData {
   api: {
