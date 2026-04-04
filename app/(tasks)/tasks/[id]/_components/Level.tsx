@@ -13,17 +13,18 @@ import {
   Typography
 } from '@/components/ui';
 import { COOKIES } from '@/constants';
-// import { Markdown } from '@/markdown';
 import { IntlText } from '@/intl';
 import { cn } from '@/lib/utils';
+import { MDXClient } from '@/markdown';
 
-import type { ApiType, LevelName, TaskContent, TaskSettingsCookieValue } from '../_types';
+import type { SerializedTaskContent } from '../_helpers';
+import type { ApiType, LevelName, TaskSettingsCookieValue } from '../_types';
 
 import { LEVELS } from './constants';
 
 interface LevelProps {
   initialValue: TaskSettingsCookieValue;
-  task: TaskContent;
+  task: SerializedTaskContent;
 }
 
 const TASK_SETTINGS_OPTIONS = {
@@ -122,7 +123,7 @@ export const Level = ({ task, initialValue }: LevelProps) => {
             <IntlText path='page.task.section.level.expectedResult' />
           </Typography>
 
-          {/* <Markdown source={intl.formatMessage({ id: currentLevel.expectedResult })} /> */}
+          <MDXClient code={currentLevel.expectedResult} />
         </div>
 
         <div className='flex flex-col gap-6'>
@@ -130,7 +131,7 @@ export const Level = ({ task, initialValue }: LevelProps) => {
             <IntlText path='page.task.section.level.flow' />
           </Typography>
 
-          {/* <Markdown source={intl.formatMessage({ id: currentLevel.flow })} /> */}
+          <MDXClient code={currentLevel.flow} />
         </div>
 
         <div className='flex flex-col gap-6'>
