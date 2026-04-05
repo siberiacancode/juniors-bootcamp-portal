@@ -17,8 +17,6 @@ import { Level } from './_components';
 import { FAQ_ITEMS, TASKS } from './_constants';
 import { getTaskSettingsCookieValue, isValidTaskId } from './_helpers';
 
-export const generateStaticParams = () => Object.keys(TASKS).map((id) => ({ id }));
-
 export const generateMetadata = async ({ params }: PageProps<'/tasks/[id]'>) => {
   const { id } = await params;
   if (!isValidTaskId(id)) return;
