@@ -1,4 +1,5 @@
 import { ChevronRightIcon } from 'lucide-react';
+import Markdown from 'react-markdown';
 
 import {
   Accordion,
@@ -11,7 +12,6 @@ import {
 } from '@/components/ui';
 import { IntlText } from '@/intl';
 import { intl } from '@/intl/server';
-import { Markdown } from '@/markdown';
 
 export const generateMetadata = async () => ({
   title: intl.formatMessage({ id: 'page.tasksApi.metadata.title' }),
@@ -140,7 +140,7 @@ const TasksApiPage = () => (
               <IntlText path={question} />
             </AccordionTrigger>
             <AccordionContent>
-              <Markdown source={intl.formatMessage({ id: answer })} />
+              <Markdown>{intl.formatMessage({ id: answer })}</Markdown>
             </AccordionContent>
           </AccordionItem>
         ))}

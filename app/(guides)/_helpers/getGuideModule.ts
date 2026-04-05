@@ -1,5 +1,7 @@
 import type { MDXContent } from 'mdx/types';
 
+import 'server-only';
+
 export interface GuideMetadata {
   description: string;
   labels: string[];
@@ -11,5 +13,5 @@ export interface GuideModule {
   metadata: GuideMetadata;
 }
 
-export const getGuideModule = async (slug: string) =>
+export const getGuideModule = (slug: string) =>
   import(`../../../public/contents/guides/${slug}.mdx`) as Promise<GuideModule>;
