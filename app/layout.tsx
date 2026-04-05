@@ -3,7 +3,7 @@ import { Nunito, Overpass_Mono, Parisienne, Pixelify_Sans } from 'next/font/goog
 import { intl } from '@/intl/server';
 import { cn } from '@/lib/utils';
 
-import { Footer, Header } from './_components';
+import { DynamicCookieConsent, Footer, Header } from './_components';
 import { ThemeScript } from './_scripts';
 import { Provider } from './provider';
 
@@ -64,7 +64,7 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => (
         <Header />
         <div className='flex flex-1 flex-col'>{children}</div>
         <Footer />
-        {/* <DynamicCookieConsent /> */}
+        <DynamicCookieConsent />
       </Provider>
     </body>
   </html>
