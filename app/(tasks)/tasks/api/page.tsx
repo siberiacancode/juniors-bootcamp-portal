@@ -1,5 +1,4 @@
 import { ChevronRightIcon } from 'lucide-react';
-import Markdown from 'react-markdown';
 
 import {
   Accordion,
@@ -140,7 +139,12 @@ const TasksApiPage = () => (
               <IntlText path={question} />
             </AccordionTrigger>
             <AccordionContent>
-              <Markdown>{intl.formatMessage({ id: answer })}</Markdown>
+              <IntlText
+                values={{
+                  repoName: 'juniors-bootcamp-backend'
+                }}
+                path={answer}
+              />
             </AccordionContent>
           </AccordionItem>
         ))}

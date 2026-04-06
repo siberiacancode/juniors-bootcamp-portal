@@ -26,7 +26,7 @@ const typographyVariants = cva('font-nunito', {
       'body-lg': 'text-[24px]/8 font-medium tracking-wide',
       'body-md': 'text-[18px]/6.5 font-medium tracking-wide',
       'body-sm': 'text-[16px]/6 font-medium tracking-wide',
-      link: 'text-[16px]/6 font-medium tracking-wide underline underline-offset-2',
+      link: 'text-[16px]/6 font-medium tracking-wide underline underline-offset-4',
       caption: 'text-[14px]/5.5 font-medium tracking-wide'
     },
     pixelify: {

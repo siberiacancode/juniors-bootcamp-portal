@@ -51,7 +51,15 @@ const AccordionContent = ({
     data-slot='accordion-content'
     {...props}
   >
-    <div className={cn('pt-2 text-[18px]/7 font-normal', className)}>{children}</div>
+    <div
+      className={cn(
+        'pt-2 text-[18px]/7 font-normal',
+        '[&>a]:underline [&>a]:underline-offset-4',
+        className
+      )}
+    >
+      {children}
+    </div>
   </AccordionPrimitive.Content>
 );
 
