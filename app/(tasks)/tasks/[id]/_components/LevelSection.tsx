@@ -1,7 +1,6 @@
 'use client';
 
 import { useCookie } from '@siberiacancode/reactuse';
-import { useIntl } from 'react-intl';
 
 import { ApiBadge } from '@/components/common';
 import {
@@ -16,7 +15,6 @@ import {
 import { COOKIES } from '@/constants';
 import { IntlText } from '@/intl';
 import { cn } from '@/lib/utils';
-import { Markdown } from '@/markdown';
 
 import type { ApiType, LevelName, TaskContent, TaskSettingsCookieValue } from '../_types';
 
@@ -31,9 +29,7 @@ const TASK_SETTINGS_OPTIONS = {
   path: '/'
 } as const;
 
-export const Level = ({ task, initialValue }: LevelProps) => {
-  const intl = useIntl();
-
+export const LevelSection = ({ task, initialValue }: LevelProps) => {
   const taskSettings = useCookie(COOKIES.TASK_SETTINGS, {
     ...TASK_SETTINGS_OPTIONS,
     initialValue
@@ -125,7 +121,9 @@ export const Level = ({ task, initialValue }: LevelProps) => {
             <IntlText path='page.task.section.level.expectedResult' />
           </Typography>
 
-          <Markdown>{intl.formatMessage({ id: currentLevel.expectedResult })}</Markdown>
+          <Typography as='p' variant='body-lg'>
+            <IntlText path={currentLevel.expectedResult} />
+          </Typography>
         </div>
 
         <div className='flex flex-col gap-6'>
@@ -133,7 +131,9 @@ export const Level = ({ task, initialValue }: LevelProps) => {
             <IntlText path='page.task.section.level.flow' />
           </Typography>
 
-          <Markdown>{intl.formatMessage({ id: currentLevel.flow })}</Markdown>
+          <Typography as='p' variant='body-lg'>
+            <IntlText path={currentLevel.flow} />
+          </Typography>
         </div>
 
         <div className='flex flex-col gap-6'>
