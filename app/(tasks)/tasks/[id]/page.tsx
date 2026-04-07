@@ -20,7 +20,15 @@ import type { TaskSettingsCookieValue } from './_types';
 import { LevelSection } from './_components';
 import { FAQ_ITEMS, TASKS } from './_constants';
 
-export const generateMetadata = async ({ params }: PageProps<'/tasks/[id]'>) => {
+interface TaskPageProps {
+  params: Promise<{
+    id: string;
+  }>;
+}
+
+export const dynamic = 'force-dynamic';
+
+export const generateMetadata = async ({ params }: TaskPageProps) => {
   const { id } = await params;
 
   const task = TASKS[id as keyof typeof TASKS];
@@ -31,9 +39,7 @@ export const generateMetadata = async ({ params }: PageProps<'/tasks/[id]'>) => 
   };
 };
 
-export const dynamic = 'force-dynamic';
-
-const TaskPage = async ({ params }: PageProps<'/tasks/[id]'>) => {
+const TaskPage = async ({ params }: TaskPageProps) => {
   const { id } = await params;
 
   if (!(id in TASKS)) notFound();
