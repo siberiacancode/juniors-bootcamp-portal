@@ -1,4 +1,8 @@
-const GuidesLayout = ({ children }: LayoutProps<'/'>) => (
+interface GuidesLayoutProps {
+  children: React.ReactNode;
+}
+
+const GuidesLayout = ({ children }: GuidesLayoutProps) => (
   <>
     {children}
     <style>

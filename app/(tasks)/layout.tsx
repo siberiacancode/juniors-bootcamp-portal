@@ -1,4 +1,8 @@
-const TasksLayout = ({ children }: LayoutProps<'/'>) => (
+interface TasksLayoutProps {
+  children: React.ReactNode;
+}
+
+const TasksLayout = ({ children }: TasksLayoutProps) => (
   <>
     {children}
     <style>

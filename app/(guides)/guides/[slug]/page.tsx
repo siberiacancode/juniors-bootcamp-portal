@@ -8,6 +8,12 @@ import { IntlText } from '@/intl';
 
 import { ShareButtton } from './_components';
 
+interface GuidePageProps {
+  params: Promise<{
+    slug: string;
+  }>;
+}
+
 export const generateStaticParams = async () => {
   const guides = await getGuides();
 
@@ -16,7 +22,7 @@ export const generateStaticParams = async () => {
   }));
 };
 
-export const generateMetadata = async ({ params }: PageProps<'/guides/[slug]'>) => {
+export const generateMetadata = async ({ params }: GuidePageProps) => {
   const { slug } = await params;
   const { metadata } = await getGuideModule(slug);
 
@@ -27,7 +33,7 @@ export const generateMetadata = async ({ params }: PageProps<'/guides/[slug]'>) 
   };
 };
 
-const GuidePage = async ({ params }: PageProps<'/guides/[slug]'>) => {
+const GuidePage = async ({ params }: GuidePageProps) => {
   const { slug } = await params;
   const GuideModule = await getGuideModule(slug);
   const metadata = GuideModule.metadata;
