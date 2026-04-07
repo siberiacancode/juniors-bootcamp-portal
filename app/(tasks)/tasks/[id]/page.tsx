@@ -40,12 +40,10 @@ const TaskPage = async ({ params }: PageProps<'/tasks/[id]'>) => {
 
   const task = TASKS[id as keyof typeof TASKS];
 
-  const initialTaskSettings = (await getCookieValue<TaskSettingsCookieValue>(
-    COOKIES.TASK_SETTINGS
-  )) ?? {
+  const initialTaskSettings = await getCookieValue<TaskSettingsCookieValue>(COOKIES.TASK_SETTINGS, {
     level: 'junior',
     api: 'rest'
-  };
+  });
 
   return (
     <main className='mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
