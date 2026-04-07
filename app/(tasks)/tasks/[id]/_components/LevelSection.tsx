@@ -25,13 +25,13 @@ interface LevelProps {
   task: TaskContent;
 }
 
-const TASK_SETTINGS_OPTIONS = {
+const TASK_SETTINGS_OCOOKIE_OPTIONS = {
   path: '/'
 } as const;
 
 export const LevelSection = ({ task, initialValue }: LevelProps) => {
   const taskSettings = useCookie(COOKIES.TASK_SETTINGS, {
-    ...TASK_SETTINGS_OPTIONS,
+    ...TASK_SETTINGS_OCOOKIE_OPTIONS,
     initialValue
   });
 
@@ -41,7 +41,7 @@ export const LevelSection = ({ task, initialValue }: LevelProps) => {
         ...taskSettings.value,
         level
       },
-      TASK_SETTINGS_OPTIONS
+      TASK_SETTINGS_OCOOKIE_OPTIONS
     );
 
   const setApi = (api: ApiType) =>
@@ -50,7 +50,7 @@ export const LevelSection = ({ task, initialValue }: LevelProps) => {
         ...taskSettings.value,
         api
       },
-      TASK_SETTINGS_OPTIONS
+      TASK_SETTINGS_OCOOKIE_OPTIONS
     );
 
   const levelNames = Object.keys(task.levels) as LevelName[];
