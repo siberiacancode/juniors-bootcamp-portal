@@ -1,8 +1,8 @@
 import type { MDXComponents } from 'mdx/types';
 
-import { MDX_COMPONENTS } from '@/markdown/mdxComponents';
+import { CUSTOM_COMPONENTS } from '@/markdown';
 
 export const useMDXComponents = (overrides: MDXComponents): MDXComponents => ({
-  ...MDX_COMPONENTS,
+  ...CUSTOM_COMPONENTS,
   ...overrides
 });

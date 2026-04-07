@@ -2,7 +2,7 @@ import type { MDXComponents } from 'mdx/types';
 
 import { CodeBlock, CodeGroup } from '@/markdown/ui';
 
-export const MDX_COMPONENTS = {
+export const CUSTOM_COMPONENTS = {
   h1: (props) => <h1 {...props} className='mb-10 text-[60px]/17 font-bold text-foreground' />,
   h2: (props) => <h2 {...props} className='mt-12 mb-8 text-[48px]/14 font-bold text-foreground' />,
   h3: (props) => <h3 {...props} className='mt-8 mb-6 text-[32px]/10 font-bold text-foreground' />,
