@@ -14,6 +14,13 @@
   "navigation.tasks": "Задания",
   "navigation.guides": "Гайды",
 
+  "page.home.metadata.title": "JUNIORS BOOTCAMP — бесплатный развивающий контент для начинающих айтишников",
+  "page.home.metadata.description": "Практические задания на реальных сценариях. В каждом — готовое ТЗ, уровни сложности и API, имитирующий настоящий сервер",
+
+  "page.home.description": "Практические задания на реальных сценариях. В каждом — готовое ТЗ, уровни сложности и <span>API</span>, имитирующий настоящий сервер",
+  "page.home.projectCard.title": "Наш телеграм-канал",
+  "page.home.projectCard.description": "Куча полезной информации",
+
   "page.guides.metadata.title": "Гайды - 1001 способ помочь новичкам",
   "page.guides.metadata.description": "Полезные советы и рекомендации для начинающих разработчиков. Примеры кода, объяснения концепций и лучших практик frontend разработки.",
   "page.guides.title": "Г<span>А</span>ЙДЫ",
@@ -46,7 +53,7 @@
   "page.tasksApi.section.faq.1.question": "Есть ли ограничения на использование API?",
   "page.tasksApi.section.faq.1.answer": "Нет. Со стороны проекта нет лимитов на количество запросов, скрытых квот и платных тарифов. Делайте сколько угодно запросов к обучающему API, пока это не мешает стабильной работе сервиса для других участников.",
   "page.tasksApi.section.faq.2.question": "Нашёл баг, что делать?",
-  "page.tasksApi.section.faq.2.answer": "Создайте issue в репозитории бэкенда: <external>{repoName}</external> — опишите шаги воспроизведения, ожидаемое и фактическое поведение.",
+  "page.tasksApi.section.faq.2.answer": "Создайте issue в репозитории бэкенда: <backendLink>{repoName}</backendLink> — опишите шаги воспроизведения, ожидаемое и фактическое поведение.",
   "page.tasksApi.section.faq.3.question": "Полное ли API для разных архитектур: REST и GraphQL?",
   "page.tasksApi.section.faq.3.answer": "Для REST и GraphQL доступна одна и та же продуманная доменная функциональность: вы можете выбрать удобный для вас стиль и не упираться в «урезанную» версию API на одном из стеков.",
 
@@ -175,6 +182,7 @@
   "button.share": "Поделиться",
   "button.loginVia": "Войти через",
   "button.accept": "Принять",
+  "button.start": "Начать",
 
   "faq.title": "Частые вопросы",
 
