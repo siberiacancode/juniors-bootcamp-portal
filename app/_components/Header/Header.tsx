@@ -56,7 +56,7 @@ export const Header = () => {
   return (
     <header className='mt-3 w-full sm:mt-6'>
       <div className='content-container flex h-10 items-center justify-between sm:h-16'>
-        <Link className='font-pixelify-sans text-[32px]/10 font-bold tracking-[5%]' href='/'>
+        <Link className='font-pixelify-sans text-[32px]/10 font-bold tracking-wide' href='/'>
           jb
         </Link>
 
@@ -101,7 +101,7 @@ export const Header = () => {
                 </SheetDescription>
 
                 <Link
-                  className='font-pixelify-sans text-[32px]/10 font-bold tracking-[5%]'
+                  className='font-pixelify-sans text-[32px]/10 font-bold tracking-wide'
                   href='/'
                 >
                   jb

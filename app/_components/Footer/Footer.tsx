@@ -82,7 +82,7 @@ export const Footer = () => {
   return (
     <footer className='content-container mb-12 flex w-full flex-col gap-6 sm:mb-16'>
       <div className='flex flex-col gap-6 rounded-24 bg-secondary px-4 py-6 sm:flex-row sm:flex-wrap sm:items-center sm:gap-10 sm:px-6 sm:py-10'>
-        <span className='font-pixelify-sans text-[32px]/10 font-bold tracking-[5%]'>
+        <span className='font-pixelify-sans text-[32px]/10 font-bold tracking-wide'>
           juniorsbootcamp
         </span>
 
