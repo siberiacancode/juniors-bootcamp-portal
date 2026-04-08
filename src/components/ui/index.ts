@@ -8,6 +8,7 @@ export * from './empty';
 export * from './icon-button';
 export * from './input';
 export * from './input-group';
+export * from './marquee';
 export * from './select';
 export * from './separator';
 export * from './sheet';
