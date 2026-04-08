@@ -365,3 +365,9 @@ pre.shiki {
     color: var(--shiki-dark);
   }
 }
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
