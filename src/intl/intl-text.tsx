@@ -16,7 +16,7 @@ interface IntlTextProps {
 const VALUES: IntlTextValues = {
   span: (chunks) => <span>{chunks}</span>,
   br: () => <br />,
-  external: (chunks) => (
+  backendLink: (chunks) => (
     <a
       href='https://github.com/siberiacancode/juniors-bootcamp-backend/issues'
       rel='noopener noreferrer'
