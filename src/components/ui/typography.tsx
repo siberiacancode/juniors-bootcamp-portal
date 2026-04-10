@@ -30,7 +30,7 @@ const typographyVariants = cva('font-nunito', {
       caption: 'text-[14px]/5.5 font-medium tracking-wide'
     },
     pixelify: {
-      true: '[&>span]:font-pixelify-sans [&>span]:text-[1.13em] [&>span]:font-[calc(var(--font-weight)-200)]'
+      true: '[&>span]:font-pixelify-sans [&>span]:text-[1.13em] [&>span]:leading-0 [&>span]:font-[calc(var(--font-weight)-200)]'
     }
   },
   defaultVariants: {
