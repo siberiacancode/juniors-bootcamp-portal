@@ -127,7 +127,7 @@ const TasksApiPage = () => (
       </Button>
     </section>
 
-    <section className='flex flex-col gap-8 sm:gap-6'>
+    <section className='flex flex-col gap-8 sm:gap-10'>
       <Typography as='h3' variant='heading-md'>
         <IntlText path='faq.title' />
       </Typography>

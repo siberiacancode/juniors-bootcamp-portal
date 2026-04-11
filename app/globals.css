@@ -371,3 +371,40 @@ pre.shiki {
     transform: translateX(-50%);
   }
 }
+
+@keyframes orbit {
+  0% {
+    transform: rotate(var(--angle, 0deg)) translateY(var(--radius, 50px))
+      rotate(calc(var(--angle, 0deg) * -1));
+  }
+  100% {
+    transform: rotate(calc(var(--angle, 0deg) + 360deg)) translateY(var(--radius, 50px))
+      rotate(calc(var(--angle, 0deg) * -1 - 360deg));
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, -15px) scale(1.05);
+  }
+  50% {
+    transform: translate(-10px, 20px) scale(0.95);
+  }
+  75% {
+    transform: translate(-20px, -10px) scale(1.02);
+  }
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}

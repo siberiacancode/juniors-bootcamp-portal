@@ -120,7 +120,7 @@ const TasksPage = () => (
       </section>
     </div>
 
-    <section className='content-container flex flex-col gap-8 sm:gap-6'>
+    <section className='content-container flex flex-col gap-8 sm:gap-10'>
       <Typography as='h3' variant='heading-md'>
         <IntlText path='page.tasks.section.roadmap.title' />
       </Typography>
@@ -144,7 +144,7 @@ const TasksPage = () => (
       </div>
     </section>
 
-    <section className='content-container flex flex-col gap-8 sm:gap-6'>
+    <section className='content-container flex flex-col gap-8 sm:gap-10'>
       <Typography as='h3' variant='heading-md'>
         <IntlText path='page.tasks.section.philosophy.title' />
       </Typography>
@@ -153,7 +153,7 @@ const TasksPage = () => (
       </Typography>
     </section>
 
-    <section className='content-container flex flex-col gap-8 sm:gap-6'>
+    <section className='content-container flex flex-col gap-8 sm:gap-10'>
       <Typography as='h3' variant='heading-md'>
         <IntlText path='faq.title' />
       </Typography>
