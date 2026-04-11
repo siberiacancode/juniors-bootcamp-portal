@@ -18,19 +18,9 @@ interface MatrixGridIconProps extends SVGProps<SVGSVGElement> {
    * @default 20
    */
   size?: number;
-  /**
-   *
-   */
-  strokeWidth?: number;
 }
 
-export const MatrixGridIcon = ({
-  matrix,
-  size = 20,
-  strokeWidth,
-  stroke,
-  ...props
-}: MatrixGridIconProps) => {
+export const MatrixGridIcon = ({ matrix, size = 20, ...props }: MatrixGridIconProps) => {
   const height = matrix.length * size;
   const width = matrix.reduce((max, row) => Math.max(max, row.length), 0) * size;
 
@@ -56,7 +46,7 @@ export const MatrixGridIcon = ({
       xmlns='http://www.w3.org/2000/svg'
       {...props}
     >
-      <path d={d} stroke={stroke} strokeWidth={strokeWidth} />
+      <path d={d} />
     </svg>
   );
 };
