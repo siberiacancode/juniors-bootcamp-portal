@@ -2,7 +2,7 @@ import type { SVGProps } from 'react';
 
 type Cell = 0 | 1;
 
-interface MatrixGridIconProps extends SVGProps<SVGSVGElement> {
+interface MatrixGridProps extends SVGProps<SVGSVGElement> {
   /**
    * Each inner array represents a row of the grid, whereas each number represents a cell. A value of `1` indicates a filled cell, while `0` indicates an empty cell.
    * @example
@@ -20,7 +20,7 @@ interface MatrixGridIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
 }
 
-export const MatrixGridIcon = ({ matrix, size = 20, ...props }: MatrixGridIconProps) => {
+export const MatrixGrid = ({ matrix, size = 20, ...props }: MatrixGridProps) => {
   const height = matrix.length * size;
   const width = matrix.reduce((max, row) => Math.max(max, row.length), 0) * size;
 
