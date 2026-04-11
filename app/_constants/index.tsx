@@ -11,7 +11,7 @@ import {
   TrophyIcon
 } from 'lucide-react';
 
-import { MatrixGridIcon } from '@/components/icons';
+import { MatrixGrid } from '@/components/common';
 
 export const FAQ_ITEMS = [
   {
@@ -32,7 +32,7 @@ export const MARQUEE_TECHNOLOGIES = [
   {
     name: 'react',
     icon: (
-      <MatrixGridIcon
+      <MatrixGrid
         matrix={[
           [0, 0, 0, 0, 1, 1],
           [0, 0, 1, 1, 1, 1],
@@ -47,7 +47,7 @@ export const MARQUEE_TECHNOLOGIES = [
   {
     name: 'vue',
     icon: (
-      <MatrixGridIcon
+      <MatrixGrid
         matrix={[
           [0, 1],
           [0, 1],
@@ -60,7 +60,7 @@ export const MARQUEE_TECHNOLOGIES = [
   {
     name: 'angular',
     icon: (
-      <MatrixGridIcon
+      <MatrixGrid
         matrix={[
           [1, 1, 1],
           [0, 1, 0]
@@ -72,7 +72,7 @@ export const MARQUEE_TECHNOLOGIES = [
   {
     name: 'svelte',
     icon: (
-      <MatrixGridIcon
+      <MatrixGrid
         matrix={[
           [0, 1, 0],
           [1, 1, 1],
@@ -85,7 +85,7 @@ export const MARQUEE_TECHNOLOGIES = [
   {
     name: 'node.js',
     icon: (
-      <MatrixGridIcon
+      <MatrixGrid
         matrix={[
           [0, 1, 1],
           [1, 1, 0],

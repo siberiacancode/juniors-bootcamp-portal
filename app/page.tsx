@@ -1,7 +1,10 @@
 import { ChevronRightIcon, RocketIcon } from 'lucide-react';
+// import * as motion from 'motion/react-client';
 import Link from 'next/link';
 
-import { MatrixGridIcon, TelegramIcon, UnicStarIcon } from '@/components/icons';
+import { MatrixGrid } from '@/components/common';
+import { MotionMatrixGrid } from '@/components/common/motion-matrix-grid';
+import { TelegramIcon, UnicStarIcon } from '@/components/icons';
 import {
   Accordion,
   AccordionContent,
@@ -41,7 +44,7 @@ export const generateMetadata = () => ({
 const HomePage = () => (
   <>
     <main className='content-container mt-3 flex flex-col gap-18 sm:mt-6 sm:gap-22'>
-      <section className='flex flex-col items-center gap-6 p-4'>
+      <section className='relative flex flex-col items-center gap-6 p-4'>
         <Button asChild size='sm' variant='outline'>
           <Link href='/tasks'>
             <span className='font-pixelify-sans text-[20px]/7 font-bold tracking-wide'>jb</span>
@@ -50,7 +53,7 @@ const HomePage = () => (
           </Link>
         </Button>
 
-        <h1 className='inline-flex flex-col gap-2 select-none'>
+        <h1 className='inline-flex flex-col gap-2 pt-10 select-none'>
           <span className='font-parisienne text-[clamp(48px,calc(-44px+14.5vw),140px)] leading-0 font-normal'>
             juniors
           </span>
@@ -80,6 +83,78 @@ const HomePage = () => (
             <IntlText path='button.start' />
           </Link>
         </Button>
+
+        <div aria-hidden className='absolute inset-0 -z-1'>
+          <MotionMatrixGrid
+            animate={{
+              scale: 1,
+              left: '2%',
+              top: 0
+            }}
+            matrix={[
+              [0, 0, 0, 0, 1, 1],
+              [0, 0, 1, 1, 1, 1],
+              [1, 1, 1, 1, 0, 0],
+              [1, 1, 0, 0, 0, 0]
+            ]}
+            transition={{
+              delay: 0.1
+            }}
+            className='absolute w-8 rotate-135 sm:w-12'
+            fill='var(--color-violet-400)'
+            initial={{ scale: 0, left: '-30%', top: '-10%' }}
+          />
+
+          <MotionMatrixGrid
+            animate={{
+              scale: 1,
+              right: '12%',
+              top: '15%'
+            }}
+            matrix={[
+              [1, 1, 1],
+              [0, 1, 0]
+            ]}
+            className='absolute w-8 rotate-45 sm:w-12'
+            fill='var(--color-green-400)'
+            initial={{ scale: 0, right: '-30%', top: '-10%' }}
+          />
+
+          <MotionMatrixGrid
+            animate={{
+              scale: 1,
+              left: '5%',
+              bottom: 'var(--bottom)'
+            }}
+            matrix={[
+              [0, 1],
+              [0, 1],
+              [1, 1]
+            ]}
+            className='absolute h-8 [--bottom:20%] sm:h-12 md:[--bottom:10%]'
+            fill='var(--color-orange-400)'
+            initial={{ scale: 0, left: '-20%', bottom: '-10%' }}
+          />
+
+          <MotionMatrixGrid
+            animate={{
+              scale: 1,
+              right: 'var(--right)',
+              bottom: 'var(--bottom)'
+            }}
+            matrix={[
+              [0, 1, 1],
+              [1, 1, 0],
+              [0, 1, 1]
+            ]}
+            transition={{
+              delay: 0.2
+            }}
+            className='absolute w-8 -rotate-45 [--bottom:-11%] [--right:2%] sm:size-12 md:[--bottom:0%] md:[--right:20%]'
+            fill='var(--color-pink-400)'
+            initial={{ scale: 0, right: '-20%', bottom: '-10%' }}
+          />
+        </div>
       </section>
 
       <section className='grid grid-cols-1 gap-4 lg:h-155 lg:grid-flow-col lg:grid-cols-12 lg:grid-rows-12'>
@@ -202,7 +277,7 @@ const HomePage = () => (
         </Card>
 
         <Card className='relative items-center justify-center px-6 lg:col-span-4 lg:row-span-6'>
-          <MatrixGridIcon
+          <MatrixGrid
             matrix={[
               [0, 1],
               [0, 1],
@@ -327,7 +402,7 @@ const HomePage = () => (
 
                 <TelegramIcon className='size-6' />
               </div>
-              <MatrixGridIcon
+              <MatrixGrid
                 matrix={[
                   [1, 1, 1],
                   [0, 1, 1],
