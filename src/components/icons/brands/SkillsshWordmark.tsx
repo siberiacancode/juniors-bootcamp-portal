@@ -1,13 +1,13 @@
 import type { SVGProps } from 'react';
 
-export const SkillsshIcon = (props: SVGProps<SVGSVGElement>) => (
+export const SkillsshWordmark = (props: SVGProps<SVGSVGElement>) => (
   <svg
-    {...props}
     fill='currentColor'
     height={26}
     viewBox='0 0 86 26'
     width={86}
     xmlns='http://www.w3.org/2000/svg'
+    {...props}
   >
     <g clipPath='url(#clip0_40000624_20384)'>
       <path d='M13.953 19H0L6.977 7z' />
