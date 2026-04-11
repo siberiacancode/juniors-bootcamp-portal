@@ -149,16 +149,18 @@ const HomePage = () => (
           </div>
         </Card>
 
-        <Card className='relative overflow-hidden px-6 lg:col-span-3 lg:row-span-7'>
-          <GradientBlur className='absolute -inset-x-1 -top-4' />
+        <Card className='relative justify-between overflow-hidden px-6 lg:col-span-3 lg:row-span-7'>
+          <div className='absolute -inset-1'>
+            <GradientBlur className='h-40 w-full' preserveAspectRatio='none' />
+          </div>
 
-          <div className='z-1 min-h-40 flex-1 lg:min-h-0'>
+          <div className='z-1 h-30'>
             <div className='flex size-8 items-center justify-center rounded-full border border-white bg-white/40'>
               <RocketIcon className='size-4' stroke='black' />
             </div>
           </div>
 
-          <div className='flex flex-col gap-1'>
+          <div className='z-1 flex flex-col gap-1'>
             <Typography variant='title-md'>
               <IntlText path='page.home.section.bento.col.2.card.down.title' />
             </Typography>
@@ -169,7 +171,7 @@ const HomePage = () => (
         </Card>
 
         <Card className='justify-between lg:col-span-4 lg:row-span-6'>
-          <div className='relative h-40 overflow-hidden'>
+          <div className='relative h-40 shrink-0 overflow-hidden'>
             <div className='absolute top-1/2 left-1/2 flex w-160 -translate-1/2 flex-wrap justify-center gap-2 select-none'>
               {GUIDES.map(({ background, color, icon: Icon, label }, index) => (
                 <div
