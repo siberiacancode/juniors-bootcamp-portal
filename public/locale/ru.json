@@ -18,6 +18,29 @@
   "page.home.metadata.description": "Практические задания на реальных сценариях. В каждом — готовое ТЗ, уровни сложности и API, имитирующий настоящий сервер",
 
   "page.home.description": "Практические задания на реальных сценариях. В каждом — готовое ТЗ, уровни сложности и <span>API</span>, имитирующий настоящий сервер",
+
+  "page.home.section.bento.col.1.card.up.text": "Вся информация, учебные материалы и рекомендации открыты для изучения и применения",
+  "page.home.section.bento.col.1.card.down.title": "Все популярные стеки",
+  "page.home.section.bento.col.1.card.down.description": "Популярные современные стеки разработки: React, Vue и другие. Выбирайте подходящий фреймворк",
+
+  "page.home.section.bento.col.2.card.up.title": "Уровни сложности",
+  "page.home.section.bento.col.2.card.up.description": "От начинающих до опытных разработчиков",
+  "page.home.section.bento.col.2.card.down.title": "Для чего это всё?",
+  "page.home.section.bento.col.2.card.down.description": "Бесплатный образовательный контент и учебные материалы по фронтенду и другим ИТ-направлениям, доступные для всех, кто хочет прокачать свои навыки",
+
+  "page.home.section.bento.col.3.card.up.title": "Гайды",
+  "page.home.section.bento.col.3.card.up.description": "Комплексные гайды, содержащие полезные рекомендации, лучшие практики и готовый код",
+
+  "page.home.section.reviewsAboutUs.title": "ОТЗЫ<span>В</span>Ы О Н<span>А</span>С",
+
+  "page.home.section.faq.title": "Ч<span>А</span>СТЫЕ ВОПРО<span>С</span>Ы",
+  "page.home.section.faq.0.question": "TODO",
+  "page.home.section.faq.0.answer": "TODO",
+  "page.home.section.faq.1.question": "TODO",
+  "page.home.section.faq.1.answer": "TODO",
+  "page.home.section.faq.2.question": "TODO",
+  "page.home.section.faq.2.answer": "TODO",
+
   "page.home.projectCard.title": "Наш телеграм-канал",
   "page.home.projectCard.description": "Куча полезной информации",
 
