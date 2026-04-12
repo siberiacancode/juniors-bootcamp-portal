@@ -99,16 +99,16 @@ export const MARQUEE_TECHNOLOGIES = [
 
 export const PROJECT_CARD_COLORS = [
   {
-    background: 'bg-[var(--color-orange-100)] dark:bg-[var(--color-orange-900)]/70',
-    icon: 'text-[var(--color-orange-500)] dark:text-[var(--color-orange-400)]'
+    background: 'bg-(--color-orange-100) dark:bg-(--color-orange-900)/70',
+    icon: 'text-(--color-orange-500) dark:text-(--color-orange-400)'
   },
   {
-    background: 'bg-[var(--color-pink-100)] dark:bg-[var(--color-pink-900)]/70',
-    icon: 'text-[var(--color-pink-500)] dark:text-[var(--color-pink-400)]'
+    background: 'bg-(--color-pink-100) dark:bg-(--color-pink-900)/70',
+    icon: 'text-(--color-pink-500) dark:text-(--color-pink-400)'
   },
   {
-    background: 'bg-[var(--color-green-100)] dark:bg-[var(--color-green-900)]/70',
-    icon: 'text-[var(--color-green-500)] dark:text-[var(--color-green-400)]'
+    background: 'bg-(--color-green-100) dark:bg-(--color-green-900)/70',
+    icon: 'text-(--color-green-500) dark:text-(--color-green-400)'
   }
 ] as const;
 
