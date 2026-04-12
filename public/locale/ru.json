@@ -14,6 +14,36 @@
   "navigation.tasks": "Задания",
   "navigation.guides": "Гайды",
 
+  "page.home.metadata.title": "JUNIORS BOOTCAMP — бесплатный развивающий контент для начинающих айтишников",
+  "page.home.metadata.description": "Практические задания на реальных сценариях. В каждом — готовое ТЗ, уровни сложности и API, имитирующий настоящий сервер",
+
+  "page.home.description": "Практические задания на реальных сценариях. В каждом — готовое ТЗ, уровни сложности и <span>API</span>, имитирующий настоящий сервер",
+
+  "page.home.section.bento.col.1.card.up.text": "Вся информация, учебные материалы и рекомендации открыты для изучения и применения",
+  "page.home.section.bento.col.1.card.down.title": "Все популярные стеки",
+  "page.home.section.bento.col.1.card.down.description": "Популярные современные стеки разработки: React, Vue и другие. Выбирайте подходящий фреймворк",
+
+  "page.home.section.bento.col.2.card.up.title": "Уровни сложности",
+  "page.home.section.bento.col.2.card.up.description": "От начинающих до опытных разработчиков",
+  "page.home.section.bento.col.2.card.down.title": "Для чего это всё?",
+  "page.home.section.bento.col.2.card.down.description": "Бесплатный образовательный контент и учебные материалы по фронтенду и другим ИТ-направлениям, доступные для всех, кто хочет прокачать свои навыки",
+
+  "page.home.section.bento.col.3.card.up.title": "Гайды",
+  "page.home.section.bento.col.3.card.up.description": "Комплексные гайды, содержащие полезные рекомендации, лучшие практики и готовый код",
+
+  "page.home.section.reviewsAboutUs.title": "ОТЗЫ<span>В</span>Ы О Н<span>А</span>С",
+
+  "page.home.section.faq.title": "Ч<span>А</span>СТЫЕ ВОПРО<span>С</span>Ы",
+  "page.home.section.faq.0.question": "TODO",
+  "page.home.section.faq.0.answer": "TODO",
+  "page.home.section.faq.1.question": "TODO",
+  "page.home.section.faq.1.answer": "TODO",
+  "page.home.section.faq.2.question": "TODO",
+  "page.home.section.faq.2.answer": "TODO",
+
+  "page.home.projectCard.title": "Наш телеграм-канал",
+  "page.home.projectCard.description": "Куча полезной информации",
+
   "page.guides.metadata.title": "Гайды - 1001 способ помочь новичкам",
   "page.guides.metadata.description": "Полезные советы и рекомендации для начинающих разработчиков. Примеры кода, объяснения концепций и лучших практик frontend разработки.",
   "page.guides.title": "Г<span>А</span>ЙДЫ",
@@ -46,7 +76,7 @@
   "page.tasksApi.section.faq.1.question": "Есть ли ограничения на использование API?",
   "page.tasksApi.section.faq.1.answer": "Нет. Со стороны проекта нет лимитов на количество запросов, скрытых квот и платных тарифов. Делайте сколько угодно запросов к обучающему API, пока это не мешает стабильной работе сервиса для других участников.",
   "page.tasksApi.section.faq.2.question": "Нашёл баг, что делать?",
-  "page.tasksApi.section.faq.2.answer": "Создайте issue в репозитории бэкенда: <external>{repoName}</external> — опишите шаги воспроизведения, ожидаемое и фактическое поведение.",
+  "page.tasksApi.section.faq.2.answer": "Создайте issue в репозитории бэкенда: <backendLink>{repoName}</backendLink> — опишите шаги воспроизведения, ожидаемое и фактическое поведение.",
   "page.tasksApi.section.faq.3.question": "Полное ли API для разных архитектур: REST и GraphQL?",
   "page.tasksApi.section.faq.3.answer": "Для REST и GraphQL доступна одна и та же продуманная доменная функциональность: вы можете выбрать удобный для вас стиль и не упираться в «урезанную» версию API на одном из стеков.",
 
@@ -175,6 +205,7 @@
   "button.share": "Поделиться",
   "button.loginVia": "Войти через",
   "button.accept": "Принять",
+  "button.start": "Начать",
 
   "faq.title": "Частые вопросы",
 

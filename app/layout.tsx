@@ -3,7 +3,7 @@ import { Nunito, Overpass_Mono, Parisienne, Pixelify_Sans } from 'next/font/goog
 import { intl } from '@/intl/server';
 import { cn } from '@/lib/utils';
 
-import { DynamicCookieConsent, Footer, Header } from './_components';
+import { DynamicCookieConsent, Footer, Header } from './_components/layout';
 import { ThemeScript } from './_scripts';
 import { Provider } from './provider';
 
@@ -59,7 +59,7 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => (
       <meta content='noindex, nofollow' name='robots' />
       <ThemeScript />
     </head>
-    <body className='flex min-h-screen flex-col'>
+    <body className='flex min-h-screen flex-col overflow-x-hidden'>
       <Provider intl={{ locale: intl.locale, messages: intl.messages }}>
         <Header />
         <div className='flex flex-1 flex-col'>{children}</div>

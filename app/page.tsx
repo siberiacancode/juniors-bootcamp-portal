@@ -1,26 +1,37 @@
-import * as motion from 'motion/react-client';
-import Link from 'next/link';
+import { intl } from '@/intl/server';
 
-import { Logo } from '@/components/shared';
-import { Button } from '@/components/ui';
+import {
+  BentoSection,
+  FAQSection,
+  HeroSection,
+  ReviewsSection,
+  SubfooterSection
+} from './_components/landing';
+
+export const generateMetadata = () => ({
+  title: intl.formatMessage({ id: 'page.home.metadata.title' }),
+  description: intl.formatMessage({ id: 'page.home.metadata.description' })
+});
 
 const HomePage = () => (
   <>
-    <section className='relative flex w-full flex-1 items-center justify-center overflow-hidden bg-background px-6 py-16 text-center'>
-      <div className='relative z-10 flex flex-col items-center justify-center gap-12'>
-        <Logo className='w-200' />
+    <main className='content-container mt-3 flex flex-col gap-18 sm:mt-6 sm:gap-22'>
+      <HeroSection />
 
-        <motion.div animate={{ opacity: 1, scale: 1 }} initial={{ opacity: 0, scale: 0 }}>
-          <Button asChild className='font-pixelify-sans'>
-            <Link href='/tasks'>Start</Link>
-          </Button>
-        </motion.div>
-      </div>
-    </section>
-    {/* 
-    <StatisticSection />
-    <FAQSection />
-    <SubFooterSection /> */}
+      <BentoSection />
+
+      <ReviewsSection />
+
+      {/* <section className='content-container flex flex-col gap-8 sm:gap-10'>
+        <Typography pixelify as='h2' variant='display'>
+          <IntlText path='page.home.section.studentsProjects.title' />
+        </Typography>
+      </section> */}
+
+      <FAQSection />
+    </main>
+
+    <SubfooterSection />
   </>
 );
 
