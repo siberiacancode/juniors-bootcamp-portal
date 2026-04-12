@@ -8,7 +8,7 @@ import type { ComponentProps, KeyboardEvent } from 'react';
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
-import { createContext, use, useCallback, useEffect, useState } from 'react';
+import { createContext, use, useEffect, useState } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -24,7 +24,6 @@ interface CarouselProps {
   plugins?: {
     autoplay?: boolean | AutoplayOptionsType;
   };
-  setApi?: (api: CarouselApi) => void;
 }
 
 interface CarouselContextProps {
@@ -53,7 +52,6 @@ const useCarousel = () => {
 
 const Carousel = ({
   options,
-  setApi,
   plugins,
   className,
   children,
@@ -74,64 +72,65 @@ const Carousel = ({
     }, [] as CarouselPlugin[])
   );
 
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(false);
+  const [canScrollPrev, setCanScrollPrev] = useState(api?.canScrollPrev() ?? false);
+  const [canScrollNext, setCanScrollNext] = useState(api?.canScrollNext() ?? false);
+  const [selectedScrollSnap, setSelectedScrollSnap] = useState(api?.selectedScrollSnap() ?? 0);
+  const [scrollSnapList, setScrollSnapList] = useState<number[]>(api?.scrollSnapList() ?? []);
 
-  const [selectedScrollSnap, setSelectedScrollSnap] = useState(0);
-  const [scrollSnapList, setScrollSnapList] = useState<number[]>([]);
-
-  const onInit = useCallback((api: CarouselApi) => {
-    setScrollSnapList(api.scrollSnapList());
-  }, []);
-
-  const onSelect = useCallback((api: CarouselApi) => {
+  const onSelect = (api: CarouselApi) => {
     setCanScrollPrev(api.canScrollPrev());
     setCanScrollNext(api.canScrollNext());
     setSelectedScrollSnap(api.selectedScrollSnap());
-  }, []);
+  };
 
-  const scrollPrev = useCallback((jump?: boolean) => api?.scrollPrev(jump), [api]);
+  const onReInit = (api: CarouselApi) => {
+    setScrollSnapList(api.scrollSnapList());
 
-  const scrollNext = useCallback((jump?: boolean) => api?.scrollNext(jump), [api]);
+    onSelect(api);
+  };
 
-  const scrollTo = useCallback(
-    (index: number, jump?: boolean) => {
-      api?.scrollTo(index, jump);
-      // eslint-disable-next-line ts/no-unnecessary-condition
-      api?.plugins().autoplay?.reset();
-    },
-    [api]
-  );
+  const scrollPrev = (jump?: boolean) => {
+    api?.scrollPrev(jump);
+    // eslint-disable-next-line ts/no-unnecessary-condition
+    api?.plugins().autoplay?.reset();
+  };
 
-  const handleKeyDown = useCallback(
-    (event: KeyboardEvent<HTMLDivElement>) => {
-      if (event.key === 'ArrowLeft') {
-        event.preventDefault();
-        scrollPrev();
-      } else if (event.key === 'ArrowRight') {
-        event.preventDefault();
-        scrollNext();
-      }
-    },
-    [scrollPrev, scrollNext]
-  );
+  const scrollNext = (jump?: boolean) => {
+    api?.scrollNext(jump);
+    // eslint-disable-next-line ts/no-unnecessary-condition
+    api?.plugins().autoplay?.reset();
+  };
 
-  useEffect(() => {
-    if (!api || !setApi) return;
-    setApi(api);
-  }, [api, setApi]);
+  const scrollTo = (index: number, jump?: boolean) => {
+    api?.scrollTo(index, jump);
+    // eslint-disable-next-line ts/no-unnecessary-condition
+    api?.plugins().autoplay?.reset();
+  };
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      scrollPrev();
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      scrollNext();
+    }
+  };
 
   useEffect(() => {
     if (!api) return;
 
-    api.on('init', onInit);
-    api.on('select', onSelect);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    onReInit(api);
+    onSelect(api);
 
+    api.on('reInit', onReInit);
+    api.on('select', onSelect);
     return () => {
-      api.off('init', onInit);
+      api.off('reInit', onReInit);
       api.off('select', onSelect);
     };
-  }, [api, onSelect]);
+  }, [api]);
 
   return (
     <CarouselContext
@@ -185,23 +184,26 @@ const CarouselPrevious = ({
   className,
   variant = 'outline',
   size = 'sm',
+  onClick,
   ...props
 }: ComponentProps<typeof IconButton>) => {
   const { scrollPrev, canScrollPrev } = useCarousel();
 
   return (
     <IconButton
+      {...props}
       className={cn(
         'absolute top-1/2 -left-12 -translate-y-1/2 touch-manipulation rounded-full',
-
         className
       )}
       data-slot='carousel-previous'
       disabled={!canScrollPrev}
       size={size}
       variant={variant}
-      onClick={() => scrollPrev()}
-      {...props}
+      onClick={(event) => {
+        onClick?.(event);
+        if (!event.defaultPrevented) scrollPrev();
+      }}
     >
       <ChevronLeftIcon />
       <span className='sr-only'>Previous slide</span>
@@ -212,6 +214,7 @@ const CarouselPrevious = ({
 const CarouselNext = ({
   className,
   variant = 'outline',
+  onClick,
   size = 'sm',
   ...props
 }: ComponentProps<typeof IconButton>) => {
@@ -219,6 +222,7 @@ const CarouselNext = ({
 
   return (
     <IconButton
+      {...props}
       className={cn(
         'absolute top-1/2 -right-12 -translate-y-1/2 touch-manipulation rounded-full',
         className
@@ -227,8 +231,10 @@ const CarouselNext = ({
       disabled={!canScrollNext}
       size={size}
       variant={variant}
-      onClick={() => scrollNext()}
-      {...props}
+      onClick={(event) => {
+        onClick?.(event);
+        if (!event.defaultPrevented) scrollNext();
+      }}
     >
       <ChevronRightIcon />
       <span className='sr-only'>Next slide</span>
@@ -255,6 +261,7 @@ const CarouselDots = ({ className, ...props }: ComponentProps<'div'>) => {
               ? 'pointer-events-none bg-border-hard'
               : 'border border-border-soft bg-transparent'
           )}
+          type='button'
           onClick={() => scrollTo(index)}
         >
           <span className='sr-only'>Go to slide {index + 1}</span>
