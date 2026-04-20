@@ -8,6 +8,7 @@ import type { ComponentProps, KeyboardEvent } from 'react';
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
+import { Slot } from 'radix-ui';
 import { createContext, use, useEffect, useState } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -19,12 +20,13 @@ type CarouselApi = EmblaCarouselType;
 type CarouselOptions = EmblaOptionsType;
 type CarouselPlugin = EmblaPluginType;
 
-interface CarouselProps {
+type CarouselProps = ComponentProps<'div'> & {
   options?: CarouselOptions;
   plugins?: {
     autoplay?: boolean | AutoplayOptionsType;
   };
-}
+  asChild?: boolean;
+};
 
 interface CarouselContextProps {
   api?: CarouselApi;
@@ -55,8 +57,9 @@ const Carousel = ({
   plugins,
   className,
   children,
+  asChild = false,
   ...props
-}: ComponentProps<'div'> & CarouselProps) => {
+}: CarouselProps) => {
   const [carouselRef, api] = useEmblaCarousel(
     {
       ...options,
@@ -132,6 +135,8 @@ const Carousel = ({
     };
   }, [api]);
 
+  const Comp = asChild ? Slot.Root : 'div';
+
   return (
     <CarouselContext
       value={{
@@ -146,7 +151,7 @@ const Carousel = ({
         canScrollNext
       }}
     >
-      <div
+      <Comp
         aria-roledescription='carousel'
         className={cn('relative', className)}
         data-slot='carousel'
@@ -155,7 +160,7 @@ const Carousel = ({
         {...props}
       >
         {children}
-      </div>
+      </Comp>
     </CarouselContext>
   );
 };

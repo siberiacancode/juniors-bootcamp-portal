@@ -1,13 +1,23 @@
 import { ChevronRightIcon } from 'lucide-react';
+import * as motion from 'motion/react-client';
 import Link from 'next/link';
 
-import { MotionMatrixGrid } from '@/components/common/motion';
+import { MatrixGrid } from '@/components/common';
+import { AvoidCursor } from '@/components/common/motion';
 import { Button, Typography } from '@/components/ui';
 import { IntlText } from '@/intl';
 import { cn } from '@/lib/utils';
 
 export const HeroSection = () => (
-  <section className='relative flex flex-col items-center gap-6 p-4'>
+  <motion.section
+    transition={{
+      when: 'beforeChildren',
+      duration: 0.6
+    }}
+    animate={{ opacity: 1, y: 0 }}
+    className='relative flex flex-col items-center gap-6 p-6'
+    initial={{ opacity: 0, y: '10%' }}
+  >
     <Button asChild size='sm' variant='outline'>
       <Link href='/tasks'>
         <span className='font-pixelify-sans text-[20px]/7 font-bold tracking-wide'>jb</span>
@@ -33,90 +43,120 @@ export const HeroSection = () => (
       <IntlText path='page.home.description' />
     </Typography>
 
-    <Button
-      asChild
-      className={cn(
-        'relative h-16 w-full text-[32px]/12 md:w-5/12',
-        'after:absolute after:inset-0 after:-z-10 after:rounded-[inherit] after:border-2 after:border-primary after:bg-transparent',
-        'after:-translate-x-1.5 after:translate-y-1.5 after:transition hover:after:translate-0'
-      )}
-      size='lg'
+    <motion.div
+      animate={{ opacity: 1, y: 0 }}
+      className='flex w-full justify-center'
+      initial={{ opacity: 0, y: 16 }}
+      transition={{ delay: 0.6, duration: 0.5 }}
     >
-      <Link href='/tasks'>
-        <IntlText path='button.start' />
-      </Link>
-    </Button>
+      <Button
+        asChild
+        className={cn(
+          'relative h-16 w-full text-[32px]/12 md:w-5/12',
+          'after:absolute after:inset-0 after:-z-10 after:rounded-[inherit] after:border-2 after:border-primary after:bg-transparent',
+          'after:-translate-x-1.5 after:translate-y-1.5 after:transition hover:after:translate-0',
+          'animate-[pulse-cta_2s_ease-in-out_infinite] hover:paused'
+        )}
+        size='lg'
+      >
+        <Link href='/tasks'>
+          <IntlText path='button.start' />
+        </Link>
+      </Button>
+    </motion.div>
 
-    <div aria-hidden className='absolute inset-0 -z-1'>
-      <MotionMatrixGrid
-        animate={{
+    <div aria-hidden className='pointer-events-none absolute inset-0 -z-1 select-none'>
+      <AvoidCursor
+        transition={{
+          delay: 0.6
+        }}
+        whileInView={{
           scale: 1,
           left: '2%',
           top: 0
         }}
-        matrix={[
-          [0, 0, 0, 0, 1, 1],
-          [0, 0, 1, 1, 1, 1],
-          [1, 1, 1, 1, 0, 0],
-          [1, 1, 0, 0, 0, 0]
-        ]}
-        transition={{
-          delay: 0.1
-        }}
-        className='absolute w-8 rotate-135 sm:w-12'
-        fill='var(--color-violet-400)'
-        initial={{ scale: 0, left: '-30%', top: '-10%' }}
-      />
+        className='absolute -rotate-45'
+        initial={{ scale: 0, left: '-2%', top: '-4%' }}
+      >
+        <MatrixGrid
+          matrix={[
+            [0, 0, 0, 0, 1, 1],
+            [0, 0, 1, 1, 1, 1],
+            [1, 1, 1, 1, 0, 0],
+            [1, 1, 0, 0, 0, 0]
+          ]}
+          className='h-fit w-8 sm:w-12'
+          fill='var(--color-violet-400)'
+        />
+      </AvoidCursor>
 
-      <MotionMatrixGrid
-        animate={{
+      <AvoidCursor
+        transition={{
+          delay: 0.7
+        }}
+        whileInView={{
           scale: 1,
-          right: '12%',
+          right: '5%',
           top: '15%'
         }}
-        matrix={[
-          [1, 1, 1],
-          [0, 1, 0]
-        ]}
-        className='absolute w-8 rotate-45 sm:w-12'
-        fill='var(--color-green-400)'
-        initial={{ scale: 0, right: '-30%', top: '-10%' }}
-      />
+        className='absolute rotate-45'
+        initial={{ scale: 0, right: '1%', top: '11%' }}
+      >
+        <MatrixGrid
+          matrix={[
+            [1, 1, 1],
+            [0, 1, 0]
+          ]}
+          className='h-fit w-8 sm:w-12'
+          fill='var(--color-green-400)'
+        />
+      </AvoidCursor>
 
-      <MotionMatrixGrid
-        animate={{
+      <AvoidCursor
+        transition={{
+          delay: 0.7
+        }}
+        whileInView={{
           scale: 1,
           left: '5%',
           bottom: 'var(--bottom)'
         }}
-        matrix={[
-          [0, 1],
-          [0, 1],
-          [1, 1]
-        ]}
-        className='absolute h-8 [--bottom:20%] sm:h-12 md:[--bottom:10%]'
-        fill='var(--color-orange-400)'
-        initial={{ scale: 0, left: '-20%', bottom: '-10%' }}
-      />
+        className='absolute [--bottom:20%] md:[--bottom:10%]'
+        initial={{ scale: 0, left: '1%', bottom: '5%' }}
+      >
+        <MatrixGrid
+          matrix={[
+            [0, 1],
+            [0, 1],
+            [1, 1]
+          ]}
+          className='h-8 w-fit sm:h-12'
+          fill='var(--color-orange-400)'
+        />
+      </AvoidCursor>
 
-      <MotionMatrixGrid
-        animate={{
+      <AvoidCursor
+        transition={{
+          delay: 0.8
+        }}
+        whileInView={{
           scale: 1,
           right: 'var(--right)',
           bottom: 'var(--bottom)'
         }}
-        matrix={[
-          [0, 1, 1],
-          [1, 1, 0],
-          [0, 1, 1]
-        ]}
-        transition={{
-          delay: 0.2
-        }}
-        className='absolute w-8 -rotate-45 [--bottom:-11%] [--right:2%] sm:size-12 md:[--bottom:0%] md:[--right:20%]'
-        fill='var(--color-pink-400)'
-        initial={{ scale: 0, right: '-20%', bottom: '-10%' }}
-      />
+        className='absolute -rotate-45 [--bottom:-11%] [--right:2%] md:[--bottom:0%] md:[--right:12%]'
+        initial={{ scale: 0, right: '7%', bottom: '-4%' }}
+      >
+        <MatrixGrid
+          matrix={[
+            [0, 1, 1],
+            [1, 1, 0],
+            [0, 1, 1]
+          ]}
+          className='h-fit w-8 sm:w-12'
+          fill='var(--color-pink-400)'
+        />
+      </AvoidCursor>
     </div>
-  </section>
+  </motion.section>
 );
