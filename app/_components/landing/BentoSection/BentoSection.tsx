@@ -1,4 +1,5 @@
 import { RocketIcon } from 'lucide-react';
+import * as motion from 'motion/react-client';
 import Link from 'next/link';
 
 import { MatrixGrid } from '@/components/common';
@@ -11,7 +12,17 @@ import { GradientBlur, OrbitingStack } from './components';
 import { GUIDES, LEVELS } from './constants';
 
 export const BentoSection = () => (
-  <section className='grid grid-cols-1 gap-4 lg:h-155 lg:grid-flow-col lg:grid-cols-12 lg:grid-rows-12'>
+  <motion.section
+    transition={{
+      delay: 0.3,
+      duration: 0.6,
+      when: 'beforeChildren'
+    }}
+    className='grid grid-cols-1 gap-4 lg:h-155 lg:grid-flow-col lg:grid-cols-12 lg:grid-rows-12'
+    initial={{ opacity: 0, y: '10%' }}
+    viewport={{ once: true }}
+    whileInView={{ opacity: 1, y: 0 }}
+  >
     <Card className='relative items-stretch overflow-hidden bg-(--color-violet-100) px-6 lg:col-span-5 lg:row-span-7 dark:bg-(--color-violet-900)/70'>
       <div className='z-1 flex flex-col gap-1'>
         <Typography variant='heading-lg'>Hello, user</Typography>
@@ -67,7 +78,7 @@ export const BentoSection = () => (
           <div
             key={name}
             className={cn(
-              'flex flex-col items-center justify-center rounded-8 border border-border-hard py-5 font-pixelify-sans text-[16px]/6 font-normal tracking-wide transition hover:scale-[1.1] lg:py-0',
+              'flex flex-col items-center justify-center rounded-8 border border-border-hard py-5 font-pixelify-sans text-[16px]/6 font-normal tracking-wide transition hover:scale-[1.03] lg:py-0',
               color
             )}
           >
@@ -144,5 +155,5 @@ export const BentoSection = () => (
         Coming soon!
       </Typography>
     </Card>
-  </section>
+  </motion.section>
 );

@@ -10,7 +10,7 @@ import { MARQUEE_TECHNOLOGIES, PROJECT_CARD_COLORS } from './constants';
 
 export const SubfooterSection = () => (
   <section className='mb-18 sm:mb-22'>
-    <Marquee className='py-10 select-none'>
+    <Marquee className='py-10 select-none' speed={60}>
       {MARQUEE_TECHNOLOGIES.map(({ icon, name }) => (
         <div key={name} className='flex items-center gap-6'>
           {icon}
@@ -30,10 +30,10 @@ export const SubfooterSection = () => (
         >
           <motion.a
             href='#'
-            initial={{ opacity: 0, y: '50%' }}
+            initial={{ opacity: 0, y: '20%' }}
             rel='noopener noreferrer'
             target='_blank'
-            transition={{ delay: index * 0.1 }}
+            transition={{ delay: (index + 1) * 0.2, duration: 0.5 }}
             viewport={{ once: true }}
             whileInView={{ opacity: 1, y: 0 }}
           >

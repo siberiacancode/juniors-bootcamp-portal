@@ -15,7 +15,7 @@ const typographyVariants = cva('font-nunito', {
       'heading-2xl':
         'text-[36px] leading-none font-(--font-weight) tracking-normal [--font-weight:800] md:text-[96px]',
       'heading-xl':
-        'text-[64px] leading-none font-(--font-weight) tracking-normal [--font-weight:800] md:text-[80px]',
+        'text-[48px] leading-none font-(--font-weight) tracking-normal [--font-weight:800] md:text-[80px]',
       'heading-lg': 'text-[60px]/17 font-(--font-weight) tracking-normal [--font-weight:700]',
       'heading-md':
         'text-[48px] leading-none font-(--font-weight) tracking-tighter [--font-weight:700]',
