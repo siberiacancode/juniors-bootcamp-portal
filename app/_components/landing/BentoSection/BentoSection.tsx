@@ -14,14 +14,13 @@ import { GUIDES, LEVELS } from './constants';
 export const BentoSection = () => (
   <motion.section
     transition={{
-      delay: 0.3,
-      duration: 0.6,
-      when: 'beforeChildren'
+      delay: 1.2,
+      duration: 0.6
     }}
+    animate={{ opacity: 1, y: 0 }}
     className='grid grid-cols-1 gap-4 lg:h-155 lg:grid-flow-col lg:grid-cols-12 lg:grid-rows-12'
     initial={{ opacity: 0, y: '10%' }}
     viewport={{ once: true }}
-    whileInView={{ opacity: 1, y: 0 }}
   >
     <Card className='relative items-stretch overflow-hidden bg-(--color-violet-100) px-6 lg:col-span-5 lg:row-span-7 dark:bg-(--color-violet-900)/70'>
       <div className='z-1 flex flex-col gap-1'>

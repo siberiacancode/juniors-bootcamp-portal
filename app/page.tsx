@@ -15,20 +15,16 @@ export const generateMetadata = () => ({
 
 const HomePage = () => (
   <>
-    <main className='content-container mt-3 flex flex-col gap-18 sm:mt-6 sm:gap-22'>
+    <main className='content-container'>
       <HeroSection />
 
-      <BentoSection />
+      <div className='flex flex-col gap-22 sm:gap-26'>
+        <BentoSection />
 
-      <ReviewsSection />
+        <ReviewsSection />
 
-      {/* <section className='content-container flex flex-col gap-8 sm:gap-10'>
-        <Typography pixelify as='h2' variant='display'>
-          <IntlText path='page.home.section.studentsProjects.title' />
-        </Typography>
-      </section> */}
-
-      <FAQSection />
+        <FAQSection />
+      </div>
     </main>
 
     <SubfooterSection />
