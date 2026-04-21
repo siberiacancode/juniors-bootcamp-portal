@@ -9,8 +9,8 @@ import { cn } from '@/lib/utils';
 import { MARQUEE_TECHNOLOGIES, PROJECT_CARD_COLORS } from './constants';
 
 export const SubfooterSection = () => (
-  <section className='mb-18 sm:mb-22'>
-    <Marquee className='py-10 select-none' speed={60}>
+  <section className='my-22 flex flex-col gap-22 sm:my-26 sm:gap-26'>
+    <Marquee className='py-2 select-none' speed={60}>
       {MARQUEE_TECHNOLOGIES.map(({ icon, name }) => (
         <div key={name} className='flex items-center gap-6'>
           {icon}

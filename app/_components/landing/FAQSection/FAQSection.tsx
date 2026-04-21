@@ -21,9 +21,9 @@ export const FAQSection = () => (
         transition={{
           duration: 0.6
         }}
-        initial={{ opacity: 0, x: '-10%' }}
+        initial={{ opacity: 0, y: '20%' }}
         viewport={{ once: true }}
-        whileInView={{ opacity: 1, x: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
       >
         <IntlText path='page.home.section.faq.title' />
       </motion.h2>
@@ -37,7 +37,7 @@ export const FAQSection = () => (
               delay: (index + 1) * 0.3,
               duration: 0.6
             }}
-            initial={{ opacity: 0, x: index % 2 === 0 ? '10%' : '-10%' }}
+            initial={{ opacity: 0, x: index % 2 === 0 ? '30%' : '-30%' }}
             viewport={{ once: true }}
             whileInView={{ opacity: 1, x: 0 }}
           >
@@ -65,14 +65,14 @@ export const FAQSection = () => (
         }}
         className='absolute rotate-45'
         initial={{ scale: 0, right: '8%', top: '11%' }}
-        transition={{ delay: 0.5 }}
+        transition={{ delay: 0.7 }}
       >
         <MatrixGrid
           matrix={[
             [1, 1, 1],
             [0, 1, 0]
           ]}
-          className='h-fit w-8 sm:w-12'
+          className='h-fit w-10 sm:w-16'
           fill='var(--color-orange-400)'
         />
       </AvoidCursor>
