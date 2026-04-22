@@ -11,7 +11,7 @@ export const MARQUEE_TECHNOLOGIES = [
           [1, 1, 1, 1, 0, 0],
           [1, 1, 0, 0, 0, 0]
         ]}
-        fill='#FF8EEA'
+        fill='var(--color-pink-300)'
         size={12}
       />
     )
@@ -25,7 +25,7 @@ export const MARQUEE_TECHNOLOGIES = [
           [0, 1],
           [1, 1]
         ]}
-        fill='#42BC58'
+        fill='var(--color-green-300)'
       />
     )
   },
@@ -37,7 +37,8 @@ export const MARQUEE_TECHNOLOGIES = [
           [1, 1, 1],
           [0, 1, 0]
         ]}
-        fill='#C58EFF'
+        fill='var(--color-violet-300)'
+        size={22}
       />
     )
   },
@@ -50,7 +51,7 @@ export const MARQUEE_TECHNOLOGIES = [
           [1, 1, 1],
           [0, 1, 0]
         ]}
-        fill='#FFB08E'
+        fill='var(--color-orange-300)'
       />
     )
   },
@@ -63,7 +64,7 @@ export const MARQUEE_TECHNOLOGIES = [
           [1, 1, 0],
           [0, 1, 1]
         ]}
-        fill='#8EDDFF'
+        fill='var(--color-sky-300)'
       />
     )
   }

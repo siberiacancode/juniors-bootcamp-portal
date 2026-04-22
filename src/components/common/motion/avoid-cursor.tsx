@@ -3,8 +3,9 @@
 import type { SpringOptions } from 'motion/react';
 import type { ComponentPropsWithoutRef } from 'react';
 
+import { useEventListener } from '@siberiacancode/reactuse';
 import { motion, useSpring } from 'motion/react';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 type AvoidCursorProps = { radius?: number; force?: number } & ComponentPropsWithoutRef<
   typeof motion.div
@@ -23,11 +24,11 @@ export const AvoidCursor = ({
   const x = useSpring(0, SPRING_OPTIONS);
   const y = useSpring(0, SPRING_OPTIONS);
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const onPointerMove = ({ clientX, clientY }: PointerEvent) => {
+  useEventListener(
+    'pointermove',
+    ({ clientX, clientY }: PointerEvent) => {
+      const el = ref.current;
+      if (!el) return;
       const { left, top, width, height } = el.getBoundingClientRect();
       const dx = clientX - (left + width / 2);
       const dy = clientY - (top + height / 2);
@@ -41,11 +42,9 @@ export const AvoidCursor = ({
         x.set(0);
         y.set(0);
       }
-    };
-
-    window.addEventListener('pointermove', onPointerMove, { passive: true });
-    return () => window.removeEventListener('pointermove', onPointerMove);
-  }, [radius, force]);
+    },
+    { passive: true }
+  );
 
   return (
     <motion.div ref={ref} style={{ ...style, x, y }} {...props}>

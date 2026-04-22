@@ -19,7 +19,7 @@ export const CookieConsentPopover = () => {
               link: (chunks) => (
                 <Typography asChild variant='link'>
                   <Link
-                    href='#' // TODO add href
+                    href='TODO' // TODO add href
                   >
                     {chunks}
                   </Link>

@@ -10,15 +10,15 @@ import { IntlText } from '@/intl';
 
 const PRODUCTS = [
   {
-    href: '#1',
+    href: 'TODO1',
     label: ''
   },
   {
-    href: '#2',
+    href: 'TODO2',
     label: ''
   },
   {
-    href: '#3',
+    href: 'TODO3',
     label: ''
   }
 ] as const;

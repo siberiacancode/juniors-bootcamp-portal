@@ -48,10 +48,9 @@ export const Marquee = ({
       >
         {Array.from({ length: repeat }).map((_, index) => (
           <div
-            // eslint-disable-next-line react/no-array-index-key
             key={index}
-            {...(index !== 0 && { 'aria-hidden': true, role: 'presentation' })}
             className={cn('flex shrink-0 gap-6 pr-6')}
+            {...(index !== 0 && { 'aria-hidden': true, role: 'presentation' })}
           >
             {children}
           </div>

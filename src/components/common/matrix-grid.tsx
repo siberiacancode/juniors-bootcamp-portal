@@ -1,6 +1,9 @@
 import type { SVGProps } from 'react';
 
-type Cell = 0 | 1;
+enum Cell {
+  Empty = 0,
+  Filled = 1
+}
 
 interface MatrixGridProps extends SVGProps<SVGSVGElement> {
   /**
@@ -26,12 +29,7 @@ export const MatrixGrid = ({ matrix, size = 20, ...props }: MatrixGridProps) => 
 
   const d = matrix
     .flatMap((row, y) =>
-      row.flatMap((cell, x) => {
-        if (cell !== 1) return [];
-        const px = x * size;
-        const py = y * size;
-        return [`M${px} ${py}h${size}v${size}h-${size}Z`];
-      })
+      row.flatMap((cell, x) => (cell ? `M${x * size} ${y * size}h${size}v${size}h-${size}Z` : []))
     )
     .join(' ');
 
