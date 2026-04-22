@@ -3,22 +3,22 @@ import React, { Fragment } from 'react';
 import {
   AngularIcon,
   LaravelIcon,
-  NextjsIcon,
-  NodejsIcon,
+  NextIcon,
+  NodeIcon,
   NuxtIcon,
   ReactIcon,
   SvelteIcon,
-  VuejsIcon
+  VueIcon
 } from '@/components/icons';
 import { cn } from '@/lib/utils';
 
 type OrbitingCirclesProps = Omit<React.ComponentProps<'div'>, 'children'>;
 
 const TECHNOLOGIES = [
-  [VuejsIcon, ReactIcon],
+  [VueIcon, ReactIcon],
   [AngularIcon, SvelteIcon],
-  [NuxtIcon, NextjsIcon],
-  [NodejsIcon, LaravelIcon]
+  [NuxtIcon, NextIcon],
+  [NodeIcon, LaravelIcon]
 ] as const;
 
 export const OrbitingStack = ({ className, ...props }: OrbitingCirclesProps) => (

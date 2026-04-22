@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react';
 
-export const SkillsshWordmark = (props: SVGProps<SVGSVGElement>) => (
+export const SkillsshWordmarkIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     fill='currentColor'
     height={26}
