@@ -12,50 +12,12 @@ import {
 import { IntlText } from '@/intl';
 import { intl } from '@/intl/server';
 
+import { API_CARDS, FAQ_ITEMS } from './_constants';
+
 export const generateMetadata = async () => ({
   title: intl.formatMessage({ id: 'page.tasksApi.metadata.title' }),
   description: intl.formatMessage({ id: 'page.tasksApi.metadata.description' })
 });
-
-const FAQ_ITEMS = [
-  {
-    question: 'page.tasksApi.section.faq.0.question',
-    answer: 'page.tasksApi.section.faq.0.answer'
-  },
-  {
-    question: 'page.tasksApi.section.faq.1.question',
-    answer: 'page.tasksApi.section.faq.1.answer'
-  },
-  {
-    question: 'page.tasksApi.section.faq.2.question',
-    answer: 'page.tasksApi.section.faq.2.answer'
-  },
-  {
-    question: 'page.tasksApi.section.faq.3.question',
-    answer: 'page.tasksApi.section.faq.3.answer'
-  }
-] as const;
-
-const API_CARDS = [
-  {
-    title: (
-      <>
-        R<span className='font-pixelify-sans text-[1.141em] font-medium'>e</span>st
-      </>
-    ),
-    description: 'page.tasksApi.banner.rest',
-    href: 'https://juniorsbootcamp.ru/api/rest#tag/pages'
-  },
-  {
-    title: (
-      <>
-        Gra<span className='font-pixelify-sans text-[1.141em] font-medium'>p</span>hQL
-      </>
-    ),
-    description: 'page.tasksApi.banner.graphql',
-    href: 'https://juniorsbootcamp.ru/api/graphql'
-  }
-] as const;
 
 const TasksApiPage = () => (
   <main className='content-container mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-22 sm:gap-22'>
@@ -141,7 +103,15 @@ const TasksApiPage = () => (
             <AccordionContent>
               <IntlText
                 values={{
-                  repoName: 'juniors-bootcamp-backend'
+                  backendRepoLink: (
+                    <a
+                      href='https://github.com/siberiacancode/juniors-bootcamp-backend/issues'
+                      rel='noopener noreferrer'
+                      target='_blank'
+                    >
+                      juniors-bootcamp-backend
+                    </a>
+                  )
                 }}
                 path={answer}
               />

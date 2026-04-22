@@ -39,7 +39,7 @@ export const SubfooterSection = () => (
           >
             <div className='flex items-center justify-between gap-4'>
               <Typography as='span' variant='body-lg'>
-                <IntlText path='page.home.projectCard.title' />
+                <IntlText path='page.home.section.subfooter.projectCard.title' />
               </Typography>
 
               <TelegramIcon className='size-6' />
@@ -56,7 +56,7 @@ export const SubfooterSection = () => (
               strokeWidth={1}
             />
             <Typography as='p' variant='body-sm'>
-              <IntlText path='page.home.projectCard.description' />
+              <IntlText path='page.home.section.subfooter.projectCard.description' />
             </Typography>
           </motion.a>
         </Card>
