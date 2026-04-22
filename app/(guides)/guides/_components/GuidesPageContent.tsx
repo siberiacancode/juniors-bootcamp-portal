@@ -7,7 +7,7 @@ import { parseAsArrayOf, parseAsString, useQueryStates } from 'nuqs';
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
 
-import { SkillsshWordmark } from '@/components/icons';
+import { SkillsshWordmarkIcon } from '@/components/icons';
 import {
   Badge,
   Card,
@@ -224,7 +224,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
             >
               <div className='flex flex-col'>
                 <span className='inline-flex h-10 items-center justify-between'>
-                  <SkillsshWordmark className='h-6.5 w-21.5' />
+                  <SkillsshWordmarkIcon className='h-6.5 w-21.5' />
                   <ExternalLinkIcon className='size-5' />
                 </span>
                 <Typography variant='title-md'>

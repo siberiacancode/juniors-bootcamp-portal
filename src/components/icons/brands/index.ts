@@ -1,6 +1,6 @@
 export * from './FigmaIcon';
 export * from './GithubIcon';
-export * from './SkillsshWordmark';
+export * from './SkillsshWordmarkIcon';
 export * from './TelegramIcon';
 export * from './TwitchIcon';
 export * from './YoutubeIcon';

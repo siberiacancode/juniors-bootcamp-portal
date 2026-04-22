@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react';
 
-export const NodejsIcon = (props: SVGProps<SVGSVGElement>) => (
+export const NodeIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg height='1em' viewBox='0 0 128 128' width='1em' xmlns='http://www.w3.org/2000/svg' {...props}>
     <path
       d='M66.958.825a6.07 6.07 0 0 0-6.035 0L11.103 29.76c-1.895 1.072-2.96 3.095-2.96 5.24v57.988c0 2.143 1.183 4.167 2.958 5.24l49.82 28.934a6.07 6.07 0 0 0 6.036 0l49.82-28.935c1.894-1.072 2.958-3.096 2.958-5.24V35c0-2.144-1.183-4.167-2.958-5.24z'

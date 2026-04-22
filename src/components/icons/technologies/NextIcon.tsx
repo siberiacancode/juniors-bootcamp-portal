@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react';
 
-export const NextjsIcon = (props: SVGProps<SVGSVGElement>) => (
+export const NextIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg height='1em' viewBox='0 0 128 128' width='1em' xmlns='http://www.w3.org/2000/svg' {...props}>
     <circle cx='64' cy='64' r='64' />
     <path
