@@ -29,7 +29,7 @@ export const SubfooterSection = () => (
           className={cn('flex-1 gap-10 bg-[#FBE2FF] px-6 sm:px-10', background)}
         >
           <motion.a
-            href='#'
+            href='TODO'
             initial={{ opacity: 0, y: '20%' }}
             rel='noopener noreferrer'
             target='_blank'

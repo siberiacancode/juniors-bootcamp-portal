@@ -53,7 +53,7 @@ export const ReviewsSection = () => (
                   <AvatarImage
                     alt={`${review.name}'s profile picture`}
                     className='grayscale'
-                    src='#'
+                    src='TODO'
                   />
                   <AvatarFallback>{review.name.charAt(0)}</AvatarFallback>
                 </Avatar>
