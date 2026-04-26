@@ -1,8 +1,8 @@
-import * as React from 'react';
+import type { ComponentProps } from 'react';
 
 import { cn } from '@/lib/utils';
 
-const Input = ({ className, type, height, ...props }: React.ComponentProps<'input'>) => (
+const Input = ({ className, type, height, ...props }: ComponentProps<'input'>) => (
   <input
     className={cn(
       `h-13 w-full min-w-0 rounded-full border border-input bg-transparent px-4 py-2 text-[24px] leading-none transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-fg placeholder:text-input disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50`,

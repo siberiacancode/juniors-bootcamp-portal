@@ -1,7 +1,8 @@
 'use client';
 
+import type { ComponentProps } from 'react';
+
 import { Tabs as TabsPrimitive } from 'radix-ui';
-import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -9,7 +10,7 @@ const Tabs = ({
   className,
   orientation = 'horizontal',
   ...props
-}: React.ComponentProps<typeof TabsPrimitive.Root>) => (
+}: ComponentProps<typeof TabsPrimitive.Root>) => (
   <TabsPrimitive.Root
     className={cn('group/tabs flex gap-6 data-horizontal:flex-col', className)}
     data-orientation={orientation}
@@ -18,7 +19,7 @@ const Tabs = ({
   />
 );
 
-const TabsList = ({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.List>) => (
+const TabsList = ({ className, ...props }: ComponentProps<typeof TabsPrimitive.List>) => (
   <TabsPrimitive.List
     className={cn(
       'group/tabs-list inline-flex w-fit items-center justify-center bg-muted p-1 text-foreground',
@@ -31,10 +32,7 @@ const TabsList = ({ className, ...props }: React.ComponentProps<typeof TabsPrimi
   />
 );
 
-const TabsTrigger = ({
-  className,
-  ...props
-}: React.ComponentProps<typeof TabsPrimitive.Trigger>) => (
+const TabsTrigger = ({ className, ...props }: ComponentProps<typeof TabsPrimitive.Trigger>) => (
   <TabsPrimitive.Trigger
     className={cn(
       'inline-flex flex-1 items-center justify-center gap-1.5 rounded-full px-3 py-2 text-[18px]/6.5 font-bold whitespace-nowrap transition group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start',
@@ -48,10 +46,7 @@ const TabsTrigger = ({
   />
 );
 
-const TabsContent = ({
-  className,
-  ...props
-}: React.ComponentProps<typeof TabsPrimitive.Content>) => (
+const TabsContent = ({ className, ...props }: ComponentProps<typeof TabsPrimitive.Content>) => (
   <TabsPrimitive.Content
     className={cn('flex-1 outline-none', className)}
     data-slot='tabs-content'

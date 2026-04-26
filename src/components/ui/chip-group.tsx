@@ -1,19 +1,16 @@
 'use client';
 
 import type { VariantProps } from 'class-variance-authority';
+import type { ComponentProps } from 'react';
 
 import { XIcon } from 'lucide-react';
 import { ToggleGroup as ChipGroupPrimitive } from 'radix-ui';
-import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
 import { chipVariants } from './chip';
 
-const ChipGroup = ({
-  className,
-  ...props
-}: React.ComponentProps<typeof ChipGroupPrimitive.Root>) => (
+const ChipGroup = ({ className, ...props }: ComponentProps<typeof ChipGroupPrimitive.Root>) => (
   <ChipGroupPrimitive.Root
     className={cn(
       'flex w-fit flex-row items-center gap-2 data-vertical:flex-col data-vertical:items-stretch',
@@ -24,7 +21,7 @@ const ChipGroup = ({
   />
 );
 
-export type ChipGroupItemProps = React.ComponentProps<typeof ChipGroupPrimitive.Item> &
+export type ChipGroupItemProps = ComponentProps<typeof ChipGroupPrimitive.Item> &
   VariantProps<typeof chipVariants> & {
     icon?: React.ReactNode;
   };
