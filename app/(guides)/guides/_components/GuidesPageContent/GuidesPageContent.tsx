@@ -51,6 +51,7 @@ interface AdGuide {
   href: string;
   icon: JSX.Element;
   title: MessagePath;
+  type: 'ad';
 }
 
 interface GuidesPageContentProps {
@@ -65,6 +66,7 @@ const guidesQueryParams = {
 
 const adGuides: AdGuide[] = [
   {
+    type: 'ad',
     icon: <ReactuseWordmarkIcon />,
     badge: (
       <Badge className='bg-brand-reactuse text-brand-reactuse-fg' variant='accent'>
@@ -77,6 +79,7 @@ const adGuides: AdGuide[] = [
     href: 'https://reactuse.org'
   },
   {
+    type: 'ad',
     icon: <SkillsshWordmarkIcon />,
     badge: (
       <Badge className='bg-brand-vercel text-brand-vercel-fg' variant='accent'>
@@ -211,7 +214,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
 
       <div className='content-container grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3'>
         {filteredGuides.map((guide) => {
-          if ('href' in guide) {
+          if ('type' in guide) {
             return (
               <GuideCard asChild key={guide.href} className={guide.border}>
                 <a href={guide.href} rel='noopener noreferrer' target='_blank'>
