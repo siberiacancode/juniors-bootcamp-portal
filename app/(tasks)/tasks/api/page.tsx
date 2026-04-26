@@ -102,7 +102,12 @@ const TasksApiPage = () => (
               <IntlText path={question} />
             </AccordionTrigger>
             <AccordionContent>
-              <BackendRepoLink path={answer} />
+              <IntlText
+                values={{
+                  link: BackendRepoLink
+                }}
+                path={answer}
+              />
             </AccordionContent>
           </AccordionItem>
         ))}
