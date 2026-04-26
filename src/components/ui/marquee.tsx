@@ -7,16 +7,8 @@ import { cn } from '@/lib/utils';
 interface MarqueeProps extends ComponentProps<'div'> {
   asChild?: boolean;
   pauseOnHover?: boolean;
-  /**
-   * Number of times the children should be repeated to fill the marquee.
-   * @default 4
-   */
   repeat?: number;
   reverse?: boolean;
-  /**
-   * Animation duration in seconds.
-   * @default 30
-   */
   speed?: number;
 }
 
