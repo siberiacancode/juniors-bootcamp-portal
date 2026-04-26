@@ -6,20 +6,7 @@ enum Cell {
 }
 
 interface MatrixGridProps extends SVGProps<SVGSVGElement> {
-  /**
-   * Each inner array represents a row of the grid, whereas each number represents a cell. A value of `1` indicates a filled cell, while `0` indicates an empty cell.
-   * @example
-   * [
-   *   [0, 1, 0],
-   *   [1, 1, 1],
-   *   [0, 1, 0]
-   * ]
-   */
   matrix: Cell[][];
-  /**
-   * Size of each cell in pixels.
-   * @default 20
-   */
   size?: number;
 }
 
