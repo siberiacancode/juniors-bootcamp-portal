@@ -1,1 +1,1 @@
-export * from './GuidesPageContent';
+export * from './GuidesPageContent/GuidesPageContent';

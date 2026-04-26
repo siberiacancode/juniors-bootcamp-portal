@@ -1,16 +1,17 @@
 'use client';
 
+import type { JSX } from 'react';
+
 import { useDebounceCallback } from '@siberiacancode/reactuse';
-import { ExternalLinkIcon, SearchIcon, XIcon } from 'lucide-react';
+import { SearchIcon, XIcon } from 'lucide-react';
 import Link from 'next/link';
 import { parseAsArrayOf, parseAsString, useQueryStates } from 'nuqs';
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
 
-import { SkillsshWordmarkIcon } from '@/components/icons';
+import { ReactuseWordmarkIcon, SkillsshWordmarkIcon } from '@/components/icons';
 import {
   Badge,
-  Card,
   Chip,
   ChipGroup,
   ChipGroupItem,
@@ -20,12 +21,20 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupIconButton,
-  InputGroupInput,
-  Typography
+  InputGroupInput
 } from '@/components/ui';
 import { IntlText } from '@/intl';
 import { cn } from '@/lib/utils';
 import { yandexMetrika } from '@/lib/yandex-metrika';
+
+import {
+  GuideCard,
+  GuideCardDescription,
+  GuideCardFooter,
+  GuideCardHeader,
+  GuideCardHeaderMeta,
+  GuideCardTitle
+} from './components';
 
 interface Guide {
   description: string;
@@ -33,6 +42,15 @@ interface Guide {
   number: string;
   slug: string;
   title: string;
+}
+
+interface AdGuide {
+  badge: JSX.Element;
+  border: string;
+  description: MessagePath;
+  href: string;
+  icon: JSX.Element;
+  title: MessagePath;
 }
 
 interface GuidesPageContentProps {
@@ -44,6 +62,33 @@ const guidesQueryParams = {
   search: parseAsString.withDefault(''),
   tags: parseAsArrayOf(parseAsString).withDefault([])
 };
+
+const adGuides: AdGuide[] = [
+  {
+    icon: <ReactuseWordmarkIcon />,
+    badge: (
+      <Badge className='bg-brand-reactuse text-brand-reactuse-fg' variant='accent'>
+        react
+      </Badge>
+    ),
+    border: 'hover:border-brand-reactuse focus:border-brand-reactuse',
+    description: 'page.guides.reactuseCard.description',
+    title: 'page.guides.reactuseCard.title',
+    href: 'https://reactuse.org'
+  },
+  {
+    icon: <SkillsshWordmarkIcon />,
+    badge: (
+      <Badge className='bg-brand-vercel text-brand-vercel-fg' variant='accent'>
+        ai
+      </Badge>
+    ),
+    border: 'hover:border-brand-vercel focus:border-brand-vercel',
+    description: 'page.guides.skillsCard.description',
+    title: 'page.guides.skillsCard.title',
+    href: 'https://skills.sh/siberiacancode/agent-skills'
+  }
+];
 
 export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) => {
   const intl = useIntl();
@@ -61,7 +106,7 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
   }, 300);
 
   const onSearchChange = (search: string) => {
-    debouncedSetSearchParam(search);
+    debouncedSetSearchParam(search.trim());
     setSearchValue(search);
   };
 
@@ -83,16 +128,18 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
     setQueryParams({ search: '' });
   };
 
-  const filteredGuides = guides.filter((guide) => {
-    const trimmedSearch = queryParams.search.trim().toLowerCase();
-    return (
-      (guide.title.toLowerCase().includes(trimmedSearch) ||
-        guide.description.toLowerCase().includes(trimmedSearch)) &&
-      queryParams.tags.every((tag) => guide.labels.includes(tag))
-    );
-  });
+  const isFiltered = !!queryParams.search.trim() || !!queryParams.tags.length;
 
-  const skillsCardOrder = filteredGuides.length >= 2 ? 1 : filteredGuides.length;
+  const filteredGuides = isFiltered
+    ? guides.filter((guide) => {
+        const trimmedSearch = queryParams.search.trim().toLowerCase();
+        return (
+          (guide.title.toLowerCase().includes(trimmedSearch) ||
+            guide.description.toLowerCase().includes(trimmedSearch)) &&
+          queryParams.tags.every((tag) => guide.labels.includes(tag))
+        );
+      })
+    : [...guides.slice(0, 1), ...adGuides, ...guides.slice(1)];
 
   return (
     <section className='flex flex-col gap-8 sm:gap-10'>
@@ -163,39 +210,60 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
       </div>
 
       <div className='content-container grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3'>
-        {filteredGuides.map((guide, index) => {
+        {filteredGuides.map((guide) => {
+          if ('href' in guide) {
+            return (
+              <GuideCard asChild key={guide.href} className={guide.border}>
+                <a href={guide.href} rel='noopener noreferrer' target='_blank'>
+                  <GuideCardHeader>
+                    <GuideCardHeaderMeta external>{guide.icon}</GuideCardHeaderMeta>
+
+                    <GuideCardTitle>
+                      <IntlText path={guide.title} />
+                    </GuideCardTitle>
+                  </GuideCardHeader>
+
+                  <GuideCardDescription>
+                    <IntlText path={guide.description} />
+                  </GuideCardDescription>
+
+                  <GuideCardFooter>{guide.badge}</GuideCardFooter>
+                </a>
+              </GuideCard>
+            );
+          }
+
           const isNeedfulGuide = guide.labels.includes('needful');
           return (
-            <Card
+            <GuideCard
               asChild
               key={guide.slug}
               className={cn(
-                'h-70 gap-2 px-10 transition hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-border-hard)] focus:-translate-0.5 focus:shadow-[6px_6px_0_0_var(--color-border-hard)] focus:outline-none',
                 isNeedfulGuide
                   ? 'hover:border-accent-primary focus:border-accent-primary'
                   : 'hover:border-action-primary focus:border-action-primary'
               )}
             >
-              <Link href={`/guides/${guide.slug}`} prefetch={false} style={{ order: index }}>
-                <div className='flex flex-col'>
-                  <span
-                    className={cn(
-                      'font-pixelify-sans text-[40px]/12',
-                      isNeedfulGuide
-                        ? 'drop-shadow-[2px_1px_0_var(--color-accent-primary)]'
-                        : 'drop-shadow-[2px_1px_0_var(--color-action-primary)]'
-                    )}
-                  >
-                    {guide.number}
-                  </span>
-                  <Typography variant='title-md'>{guide.title}</Typography>
-                </div>
+              <Link href={`/guides/${guide.slug}`} prefetch={false}>
+                <GuideCardHeader>
+                  <GuideCardHeaderMeta>
+                    <span
+                      className={cn(
+                        'font-pixelify-sans text-[40px]/12',
+                        isNeedfulGuide
+                          ? 'drop-shadow-[2px_1px_0_var(--color-accent-primary)]'
+                          : 'drop-shadow-[2px_1px_0_var(--color-action-primary)]'
+                      )}
+                    >
+                      {guide.number}
+                    </span>
+                  </GuideCardHeaderMeta>
+                  <GuideCardTitle>{guide.title}</GuideCardTitle>
+                </GuideCardHeader>
 
-                <Typography as='p' className='line-clamp-3' variant='caption'>
-                  {guide.description}
-                </Typography>
+                <GuideCardDescription>{guide.description}</GuideCardDescription>
 
-                <div className='mt-auto flex items-center gap-2'>
+                <GuideCardFooter>
                   {guide.labels.map((label) => {
                     const isNeedfulLabel = label === 'needful';
                     return (
@@ -204,45 +272,11 @@ export const GuidesPageContent = ({ guides, labels }: GuidesPageContentProps) =>
                       </Badge>
                     );
                   })}
-                </div>
+                </GuideCardFooter>
               </Link>
-            </Card>
+            </GuideCard>
           );
         })}
-
-        {!!filteredGuides.length && (
-          <Card
-            asChild
-            className='h-70 gap-2 px-10 transition hover:-translate-0.5 hover:shadow-[6px_6px_0_0_var(--color-foreground)] focus:-translate-0.5 focus:shadow-[6px_6px_0_0_var(--color-foreground)]'
-          >
-            <a
-              key='00-siberiacancode-skills'
-              href='https://skills.sh/siberiacancode/agent-skills'
-              rel='noopener noreferrer'
-              style={{ order: skillsCardOrder }}
-              target='_blank'
-            >
-              <div className='flex flex-col'>
-                <span className='inline-flex h-10 items-center justify-between'>
-                  <SkillsshWordmarkIcon className='h-6.5 w-21.5' />
-                  <ExternalLinkIcon className='size-5' />
-                </span>
-                <Typography variant='title-md'>
-                  <IntlText path='page.guides.skillsCard.title' />
-                </Typography>
-              </div>
-              <Typography as='p' className='line-clamp-3' variant='caption'>
-                <IntlText path='page.guides.skillsCard.description' />
-              </Typography>
-
-              <div className='mt-auto'>
-                <Badge className='bg-brand-vercel text-brand-vercel-fg' variant='accent'>
-                  ai
-                </Badge>
-              </div>
-            </a>
-          </Card>
-        )}
       </div>
     </section>
   );
