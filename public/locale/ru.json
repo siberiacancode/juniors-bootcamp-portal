@@ -76,7 +76,7 @@
   "page.tasksApi.section.faq.1.question": "Есть ли ограничения на использование API?",
   "page.tasksApi.section.faq.1.answer": "Нет. Со стороны проекта нет лимитов на количество запросов, скрытых квот и платных тарифов. Делайте сколько угодно запросов к обучающему API, пока это не мешает стабильной работе сервиса для других участников.",
   "page.tasksApi.section.faq.2.question": "Нашёл баг, что делать?",
-  "page.tasksApi.section.faq.2.answer": "Создайте issue в репозитории бэкенда: {backendRepoLink} — опишите шаги воспроизведения, ожидаемое и фактическое поведение.",
+  "page.tasksApi.section.faq.2.answer": "Создайте issue в репозитории бэкенда: <link>juniors-bootcamp-backend</link> — опишите шаги воспроизведения, ожидаемое и фактическое поведение.",
   "page.tasksApi.section.faq.3.question": "Полное ли API для разных архитектур: REST и GraphQL?",
   "page.tasksApi.section.faq.3.answer": "Для REST и GraphQL доступна одна и та же продуманная доменная функциональность: вы можете выбрать удобный для вас стиль и не упираться в «урезанную» версию API на одном из стеков.",
 
