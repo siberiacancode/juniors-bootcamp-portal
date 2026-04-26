@@ -22,10 +22,10 @@ export const SubfooterSection = () => (
     </Marquee>
 
     <div className='content-container flex flex-col gap-4 md:flex-row'>
-      {PROJECT_CARD_COLORS.map(({ background, icon, key }, index) => (
+      {PROJECT_CARD_COLORS.map(({ background, icon }, index) => (
         <Card
           asChild
-          key={key}
+          key={index}
           className={cn('flex-1 gap-10 bg-[#FBE2FF] px-6 sm:px-10', background)}
         >
           <motion.a

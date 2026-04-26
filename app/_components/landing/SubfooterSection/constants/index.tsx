@@ -72,17 +72,14 @@ export const MARQUEE_TECHNOLOGIES = [
 
 export const PROJECT_CARD_COLORS = [
   {
-    key: '1',
     background: 'bg-(--color-orange-100) dark:bg-(--color-orange-900)/70',
     icon: 'text-(--color-orange-500) dark:text-(--color-orange-400)'
   },
   {
-    key: '2',
     background: 'bg-(--color-pink-100) dark:bg-(--color-pink-900)/70',
     icon: 'text-(--color-pink-500) dark:text-(--color-pink-400)'
   },
   {
-    key: '3',
     background: 'bg-(--color-green-100) dark:bg-(--color-green-900)/70',
     icon: 'text-(--color-green-500) dark:text-(--color-green-400)'
   }
