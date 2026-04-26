@@ -1,9 +1,10 @@
+import type { ComponentProps } from 'react';
+
 import { Avatar as AvatarPrimitive } from 'radix-ui';
-import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-interface AvatarProps extends React.ComponentProps<typeof AvatarPrimitive.Root> {
+interface AvatarProps extends ComponentProps<typeof AvatarPrimitive.Root> {
   size?: 'lg' | 'md' | 'sm';
 }
 
@@ -20,10 +21,7 @@ const Avatar = ({ className, size = 'md', ...props }: AvatarProps) => (
   />
 );
 
-const AvatarImage = ({
-  className,
-  ...props
-}: React.ComponentProps<typeof AvatarPrimitive.Image>) => (
+const AvatarImage = ({ className, ...props }: ComponentProps<typeof AvatarPrimitive.Image>) => (
   <AvatarPrimitive.Image
     className={cn('aspect-square size-full', className)}
     data-slot='avatar-image'
@@ -34,7 +32,7 @@ const AvatarImage = ({
 const AvatarFallback = ({
   className,
   ...props
-}: React.ComponentProps<typeof AvatarPrimitive.Fallback>) => (
+}: ComponentProps<typeof AvatarPrimitive.Fallback>) => (
   <AvatarPrimitive.Fallback
     className={cn(
       'flex size-full items-center justify-center rounded-full bg-muted text-[16px] text-muted-fg group-data-[size=sm]/avatar:text-[12px]',

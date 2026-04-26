@@ -1,11 +1,12 @@
 'use client';
 
+import type { ComponentProps } from 'react';
+
 import { Switch as SwitchPrimitive } from 'radix-ui';
-import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-const Switch = ({ className, ...props }: React.ComponentProps<typeof SwitchPrimitive.Root>) => (
+const Switch = ({ className, ...props }: ComponentProps<typeof SwitchPrimitive.Root>) => (
   <SwitchPrimitive.Root
     className={cn(
       'peer group/switch inline-flex h-6.5 w-12 shrink-0 items-center rounded-full transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-30',

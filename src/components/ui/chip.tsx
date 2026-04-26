@@ -1,11 +1,11 @@
 'use client';
 
 import type { VariantProps } from 'class-variance-authority';
+import type { ComponentProps } from 'react';
 
 import { cva } from 'class-variance-authority';
 import { XIcon } from 'lucide-react';
 import { Toggle as ChipPrimitive } from 'radix-ui';
-import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -27,7 +27,7 @@ const chipVariants = cva(
   }
 );
 
-export type ChipProps = React.ComponentProps<typeof ChipPrimitive.Root> &
+export type ChipProps = ComponentProps<typeof ChipPrimitive.Root> &
   VariantProps<typeof chipVariants> & {
     icon?: React.ReactNode;
   };

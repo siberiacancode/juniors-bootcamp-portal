@@ -1,4 +1,6 @@
-import React, { Fragment } from 'react';
+import type { ComponentProps, CSSProperties } from 'react';
+
+import { Fragment } from 'react';
 
 import {
   AngularIcon,
@@ -12,7 +14,7 @@ import {
 } from '@/components/icons';
 import { cn } from '@/lib/utils';
 
-type OrbitingCirclesProps = Omit<React.ComponentProps<'div'>, 'children'>;
+type OrbitingCirclesProps = Omit<ComponentProps<'div'>, 'children'>;
 
 const TECHNOLOGIES = [
   [VueIcon, ReactIcon],
@@ -61,7 +63,7 @@ export const OrbitingStack = ({ className, ...props }: OrbitingCirclesProps) => 
                     animationDuration: `${20 + orbitIndex * 2}s`,
                     '--radius': `${radius}px`,
                     '--angle': `${angle}deg`
-                  } as React.CSSProperties
+                  } as CSSProperties
                 }
               >
                 <Icon />

@@ -1,6 +1,8 @@
+import type { ComponentProps } from 'react';
+
 import { cn } from '@/lib/utils';
 
-const Empty = ({ className, ...props }: React.ComponentProps<'div'>) => (
+const Empty = ({ className, ...props }: ComponentProps<'div'>) => (
   <div
     className={cn(
       'flex w-full min-w-0 flex-1 flex-col items-center justify-center gap-4 rounded-20 p-6 text-center text-balance text-muted-fg',
@@ -11,7 +13,7 @@ const Empty = ({ className, ...props }: React.ComponentProps<'div'>) => (
   />
 );
 
-const EmptyTitle = ({ className, ...props }: React.ComponentProps<'div'>) => (
+const EmptyTitle = ({ className, ...props }: ComponentProps<'div'>) => (
   <div
     className={cn('text-[32px]/10 font-extrabold tracking-wide', className)}
     data-slot='empty-title'
@@ -19,7 +21,7 @@ const EmptyTitle = ({ className, ...props }: React.ComponentProps<'div'>) => (
   />
 );
 
-const EmptyDescription = ({ className, ...props }: React.ComponentProps<'p'>) => (
+const EmptyDescription = ({ className, ...props }: ComponentProps<'p'>) => (
   <p
     className={cn('text-[24px]/8 font-medium tracking-wide', className)}
     data-slot='empty-description'

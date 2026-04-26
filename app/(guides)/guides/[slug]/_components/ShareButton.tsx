@@ -1,5 +1,7 @@
 'use client';
 
+import type { ComponentProps, MouseEvent } from 'react';
+
 import { useCopy } from '@siberiacancode/reactuse';
 import { CheckIcon, ShareIcon } from 'lucide-react';
 
@@ -9,10 +11,10 @@ export const ShareButtton = ({
   onClick,
   variant = 'ghost',
   ...props
-}: React.ComponentProps<typeof IconButton>) => {
+}: ComponentProps<typeof IconButton>) => {
   const { copied, copy } = useCopy(2000);
 
-  const onShareClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onShareClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     copy(window.location.href);
     onClick?.(event);

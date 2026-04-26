@@ -1,16 +1,16 @@
 'use client';
 
 import type { VariantProps } from 'class-variance-authority';
+import type { ComponentProps } from 'react';
 
 import { cva } from 'class-variance-authority';
-import * as React from 'react';
 
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 
 import { IconButton } from './icon-button';
 
-const InputGroup = ({ className, ...props }: React.ComponentProps<'div'>) => (
+const InputGroup = ({ className, ...props }: ComponentProps<'div'>) => (
   <div
     className={cn(
       'group/input-group relative flex w-full items-center rounded-full border border-input transition-[color,box-shadow] outline-none dark:bg-input/30',
@@ -49,7 +49,7 @@ const InputGroupAddon = ({
   className,
   align = 'start',
   ...props
-}: React.ComponentProps<'div'> & VariantProps<typeof inputGroupAddonVariants>) => (
+}: ComponentProps<'div'> & VariantProps<typeof inputGroupAddonVariants>) => (
   <div
     className={cn(inputGroupAddonVariants({ align }), className)}
     data-align={align}
@@ -67,7 +67,7 @@ const InputGroupIconButton = ({
   className,
   type = 'button',
   ...props
-}: Omit<React.ComponentProps<typeof IconButton>, 'rounded' | 'size' | 'variant'>) => (
+}: Omit<ComponentProps<typeof IconButton>, 'rounded' | 'size' | 'variant'>) => (
   <IconButton
     rounded
     className={cn('text-input', className)}
@@ -78,7 +78,7 @@ const InputGroupIconButton = ({
   />
 );
 
-const InputGroupInput = ({ className, ...props }: React.ComponentProps<typeof Input>) => (
+const InputGroupInput = ({ className, ...props }: ComponentProps<typeof Input>) => (
   <Input
     className={cn(
       'flex-1 rounded-none border-none bg-transparent ring-0 focus-visible:ring-0',

@@ -1,8 +1,8 @@
 import type { VariantProps } from 'class-variance-authority';
+import type { ComponentProps } from 'react';
 
 import { cva } from 'class-variance-authority';
 import { Slot } from 'radix-ui';
-import * as React from 'react';
 
 import type { GraphQLOperation, RestOperation } from '@/types/operation';
 
@@ -31,7 +31,7 @@ const apiBadgeVariants = cva<{ variant: Record<GraphQLOperation | RestOperation,
   }
 );
 
-type ApiBadgeProps = React.ComponentProps<'div'> &
+type ApiBadgeProps = ComponentProps<'div'> &
   VariantProps<typeof apiBadgeVariants> & { asChild?: boolean };
 
 const ApiBadge = ({ className, variant, asChild = false, ...props }: ApiBadgeProps) => {

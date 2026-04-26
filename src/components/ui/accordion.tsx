@@ -1,19 +1,17 @@
 'use client';
 
+import type { ComponentProps } from 'react';
+
 import { ChevronDownIcon } from 'lucide-react';
 import { Accordion as AccordionPrimitive } from 'radix-ui';
-import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-const Accordion = ({ ...props }: React.ComponentProps<typeof AccordionPrimitive.Root>) => (
+const Accordion = ({ ...props }: ComponentProps<typeof AccordionPrimitive.Root>) => (
   <AccordionPrimitive.Root className='flex flex-col gap-6' data-slot='accordion' {...props} />
 );
 
-const AccordionItem = ({
-  className,
-  ...props
-}: React.ComponentProps<typeof AccordionPrimitive.Item>) => (
+const AccordionItem = ({ className, ...props }: ComponentProps<typeof AccordionPrimitive.Item>) => (
   <AccordionPrimitive.Item
     className={cn('rounded-24 border-2 border-foreground p-4', className)}
     data-slot='accordion-item'
@@ -25,7 +23,7 @@ const AccordionTrigger = ({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof AccordionPrimitive.Trigger>) => (
+}: ComponentProps<typeof AccordionPrimitive.Trigger>) => (
   <AccordionPrimitive.Header className='flex'>
     <AccordionPrimitive.Trigger
       className={cn(
@@ -45,7 +43,7 @@ const AccordionContent = ({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof AccordionPrimitive.Content>) => (
+}: ComponentProps<typeof AccordionPrimitive.Content>) => (
   <AccordionPrimitive.Content
     className='overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down'
     data-slot='accordion-content'
