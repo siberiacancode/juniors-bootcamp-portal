@@ -12,6 +12,7 @@ import {
 import { IntlText } from '@/intl';
 import { intl } from '@/intl/server';
 
+import { BackendRepoLink } from './_components';
 import { API_CARDS, FAQ_ITEMS } from './_constants';
 
 export const generateMetadata = async () => ({
@@ -101,20 +102,7 @@ const TasksApiPage = () => (
               <IntlText path={question} />
             </AccordionTrigger>
             <AccordionContent>
-              <IntlText
-                values={{
-                  backendRepoLink: (
-                    <a
-                      href='https://github.com/siberiacancode/juniors-bootcamp-backend/issues'
-                      rel='noopener noreferrer'
-                      target='_blank'
-                    >
-                      juniors-bootcamp-backend
-                    </a>
-                  )
-                }}
-                path={answer}
-              />
+              <BackendRepoLink path={answer} />
             </AccordionContent>
           </AccordionItem>
         ))}
