@@ -55,12 +55,7 @@ export const ReviewsSection = () => (
                     className='grayscale'
                     src='#'
                   />
-                  <AvatarFallback>
-                    {review.name
-                      .split(' ')
-                      .map((n) => n[0].toUpperCase())
-                      .join('')}
-                  </AvatarFallback>
+                  <AvatarFallback>{review.name.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <div>
                   <Typography as='h6' variant='body-lg'>
