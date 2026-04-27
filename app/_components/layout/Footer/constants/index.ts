@@ -3,16 +3,8 @@ import { LINKS } from '@/constants';
 
 export const PRODUCTS = [
   {
-    href: 'TODO1',
-    label: ''
-  },
-  {
-    href: 'TODO2',
-    label: ''
-  },
-  {
-    href: 'TODO3',
-    label: ''
+    href: LINKS.SOCIAL.GITHUB,
+    label: 'siberiacancode'
   }
 ] as const;
 

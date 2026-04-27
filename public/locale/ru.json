@@ -15,9 +15,9 @@
   "navigation.guides": "Гайды",
 
   "page.home.metadata.title": "JUNIORS BOOTCAMP — бесплатный развивающий контент для начинающих айтишников",
-  "page.home.metadata.description": "Практические задания на реальных сценариях. В каждом — готовое ТЗ, уровни сложности и API, имитирующий настоящий сервер",
+  "page.home.metadata.description": "Платформа для практики, где вы проходите задания, максимально приближенные к реальным рабочим сценариям, и постепенно прокачиваете навыки через опыт",
 
-  "page.home.description": "Практические задания на реальных сценариях. В каждом — готовое ТЗ, уровни сложности и <span>API</span>, имитирующий настоящий сервер",
+  "page.home.description": "Платформа для практики, где вы проходите задания, максимально приближенные к реальным <span>рабочим сценариям</span>, и постепенно прокачиваете навыки через опыт",
 
   "page.home.section.bento.col.1.card.up.text": "Вся информация, учебные материалы и рекомендации открыты для изучения и применения",
   "page.home.section.bento.col.1.card.down.title": "Все популярные стеки",
@@ -34,12 +34,14 @@
   "page.home.section.reviewsAboutUs.title": "ОТЗЫ<span>В</span>Ы О Н<span>А</span>С",
 
   "page.home.section.faq.title": "Ч<span>А</span>СТЫЕ ВОПРО<span>С</span>Ы",
-  "page.home.section.faq.0.question": "TODO",
-  "page.home.section.faq.0.answer": "TODO",
-  "page.home.section.faq.1.question": "TODO",
-  "page.home.section.faq.1.answer": "TODO",
-  "page.home.section.faq.2.question": "TODO",
-  "page.home.section.faq.2.answer": "TODO",
+  "page.home.section.faq.0.question": "Кому подойдёт Juniors Bootcamp?",
+  "page.home.section.faq.0.answer": "Тем, кто входит в IT или хочет систематизировать практику. Формат построен так, чтобы развиваться постепенно и работать с задачами, близкими к реальным сценариям.",
+  "page.home.section.faq.1.question": "Какие направления есть на платформе?",
+  "page.home.section.faq.1.answer": "Сейчас платформа сфокусирована на фронтенд-разработке. В дальнейшем будут добавляться и другие направления с тем же подходом: практика, чёткие требования и рост по уровням.",
+  "page.home.section.faq.2.question": "Нужно ли проходить всё по порядку?",
+  "page.home.section.faq.2.answer": "Нет. Вы можете идти в своём темпе и брать только те задания и гайды, которые закрывают ваши текущие цели.",
+  "page.home.section.faq.3.question": "Это бесплатно?",
+  "page.home.section.faq.3.answer": "Да. Учебные материалы, задания и рекомендации доступны бесплатно для обучения и практики.",
 
   "page.home.section.subfooter.projectCard.title": "Наш телеграм-канал",
   "page.home.section.subfooter.projectCard.description": "Куча полезной информации",
@@ -53,7 +55,7 @@
   "page.guides.skillsCard.title": "Skills и гайды",
   "page.guides.skillsCard.description": "Гайды есть в формате Skills: скачивайте все материалы на платформе. Встроенный AI-ассистент поможет генерировать код или описание навыков на основе наших советов.",
   "page.guides.reactuseCard.title": "Как создавать react хуки",
-  "page.guides.reactuseCard.description": "Reactuse предоставляет библиотеку из 150+ лёгких и типизированных хуков для управления состоянием и браузерными API.",
+  "page.guides.reactuseCard.description": "Reactuse предоставляет библиотеку из 150+ лёгких и типизированных хуков для создания React приложений",
   "page.guides.chip.clearAll": "очистить всё",
   "page.guides.epmty.title": "По этим фильтрам пока пусто",
   "page.guides.epmty.description": "Сейчас в базе нет материалов, которые подходят под все условия сразу. Попробуйте искать по одному гайду, например только «react» или только «css».",
@@ -128,8 +130,7 @@
   "page.task.section.level.expectedResult": "Ожидаемый результат:",
   "page.task.section.level.flow": "Флоу:",
   "page.task.section.level.api.description": "Здесь представлены необходимые API для выполнения задания.",
-  "page.task.section.level.link.figma": "Ссылка на Figma",
-  "page.task.section.level.link.requirements": "Требования PDF",
+  "page.task.section.level.link.design": "Ссылка на дизайн",
   "page.task.section.level.link.backend": "Ссылка на бэкенд",
 
   "page.task.section.level.junior.description": "Лёгкий уровень с минимальным результатом",

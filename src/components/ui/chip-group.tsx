@@ -1,7 +1,7 @@
 'use client';
 
 import type { VariantProps } from 'class-variance-authority';
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 
 import { XIcon } from 'lucide-react';
 import { ToggleGroup as ChipGroupPrimitive } from 'radix-ui';
@@ -23,7 +23,7 @@ const ChipGroup = ({ className, ...props }: ComponentProps<typeof ChipGroupPrimi
 
 export type ChipGroupItemProps = ComponentProps<typeof ChipGroupPrimitive.Item> &
   VariantProps<typeof chipVariants> & {
-    icon?: React.ReactNode;
+    icon?: ReactNode;
   };
 
 const ChipGroupItem = ({ className, variant, children, icon, ...props }: ChipGroupItemProps) => (

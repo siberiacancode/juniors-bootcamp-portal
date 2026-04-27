@@ -28,8 +28,7 @@ export interface TaskContent {
   emoji: string;
   levels: Record<LevelName, LevelData>;
   links: {
-    figma: string;
-    requirements: string;
+    design: string;
     backend: string;
   };
   title: MessagePath;

@@ -1,7 +1,7 @@
 'use client';
 
 import type { VariantProps } from 'class-variance-authority';
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 
 import { cva } from 'class-variance-authority';
 import { XIcon } from 'lucide-react';
@@ -29,7 +29,7 @@ const chipVariants = cva(
 
 export type ChipProps = ComponentProps<typeof ChipPrimitive.Root> &
   VariantProps<typeof chipVariants> & {
-    icon?: React.ReactNode;
+    icon?: ReactNode;
   };
 
 const Chip = ({ className, variant, children, icon, ...props }: ChipProps) => (

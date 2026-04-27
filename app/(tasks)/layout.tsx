@@ -1,5 +1,7 @@
+import type { ReactNode } from 'react';
+
 interface TasksLayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const TasksLayout = ({ children }: TasksLayoutProps) => (

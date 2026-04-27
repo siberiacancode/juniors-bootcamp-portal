@@ -1,5 +1,3 @@
-import * as motion from 'motion/react-client';
-
 import { MatrixGrid } from '@/components/common';
 import { TelegramIcon } from '@/components/icons';
 import { Card, Marquee, Typography } from '@/components/ui';
@@ -28,15 +26,7 @@ export const SubfooterSection = () => (
           key={index}
           className={cn('flex-1 gap-10 bg-[#FBE2FF] px-6 sm:px-10', background)}
         >
-          <motion.a
-            href='TODO'
-            initial={{ opacity: 0, y: '20%' }}
-            rel='noopener noreferrer'
-            target='_blank'
-            transition={{ delay: (index + 1) * 0.2, duration: 0.5 }}
-            viewport={{ once: true }}
-            whileInView={{ opacity: 1, y: 0 }}
-          >
+          <a href='TODO' rel='noopener noreferrer' target='_blank'>
             <div className='flex items-center justify-between gap-4'>
               <Typography as='span' variant='body-lg'>
                 <IntlText path='page.home.section.subfooter.projectCard.title' />
@@ -58,7 +48,7 @@ export const SubfooterSection = () => (
             <Typography as='p' variant='body-sm'>
               <IntlText path='page.home.section.subfooter.projectCard.description' />
             </Typography>
-          </motion.a>
+          </a>
         </Card>
       ))}
     </div>

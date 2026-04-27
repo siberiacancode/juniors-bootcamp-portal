@@ -1,6 +1,8 @@
 'use client';
 
-export const BackendRepoLink = (chunks: React.ReactNode) => (
+import type { ReactNode } from 'react';
+
+export const BackendRepoLink = (chunks: ReactNode) => (
   <a
     href='https://github.com/siberiacancode/juniors-bootcamp-backend/issues'
     rel='noopener noreferrer'

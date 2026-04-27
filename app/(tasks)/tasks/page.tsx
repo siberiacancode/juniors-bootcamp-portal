@@ -75,7 +75,9 @@ const TasksPage = () => (
                   size='lg'
                   variant='outline'
                 >
-                  <FigmaIcon className='size-8' />
+                  <a href={task.design} rel='noopener noreferrer' target='_blank'>
+                    <FigmaIcon className='size-8' />
+                  </a>
                 </IconButton>
               </div>
 

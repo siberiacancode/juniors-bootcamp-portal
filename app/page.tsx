@@ -1,12 +1,6 @@
 import { intl } from '@/intl/server';
 
-import {
-  BentoSection,
-  FAQSection,
-  HeroSection,
-  ReviewsSection,
-  SubfooterSection
-} from './_components/landing';
+import { BentoSection, FAQSection, HeroSection, SubfooterSection } from './_components/landing';
 
 export const generateMetadata = () => ({
   title: intl.formatMessage({ id: 'page.home.metadata.title' }),
@@ -21,7 +15,7 @@ const HomePage = () => (
       <div className='flex flex-col gap-22 sm:gap-26'>
         <BentoSection />
 
-        <ReviewsSection />
+        {/* <ReviewsSection /> */}
 
         <FAQSection />
       </div>

@@ -18,7 +18,6 @@ export const getCookieValue: GetCookieValue = async <Value = unknown>(
   if (!rawValue) return fallback;
 
   try {
-    // TODO validate
     return JSON.parse(rawValue) as Value;
   } catch {
     return fallback;

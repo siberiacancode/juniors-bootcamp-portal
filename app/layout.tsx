@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 import { Nunito, Overpass_Mono, Parisienne, Pixelify_Sans } from 'next/font/google';
 
 import { intl } from '@/intl/server';
@@ -36,7 +38,7 @@ export const generateMetadata = () => ({
 });
 
 interface RootLayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => (

@@ -1,3 +1,5 @@
+import { LINKS } from '@/constants';
+
 import type { TaskContent } from '../../_types';
 
 export const CARS: TaskContent = {
@@ -5,9 +7,8 @@ export const CARS: TaskContent = {
   title: 'page.task.cars.title',
   description: 'page.task.cars.description',
   links: {
-    backend: 'TODO',
-    figma: 'TODO',
-    requirements: 'TODO'
+    backend: LINKS.TASKS.CARS.BACKEND,
+    design: LINKS.TASKS.CARS.DESIGN
   },
   levels: {
     junior: {

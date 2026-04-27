@@ -69,24 +69,28 @@ export const TASKS = [
     emoji: '📦',
     title: 'page.tasks.cards.delivery.title',
     description: 'page.tasks.cards.delivery.description',
-    href: '/tasks/delivery'
+    href: '/tasks/delivery',
+    design: LINKS.TASKS.DELIVERY.DESIGN
   },
   {
     emoji: '🏍️',
     title: 'page.tasks.cards.cars.title',
     description: 'page.tasks.cards.cars.description',
-    href: '/tasks/cars'
+    href: '/tasks/cars',
+    design: LINKS.TASKS.CARS.DESIGN
   },
   {
     emoji: '🍿',
     title: 'page.tasks.cards.cinema.title',
     description: 'page.tasks.cards.cinema.description',
-    href: '/tasks/cinema'
+    href: '/tasks/cinema',
+    design: LINKS.TASKS.CINEMA.DESIGN
   },
   {
     emoji: '🍕',
     title: 'page.tasks.cards.pizza.title',
     description: 'page.tasks.cards.pizza.description',
-    href: '/tasks/pizza'
+    href: '/tasks/pizza',
+    design: LINKS.TASKS.PIZZA.DESIGN
   }
 ] as const;

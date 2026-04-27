@@ -1,5 +1,7 @@
+import type { ReactNode } from 'react';
+
 interface GuidesLayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const GuidesLayout = ({ children }: GuidesLayoutProps) => (
