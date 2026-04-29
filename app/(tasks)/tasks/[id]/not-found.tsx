@@ -2,12 +2,6 @@ import Link from 'next/link';
 
 import { Button, Typography } from '@/components/ui';
 import { IntlText } from '@/intl';
-import { intl } from '@/intl/server';
-
-export const generateMetadata = () => ({
-  title: intl.formatMessage({ id: 'page.task.notFound.title' }),
-  description: intl.formatMessage({ id: 'page.task.notFound.description' })
-});
 
 const NotFound = () => (
   <main className='flex flex-1 items-center justify-center'>

@@ -36,8 +36,8 @@ const overpassMono = Overpass_Mono({
 
 export const generateMetadata = () =>
   ({
-    title: intl.formatMessage({ id: 'seo.main.title' }),
-    metadataBase: new URL('https://juniorsbootcamp.ru')
+    title: intl.formatMessage({ id: 'seo.main.title' })
+    // metadataBase: new URL('https://juniorsbootcamp.ru')
   }) as Metadata;
 
 interface RootLayoutProps {

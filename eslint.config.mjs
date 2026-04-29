@@ -45,5 +45,12 @@ export default eslint(
     rules: {
       'react-refresh/only-export-components': 'off'
     }
+  },
+  {
+    name: 'juniors-bootcamp/next',
+    files: ['**/opengraph-image.tsx'],
+    rules: {
+      'next/no-img-element': 'off'
+    }
   }
 );
