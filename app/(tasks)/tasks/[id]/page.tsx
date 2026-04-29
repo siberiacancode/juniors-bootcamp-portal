@@ -33,6 +33,12 @@ export const generateMetadata = async ({ params }: TaskPageProps) => {
 
   const task = TASKS[id as keyof typeof TASKS];
 
+  if (!(id in TASKS))
+    return {
+      title: intl.formatMessage({ id: 'page.task.notFound.title' }),
+      description: intl.formatMessage({ id: 'page.task.notFound.description' })
+    };
+
   return {
     title: intl.formatMessage({ id: task.title }),
     description: intl.formatMessage({ id: task.description })
