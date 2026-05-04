@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
 import { Nunito, Overpass_Mono, Parisienne, Pixelify_Sans } from 'next/font/google';
@@ -33,9 +34,11 @@ const overpassMono = Overpass_Mono({
   subsets: ['latin']
 });
 
-export const generateMetadata = () => ({
-  title: intl.formatMessage({ id: 'seo.main.title' })
-});
+export const generateMetadata = () =>
+  ({
+    title: intl.formatMessage({ id: 'seo.main.title' })
+    // metadataBase: new URL('https://juniorsbootcamp.ru')
+  }) as Metadata;
 
 interface RootLayoutProps {
   children: ReactNode;
