@@ -9,8 +9,3 @@ namespace FormatjsIntl {
     ids: MessagePath;
   }
 }
-
-declare module '*.png' {
-  const src: string;
-  export default src;
-}

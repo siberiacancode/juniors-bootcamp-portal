@@ -1,27 +1,44 @@
 import { ImageResponse } from 'next/og';
 
-import { getOGImage } from '@/utils/server';
+import { intl } from '@/intl/server';
+import { getNunitoBold } from '@/og/fonts';
+import { getOGTemplateSrc } from '@/og/templates';
 
-const Image = async () => {
-  const src = await getOGImage('task');
+import { TASKS } from './_constants';
+
+const Image = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = await params;
+
+  const title = intl.formatMessage({ id: TASKS[id as keyof typeof TASKS].title });
+
+  const src = await getOGTemplateSrc('task');
+  const nunito = await getNunitoBold();
 
   return new ImageResponse(
-    <>
-      <div
+    <div
+      style={{
+        display: 'flex',
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        background: 'white',
+        padding: '100px 80px',
+        height: '100%',
+        width: '100%'
+      }}
+    >
+      <img
         style={{
-          display: 'flex',
-          alignItems: 'flex-end',
-          justifyItems: 'flex-end',
-          zIndex: '10',
-          background: 'white'
-          // width: '100%',
-          // height: '100%'
+          width: '388px',
+          height: '153px'
         }}
-      >
-        TEST
-      </div>
-      <img src={src} />
-    </>
+        src={src}
+      />
+      <div style={{ fontSize: '60px', lineHeight: '68px' }}>{title}</div>
+    </div>,
+    {
+      fonts: [nunito]
+    }
   );
 };
 
