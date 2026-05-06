@@ -1,41 +1,39 @@
 import { ImageResponse } from 'next/og';
 
 import { intl } from '@/intl/server';
-import { getNunitoBold } from '@/og/fonts';
-import { getOGTemplateSrc } from '@/og/templates';
+import { getNunitoBold, getOGTemplateBase } from '@/og';
 
 import { TASKS } from './_constants';
 
-const Image = async ({ params }: { params: Promise<{ id: string }> }) => {
+interface TaskOpenGraphImageProps {
+  params: Promise<{
+    id: string;
+  }>;
+}
+
+const Image = async ({ params }: TaskOpenGraphImageProps) => {
   const { id } = await params;
 
   const title = intl.formatMessage({ id: TASKS[id as keyof typeof TASKS].title });
 
-  const src = await getOGTemplateSrc('task');
+  const src = await getOGTemplateBase('task');
   const nunito = await getNunitoBold();
 
   return new ImageResponse(
-    <div
-      style={{
-        display: 'flex',
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        background: 'white',
-        padding: '100px 80px',
-        height: '100%',
-        width: '100%'
-      }}
-    >
-      <img
+    <>
+      <img src={src} />
+      <div
         style={{
-          width: '388px',
-          height: '153px'
+          fontSize: '60px',
+          lineHeight: '68px',
+          position: 'absolute',
+          bottom: '100px',
+          left: '80px'
         }}
-        src={src}
-      />
-      <div style={{ fontSize: '60px', lineHeight: '68px' }}>{title}</div>
-    </div>,
+      >
+        {title}
+      </div>
+    </>,
     {
       fonts: [nunito]
     }

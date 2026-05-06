@@ -1,3 +1,5 @@
+'use server';
+
 import type { ImageResponseOptions } from 'next/server';
 
 import { readFile } from 'node:fs/promises';
