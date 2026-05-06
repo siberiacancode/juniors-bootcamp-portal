@@ -1,3 +1,5 @@
+import type { Metadata } from 'next';
+
 import { ChevronRightIcon } from 'lucide-react';
 
 import {
@@ -15,10 +17,10 @@ import { intl } from '@/intl/server';
 import { BackendRepoLink } from './_components';
 import { API_CARDS, FAQ_ITEMS } from './_constants';
 
-export const generateMetadata = async () => ({
+export const metadata: Metadata = {
   title: intl.formatMessage({ id: 'page.tasksApi.metadata.title' }),
   description: intl.formatMessage({ id: 'page.tasksApi.metadata.description' })
-});
+};
 
 const TasksApiPage = () => (
   <main className='content-container mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-22 sm:gap-22'>

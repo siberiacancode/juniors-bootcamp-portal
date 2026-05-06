@@ -1,11 +1,13 @@
+import type { Metadata } from 'next';
+
 import { intl } from '@/intl/server';
 
 import { BentoSection, FAQSection, HeroSection, SubfooterSection } from './_components/landing';
 
-export const generateMetadata = () => ({
+export const metadata: Metadata = {
   title: intl.formatMessage({ id: 'page.home.metadata.title' }),
   description: intl.formatMessage({ id: 'page.home.metadata.description' })
-});
+};
 
 const HomePage = () => (
   <>
