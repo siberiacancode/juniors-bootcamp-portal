@@ -1,3 +1,5 @@
+import type { Metadata } from 'next';
+
 import { getGuides } from '@/app/(guides)/_helpers/getGuides';
 import { Typography } from '@/components/ui';
 import { IntlText } from '@/intl';
@@ -5,10 +7,10 @@ import { intl } from '@/intl/server';
 
 import { GuidesPageContent } from './_components';
 
-export const generateMetadata = async () => ({
+export const metadata: Metadata = {
   title: intl.formatMessage({ id: 'page.guides.metadata.title' }),
   description: intl.formatMessage({ id: 'page.guides.metadata.description' })
-});
+};
 
 export const dynamic = 'force-dynamic';
 

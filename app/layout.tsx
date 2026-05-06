@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
 import { Nunito, Overpass_Mono, Parisienne, Pixelify_Sans } from 'next/font/google';
@@ -33,7 +34,7 @@ const overpassMono = Overpass_Mono({
   subsets: ['latin']
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: intl.formatMessage({ id: 'seo.main.title' }),
   metadataBase: new URL('https://juniorsbootcamp.ru')
 };
