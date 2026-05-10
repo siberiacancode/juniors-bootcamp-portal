@@ -1,0 +1,101 @@
+# Dependencies (installed inside the image, never copy from host)
+node_modules/
+.pnp/
+.pnp.js
+.pnpm-store/
+
+# Next.js build output (generated during the image build)
+.next/
+out/
+dist/
+build/
+.vercel/
+
+# Testing (not needed in the production image)
+coverage/
+.nyc_output/
+__tests__/
+__mocks__/
+jest/
+cypress/
+playwright-report/
+test-results/
+.vitest/
+
+# Environment files (avoid leaking secrets into the build context)
+.env
+.env*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debug and log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.log
+
+# IDE and editor files
+.vscode/
+.idea/
+.cursor/
+.cursorrules
+.copilot/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Docker files (reduce build context; not needed inside the image)
+Dockerfile*
+.dockerignore
+docker-compose*.yml
+compose*.yaml
+
+# Documentation (not needed in the image)
+*.md
+docs/
+
+# CI/CD (not needed in the image)
+.github/
+.gitlab-ci.yml
+.travis.yml
+.circleci/
+Jenkinsfile
+
+# TypeScript and build metadata
+*.tsbuildinfo
+
+# Cache and temporary directories
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+.turbo/
+.tmp/
+.temp/
+
+# Sensitive or dev-only config (optional; omit if your build needs these)
+.pem
+.editorconfig
+.prettierrc*
+.eslintrc*
+.stylelintrc*
+.babelrc*
+*.iml
+
+# OS-specific files
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
