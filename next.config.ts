@@ -22,6 +22,7 @@ const remarkCodeGroup: Plugin<void[], Root> = () => (tree) => {
 };
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   reactCompiler: true,
   pageExtensions: ['jsx', 'mdx', 'tsx']
 };
