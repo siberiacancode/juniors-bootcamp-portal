@@ -2,6 +2,7 @@
 
 import type { ComponentProps, ReactNode } from 'react';
 
+import { RootProvider } from 'fumadocs-ui/provider/next';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import { IntlProvider } from 'react-intl';
 
@@ -17,7 +18,9 @@ interface ProviderProps {
 export const Provider = ({ children, intl }: ProviderProps) => (
   <IntlProvider {...intl}>
     <ThemeProvider>
-      <NuqsAdapter>{children}</NuqsAdapter>
+      <RootProvider>
+        <NuqsAdapter>{children}</NuqsAdapter>
+      </RootProvider>
     </ThemeProvider>
   </IntlProvider>
 );

@@ -1,9 +1,9 @@
-export const metadata = {
-  title: "Именование TypeScript alias'ов",
-  description:
-    'Правильное именование path mapping в TypeScript для избежания конфликтов с npm-пакетами',
-  labels: ['typescript']
-};
+---
+title: "Именование TypeScript alias'ов"
+description: "Правильное именование path mapping в TypeScript для избежания конфликтов с npm-пакетами"
+labels:
+  - typescript
+---
 
 При настройке `paths` в TypeScript выбирайте алиасы, которые точно не конфликтуют с npm-пакетами.
 Алиас вида `@api/*` может пересекаться с внешними пакетами и путать резолвер.

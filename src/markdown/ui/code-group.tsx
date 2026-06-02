@@ -28,25 +28,34 @@ interface BlockProps {
   children?: ReactNode;
   className?: string;
   fileName?: string;
-  language: SupportedLanguage;
+  lang?: string;
+  language?: SupportedLanguage;
   style?: CSSProperties;
   tabIndex?: number;
+  title?: string;
 }
+
+const getLanguageDisplayName = (language: string) =>
+  LANGUAGE_DISPLAY_NAMES[language as SupportedLanguage] ?? language;
 
 export const CodeGroup = ({ children }: CodeBlockGroupProps) => {
   if (!Array.isArray(children)) throw new Error('Must be an array of elements');
 
   const blocks = children.map((element, index) => {
     const props = element.props as unknown as BlockProps;
-    const key = `${props.language}-${index}`;
+    const language = props.language ?? props.lang ?? 'text';
+    const key = `${language}-${index}`;
+
     return {
       key,
-      ...props
+      ...props,
+      language,
+      fileName: props.fileName ?? props.title
     };
   });
 
   const preRef = useRef<HTMLPreElement>(null);
-  const [currentLanguage, setCurrentLanguage] = useState<SupportedLanguage>(blocks[0].language);
+  const [currentLanguage, setCurrentLanguage] = useState(blocks[0].language);
 
   const { copied, copy } = useCopy(2000);
 
@@ -55,19 +64,16 @@ export const CodeGroup = ({ children }: CodeBlockGroupProps) => {
     copy(preRef.current.textContent);
   };
 
-  const { fileName, className, language, key, ...props } = blocks.find(
+  const { fileName, className, lang, language, key, title, ...props } = blocks.find(
     (block) => block.language === currentLanguage
   )!;
 
   return (
-    <figure className='mb-4 rounded-20 border-2 border-border-hard'>
+    <figure className='not-fumadocs-codeblock mb-4 rounded-20 border-2 border-border-hard'>
       <div className='flex h-16 items-center border-b-2 border-border-hard px-6'>
         {fileName && <span className='text-[14px]/5.5 text-muted-fg'>{fileName}</span>}
         <div className='ml-auto flex items-center gap-2'>
-          <Select
-            value={currentLanguage}
-            onValueChange={(value) => setCurrentLanguage(value as SupportedLanguage)}
-          >
+          <Select value={currentLanguage} onValueChange={setCurrentLanguage}>
             <SelectTrigger size='sm'>
               <SelectValue />
             </SelectTrigger>
@@ -75,7 +81,7 @@ export const CodeGroup = ({ children }: CodeBlockGroupProps) => {
               <SelectGroup>
                 {blocks.map((block) => (
                   <SelectItem key={block.key} value={block.language}>
-                    {LANGUAGE_DISPLAY_NAMES[block.language]}
+                    {getLanguageDisplayName(block.language)}
                   </SelectItem>
                 ))}
               </SelectGroup>

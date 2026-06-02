@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
-import { getGuides } from '@/app/(guides)/_helpers/getGuides';
 import { Typography } from '@/components/ui';
 import { IntlText } from '@/intl';
 import { intl } from '@/intl/server';
+import { guidesSource } from '@/lib/source';
 
 import { GuidesPageContent } from './_components';
 
@@ -14,8 +14,25 @@ export const metadata: Metadata = {
 
 export const dynamic = 'force-dynamic';
 
-const GuidesPage = async () => {
-  const guides = await getGuides();
+const getGuideList = () =>
+  guidesSource
+    .getPages()
+    .filter((page) => page.slugs.length === 1)
+    .sort((leftPage, rightPage) => leftPage.slugs[0].localeCompare(rightPage.slugs[0]))
+    .map((page) => {
+      const slug = page.slugs[0];
+
+      return {
+        number: slug.slice(0, 2),
+        slug,
+        title: page.data.title,
+        description: page.data.description ?? '',
+        labels: page.data.labels
+      };
+    });
+
+const GuidesPage = () => {
+  const guides = getGuideList();
   const labels = [
     ...new Set(guides.flatMap((guide) => guide.labels).sort((a) => (a === 'needful' ? -1 : 1)))
   ];

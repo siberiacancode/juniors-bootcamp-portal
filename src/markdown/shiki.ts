@@ -24,13 +24,7 @@ const transformerProps: ShikiTransformer = {
     const rawMeta = this.options.meta?.__raw ?? '';
 
     const attrsMatch = rawMeta.match(attrsMatchRegex);
-    if (!attrsMatch) {
-      node.properties ??= {};
-      node.properties.language = this.options.lang;
-      return node;
-    }
-
-    const [attrs] = attrsMatch;
+    const attrs = attrsMatch?.[1] ?? rawMeta;
     node.properties ??= {};
 
     for (const match of attrs.matchAll(attrsRegex)) {
@@ -42,6 +36,7 @@ const transformerProps: ShikiTransformer = {
     }
 
     node.properties.language = this.options.lang;
+    node.properties.fileName ??= node.properties.title;
 
     return node;
   }

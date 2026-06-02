@@ -9,7 +9,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/app/*": ["./app/*"],
-      "@/public/*": ["./public/*"]
+      "@/public/*": ["./public/*"],
+      "collections/*": ["./.source/*"]
     },
     "resolveJsonModule": true,
     "allowJs": true,

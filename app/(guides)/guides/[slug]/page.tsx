@@ -1,10 +1,15 @@
+import type { Metadata } from 'next';
+
+import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
-import { getGuideModule, getGuides } from '@/app/(guides)/_helpers';
 import { GithubIcon } from '@/components/icons';
+import { getMDXComponents } from '@/components/mdx';
 import { Button, Typography } from '@/components/ui';
 import { IntlText } from '@/intl';
+import { guidesSource } from '@/lib/source';
 
 import { ShareButtton } from './_components';
 
@@ -14,32 +19,40 @@ interface GuidePageProps {
   }>;
 }
 
-export const generateStaticParams = async () => {
-  const guides = await getGuides();
+const getGuidePages = () =>
+  guidesSource
+    .getPages()
+    .filter((page) => page.slugs.length === 1)
+    .sort((leftPage, rightPage) => leftPage.slugs[0].localeCompare(rightPage.slugs[0]));
 
-  return guides.map((guide) => ({
-    slug: guide.slug
+export function generateStaticParams() {
+  return getGuidePages().map((page) => ({
+    slug: page.slugs[0]
   }));
-};
+}
 
-export const generateMetadata = async ({ params }: GuidePageProps) => {
+export async function generateMetadata({ params }: GuidePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const { metadata } = await getGuideModule(slug);
+  const page = guidesSource.getPage([slug]);
+
+  if (!page) return {};
 
   return {
-    title: metadata.title,
-    description: metadata.description,
-    keywords: metadata.labels
+    title: page.data.title,
+    description: page.data.description,
+    keywords: page.data.labels
   };
-};
+}
 
 const GuidePage = async ({ params }: GuidePageProps) => {
   const { slug } = await params;
-  const GuideModule = await getGuideModule(slug);
-  const metadata = GuideModule.metadata;
+  const page = guidesSource.getPage([slug]);
 
-  const guides = await getGuides();
-  const currentIndex = guides.findIndex((guide) => guide.slug === slug);
+  if (!page) notFound();
+
+  const MDX = page.data.body;
+  const guides = getGuidePages();
+  const currentIndex = guides.findIndex((guide) => guide.slugs[0] === slug);
   const prevGuide = currentIndex > 0 ? guides[currentIndex - 1] : null;
   const nextGuide = currentIndex < guides.length - 1 ? guides[currentIndex + 1] : null;
 
@@ -58,28 +71,32 @@ const GuidePage = async ({ params }: GuidePageProps) => {
         </div>
 
         <Typography as='h1' variant='heading-2xl'>
-          {metadata.title}
+          {page.data.title}
         </Typography>
       </section>
 
       <section>
-        <GuideModule.default />
+        <MDX
+          components={getMDXComponents({
+            a: createRelativeLink(guidesSource, page)
+          })}
+        />
       </section>
 
       <section className='flex flex-col items-start gap-6'>
         <nav className='flex w-full flex-col items-stretch gap-4 sm:flex-row'>
           {prevGuide && (
             <Button asChild size='lg' variant='outline'>
-              <Link href={`/guides/${prevGuide.slug}`}>
+              <Link href={`/guides/${prevGuide.slugs[0]}`}>
                 <ChevronLeftIcon />
-                {prevGuide.title}
+                {prevGuide.data.title}
               </Link>
             </Button>
           )}
           {nextGuide && (
             <Button asChild size='lg' variant='outline'>
-              <Link href={`/guides/${nextGuide.slug}`}>
-                {nextGuide.title}
+              <Link href={`/guides/${nextGuide.slugs[0]}`}>
+                {nextGuide.data.title}
                 <ChevronRightIcon />
               </Link>
             </Button>
