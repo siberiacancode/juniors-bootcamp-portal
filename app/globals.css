@@ -89,8 +89,6 @@
 
   --radius-full: calc(infinity * 1px);
 
-  --container-8xl: 85rem; /* 1360px */
-
   --font-nunito: var(--font-nunito);
   --font-parisienne: var(--font-parisienne);
   --font-pixelify-sans: var(--font-pixelify-sans);
