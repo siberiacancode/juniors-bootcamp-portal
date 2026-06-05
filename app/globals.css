@@ -84,7 +84,12 @@
   --radius-16: 1rem;
   --radius-20: 1.25rem;
   --radius-24: 1.5rem;
+  --radius-32: 2rem;
+  --radius-44: 2.75rem;
+
   --radius-full: calc(infinity * 1px);
+
+  --container-8xl: 85rem; /* 1360px */
 
   --font-nunito: var(--font-nunito);
   --font-parisienne: var(--font-parisienne);

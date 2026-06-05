@@ -55,8 +55,11 @@
   "page.testers.skills.testCases.title": "Тест-кейсы",
   "page.testers.skills.testCases.description": "Первый шаг любого тестировщика — описать сценарии. Спроектируете полный набор тест-кейсов: от позитивных до граничных.",
   "page.testers.skills.requirements.title": "Тестирование требований",
+  "page.testers.skills.requirements.description": "Разберете требования до старта разработки: найдете противоречия, уточните ожидания и превратите описание в проверяемые сценарии.",
   "page.testers.skills.bugReports.title": "Баг-репорты",
+  "page.testers.skills.bugReports.description": "Научитесь фиксировать дефекты так, чтобы команде было понятно: шаги, фактический результат, ожидание и важные артефакты.",
   "page.testers.skills.automation.title": "Автотестирование",
+  "page.testers.skills.automation.description": "Поймете, какие проверки стоит автоматизировать, и соберете первые сценарии для повторяемого регресса.",
 
   "page.testers.practice.title": "практика на собст<span>в</span>енных за<span>д</span>аниях",
   "page.testers.practice.0.title": "Протестируешь API на разных заданиях",

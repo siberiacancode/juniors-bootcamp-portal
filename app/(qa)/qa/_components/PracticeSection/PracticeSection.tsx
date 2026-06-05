@@ -11,7 +11,7 @@ import {
 } from '@/components/ui';
 import { IntlText } from '@/intl';
 
-const PRACTICE_SLIDES = [0, 1, 2, 3] as const;
+import { PRACTICE_SLIDES } from './constants';
 
 export const PracticeSection = () => (
   <motion.section
@@ -26,7 +26,7 @@ export const PracticeSection = () => (
     <Typography
       pixelify
       as='h2'
-      className='text-[42px]/[42px] sm:text-[56px]/none lg:text-[88px]/24'
+      className='text-[34px]/[42px] sm:text-[56px]/[56px] lg:text-[88px]/24'
       variant='display'
     >
       <IntlText path='page.testers.practice.title' />
@@ -41,7 +41,7 @@ export const PracticeSection = () => (
       <CarouselContent>
         {PRACTICE_SLIDES.map((slide) => (
           <CarouselItem key={slide}>
-            <div className='flex flex-col items-center gap-6 rounded-24 bg-secondary p-6 sm:gap-8 sm:p-12 lg:px-25 lg:py-16'>
+            <div className='flex flex-col items-center gap-6 rounded-44 bg-secondary p-6 sm:gap-8 sm:p-12 lg:px-25 lg:py-16'>
               <div className='h-40 w-full max-w-163 rounded-16 bg-background shadow-inner sm:h-80 lg:h-115' />
 
               <div className='flex max-w-260 flex-col items-center gap-3 text-center sm:px-0'>
@@ -58,7 +58,7 @@ export const PracticeSection = () => (
       </CarouselContent>
       <CarouselPrevious className='hidden lg:inline-flex' />
       <CarouselNext className='hidden lg:inline-flex' />
-      <CarouselDots />
+      <CarouselDots activeClassName='bg-action-primary' />
     </Carousel>
   </motion.section>
 );

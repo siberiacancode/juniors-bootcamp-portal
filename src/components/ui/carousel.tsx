@@ -247,7 +247,15 @@ const CarouselNext = ({
   );
 };
 
-const CarouselDots = ({ className, ...props }: ComponentProps<'div'>) => {
+const CarouselDots = ({
+  activeClassName,
+  className,
+  inactiveClassName,
+  ...props
+}: ComponentProps<'div'> & {
+  activeClassName?: string;
+  inactiveClassName?: string;
+}) => {
   const { scrollSnapList, selectedScrollSnap, scrollTo } = useCarousel();
 
   return (
@@ -263,8 +271,8 @@ const CarouselDots = ({ className, ...props }: ComponentProps<'div'>) => {
           className={cn(
             'aspect-square size-3 rounded-full',
             selectedScrollSnap === index
-              ? 'pointer-events-none bg-border-hard'
-              : 'border border-border-soft bg-transparent'
+              ? cn('pointer-events-none bg-border-hard', activeClassName)
+              : cn('border border-border-soft bg-transparent', inactiveClassName)
           )}
           type='button'
           onClick={() => scrollTo(index)}

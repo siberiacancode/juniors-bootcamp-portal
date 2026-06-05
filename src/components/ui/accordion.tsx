@@ -1,6 +1,6 @@
 'use client';
 
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 
 import { ChevronDownIcon } from 'lucide-react';
 import { Accordion as AccordionPrimitive } from 'radix-ui';
@@ -22,19 +22,25 @@ const AccordionItem = ({ className, ...props }: ComponentProps<typeof AccordionP
 const AccordionTrigger = ({
   className,
   children,
+  icon,
   ...props
-}: ComponentProps<typeof AccordionPrimitive.Trigger>) => (
+}: ComponentProps<typeof AccordionPrimitive.Trigger> & {
+  icon?: ReactNode;
+}) => (
   <AccordionPrimitive.Header className='flex'>
     <AccordionPrimitive.Trigger
       className={cn(
-        `flex flex-1 items-center justify-between gap-4 text-left text-[24px]/8 font-medium tracking-wide transition-transform outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180`,
+        `flex flex-1 items-center justify-between gap-4 text-left text-[24px]/8 font-medium tracking-wide transition-transform outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50`,
+        !icon && '[&[data-state=open]>svg]:rotate-180',
         className
       )}
       data-slot='accordion-trigger'
       {...props}
     >
       {children}
-      <ChevronDownIcon className='pointer-events-none size-6 shrink-0 transition-transform duration-200' />
+      {icon ?? (
+        <ChevronDownIcon className='pointer-events-none size-6 shrink-0 transition-transform duration-200' />
+      )}
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 );

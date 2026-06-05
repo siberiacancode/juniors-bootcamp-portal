@@ -13,29 +13,7 @@ import {
 import { IntlText } from '@/intl';
 import { cn } from '@/lib/utils';
 
-const REVIEWS = [
-  {
-    name: 'page.testers.reviews.0.name',
-    role: 'page.testers.reviews.0.role',
-    text: 'page.testers.reviews.0.text',
-    fallback: 'К',
-    color: 'bg-(--color-blue-100) text-(--color-blue-700)'
-  },
-  {
-    name: 'page.testers.reviews.1.name',
-    role: 'page.testers.reviews.1.role',
-    text: 'page.testers.reviews.1.text',
-    fallback: 'А',
-    color: 'bg-(--color-pink-100) text-(--color-pink-700)'
-  },
-  {
-    name: 'page.testers.reviews.2.name',
-    role: 'page.testers.reviews.2.role',
-    text: 'page.testers.reviews.2.text',
-    fallback: 'М',
-    color: 'bg-(--color-olive-100) text-action-primary'
-  }
-] as const;
+import { REVIEWS } from './constants';
 
 export const ReviewsSection = () => (
   <motion.section
@@ -50,7 +28,7 @@ export const ReviewsSection = () => (
     <Typography
       pixelify
       as='h2'
-      className='text-[42px]/[42px] sm:text-[56px]/none lg:text-[88px]/24'
+      className='text-[34px]/[42px] sm:text-[56px]/none lg:text-[88px]/24'
       variant='display'
     >
       <IntlText path='page.testers.reviews.title' />
@@ -65,7 +43,7 @@ export const ReviewsSection = () => (
       <CarouselContent>
         {REVIEWS.map((review) => (
           <CarouselItem key={review.name} className='md:basis-1/2 lg:basis-1/3'>
-            <Card className='h-90 justify-between rounded-24 border-0 bg-secondary px-6 select-none sm:h-108 sm:px-10'>
+            <Card className='h-90 justify-between rounded-32 border-0 bg-secondary px-6 select-none sm:h-108 sm:px-10'>
               <div className='flex flex-col gap-4 sm:flex-row'>
                 <Avatar size='lg'>
                   <AvatarFallback className={cn('font-pixelify-sans text-[24px]', review.color)}>
@@ -89,7 +67,7 @@ export const ReviewsSection = () => (
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselDots />
+      <CarouselDots activeClassName='bg-action-primary' />
     </Carousel>
   </motion.section>
 );

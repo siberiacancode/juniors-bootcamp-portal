@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 const TestersPage = () => (
-  <main className='content-container mt-10 mb-22 flex flex-col gap-18 sm:mt-12 sm:mb-26 sm:gap-22'>
+  <main className='content-container mt-10 flex flex-col gap-18 px-6 sm:mt-12 sm:gap-22'>
     <HeroSection />
     <SkillsSection />
     <PracticeSection />
