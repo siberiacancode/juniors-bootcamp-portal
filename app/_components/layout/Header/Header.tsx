@@ -39,7 +39,8 @@ const ThemeButton = dynamic(
 
 const NAVIGATION = [
   { href: '/tasks', label: 'navigation.tasks' },
-  { href: '/guides', label: 'navigation.guides' }
+  { href: '/guides', label: 'navigation.guides' },
+  { href: '/qa', label: 'navigation.testing' }
 ] as const;
 
 export const Header = () => {
@@ -119,7 +120,11 @@ export const Header = () => {
               <div className='flex flex-col gap-3'>
                 {NAVIGATION.map((navigation) => (
                   <SheetClose asChild key={navigation.href}>
-                    <Typography asChild className='px-4 py-2 uppercase' variant='heading-md'>
+                    <Typography
+                      asChild
+                      className='px-4 py-2 text-[32px]/10 uppercase'
+                      variant='heading-md'
+                    >
                       <Link href={navigation.href}>
                         <IntlText path={navigation.label} />
                       </Link>
@@ -165,7 +170,7 @@ export const Header = () => {
              <Button disabled data-icon='inline-end'>
               <IntlText path='button.loginVia' />
               <TelegramIcon />
-            </Button> 
+            </Button>
           </div> */}
         </div>
       </div>
