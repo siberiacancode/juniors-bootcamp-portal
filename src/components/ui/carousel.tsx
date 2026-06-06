@@ -33,6 +33,7 @@ interface CarouselContextProps {
   canScrollNext: boolean;
   canScrollPrev: boolean;
   carouselRef: CarouselRef;
+  isApiReady: boolean;
   scrollSnapList: number[];
   selectedScrollSnap: number;
   scrollNext: (jump?: boolean) => void;
@@ -77,6 +78,7 @@ const Carousel = ({
 
   const [canScrollPrev, setCanScrollPrev] = useState(api?.canScrollPrev() ?? false);
   const [canScrollNext, setCanScrollNext] = useState(api?.canScrollNext() ?? false);
+  const [isApiReady, setIsApiReady] = useState(false);
   const [selectedScrollSnap, setSelectedScrollSnap] = useState(api?.selectedScrollSnap() ?? 0);
   const [scrollSnapList, setScrollSnapList] = useState<number[]>(api?.scrollSnapList() ?? []);
 
@@ -126,6 +128,7 @@ const Carousel = ({
     // eslint-disable-next-line react-hooks/set-state-in-effect
     onReInit(api);
     onSelect(api);
+    setIsApiReady(true);
 
     api.on('reInit', onReInit);
     api.on('select', onSelect);
@@ -142,6 +145,7 @@ const Carousel = ({
       value={{
         carouselRef,
         api,
+        isApiReady,
         scrollTo,
         scrollSnapList,
         selectedScrollSnap,
@@ -192,7 +196,7 @@ const CarouselPrevious = ({
   onClick,
   ...props
 }: ComponentProps<typeof IconButton>) => {
-  const { scrollPrev, canScrollPrev } = useCarousel();
+  const { scrollPrev, canScrollPrev, isApiReady } = useCarousel();
 
   return (
     <IconButton
@@ -202,7 +206,7 @@ const CarouselPrevious = ({
         className
       )}
       data-slot='carousel-previous'
-      disabled={!canScrollPrev}
+      disabled={isApiReady ? !canScrollPrev : undefined}
       size={size}
       variant={variant}
       onClick={(event) => {
@@ -223,7 +227,7 @@ const CarouselNext = ({
   size = 'sm',
   ...props
 }: ComponentProps<typeof IconButton>) => {
-  const { scrollNext, canScrollNext } = useCarousel();
+  const { scrollNext, canScrollNext, isApiReady } = useCarousel();
 
   return (
     <IconButton
@@ -233,7 +237,7 @@ const CarouselNext = ({
         className
       )}
       data-slot='carousel-next'
-      disabled={!canScrollNext}
+      disabled={isApiReady ? !canScrollNext : undefined}
       size={size}
       variant={variant}
       onClick={(event) => {
