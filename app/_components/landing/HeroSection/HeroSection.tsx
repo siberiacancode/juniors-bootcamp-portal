@@ -12,7 +12,7 @@ export const HeroSection = () => (
   <section
     className={cn(
       'relative flex flex-col items-center justify-center gap-16 p-6',
-      'my-8 h-[75dvh] sm:my-10 md:h-[calc(85dvh-(--spacing(35)))]'
+      'my-8 min-h-[75dvh] sm:my-10 md:min-h-[calc(85dvh-(--spacing(35)))]'
     )}
   >
     <motion.div
