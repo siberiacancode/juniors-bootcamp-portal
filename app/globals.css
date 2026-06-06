@@ -1,21 +1,14 @@
 @import 'tailwindcss';
-
-@import 'fumadocs-ui/css/shadcn.css';
-@import 'fumadocs-ui/css/preset.css';
-
+@plugin '@tailwindcss/typography';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
-
-@plugin "@tailwindcss/typography" {
-  classname: wysiwyg;
-}
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --text-*: initial;
-  /*--radius-*: initial;*/
-  /*--color-*: initial;*/
+  --radius-*: initial;
+  --color-*: initial;
 
   --color-black: #000;
   --color-white: #fff;
@@ -274,48 +267,6 @@
   --default-font-family: var(--font-nunito);
   --default-mono-font-family: var(--font-overpass-mono);
   --default-transition-duration: 300ms;
-
-  --background: var(--color-background);
-  --foreground: var(--color-foreground);
-  --muted: var(--color-muted);
-  --muted-foreground: var(--color-muted-fg);
-  --popover: var(--color-background);
-  --popover-foreground: var(--color-foreground);
-  --card: var(--color-secondary);
-  --card-foreground: var(--color-secondary-fg);
-  --border: var(--color-border-hard);
-  --primary: var(--color-primary);
-  --primary-foreground: var(--color-primary-fg);
-  --secondary: var(--color-secondary);
-  --secondary-foreground: var(--color-secondary-fg);
-  --accent: var(--color-secondary-hover);
-  --accent-foreground: var(--color-secondary-fg);
-  --ring: var(--color-ring);
-  --sidebar: var(--color-background);
-  --sidebar-foreground: var(--color-foreground);
-  --sidebar-border: var(--color-border-hard);
-  --sidebar-accent: var(--color-secondary);
-  --sidebar-accent-foreground: var(--color-secondary-fg);
-  --sidebar-ring: var(--color-ring);
-  --sidebar-primary-foreground: var(--color-primary-fg);
-  --destructive: var(--color-danger);
-
-  --color-fd-background: var(--color-background);
-  --color-fd-foreground: var(--color-foreground);
-  --color-fd-muted: var(--color-muted);
-  --color-fd-muted-foreground: var(--color-muted-fg);
-  --color-fd-popover: var(--color-background);
-  --color-fd-popover-foreground: var(--color-foreground);
-  --color-fd-card: var(--color-secondary);
-  --color-fd-card-foreground: var(--color-secondary-fg);
-  --color-fd-border: var(--color-border-hard);
-  --color-fd-primary: var(--color-primary);
-  --color-fd-primary-foreground: var(--color-primary-fg);
-  --color-fd-secondary: var(--color-secondary);
-  --color-fd-secondary-foreground: var(--color-secondary-fg);
-  --color-fd-accent: var(--color-secondary-hover);
-  --color-fd-accent-foreground: var(--color-secondary-fg);
-  --color-fd-ring: var(--color-ring);
 }
 
 .dark {
@@ -370,52 +321,6 @@
 
   /* Status - ярче для видимости */
   --color-danger: var(--color-red-400);
-
-  --background: var(--color-background);
-  --foreground: var(--color-foreground);
-  --muted: var(--color-muted);
-  --muted-foreground: var(--color-muted-fg);
-  --popover: var(--color-background);
-  --popover-foreground: var(--color-foreground);
-  --card: var(--color-secondary);
-  --card-foreground: var(--color-secondary-fg);
-  --border: var(--color-border-hard);
-  --primary: var(--color-primary);
-  --primary-foreground: var(--color-primary-fg);
-  --secondary: var(--color-secondary);
-  --secondary-foreground: var(--color-secondary-fg);
-  --accent: var(--color-secondary-hover);
-  --accent-foreground: var(--color-secondary-fg);
-  --ring: var(--color-ring);
-  --sidebar: var(--color-background);
-  --sidebar-foreground: var(--color-foreground);
-  --sidebar-border: var(--color-border-hard);
-  --sidebar-accent: var(--color-secondary);
-  --sidebar-accent-foreground: var(--color-secondary-fg);
-  --sidebar-ring: var(--color-ring);
-  --sidebar-primary-foreground: var(--color-primary-fg);
-  --destructive: var(--color-danger);
-
-  --color-fd-background: var(--color-background);
-  --color-fd-foreground: var(--color-foreground);
-  --color-fd-muted: var(--color-muted);
-  --color-fd-muted-foreground: var(--color-muted-fg);
-  --color-fd-popover: var(--color-background);
-  --color-fd-popover-foreground: var(--color-foreground);
-  --color-fd-card: var(--color-secondary);
-  --color-fd-card-foreground: var(--color-secondary-fg);
-  --color-fd-border: var(--color-border-hard);
-  --color-fd-primary: var(--color-primary);
-  --color-fd-primary-foreground: var(--color-primary-fg);
-  --color-fd-secondary: var(--color-secondary);
-  --color-fd-secondary-foreground: var(--color-secondary-fg);
-  --color-fd-accent: var(--color-secondary-hover);
-  --color-fd-accent-foreground: var(--color-secondary-fg);
-  --color-fd-ring: var(--color-ring);
-}
-
-@utility not-fumadocs-codeblock {
-  /* Fumadocs opt-out marker */
 }
 
 @layer base {
@@ -436,82 +341,6 @@
 @layer components {
   .content-container {
     @apply px-6 max-w-7xl mx-auto w-full;
-  }
-
-  #nd-docs-layout {
-    --fd-layout-width: 1280px;
-    --fd-sidebar-width: 280px;
-  }
-
-  #nd-sidebar {
-    @apply bg-background text-foreground;
-  }
-
-  #nd-sidebar a,
-  #nd-sidebar button {
-    @apply rounded-12 font-medium tracking-wide;
-  }
-
-  #nd-sidebar [data-active='true'],
-  #nd-sidebar a[data-active='true'] {
-    @apply bg-secondary text-foreground;
-  }
-
-  #nd-toc {
-    @apply text-foreground;
-  }
-
-  #nd-toc a {
-    @apply font-medium tracking-wide text-muted-fg transition-colors hover:text-foreground;
-  }
-
-  #nd-toc a[data-active='true'] {
-    @apply text-foreground;
-  }
-
-  .docs-page {
-    @apply px-6;
-  }
-
-  .docs-page > nav,
-  .docs-page > div:last-child {
-    @apply mt-0;
-  }
-
-  .docs-page > div:last-child a {
-    @apply rounded-20 border-2 border-border-hard bg-background p-6 text-[16px]/6 font-medium tracking-wide text-foreground hover:bg-secondary;
-  }
-
-  .docs-page > div:last-child a p:last-child {
-    @apply text-muted-fg;
-  }
-
-  .docs-body {
-    @apply text-foreground;
-  }
-
-  .docs-body :where(pre) {
-    @apply mb-4 overflow-x-auto rounded-20 border-2 border-border-hard bg-secondary p-6 text-[16px]/6;
-  }
-
-  .docs-body :where(pre code) {
-    @apply font-overpass-mono text-[14px]/5.5;
-  }
-
-  .docs-body :where(code):not(pre code) {
-    @apply rounded-6 border border-border-soft px-1.5 py-0.5 font-overpass-mono text-[0.9em];
-  }
-
-  .docs-body :where([role='tablist']) {
-    @apply border-b-2 border-border-hard px-6;
-  }
-
-  .docs-body :where([role='tab']) {
-    @apply text-foreground;
-  }
-
-  .docs-body :where([role='tab'][data-state='active']) {
-    @apply border-primary text-foreground;
   }
 }
 

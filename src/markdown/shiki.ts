@@ -1,4 +1,4 @@
-import type { RehypeShikiOptions } from '@shikijs/rehype';
+import type { RehypeCodeOptions } from 'fumadocs-core/mdx-plugins';
 import type { BuiltinLanguage, ShikiTransformer } from 'shiki';
 
 export type SupportedLanguage = Extract<
@@ -17,14 +17,21 @@ export type SupportedLanguage = Extract<
   | 'typescript'
 >;
 
-const attrsRegex = /([a-z_][\w-]*)(=(["'])(.*?)\3)?/gi;
-const attrsMatchRegex = /\{([^}]*)\}/;
+const attrsRegex = /(?<key>[a-z_][\w-]*)(?:=(?<quote>["'])(?<value>.*?)\k<quote>)?/gi;
+const attrsMatchRegex = /\{[^}]*\}/;
+
 const transformerProps: ShikiTransformer = {
   pre(node) {
     const rawMeta = this.options.meta?.__raw ?? '';
 
     const attrsMatch = rawMeta.match(attrsMatchRegex);
-    const attrs = attrsMatch?.[1] ?? rawMeta;
+    if (!attrsMatch) {
+      node.properties ??= {};
+      node.properties.language = this.options.lang;
+      return node;
+    }
+
+    const [attrs] = attrsMatch;
     node.properties ??= {};
 
     for (const match of attrs.matchAll(attrsRegex)) {
@@ -36,13 +43,12 @@ const transformerProps: ShikiTransformer = {
     }
 
     node.properties.language = this.options.lang;
-    node.properties.fileName ??= node.properties.title;
 
     return node;
   }
 };
 
-export const REHYPE_SHIKI_OPTIONS: RehypeShikiOptions = {
+export const REHYPE_SHIKI_OPTIONS = {
   langs: [
     'javascript',
     'js',
@@ -78,4 +84,4 @@ export const REHYPE_SHIKI_OPTIONS: RehypeShikiOptions = {
     // transformerNotationHighlight(),
     // transformerNotationWordHighlight()
   ]
-};
+} satisfies RehypeCodeOptions;

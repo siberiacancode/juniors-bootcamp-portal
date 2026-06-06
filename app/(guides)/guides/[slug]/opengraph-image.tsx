@@ -1,8 +1,8 @@
-import { notFound } from 'next/navigation';
 import { ImageResponse } from 'next/og';
 
-import { guidesSource } from '@/lib/source';
 import { getNunitoBold, getOGTemplateBase } from '@/og';
+
+import { getGuideModule } from '../../_helpers';
 
 interface GuideOpenGraphImageProps {
   params: Promise<{
@@ -12,9 +12,8 @@ interface GuideOpenGraphImageProps {
 
 const Image = async ({ params }: GuideOpenGraphImageProps) => {
   const { slug } = await params;
-  const page = guidesSource.getPage([slug]);
 
-  if (!page) notFound();
+  const title = (await getGuideModule(slug)).metadata.title;
 
   const src = await getOGTemplateBase('guide');
   const nunito = await getNunitoBold();
@@ -31,7 +30,7 @@ const Image = async ({ params }: GuideOpenGraphImageProps) => {
           left: '80px'
         }}
       >
-        {page.data.title}
+        {title}
       </div>
     </>,
     {

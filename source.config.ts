@@ -1,13 +1,12 @@
 import type { Root } from 'mdast';
 import type { Plugin } from 'unified';
 
-import { pageSchema } from 'fumadocs-core/source/schema';
-import { defineCollections, defineConfig, defineDocs } from 'fumadocs-mdx/config';
+import { defineConfig } from 'fumadocs-mdx/config';
 import remarkDirective from 'remark-directive';
+import remarkGfm from 'remark-gfm';
 import { visit } from 'unist-util-visit';
-import { z } from 'zod';
 
-import { REHYPE_SHIKI_OPTIONS } from './src/markdown/shiki';
+import { REHYPE_SHIKI_OPTIONS } from '@/markdown/shiki';
 
 const remarkCodeGroup: Plugin<void[], Root> = () => (tree) => {
   visit(tree, 'containerDirective', (node) => {
@@ -20,31 +19,14 @@ const remarkCodeGroup: Plugin<void[], Root> = () => (tree) => {
   });
 };
 
-const labelsSchema = {
-  labels: z.array(z.string()).default([])
-};
-
-export const docs = defineDocs({
-  dir: 'public/contents/docs',
-  docs: {
-    schema: pageSchema.extend(labelsSchema)
-  }
-});
-
-export const guides = defineCollections({
-  type: 'doc',
-  dir: 'public/contents/guides',
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    labels: z.array(z.string()).default([])
-  })
-});
+// export const docs = defineDocs({
+//   dir: 'content/docs'
+// });
 
 export default defineConfig({
   mdxOptions: {
-    providerImportSource: '@/components/mdx',
-    remarkPlugins: [remarkDirective, remarkCodeGroup],
+    providerImportSource: '@/markdown',
+    remarkPlugins: (plugins) => [remarkGfm, remarkDirective, remarkCodeGroup, ...plugins],
     rehypeCodeOptions: REHYPE_SHIKI_OPTIONS
   }
 });
