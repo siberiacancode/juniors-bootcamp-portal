@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 export const HeroSection = () => (
   <motion.section
     className={
-      'relative flex flex-col items-center justify-center gap-6 overflow-hidden p-4 text-center sm:gap-10 lg:p-10 xl:p-20'
+      'relative flex flex-col items-center justify-center gap-6 overflow-hidden p-4 text-center sm:gap-10 lg:py-10 xl:py-20'
     }
     transition={{
       duration: 0.6
@@ -23,7 +23,7 @@ export const HeroSection = () => (
     <div className='flex flex-col items-center gap-6'>
       <Typography
         as='h1'
-        className='text-[28px]/9 sm:text-[50px]/14 md:text-[72px]/18 lg:text-[88px]/22 [&>span]:text-action-primary'
+        className='text-[28px]/9 sm:text-[50px]/14 md:text-[72px]/18 xl:text-[80px]/20 2xl:text-[88px]/22 [&>span]:text-action-primary'
         variant='body-lg'
       >
         <IntlText path='page.testers.hero.title' />

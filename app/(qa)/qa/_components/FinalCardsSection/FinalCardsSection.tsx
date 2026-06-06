@@ -1,3 +1,4 @@
+import * as motion from 'motion/react-client';
 import Link from 'next/link';
 
 import { TelegramIcon, TestersMascotHappyIcon } from '@/components/icons';
@@ -38,7 +39,22 @@ export const FinalCardsSection = () => (
           </Typography>
         </div>
 
-        <TestersMascotHappyIcon className='pointer-events-none absolute -bottom-18 left-1/2 h-74 w-auto -translate-x-1/2 select-none lg:-bottom-17 lg:h-68' />
+        <motion.div
+          aria-hidden
+          transition={{
+            delay: 0.4,
+            type: 'spring',
+            stiffness: 260,
+            damping: 18,
+            mass: 0.8
+          }}
+          className='pointer-events-none absolute -bottom-18 left-1/2 h-74 w-auto -translate-x-1/2 select-none lg:-bottom-17 lg:h-68'
+          initial={{ opacity: 0, scale: 0.88, y: 40 }}
+          viewport={{ once: true }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        >
+          <TestersMascotHappyIcon className='h-full w-auto' />
+        </motion.div>
 
         <IconButton
           asChild

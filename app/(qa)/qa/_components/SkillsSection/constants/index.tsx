@@ -26,3 +26,6 @@ export const SKILLS = [
     featured: false
   }
 ] as const;
+
+export const SKILL_AUTO_CHANGE_DELAY_SECONDS = 5;
+export const SKILL_AUTO_CHANGE_DELAY_MS = SKILL_AUTO_CHANGE_DELAY_SECONDS * 1000;

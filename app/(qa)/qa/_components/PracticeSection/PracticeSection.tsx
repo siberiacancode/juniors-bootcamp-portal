@@ -37,6 +37,13 @@ export const PracticeSection = () => (
         align: 'start',
         loop: true
       }}
+      plugins={{
+        autoplay: {
+          delay: 5000,
+          stopOnInteraction: false,
+          stopOnMouseEnter: true
+        }
+      }}
     >
       <CarouselContent>
         {PRACTICE_SLIDES.map((slide) => (

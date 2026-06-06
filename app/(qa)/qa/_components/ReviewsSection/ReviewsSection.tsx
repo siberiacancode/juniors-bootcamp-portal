@@ -39,6 +39,13 @@ export const ReviewsSection = () => (
         align: 'start',
         loop: true
       }}
+      plugins={{
+        autoplay: {
+          delay: 5000,
+          stopOnInteraction: false,
+          stopOnMouseEnter: true
+        }
+      }}
     >
       <CarouselContent>
         {REVIEWS.map((review) => (
