@@ -4,27 +4,27 @@ import { intl } from '@/intl/server';
 
 import {
   FAQSection,
-  FinalCardsSection,
   HeroSection,
   PracticeSection,
   ReviewsSection,
-  SkillsSection
+  SkillsSection,
+  SocialsSection
 } from './_components';
 
 export const metadata: Metadata = {
-  title: intl.formatMessage({ id: 'page.testers.metadata.title' }),
-  description: intl.formatMessage({ id: 'page.testers.metadata.description' })
+  title: intl.formatMessage({ id: 'page.qa.metadata.title' }),
+  description: intl.formatMessage({ id: 'page.qa.metadata.description' })
 };
 
-const TestersPage = () => (
+const QAPage = () => (
   <main className='content-container mt-10 flex flex-col gap-18 px-6 sm:mt-12 sm:gap-22'>
     <HeroSection />
     <SkillsSection />
     <PracticeSection />
     <FAQSection />
     <ReviewsSection />
-    <FinalCardsSection />
+    <SocialsSection />
   </main>
 );
 
-export default TestersPage;
+export default QAPage;

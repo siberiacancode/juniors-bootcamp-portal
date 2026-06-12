@@ -26,11 +26,11 @@ export const HeroSection = () => (
         className='text-[28px]/9 sm:text-[50px]/14 md:text-[72px]/18 xl:text-[80px]/20 2xl:text-[88px]/22 [&>span]:text-action-primary'
         variant='body-lg'
       >
-        <IntlText path='page.testers.hero.title' />
+        <IntlText path='page.qa.hero.title' />
       </Typography>
 
       <Typography as='p' className='text-[16px]/6 font-normal tracking-[0.005em]' variant='body-md'>
-        <IntlText path='page.testers.hero.description' />
+        <IntlText path='page.qa.hero.description' />
       </Typography>
     </div>
     <motion.div
@@ -49,8 +49,7 @@ export const HeroSection = () => (
         )}
         size='lg'
       >
-        {/*TODO: Заполнить заглушку*/}
-        <Link href='#'>
+        <Link href='#skills'>
           <IntlText path='button.start' />
         </Link>
       </Button>

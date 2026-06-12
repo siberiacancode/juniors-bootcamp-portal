@@ -29,7 +29,7 @@ export const PracticeSection = () => (
       className='text-[34px]/[42px] sm:text-[56px]/[56px] lg:text-[88px]/24'
       variant='display'
     >
-      <IntlText path='page.testers.practice.title' />
+      <IntlText path='page.qa.practice.title' />
     </Typography>
 
     <Carousel
@@ -40,23 +40,32 @@ export const PracticeSection = () => (
       plugins={{
         autoplay: {
           delay: 5000,
-          stopOnInteraction: false,
+          stopOnInteraction: true,
           stopOnMouseEnter: true
         }
       }}
     >
       <CarouselContent>
         {PRACTICE_SLIDES.map((slide) => (
-          <CarouselItem key={slide}>
+          <CarouselItem key={slide.title}>
             <div className='flex flex-col items-center gap-6 rounded-44 bg-secondary p-6 sm:gap-8 sm:p-12 lg:px-25 lg:py-16'>
-              <div className='h-40 w-full max-w-163 rounded-16 bg-background shadow-inner sm:h-80 lg:h-115' />
-
+              <div className='relative h-40 w-full max-w-163 overflow-hidden rounded-16 bg-background shadow-inner sm:h-80 lg:h-115'>
+                {/* Место под пикчу */}
+                {/* <Image
+                  fill
+                  alt=''
+                  aria-hidden='true'
+                  className='object-cover'
+                  sizes='(min-width: 1024px) 652px, calc(100vw - 96px)'
+                  src={slide.image}
+                /> */}
+              </div>
               <div className='flex max-w-260 flex-col items-center gap-3 text-center sm:px-0'>
                 <Typography as='h3' className='text-[24px]/8 sm:text-[32px]/10' variant='title-lg'>
-                  <IntlText path={`page.testers.practice.${slide}.title`} />
+                  <IntlText path={slide.title} />
                 </Typography>
                 <Typography as='p' className='text-[16px]/5.5 sm:text-[18px]/6.5' variant='body-md'>
-                  <IntlText path={`page.testers.practice.${slide}.description`} />
+                  <IntlText path={slide.description} />
                 </Typography>
               </div>
             </div>

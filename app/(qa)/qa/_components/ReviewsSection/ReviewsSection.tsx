@@ -31,7 +31,7 @@ export const ReviewsSection = () => (
       className='text-[34px]/[42px] sm:text-[56px]/none lg:text-[88px]/24'
       variant='display'
     >
-      <IntlText path='page.testers.reviews.title' />
+      <IntlText path='page.qa.reviews.title' />
     </Typography>
 
     <Carousel

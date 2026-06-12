@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react';
 
-interface TestersLayoutProps {
+interface QALayoutProps {
   children: ReactNode;
 }
 
-const TestersLayout = ({ children }: TestersLayoutProps) => (
+const QALayout = ({ children }: QALayoutProps) => (
   <>
     {children}
     <style>
@@ -19,4 +19,4 @@ const TestersLayout = ({ children }: TestersLayoutProps) => (
   </>
 );
 
-export default TestersLayout;
+export default QALayout;

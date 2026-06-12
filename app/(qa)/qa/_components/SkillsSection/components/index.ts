@@ -1,2 +1,1 @@
-export { SkillPreview } from './SkillPreview';
-export { SkillProgressIcon } from './SkillProgressIcon';
+export * from './SkillsAccordion';

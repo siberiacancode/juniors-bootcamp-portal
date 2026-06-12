@@ -1,14 +1,4 @@
-export const FAQ_ITEMS = [
-  {
-    question: 'page.task.section.faq.0.question',
-    answer: 'page.task.section.faq.0.answer'
-  },
-  {
-    question: 'page.task.section.faq.1.question',
-    answer: 'page.task.section.faq.1.answer'
-  },
-  {
-    question: 'page.task.section.faq.2.question',
-    answer: 'page.task.section.faq.2.answer'
-  }
-] as const;
+export const FAQ_ITEMS = Array.from({ length: 3 }, (_, index) => ({
+  question: `page.task.section.faq.${index}.question` as MessagePath,
+  answer: `page.task.section.faq.${index}.answer` as MessagePath
+}));

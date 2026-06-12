@@ -27,7 +27,7 @@ export const FAQSection = () => (
       className='text-[34px]/[42px] sm:text-[56px]/none lg:text-[88px]/24'
       variant='display'
     >
-      <IntlText path='page.testers.faq.title' />
+      <IntlText path='page.qa.faq.title' />
     </Typography>
 
     <Accordion collapsible defaultValue={FAQ_ITEMS[0].question} type='single'>

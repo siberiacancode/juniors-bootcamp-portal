@@ -1,4 +1,4 @@
-export const FAQ_ITEMS = [0, 1, 2, 3, 4].map((index) => ({
-  question: `page.testers.faq.${index}.question` as MessagePath,
-  answer: `page.testers.faq.${index}.answer` as MessagePath
+export const FAQ_ITEMS = Array.from({ length: 5 }, (_, index) => ({
+  question: `page.qa.faq.${index}.question` as MessagePath,
+  answer: `page.qa.faq.${index}.answer` as MessagePath
 }));
