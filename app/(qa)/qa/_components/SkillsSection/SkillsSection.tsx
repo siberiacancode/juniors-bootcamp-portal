@@ -1,6 +1,6 @@
 'use client';
 
-import { useDidUpdate, useTimer } from '@siberiacancode/reactuse';
+import { useDidUpdate, useInterval, useMediaQuery } from '@siberiacancode/reactuse';
 import * as motion from 'motion/react-client';
 import { useState } from 'react';
 
@@ -9,124 +9,35 @@ import { Typography } from '@/components/ui';
 import { IntlText } from '@/intl';
 import { cn } from '@/lib/utils';
 
-import type { Skill, SkillTitle } from './types';
+import type { Skill } from './types';
 
 import {
+  SkillProgress,
   SkillsAccordion,
   SkillsAccordionContent,
   SkillsAccordionItem,
   SkillsAccordionTrigger
 } from './components';
-import { SKILL_AUTO_CHANGE_DELAY_SECONDS, SKILLS } from './constants';
-
-const getSkillByTitle = (title: string) => SKILLS.find((skill) => skill.title === title);
-
-const getNextSkillTitle = (title: SkillTitle) => {
-  const currentIndex = SKILLS.findIndex((skill) => skill.title === title);
-  const nextIndex = (currentIndex + 1) % SKILLS.length;
-
-  return SKILLS[nextIndex].title;
-};
-
-const SkillProgress = ({
-  className,
-  dotClassName = 'size-8'
-}: {
-  className?: string;
-  dotClassName?: string;
-}) => (
-  <span
-    className={cn(
-      'absolute right-5 bottom-5 flex size-10 shrink-0 items-center justify-center',
-      className
-    )}
-  >
-    <span className={cn('rounded-full bg-(--color-neutral-400)', dotClassName)} />
-    <svg aria-hidden className='absolute inset-0 -rotate-90' fill='none' viewBox='0 0 40 40'>
-      <circle
-        className='stroke-(--color-olive-700) opacity-30'
-        cx='20'
-        cy='20'
-        r='18'
-        strokeWidth='2'
-      />
-      <motion.circle
-        animate={{ pathLength: 1 }}
-        className='stroke-(--color-olive-700)'
-        cx='20'
-        cy='20'
-        initial={{ pathLength: 0 }}
-        r='18'
-        strokeLinecap='round'
-        strokeWidth='2'
-        transition={{ duration: SKILL_AUTO_CHANGE_DELAY_SECONDS, ease: 'linear' }}
-      />
-    </svg>
-  </span>
-);
-
-const SkillPreview = ({
-  className,
-  contentClassName,
-  progressDotClassName,
-  progressClassName,
-  skill,
-  withProgress = true
-}: {
-  className?: string;
-  contentClassName?: string;
-  progressDotClassName?: string;
-  progressClassName?: string;
-  skill: Skill;
-  withProgress?: boolean;
-}) => {
-  const Icon = skill.Icon;
-
-  return (
-    <div className={cn('relative grid size-full gap-4 rounded-32 bg-secondary p-8', className)}>
-      <div
-        className={cn(
-          'grid min-h-full place-content-center rounded-32 bg-background',
-          contentClassName
-        )}
-      >
-        <div className='flex flex-col items-center'>
-          <Icon className='size-10 text-action-primary' />
-          <Typography as='p' variant='body-lg'>
-            Контент
-          </Typography>
-        </div>
-      </div>
-
-      {withProgress && (
-        <SkillProgress
-          key={skill.title}
-          className={progressClassName}
-          dotClassName={progressDotClassName}
-        />
-      )}
-    </div>
-  );
-};
+import { SKILLS } from './constants';
 
 export const SkillsSection = () => {
-  const [selectedSkill, setSelectedSkill] = useState<SkillTitle>(SKILLS[0].title);
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
+  const [activeSkillTitle, setActiveSkillTitle] = useState<Skill>(SKILLS[0].title);
 
-  const selectedSkillData = getSkillByTitle(selectedSkill) ?? SKILLS[0];
+  const interval = useInterval(() => {
+    setActiveSkillTitle((skillTitle) => {
+      const skillIndex = SKILLS.findIndex((skill) => skill.title === skillTitle);
 
-  const autoSwitchTimer = useTimer(SKILL_AUTO_CHANGE_DELAY_SECONDS, {
-    onExpire: () => setSelectedSkill(getNextSkillTitle)
-  });
+      return SKILLS[(skillIndex + 1) % SKILLS.length].title;
+    });
+  }, 5000);
 
   useDidUpdate(() => {
-    autoSwitchTimer.restart(SKILL_AUTO_CHANGE_DELAY_SECONDS);
-  }, [selectedSkill]);
+    interval.pause();
+    const timeoutId = window.setTimeout(interval.resume);
 
-  const onSkillChange = (value: string) => {
-    const skill = getSkillByTitle(value);
-
-    if (skill) setSelectedSkill(skill.title);
-  };
+    return () => window.clearTimeout(timeoutId);
+  }, [activeSkillTitle]);
 
   return (
     <motion.section
@@ -155,10 +66,10 @@ export const SkillsSection = () => {
       </motion.div>
 
       <SkillsAccordion
-        className='z-10 hidden flex-col gap-4 lg:flex'
+        className='z-10 flex flex-col gap-4'
         type='single'
-        value={selectedSkillData.title}
-        onValueChange={onSkillChange}
+        value={activeSkillTitle}
+        onValueChange={(skillTitle) => setActiveSkillTitle(skillTitle as Skill)}
       >
         {SKILLS.map((skill) => {
           const Icon = skill.Icon;
@@ -167,20 +78,58 @@ export const SkillsSection = () => {
             <SkillsAccordionItem
               key={skill.title}
               className={cn(
-                'flex flex-col rounded-32 border-0 bg-secondary px-10 py-8',
+                isDesktop
+                  ? 'flex flex-col rounded-32 border-0 bg-secondary px-10 py-8'
+                  : 'rounded-32 border-0 bg-secondary p-6',
                 'data-[state=open]:bg-(--color-olive-100) data-[state=open]:text-action-primary'
               )}
               value={skill.title}
             >
               <SkillsAccordionTrigger
-                icon={<Icon className='size-10 shrink-0 text-action-primary' />}
+                icon={isDesktop && <Icon className='size-10 shrink-0 text-action-primary' />}
               >
-                <Typography as='span' variant='title-lg'>
+                <Typography as='span' variant={isDesktop ? 'title-lg' : 'title-md'}>
                   <IntlText path={skill.title} />
                 </Typography>
               </SkillsAccordionTrigger>
-              <SkillsAccordionContent>
-                <IntlText path={skill.description} />
+              <SkillsAccordionContent className={cn(!isDesktop && 'flex flex-col gap-6')}>
+                {!isDesktop && (
+                  <div
+                    className={cn(
+                      'relative grid size-full gap-4 rounded-32 bg-secondary p-8',
+                      'mt-6 bg-background p-6 sm:p-8'
+                    )}
+                  >
+                    <div
+                      className={cn(
+                        'grid min-h-full place-content-center rounded-32 bg-background',
+                        'min-h-48'
+                      )}
+                    >
+                      <div className='flex flex-col items-center'>
+                        <Icon className='size-10 text-action-primary' />
+                        <Typography as='p' variant='body-lg'>
+                          Контент
+                        </Typography>
+                      </div>
+                    </div>
+
+                    {activeSkillTitle === skill.title && (
+                      <SkillProgress
+                        key={activeSkillTitle}
+                        className='right-4 bottom-4 size-6'
+                        dotClassName='size-5'
+                      />
+                    )}
+                  </div>
+                )}
+                {isDesktop ? (
+                  <IntlText path={skill.description} />
+                ) : (
+                  <Typography as='span' variant='body-sm'>
+                    <IntlText path={skill.description} />
+                  </Typography>
+                )}
               </SkillsAccordionContent>
             </SkillsAccordionItem>
           );
@@ -188,45 +137,18 @@ export const SkillsSection = () => {
       </SkillsAccordion>
 
       <div className='z-10 hidden items-center justify-center overflow-hidden lg:flex'>
-        <SkillPreview skill={selectedSkillData} />
-      </div>
+        <div className='relative grid size-full gap-4 rounded-32 bg-secondary p-8'>
+          <div className='grid min-h-full place-content-center rounded-32 bg-background'>
+            <div className='flex flex-col items-center'>
+              <Typography as='p' variant='body-lg'>
+                Контент
+              </Typography>
+            </div>
+          </div>
 
-      <SkillsAccordion
-        className='z-10 flex flex-col gap-4 lg:hidden'
-        type='single'
-        value={selectedSkillData.title}
-        onValueChange={onSkillChange}
-      >
-        {SKILLS.map((skill) => (
-          <SkillsAccordionItem
-            key={skill.title}
-            className={cn(
-              'rounded-32 border-0 bg-secondary p-6',
-              'data-[state=open]:bg-(--color-olive-100) data-[state=open]:text-action-primary'
-            )}
-            value={skill.title}
-          >
-            <SkillsAccordionTrigger>
-              <Typography as='span' variant='title-md'>
-                <IntlText path={skill.title} />
-              </Typography>
-            </SkillsAccordionTrigger>
-            <SkillsAccordionContent className='flex flex-col gap-6'>
-              <SkillPreview
-                className='mt-6 bg-background p-6 sm:p-8'
-                contentClassName='min-h-48'
-                progressClassName='right-4 bottom-4 size-6'
-                progressDotClassName='size-5'
-                skill={skill}
-                withProgress={selectedSkillData.title === skill.title}
-              />
-              <Typography as='span' variant='body-sm'>
-                <IntlText path={skill.description} />
-              </Typography>
-            </SkillsAccordionContent>
-          </SkillsAccordionItem>
-        ))}
-      </SkillsAccordion>
+          <SkillProgress key={activeSkillTitle} />
+        </div>
+      </div>
     </motion.section>
   );
 };
