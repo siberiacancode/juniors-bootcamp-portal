@@ -49,7 +49,7 @@ export const FAQ_ITEMS = Array.from({ length: 3 }, (_, index) => ({
 
 export const ROADMAP = Array.from(
   { length: 4 },
-  (_, index) => `page.tasks.section.roadmap.step.${index + 1}`
+  (_, index) => `page.tasks.section.roadmap.step.${index + 1}` as MessagePath
 );
 
 export const TASKS = [
