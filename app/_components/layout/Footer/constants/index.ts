@@ -39,6 +39,10 @@ export const NAVIGATION = [
   {
     href: '/guides',
     label: 'navigation.guides'
+  },
+  {
+    href: '/qa',
+    label: 'navigation.qa'
   }
 ] as const;
 

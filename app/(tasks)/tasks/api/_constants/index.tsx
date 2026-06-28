@@ -1,21 +1,7 @@
-export const FAQ_ITEMS = [
-  {
-    question: 'page.tasksApi.section.faq.0.question',
-    answer: 'page.tasksApi.section.faq.0.answer'
-  },
-  {
-    question: 'page.tasksApi.section.faq.1.question',
-    answer: 'page.tasksApi.section.faq.1.answer'
-  },
-  {
-    question: 'page.tasksApi.section.faq.2.question',
-    answer: 'page.tasksApi.section.faq.2.answer'
-  },
-  {
-    question: 'page.tasksApi.section.faq.3.question',
-    answer: 'page.tasksApi.section.faq.3.answer'
-  }
-] as const;
+export const FAQ_ITEMS = Array.from({ length: 4 }, (_, index) => ({
+  question: `page.tasksApi.section.faq.${index}.question` as MessagePath,
+  answer: `page.tasksApi.section.faq.${index}.answer` as MessagePath
+}));
 
 export const API_CARDS = [
   {
