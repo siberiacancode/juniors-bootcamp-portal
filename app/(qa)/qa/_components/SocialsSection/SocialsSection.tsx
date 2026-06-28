@@ -43,16 +43,16 @@ export const SocialsSection = () => (
         <motion.div
           aria-hidden
           transition={{
-            delay: 0.4,
+            delay: 0.25,
             type: 'spring',
-            stiffness: 260,
+            stiffness: 130,
             damping: 18,
             mass: 0.8
           }}
-          className='pointer-events-none absolute -bottom-18 left-1/2 h-74 w-auto -translate-x-1/2 select-none lg:-bottom-17 lg:h-68'
-          initial={{ opacity: 0, scale: 0.88, y: 40 }}
+          className='pointer-events-none absolute -bottom-18 left-1/2 h-82 w-auto -translate-x-1/2 select-none lg:-bottom-17 lg:h-68'
+          initial={{ opacity: 1, scale: 0.88, y: 125 }}
           viewport={{ once: true }}
-          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          whileInView={{ opacity: 1, scale: 1.2, y: 0 }}
         >
           <MascotHappyIllustration className='h-full w-auto' />
         </motion.div>

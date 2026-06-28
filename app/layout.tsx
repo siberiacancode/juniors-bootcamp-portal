@@ -36,7 +36,15 @@ const overpassMono = Overpass_Mono({
 
 export const metadata: Metadata = {
   title: intl.formatMessage({ id: 'seo.main.title' }),
-  metadataBase: new URL(`https://juniorsbootcamp.ru`)
+  metadataBase: new URL('https://juniorsbootcamp.ru'),
+  icons: {
+    icon: [
+      { sizes: 'any', url: '/favicon.ico' },
+      { sizes: '16x16', type: 'image/png', url: '/favicon-16x16.png' },
+      { sizes: '32x32', type: 'image/png', url: '/favicon-32x32.png' }
+    ],
+    apple: [{ sizes: '180x180', url: '/apple-touch-icon.png' }]
+  }
 };
 
 interface RootLayoutProps {
@@ -55,7 +63,6 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => (
     lang={intl.locale}
   >
     <head>
-      <link href='/metadata/favicon.ico' rel='icon' sizes='any' />
       <meta content='/metadata/open-graph.png' property='og:image' />
       <meta content='image/png' property='og:image:type' />
       <meta content='1200' property='og:image:width' />

@@ -57,8 +57,8 @@ export const SkillsSection = () => {
           duration: 0.75,
           ease: [0.16, 1, 0.3, 1]
         }}
-        className='pointer-events-none absolute top-0 left-1/2 z-0 -translate-x-1/2 select-none lg:-top-52 lg:right-22 lg:left-auto lg:translate-x-0'
-        initial={{ opacity: 0, scale: 0.94, x: 24, y: 28, rotate: 4 }}
+        className='pointer-events-none absolute top-0 left-1/2 z-0 -translate-x-1/2 select-none lg:-top-48 lg:right-22 lg:left-auto lg:translate-x-0'
+        initial={{ opacity: 0, scale: 0.94, x: 24, y: 24, rotate: 4 }}
         viewport={{ once: true }}
         whileInView={{ opacity: 1, scale: 1, x: 0, y: 0, rotate: 0 }}
       >

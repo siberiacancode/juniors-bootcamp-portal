@@ -4,25 +4,8 @@ interface PracticeSlide {
   title: MessagePath;
 }
 
-export const PRACTICE_SLIDES = [
-  {
-    title: 'page.qa.practice.0.title',
-    description: 'page.qa.practice.0.description',
-    image: '#'
-  },
-  {
-    title: 'page.qa.practice.1.title',
-    description: 'page.qa.practice.1.description',
-    image: '#'
-  },
-  {
-    title: 'page.qa.practice.2.title',
-    description: 'page.qa.practice.2.description',
-    image: '#'
-  },
-  {
-    title: 'page.qa.practice.3.title',
-    description: 'page.qa.practice.3.description',
-    image: '#'
-  }
-] satisfies readonly PracticeSlide[];
+export const PRACTICE_SLIDES = Array.from({ length: 5 }, (_, index) => ({
+  title: `page.qa.practice.${index}.title` as MessagePath,
+  description: `page.qa.practice.${index}.description` as MessagePath,
+  image: `/images/tester/task-${index}.png`
+})) satisfies readonly PracticeSlide[];

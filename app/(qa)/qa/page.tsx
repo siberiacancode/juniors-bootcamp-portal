@@ -6,7 +6,7 @@ import {
   FAQSection,
   HeroSection,
   PracticeSection,
-  ReviewsSection,
+  // ReviewsSection,
   SkillsSection,
   SocialsSection
 } from './_components';
@@ -22,7 +22,7 @@ const QAPage = () => (
     <SkillsSection />
     <PracticeSection />
     <FAQSection />
-    <ReviewsSection />
+    {/* <ReviewsSection /> */}
     <SocialsSection />
   </main>
 );

@@ -1,4 +1,5 @@
 import * as motion from 'motion/react-client';
+import Image from 'next/image';
 
 import {
   Carousel,
@@ -11,6 +12,7 @@ import {
 } from '@/components/ui';
 import { IntlText } from '@/intl';
 
+import { PracticeTasksLink } from './components';
 import { PRACTICE_SLIDES } from './constants';
 
 export const PracticeSection = () => (
@@ -23,14 +25,25 @@ export const PracticeSection = () => (
     viewport={{ once: true }}
     whileInView={{ opacity: 1, y: 0 }}
   >
-    <Typography
-      pixelify
-      as='h2'
-      className='text-[34px]/[42px] sm:text-[56px]/[56px] lg:text-[88px]/24'
-      variant='display'
-    >
-      <IntlText path='page.qa.practice.title' />
-    </Typography>
+    <div className='flex flex-col items-start gap-3'>
+      <Typography
+        pixelify
+        as='h2'
+        className='text-[34px]/[42px] sm:text-[56px]/[56px] lg:text-[88px]/24'
+        variant='display'
+      >
+        <IntlText path='page.qa.practice.title' />
+      </Typography>
+
+      <Typography as='p' variant='body-lg'>
+        <IntlText
+          values={{
+            link: PracticeTasksLink
+          }}
+          path='page.qa.practice.description'
+        />
+      </Typography>
+    </div>
 
     <Carousel
       options={{
@@ -49,16 +62,15 @@ export const PracticeSection = () => (
         {PRACTICE_SLIDES.map((slide) => (
           <CarouselItem key={slide.title}>
             <div className='flex flex-col items-center gap-6 rounded-44 bg-secondary p-6 sm:gap-8 sm:p-12 lg:px-25 lg:py-16'>
-              <div className='relative h-40 w-full max-w-163 overflow-hidden rounded-16 bg-background shadow-inner sm:h-80 lg:h-115'>
-                {/* Место под пикчу */}
-                {/* <Image
+              <div className='relative aspect-1920/996 w-full max-w-300 overflow-hidden rounded-2 bg-background shadow-inner'>
+                <Image
                   fill
-                  alt=''
+                  alt={slide.title}
                   aria-hidden='true'
                   className='object-cover'
                   sizes='(min-width: 1024px) 652px, calc(100vw - 96px)'
                   src={slide.image}
-                /> */}
+                />
               </div>
               <div className='flex max-w-260 flex-col items-center gap-3 text-center sm:px-0'>
                 <Typography as='h3' className='text-[24px]/8 sm:text-[32px]/10' variant='title-lg'>

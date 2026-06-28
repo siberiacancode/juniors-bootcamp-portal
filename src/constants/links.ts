@@ -16,6 +16,7 @@ export const LINKS = {
       'https://www.figma.com/design/dTtlKirZNUvr9POVt2lcRA/Juniors-Bootcamp-Landing?node-id=40000541-3429',
     API: 'https://juniorsbootcamp.ru/api/rest'
   },
+  TESTER: 'https://juniorsbootcamp.ru/tester',
   TASKS: {
     DELIVERY: {
       BACKEND: 'https://juniorsbootcamp.ru/api/rest/deliverys',
