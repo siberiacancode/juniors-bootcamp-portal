@@ -18,11 +18,12 @@ import {
   SkillsAccordionItem,
   SkillsAccordionTrigger
 } from './components';
-import { SKILLS } from './constants';
+import { SKILL_AUTO_CHANGE_DELAY_SECONDS, SKILLS } from './constants';
 
 export const SkillsSection = () => {
   const isDesktop = useMediaQuery('(min-width: 1024px)');
   const [activeSkillTitle, setActiveSkillTitle] = useState<Skill>(SKILLS[0].title);
+  const activeSkill = SKILLS.find((skill) => skill.title === activeSkillTitle) ?? SKILLS[0];
 
   const interval = useInterval(() => {
     setActiveSkillTitle((skillTitle) => {
@@ -30,7 +31,7 @@ export const SkillsSection = () => {
 
       return SKILLS[(skillIndex + 1) % SKILLS.length].title;
     });
-  }, 5000);
+  }, SKILL_AUTO_CHANGE_DELAY_SECONDS * 1000);
 
   useDidUpdate(() => {
     interval.pause();
@@ -44,7 +45,7 @@ export const SkillsSection = () => {
       transition={{
         duration: 0.6
       }}
-      className='relative grid gap-6 pt-52 lg:grid-cols-[minmax(0,560px)_1fr] lg:pt-0'
+      className='relative grid gap-6 pt-52 lg:grid-cols-[minmax(0,560px)_1fr] lg:items-start lg:pt-0'
       id='skills'
       initial={{ opacity: 0, y: '20%' }}
       viewport={{ once: true }}
@@ -71,79 +72,79 @@ export const SkillsSection = () => {
         value={activeSkillTitle}
         onValueChange={(skillTitle) => setActiveSkillTitle(skillTitle as Skill)}
       >
-        {SKILLS.map((skill) => {
-          const Icon = skill.Icon;
-
-          return (
-            <SkillsAccordionItem
-              key={skill.title}
-              className={cn(
-                isDesktop
-                  ? 'flex flex-col rounded-32 border-0 bg-secondary px-10 py-8'
-                  : 'rounded-32 border-0 bg-secondary p-6',
-                'data-[state=open]:bg-(--color-olive-100) data-[state=open]:text-action-primary'
-              )}
-              value={skill.title}
-            >
-              <SkillsAccordionTrigger
-                icon={isDesktop && <Icon className='size-10 shrink-0 text-action-primary' />}
-              >
-                <Typography as='span' variant={isDesktop ? 'title-lg' : 'title-md'}>
-                  <IntlText path={skill.title} />
-                </Typography>
-              </SkillsAccordionTrigger>
-              <SkillsAccordionContent className={cn(!isDesktop && 'flex flex-col gap-6')}>
-                {!isDesktop && (
-                  <div
-                    className={cn(
-                      'relative grid size-full gap-4 rounded-32 bg-secondary p-8',
-                      'mt-6 bg-background p-6 sm:p-8'
-                    )}
-                  >
-                    <div
-                      className={cn(
-                        'grid min-h-full place-content-center rounded-32 bg-background',
-                        'min-h-48'
-                      )}
-                    >
-                      <div className='flex flex-col items-center'>
-                        <Icon className='size-10 text-action-primary' />
-                        <Typography as='p' variant='body-lg'>
-                          Контент
-                        </Typography>
-                      </div>
-                    </div>
-
-                    {activeSkillTitle === skill.title && (
-                      <SkillProgress
-                        key={activeSkillTitle}
-                        className='right-4 bottom-4 size-6'
-                        dotClassName='size-5'
-                      />
-                    )}
+        {SKILLS.map((skill) => (
+          <SkillsAccordionItem
+            key={skill.title}
+            className={cn(
+              isDesktop
+                ? 'flex flex-col rounded-32 border-0 bg-secondary px-10 py-8'
+                : 'rounded-32 border-0 bg-secondary p-6',
+              'data-[state=open]:bg-(--color-olive-100) data-[state=open]:text-action-primary'
+            )}
+            value={skill.title}
+          >
+            <SkillsAccordionTrigger>
+              <Typography as='span' variant={isDesktop ? 'title-lg' : 'title-md'}>
+                <IntlText path={skill.title} />
+              </Typography>
+            </SkillsAccordionTrigger>
+            <SkillsAccordionContent className={cn(!isDesktop && 'flex flex-col gap-6')}>
+              {!isDesktop && (
+                <div
+                  className={cn(
+                    'relative grid size-full gap-4 rounded-32 bg-secondary p-8',
+                    'mt-6 bg-background p-6 sm:p-8'
+                  )}
+                >
+                  <div className='grid h-52 overflow-hidden rounded-32 bg-background sm:h-64'>
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      key={skill.video}
+                      aria-hidden='true'
+                      className='size-full object-cover'
+                      preload='metadata'
+                      src={skill.video}
+                    />
                   </div>
-                )}
-                {isDesktop ? (
+
+                  {activeSkillTitle === skill.title && (
+                    <SkillProgress
+                      key={activeSkillTitle}
+                      className='right-4 bottom-4 size-6'
+                      dotClassName='size-5'
+                    />
+                  )}
+                </div>
+              )}
+              {isDesktop ? (
+                <IntlText path={skill.description} />
+              ) : (
+                <Typography as='span' variant='body-sm'>
                   <IntlText path={skill.description} />
-                ) : (
-                  <Typography as='span' variant='body-sm'>
-                    <IntlText path={skill.description} />
-                  </Typography>
-                )}
-              </SkillsAccordionContent>
-            </SkillsAccordionItem>
-          );
-        })}
+                </Typography>
+              )}
+            </SkillsAccordionContent>
+          </SkillsAccordionItem>
+        ))}
       </SkillsAccordion>
 
-      <div className='z-10 hidden items-center justify-center overflow-hidden lg:flex'>
-        <div className='relative grid size-full gap-4 rounded-32 bg-secondary p-8'>
-          <div className='grid min-h-full place-content-center rounded-32 bg-background'>
-            <div className='flex flex-col items-center'>
-              <Typography as='p' variant='body-lg'>
-                Контент
-              </Typography>
-            </div>
+      <div className='z-10 hidden overflow-hidden lg:flex lg:self-start'>
+        <div className='relative flex w-full items-center justify-center rounded-32 bg-secondary p-8'>
+          <div className='h-80 w-full overflow-hidden rounded-32 bg-background xl:h-96'>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              key={activeSkillTitle}
+              aria-hidden='true'
+              className='size-full object-cover'
+              preload='metadata'
+              src={activeSkill.video}
+            />
           </div>
 
           <SkillProgress key={activeSkillTitle} />

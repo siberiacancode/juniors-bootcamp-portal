@@ -65,6 +65,7 @@ export const PracticeSection = () => (
               <div className='relative aspect-1920/996 w-full max-w-300 overflow-hidden rounded-2 bg-background shadow-inner'>
                 <Image
                   fill
+                  unoptimized
                   alt={slide.title}
                   aria-hidden='true'
                   className='object-cover'
