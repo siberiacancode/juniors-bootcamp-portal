@@ -12,7 +12,7 @@ export const HeroSection = () => (
   <section
     className={cn(
       'relative flex flex-col items-center justify-center gap-16 p-6',
-      'my-8 h-[75dvh] sm:my-10 md:h-[calc(85dvh-(--spacing(35)))]'
+      'my-8 min-h-[75dvh] sm:my-10 md:min-h-[calc(85dvh-8.75rem)]'
     )}
   >
     <motion.div
@@ -32,10 +32,10 @@ export const HeroSection = () => (
       </Button>
 
       <h1 className='inline-flex flex-col gap-2 pt-10 select-none'>
-        <span className='font-parisienne text-[clamp(76px,calc(-44px+14.5vw),180px)] leading-0 font-normal'>
+        <span className='font-parisienne text-[clamp(54px,16vw,76px)] leading-0 font-normal md:text-[clamp(76px,calc(-44px+14.5vw),180px)]'>
           juniors
         </span>
-        <span className='font-pixelify-sans text-[clamp(86px,calc(-88px+22.5vw),230px)] leading-none font-bold'>
+        <span className='font-pixelify-sans text-[clamp(52px,14.5vw,86px)] leading-none font-bold md:text-[clamp(86px,calc(-88px+22.5vw),230px)]'>
           BOOTCAMP
         </span>
       </h1>

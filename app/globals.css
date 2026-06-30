@@ -84,6 +84,9 @@
   --radius-16: 1rem;
   --radius-20: 1.25rem;
   --radius-24: 1.5rem;
+  --radius-32: 2rem;
+  --radius-44: 2.75rem;
+
   --radius-full: calc(infinity * 1px);
 
   --font-nunito: var(--font-nunito);
@@ -180,6 +183,10 @@
   --color-green-700: rgb(21, 128, 61);
   --color-green-800: rgb(22, 101, 52);
   --color-green-900: rgb(20, 83, 45);
+
+  --color-olive-100: rgb(233, 239, 209);
+  --color-olive-700: rgb(87, 111, 0);
+  --color-olive-800: rgb(70, 89, 0);
 
   --color-blue-50: rgb(239, 246, 255);
   --color-blue-100: rgb(219, 234, 254);
@@ -331,6 +338,10 @@
 
   * {
     @apply border-border-hard outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {

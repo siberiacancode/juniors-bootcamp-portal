@@ -42,27 +42,15 @@ export const TAGS = [
   // }
 ] as const;
 
-export const FAQ_ITEMS = [
-  {
-    question: 'page.tasks.section.faq.0.question',
-    answer: 'page.tasks.section.faq.0.answer'
-  },
-  {
-    question: 'page.tasks.section.faq.1.question',
-    answer: 'page.tasks.section.faq.1.answer'
-  },
-  {
-    question: 'page.tasks.section.faq.2.question',
-    answer: 'page.tasks.section.faq.2.answer'
-  }
-] as const;
+export const FAQ_ITEMS = Array.from({ length: 3 }, (_, index) => ({
+  question: `page.tasks.section.faq.${index}.question` as MessagePath,
+  answer: `page.tasks.section.faq.${index}.answer` as MessagePath
+}));
 
-export const ROADMAP = [
-  'page.tasks.section.roadmap.step.1',
-  'page.tasks.section.roadmap.step.2',
-  'page.tasks.section.roadmap.step.3',
-  'page.tasks.section.roadmap.step.4'
-] as const;
+export const ROADMAP = Array.from(
+  { length: 4 },
+  (_, index) => `page.tasks.section.roadmap.step.${index + 1}` as MessagePath
+);
 
 export const TASKS = [
   {

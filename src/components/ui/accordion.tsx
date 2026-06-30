@@ -27,7 +27,8 @@ const AccordionTrigger = ({
   <AccordionPrimitive.Header className='flex'>
     <AccordionPrimitive.Trigger
       className={cn(
-        `flex flex-1 items-center justify-between gap-4 text-left text-[24px]/8 font-medium tracking-wide transition-transform outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180`,
+        `flex flex-1 items-center justify-between gap-4 text-left text-[24px]/8 font-medium tracking-wide transition-transform outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50`,
+        '[&[data-state=open]>svg]:rotate-180',
         className
       )}
       data-slot='accordion-trigger'
