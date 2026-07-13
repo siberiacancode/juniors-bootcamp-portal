@@ -1,0 +1,87 @@
+---
+title: 'Forms'
+description: 'Практическое руководство по формам: controlled inputs, validation, submit states и layout.'
+---
+
+## Controlled inputs
+
+Controlled inputs нужны, когда значение влияет на другие части интерфейса: live preview, dependent fields или сложную валидацию. Для простых форм можно использовать uncontrolled-подход и читать `FormData`.
+
+```tsx
+import { FormField, Input } from '@novakit/react';
+import { useState } from 'react';
+
+export function ProjectNameForm() {
+  const [name, setName] = useState('');
+
+  return (
+    <FormField label='Название проекта'>
+      <Input value={name} onChange={(event) => setName(event.target.value)} />
+    </FormField>
+  );
+}
+```
+
+## Validation
+
+Валидация должна возвращать сообщения, которые можно показать рядом с полем. Не заставляйте пользователя искать ошибку в общем alert сверху.
+
+```ts
+type ValidationResult = {
+  ok: boolean;
+  message?: string;
+};
+
+export function validateProjectName(value: string): ValidationResult {
+  if (value.trim().length < 3) {
+    return { ok: false, message: 'Минимум 3 символа' };
+  }
+
+  return { ok: true };
+}
+```
+
+## Error messages
+
+Сообщения должны быть короткими и конкретными. Визуально ошибка должна быть связана с полем через цвет, текст и ARIA.
+
+| Плохо      | Лучше                                      |
+| ---------- | ------------------------------------------ |
+| `Invalid`  | `Введите email в формате name@example.com` |
+| `Required` | `Название проекта обязательно`             |
+| `Error`    | `Лимит должен быть от 1 до 100`            |
+
+## Submit states
+
+Submit-кнопка должна отражать состояние отправки. Если форма сохраняется долго, полезно показать optimistic copy или disabled-состояние вторичных действий.
+
+```tsx
+import { Button } from '@novakit/react';
+
+export function SubmitActions({ pending }: { pending: boolean }) {
+  return (
+    <Button type='submit' loading={pending}>
+      {pending ? 'Сохраняем' : 'Сохранить'}
+    </Button>
+  );
+}
+```
+
+## Form layout
+
+Для SaaS-форм удобна вертикальная структура с группами. Две колонки используйте только там, где поля короткие и логически связаны.
+
+```css
+.settings-form {
+  display: grid;
+  gap: var(--nk-space-6);
+  max-width: 720px;
+}
+
+.settings-form__row {
+  display: grid;
+  gap: var(--nk-space-4);
+}
+```
+
+Связанный компонент - [FormField](../components/form-field), а общие требования к клавиатуре описаны в [Accessibility](./accessibility).

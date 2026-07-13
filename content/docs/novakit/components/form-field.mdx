@@ -1,0 +1,81 @@
+---
+title: 'FormField'
+description: 'FormField для label, description, validation message и доступного связывания полей.'
+---
+
+## Назначение
+
+`FormField` связывает label, control, description и validation message. Он не хранит значение поля и не заменяет form library.
+
+```tsx
+import { FormField, Input } from '@novakit/react';
+
+export function EmailField() {
+  return (
+    <FormField label='Email' description='Используйте рабочий адрес'>
+      <Input type='email' name='email' />
+    </FormField>
+  );
+}
+```
+
+## Label
+
+Label должен описывать данные, а не действие. Для обязательных полей лучше использовать явный текст или consistent indicator, а не только цвет.
+
+```tsx
+<FormField label='Название workspace' required>
+  <Input name='workspaceName' />
+</FormField>
+```
+
+### Хорошие labels
+
+- "Email администратора"
+- "Название проекта"
+- "Лимит участников"
+
+## Description
+
+Description объясняет формат или последствия ввода. Не дублируйте label, иначе форма становится длиннее без пользы.
+
+```tsx
+<FormField label='Slug' description='Используется в публичном URL. Можно изменить позже.'>
+  <Input name='slug' />
+</FormField>
+```
+
+## Validation message
+
+Сообщение об ошибке должно быть конкретным. Вместо "Invalid value" напишите, что именно нужно исправить.
+
+```tsx
+<FormField label='Лимит' error='Введите число от 1 до 100'>
+  <Input name='limit' inputMode='numeric' />
+</FormField>
+```
+
+> Error message должен быть связан с control через `aria-describedby`, чтобы screen reader озвучивал проблему.
+
+## Integration with forms
+
+`FormField` можно использовать с любой библиотекой форм. Важно, чтобы control получал `name`, `value`, `onChange` и состояние ошибки из вашего слоя.
+
+```tsx
+type FieldState = {
+  value: string;
+  error?: string;
+};
+
+export function WorkspaceNameField({ field }: { field: FieldState }) {
+  return (
+    <FormField label='Workspace' error={field.error}>
+      <input name='workspace' defaultValue={field.value} />
+    </FormField>
+  );
+}
+```
+
+## Accessibility
+
+Компонент генерирует id для label и description, но текст остаётся вашей ответственностью. Подробнее о проверках см. [Accessibility](../guides/accessibility) и [Forms Guide](../guides/forms).

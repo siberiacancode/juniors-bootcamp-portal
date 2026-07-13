@@ -1,0 +1,19 @@
+{
+  "title": "NovaKit",
+  "description": "Компоненты, дизайн-токены и рекомендации по созданию интерфейсов.",
+  "root": true,
+  "defaultOpen": true,
+  "pages": [
+    "index",
+    "---Start Here---",
+    "getting-started",
+    "---Core Concepts---",
+    "concepts",
+    "---Components---",
+    "components",
+    "---Guides---",
+    "guides",
+    "---Reference---",
+    "reference"
+  ]
+}

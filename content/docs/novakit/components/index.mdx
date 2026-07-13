@@ -1,0 +1,60 @@
+---
+title: 'Components'
+description: 'Обзор компонентов NovaKit, соглашения по API, controlled/uncontrolled и accessibility.'
+---
+
+## Категории компонентов
+
+NovaKit делит компоненты по задачам интерфейса. Это помогает быстрее найти нужный API и не смешивать элементы разных уровней абстракции.
+
+| Категория | Компоненты            | Задача                                  |
+| --------- | --------------------- | --------------------------------------- |
+| Inputs    | `Button`, `FormField` | ввод и действия                         |
+| Overlays  | `Dialog`              | фокусированные сценарии поверх страницы |
+| Layout    | `Card`                | структурирование контента               |
+
+## Соглашения по API
+
+Props называются по смыслу, а не по внутренней реализации. Например, `variant="primary"` описывает роль действия, а не конкретный цвет.
+
+```tsx
+import { Button } from '@novakit/react';
+
+export function Actions() {
+  return (
+    <>
+      <Button variant='primary'>Сохранить</Button>
+      <Button variant='secondary'>Отмена</Button>
+    </>
+  );
+}
+```
+
+### Composition-first
+
+Компоненты часто имеют вложенные части: `Card.Header`, `Card.Content`, `Dialog.Trigger`. Такой API делает структуру явной и упрощает замену отдельных частей.
+
+## Controlled и uncontrolled
+
+Интерактивные компоненты поддерживают controlled-режим для продуктовой логики и uncontrolled-режим для простых сценариев. Выбор зависит от того, кто владеет состоянием.
+
+```tsx
+import { Dialog } from '@novakit/react';
+import { useState } from 'react';
+
+export function ControlledExample() {
+  const [open, setOpen] = useState(false);
+
+  return <Dialog open={open} onOpenChange={setOpen} />;
+}
+```
+
+## Accessibility
+
+Компоненты NovaKit должны иметь разумные defaults: keyboard navigation, focus management и ARIA-атрибуты там, где они нужны. Но продуктовый текст и labels остаются ответственностью приложения.
+
+> Компонент может настроить роль и фокус, но не может угадать хороший `aria-label` для вашей бизнес-операции.
+
+## Что читать дальше
+
+Начните с [Button](./button), затем откройте [Dialog](./dialog), чтобы проверить overlay-сценарии. Для связки с формами полезны [FormField](./form-field) и [Forms Guide](../guides/forms).

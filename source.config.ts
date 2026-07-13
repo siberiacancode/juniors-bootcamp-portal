@@ -1,7 +1,7 @@
 import type { Root } from 'mdast';
 import type { Plugin } from 'unified';
 
-import { defineConfig } from 'fumadocs-mdx/config';
+import { defineConfig, defineDocs } from 'fumadocs-mdx/config';
 import remarkDirective from 'remark-directive';
 import remarkGfm from 'remark-gfm';
 import { visit } from 'unist-util-visit';
@@ -19,9 +19,9 @@ const remarkCodeGroup: Plugin<void[], Root> = () => (tree) => {
   });
 };
 
-// export const docs = defineDocs({
-//   dir: 'content/docs'
-// });
+export const docs = defineDocs({
+  dir: 'content/docs'
+});
 
 export default defineConfig({
   mdxOptions: {

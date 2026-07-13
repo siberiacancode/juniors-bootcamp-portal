@@ -1,0 +1,79 @@
+---
+title: 'Button'
+description: 'Использование Button: варианты, размеры, loading, disabled и доступность.'
+---
+
+## Usage
+
+`Button` используется для явных действий. Если элемент ведёт на другую страницу, используйте link-компонент приложения и стилизуйте его как кнопку только при необходимости.
+
+```tsx
+import { Button } from '@novakit/react';
+
+export function SaveAction() {
+  return <Button variant='primary'>Сохранить изменения</Button>;
+}
+```
+
+### Базовое правило
+
+Один экран должен иметь ограниченное количество primary-действий. Если всё выглядит главным, пользователь не понимает порядок работы.
+
+## Variants
+
+Variants описывают роль действия. Они не должны использоваться как произвольные цвета.
+
+| Variant     | Когда использовать                 |
+| ----------- | ---------------------------------- |
+| `primary`   | главное действие на экране         |
+| `secondary` | альтернативное действие            |
+| `ghost`     | тихое действие в toolbar           |
+| `danger`    | удаление или необратимое изменение |
+
+```tsx
+<Button variant="primary">Создать проект</Button>
+<Button variant="danger">Удалить workspace</Button>
+```
+
+## Sizes
+
+Размер задаёт плотность интерфейса. Для таблиц и toolbar подходит `sm`, для обычных форм - `md`, для редких акцентных действий - `lg`.
+
+```tsx
+<Button size="sm">Фильтр</Button>
+<Button size="md">Сохранить</Button>
+<Button size="lg">Запустить импорт</Button>
+```
+
+## Loading state
+
+Loading-состояние блокирует повторный submit и сообщает пользователю, что действие принято. Текст лучше оставлять понятным, а не заменять только spinner.
+
+```tsx
+import { Button } from '@novakit/react';
+
+export function SubmitButton({ isSaving }: { isSaving: boolean }) {
+  return (
+    <Button type='submit' loading={isSaving}>
+      {isSaving ? 'Сохраняем' : 'Сохранить'}
+    </Button>
+  );
+}
+```
+
+## Disabled state
+
+`disabled` подходит для временно недоступных действий. Если нужно объяснить причину, покажите текст рядом с формой или в tooltip.
+
+> Не используйте disabled как единственный способ сообщить об ошибке. Пользователь должен понимать, что нужно исправить.
+
+## Props
+
+| Prop       | Type                                              | Default     | Описание            |
+| ---------- | ------------------------------------------------- | ----------- | ------------------- |
+| `variant`  | `'primary' \| 'secondary' \| 'ghost' \| 'danger'` | `'primary'` | Визуальная роль     |
+| `size`     | `'sm' \| 'md' \| 'lg'`                            | `'md'`      | Плотность кнопки    |
+| `loading`  | `boolean`                                         | `false`     | Показывает прогресс |
+| `disabled` | `boolean`                                         | `false`     | Блокирует действие  |
+
+Для overlay-сценариев смотрите [Dialog](./dialog), где `Button` часто используется как trigger.

@@ -40,6 +40,7 @@ const ThemeButton = dynamic(
 const NAVIGATION = [
   { href: '/tasks', label: 'navigation.tasks' },
   { href: '/guides', label: 'navigation.guides' },
+  { href: '/docs', label: 'navigation.docs' },
   { href: '/qa', label: 'navigation.qa' }
 ] as const;
 

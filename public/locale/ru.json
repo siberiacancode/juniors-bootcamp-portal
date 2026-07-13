@@ -13,6 +13,7 @@
 
   "navigation.tasks": "Задания",
   "navigation.guides": "Гайды",
+  "navigation.docs": "Документация",
   "navigation.qa": "Тестирование",
 
   "page.home.metadata.title": "JUNIORS BOOTCAMP — бесплатный развивающий контент для начинающих айтишников",
@@ -117,6 +118,11 @@
   "page.guides.chip.clearAll": "очистить всё",
   "page.guides.epmty.title": "По этим фильтрам пока пусто",
   "page.guides.epmty.description": "Сейчас в базе нет материалов, которые подходят под все условия сразу. Попробуйте искать по одному гайду, например только «react» или только «css».",
+
+  "page.docs.metadata.title": "Документация",
+  "page.docs.metadata.description": "Выберите проект и ознакомьтесь с его документацией",
+  "page.docs.title": "Документация",
+  "page.docs.description": "Выберите проект для просмотра его документации",
 
   "page.tasksApi.metadata.title": "API для заданий — REST и GraphQL",
   "page.tasksApi.metadata.description": "Общедоступное API для REST и GraphQL: одна доменная модель, без лимитов и платных тарифов — для обучения и pet-проектов.",

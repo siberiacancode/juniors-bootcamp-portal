@@ -1,0 +1,5 @@
+{
+  "title": "Core Concepts",
+  "defaultOpen": true,
+  "pages": ["design-tokens", "theming", "responsive-system"]
+}

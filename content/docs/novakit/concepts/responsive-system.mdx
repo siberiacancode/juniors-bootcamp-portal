@@ -1,0 +1,86 @@
+---
+title: 'Responsive System'
+description: 'Breakpoints, container queries и mobile-first подход в NovaKit.'
+---
+
+## Mobile-first подход
+
+NovaKit проектирует компоненты так, чтобы базовое состояние работало на узких экранах. Расширение layout происходит через media queries или container queries, когда появляется место.
+
+```css
+.billing-grid {
+  display: grid;
+  gap: var(--nk-space-4);
+}
+
+@media (min-width: 768px) {
+  .billing-grid {
+    grid-template-columns: 1fr 320px;
+  }
+}
+```
+
+## Breakpoints
+
+Breakpoints задают общие ширины приложения. Они подходят для page layout, sidebar и крупных rearrangement-сценариев.
+
+| Token | Width    | Пример                                    |
+| ----- | -------- | ----------------------------------------- |
+| `sm`  | `640px`  | compact form становится в две колонки     |
+| `md`  | `768px`  | появляется sidebar                        |
+| `lg`  | `1024px` | таблица показывает дополнительные колонки |
+| `xl`  | `1280px` | включается dense dashboard layout         |
+
+### Использование в TypeScript
+
+```ts
+export const breakpoints = {
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280
+} as const;
+```
+
+## Container queries
+
+Для компонентов лучше использовать container queries. Компонент должен реагировать на ширину своего контейнера, а не всей страницы.
+
+```css
+.metric-card {
+  container-type: inline-size;
+}
+
+@container (min-width: 360px) {
+  .metric-card__body {
+    grid-template-columns: 1fr auto;
+  }
+}
+```
+
+> Container queries особенно полезны для cards, widgets и форм, которые переезжают между dashboard и dialog.
+
+## Adaptive components
+
+Некоторые компоненты меняют поведение. Например, `Dialog` на маленьком экране может занимать почти всю высоту, а `Card.Footer` переносит кнопки в колонку.
+
+```tsx
+import { Dialog } from '@novakit/react';
+
+export function ResponsiveDialog() {
+  return (
+    <Dialog.Content size={{ base: 'full', md: 'md' }} title='Настройки'>
+      <p>Контент адаптируется под ширину viewport.</p>
+    </Dialog.Content>
+  );
+}
+```
+
+## Практические правила
+
+1. Сначала проверьте layout на ширине 360px.
+2. Не скрывайте критичные действия только из-за недостатка места.
+3. Используйте таблицы с горизонтальным scroll, если данные нельзя безопасно сократить.
+4. Компонентные изменения делайте через container queries.
+
+Следующая связанная тема - [Card](../components/card), потому что карточки часто становятся основным responsive-контейнером.

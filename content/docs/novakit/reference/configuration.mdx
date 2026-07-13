@@ -1,0 +1,85 @@
+---
+title: 'Configuration'
+description: 'Reference по novakit.config.ts: theme options, component defaults и JSON-пример.'
+---
+
+## Config object
+
+`novakit.config.ts` описывает общие настройки дизайн-системы. Он не заменяет CSS, но помогает держать defaults компонентов в одном месте.
+
+```ts
+import type { NovaKitConfig } from '@novakit/react/config';
+
+export default {
+  theme: {
+    colorScheme: 'system',
+    radius: 'md'
+  },
+  components: {
+    Button: {
+      defaultVariant: 'primary',
+      defaultSize: 'md'
+    }
+  }
+} satisfies NovaKitConfig;
+```
+
+## Theme options
+
+| Option        | Type                            | Default     | Описание            |
+| ------------- | ------------------------------- | ----------- | ------------------- |
+| `colorScheme` | `'light' \| 'dark' \| 'system'` | `'system'`  | Начальная тема      |
+| `radius`      | `'sm' \| 'md' \| 'lg'`          | `'md'`      | Глобальный радиус   |
+| `density`     | `'compact' \| 'regular'`        | `'regular'` | Плотность контролов |
+
+### Связь с CSS
+
+Config задаёт semantic defaults, а CSS-переменные отвечают за конкретные значения. Такой split упрощает брендирование.
+
+## Component defaults
+
+Defaults нужны, когда команда хочет одинаковое поведение без повторения props.
+
+```ts
+export default {
+  components: {
+    Dialog: {
+      size: 'md',
+      modal: true
+    },
+    Button: {
+      defaultSize: 'sm'
+    }
+  }
+} satisfies NovaKitConfig;
+```
+
+## JSON example
+
+Некоторые инструменты могут читать JSON-вариант конфигурации. Он удобен для design token pipeline.
+
+```json
+{
+  "theme": {
+    "colorScheme": "system",
+    "radius": "md",
+    "density": "regular"
+  },
+  "components": {
+    "Button": {
+      "defaultVariant": "primary",
+      "defaultSize": "md"
+    }
+  }
+}
+```
+
+## Validation
+
+CLI может проверять конфигурацию перед сборкой. Подробнее о командах см. [CLI](./cli).
+
+```bash
+npx novakit config check
+```
+
+> Если config не найден, NovaKit использует defaults. Это нормальное состояние для небольших проектов.

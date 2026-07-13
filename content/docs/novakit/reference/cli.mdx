@@ -1,0 +1,69 @@
+---
+title: 'CLI'
+description: 'Reference по вымышленному NovaKit CLI: init, add, update tokens и generate theme.'
+---
+
+## init
+
+Команда `init` создаёт базовый config, подключает CSS-файл и предлагает выбрать тему.
+
+```bash
+npx novakit init
+```
+
+### Что делает команда
+
+1. Проверяет наличие React.
+2. Создаёт `novakit.config.ts`.
+3. Добавляет пример theme CSS.
+4. Показывает следующий шаг.
+
+## add component
+
+`add` добавляет локальный wrapper или пример использования компонента. Это удобно для команд, которые хотят стандартизировать композиции.
+
+```bash
+npx novakit add button
+npx novakit add dialog
+```
+
+## update tokens
+
+`tokens update` синхронизирует токены из JSON-файла. В демо это просто пример pipeline между дизайном и кодом.
+
+```bash
+npx novakit tokens update ./tokens/brand.json
+```
+
+```json
+{
+  "color": {
+    "accent": "#2563eb"
+  },
+  "radius": {
+    "md": "8px"
+  }
+}
+```
+
+## generate theme
+
+`theme generate` создаёт CSS-переменные для новой темы.
+
+```bash
+npx novakit theme generate --name enterprise --out src/styles/enterprise.css
+```
+
+## Command table
+
+| Command                        | Назначение                    |
+| ------------------------------ | ----------------------------- |
+| `novakit init`                 | начальная настройка           |
+| `novakit add <component>`      | пример или wrapper компонента |
+| `novakit tokens update <file>` | синхронизация токенов         |
+| `novakit theme generate`       | генерация CSS theme           |
+| `novakit config check`         | проверка config               |
+
+## Troubleshooting
+
+Если CLI не видит config, проверьте текущую директорию и имя файла. Для ошибок темы откройте [Troubleshooting](./troubleshooting).

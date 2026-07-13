@@ -1,0 +1,79 @@
+---
+title: 'Card'
+description: 'Структурирование интерфейса через Card, header, content, footer и интерактивные карточки.'
+---
+
+## Basic usage
+
+`Card` группирует связанный контент. Она не должна использоваться только для декоративной рамки вокруг каждой мелкой детали.
+
+```tsx
+import { Card } from '@novakit/react';
+
+export function AccountCard() {
+  return (
+    <Card>
+      <Card.Header title='Аккаунт' description='Основные настройки workspace' />
+      <Card.Content>
+        <p>Публичное имя, slug и регион данных.</p>
+      </Card.Content>
+    </Card>
+  );
+}
+```
+
+## Composition
+
+Составные части карточки помогают держать одинаковые отступы. `Card.Header` отвечает за заголовок, `Card.Content` - за содержимое, `Card.Footer` - за действия.
+
+```tsx
+<Card>
+  <Card.Header title='Импорт' description='CSV и XLSX файлы' />
+  <Card.Content>Последний импорт завершён без ошибок.</Card.Content>
+  <Card.Footer>Открыть историю</Card.Footer>
+</Card>
+```
+
+### Когда не нужен footer
+
+Если карточка только отображает метрику, footer можно не добавлять. Лишняя зона действий увеличивает визуальный шум.
+
+## Header, content и footer
+
+| Часть          | Назначение          | Типичный контент          |
+| -------------- | ------------------- | ------------------------- |
+| `Card.Header`  | контекст            | title, description, badge |
+| `Card.Content` | основная информация | таблица, текст, график    |
+| `Card.Footer`  | действия            | buttons, links            |
+
+## Interactive cards
+
+Интерактивная карточка должна иметь понятный focus state и не содержать вложенных интерактивных элементов без необходимости.
+
+```tsx
+import { Card } from '@novakit/react';
+
+export function WorkspaceCard() {
+  return (
+    <Card asChild interactive>
+      <a href='/workspaces/acme'>
+        <Card.Header title='Acme' description='12 участников' />
+      </a>
+    </Card>
+  );
+}
+```
+
+> Если внутри карточки есть несколько кнопок, не делайте кликабельной всю карточку. Это создаёт конфликт keyboard navigation.
+
+## Layout examples
+
+Карточки часто используются в responsive-сетках. Для поведения на разных ширинах см. [Responsive System](../concepts/responsive-system).
+
+```css
+.dashboard-cards {
+  display: grid;
+  gap: var(--nk-space-4);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+```

@@ -1,0 +1,91 @@
+---
+title: 'Dialog'
+description: 'Dialog в NovaKit: controlled usage, trigger, focus management, keyboard behavior и ограничения.'
+---
+
+## Controlled usage
+
+`Dialog` подходит для коротких задач: подтверждение, настройка одного параметра, приглашение участника. Controlled-режим нужен, когда открытие зависит от product state.
+
+```tsx
+import { Dialog } from '@novakit/react';
+import { useState } from 'react';
+
+export function ConfirmDialog() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog.Content title='Удалить проект'>
+        <p>Это действие нельзя отменить.</p>
+      </Dialog.Content>
+    </Dialog>
+  );
+}
+```
+
+## Trigger и content
+
+Для обычного сценария используйте `Dialog.Trigger` и `Dialog.Content`. Если trigger - компонент NovaKit или собственная кнопка, включите `asChild`.
+
+```tsx
+import { Button, Dialog } from '@novakit/react';
+
+export function InviteMember() {
+  return (
+    <Dialog>
+      <Dialog.Trigger asChild>
+        <Button>Пригласить</Button>
+      </Dialog.Trigger>
+      <Dialog.Content title='Пригласить участника'>
+        <p>Укажите email и роль нового участника.</p>
+      </Dialog.Content>
+    </Dialog>
+  );
+}
+```
+
+## Focus management
+
+При открытии dialog фокус переходит внутрь content, а при закрытии возвращается на trigger. Это важно для keyboard navigation и screen reader.
+
+### Практические требования
+
+- В dialog должен быть видимый заголовок или доступное имя.
+- Кнопка закрытия должна быть доступна с клавиатуры.
+- Первое интерактивное поле не должно получать фокус, если это приводит к неожиданной прокрутке.
+
+## Keyboard behavior
+
+| Клавиша       | Поведение                                 |
+| ------------- | ----------------------------------------- |
+| `Escape`      | закрывает dialog, если закрытие разрешено |
+| `Tab`         | перемещает фокус внутри dialog            |
+| `Shift + Tab` | перемещает фокус назад                    |
+| `Enter`       | активирует текущую focused-кнопку         |
+
+> Не отключайте `Escape` для обычных форм. Исключение - критичные процессы, где потеря состояния действительно опасна.
+
+## Nested dialogs warning
+
+Вложенные dialog усложняют фокус и ожидания пользователя. Если сценарий требует второй dialog, скорее всего, flow нужно вынести на отдельную страницу.
+
+```tsx
+// Плохо: подтверждение внутри формы, которая уже открыта в dialog.
+<Dialog.Content title='Редактирование'>
+  <Dialog>
+    <Dialog.Content title='Подтвердить' />
+  </Dialog>
+</Dialog.Content>
+```
+
+## Props
+
+| Prop           | Type                             | Default     | Описание             |
+| -------------- | -------------------------------- | ----------- | -------------------- |
+| `open`         | `boolean`                        | `undefined` | Controlled-состояние |
+| `onOpenChange` | `(open: boolean) => void`        | `undefined` | Callback изменения   |
+| `modal`        | `boolean`                        | `true`      | Блокирует фон        |
+| `size`         | `'sm' \| 'md' \| 'lg' \| 'full'` | `'md'`      | Размер content       |
+
+Для проверки доступности откройте [Accessibility Guide](../guides/accessibility).

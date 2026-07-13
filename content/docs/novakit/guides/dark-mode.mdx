@@ -1,0 +1,68 @@
+---
+title: 'Dark Mode'
+description: 'Настройка dark mode: provider, CSS variables, system preference, persistence и тестирование.'
+---
+
+## Theme provider
+
+`NovaProvider` может хранить выбранную тему и передавать её компонентам. В SSR-приложениях важно применить атрибут темы до первого paint, чтобы избежать мигания.
+
+```tsx
+import { NovaProvider } from '@novakit/react';
+
+export function Providers({ children }: { children: React.ReactNode }) {
+  return <NovaProvider theme='system'>{children}</NovaProvider>;
+}
+```
+
+## CSS variables
+
+Dark mode меняет semantic tokens. Компоненты не должны знать, какая тема активна: они читают переменные.
+
+```css
+[data-theme='dark'] {
+  --nk-color-canvas: #09090b;
+  --nk-color-surface: #18181b;
+  --nk-color-foreground: #fafafa;
+  --nk-color-muted: #a1a1aa;
+}
+```
+
+## System preference
+
+Для режима `system` используйте `prefers-color-scheme`. Если пользователь явно выбрал тему, сохранённое значение должно быть важнее системного.
+
+```ts
+export function getSystemTheme() {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+```
+
+## Persistence
+
+Сохраните выбор в `localStorage` или cookie. Cookie удобнее для SSR, потому что сервер может сразу отдать правильный `data-theme`.
+
+```ts
+type ThemeMode = 'light' | 'dark' | 'system';
+
+export function persistTheme(mode: ThemeMode) {
+  localStorage.setItem('novakit-theme', mode);
+}
+```
+
+> Если приложение рендерится на сервере, проверьте, что серверный HTML и клиентская тема не спорят между собой.
+
+## Testing
+
+Проверьте не только фон страницы, но и interactive states: hover, active, focus, disabled, danger. Ошибки часто появляются в border и muted text.
+
+| Проверка     | Что искать                     |
+| ------------ | ------------------------------ |
+| Первый paint | нет мигания light theme        |
+| Dialog       | overlay и content в одной теме |
+| Forms        | ошибки читаются                |
+| Focus        | ring не пропадает              |
+
+## Следующие шаги
+
+Подробная модель токенов описана в [Design Tokens](../concepts/design-tokens), а runtime-переключение - в [Theming](../concepts/theming).

@@ -1,0 +1,14 @@
+{
+  "title": "Components",
+  "defaultOpen": true,
+  "pages": [
+    "index",
+    "---Inputs---",
+    "button",
+    "form-field",
+    "---Overlays---",
+    "dialog",
+    "---Layout---",
+    "card"
+  ]
+}

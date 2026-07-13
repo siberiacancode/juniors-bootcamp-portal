@@ -17,8 +17,8 @@ export type SupportedLanguage = Extract<
   | 'typescript'
 >;
 
-const attrsRegex = /(?<key>[a-z_][\w-]*)(?:=(?<quote>["'])(?<value>.*?)\k<quote>)?/gi;
-const attrsMatchRegex = /\{[^}]*\}/;
+const attrsRegex = /([a-z_][\w-]*)(=(["'])(.*?)\3)?/gi;
+const attrsMatchRegex = /\{([^}]*)\}/;
 
 const transformerProps: ShikiTransformer = {
   pre(node) {
