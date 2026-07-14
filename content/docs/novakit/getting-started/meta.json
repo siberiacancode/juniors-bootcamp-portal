@@ -1,0 +1,6 @@
+{
+  "title": "Getting Started",
+  "pagesIndex": "index",
+  "defaultOpen": true,
+  "pages": ["installation", "quickstart", "project-structure"]
+}

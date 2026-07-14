@@ -1,0 +1,93 @@
+---
+title: 'Quickstart'
+description: 'Быстрый пример NovaKit: layout, карточка, кнопка, dialog и theme provider.'
+---
+
+## Создание layout
+
+Начните с простого layout для SaaS-страницы. Он задаёт плотную сетку, оставляет место под sidebar и не навязывает маркетинговый стиль.
+
+```tsx
+import type { ReactNode } from 'react';
+import { NovaProvider } from '@novakit/react';
+import '@novakit/react/styles.css';
+
+export function AppShell({ children }: { children: ReactNode }) {
+  return (
+    <NovaProvider>
+      <main className='min-h-screen bg-canvas text-foreground'>{children}</main>
+    </NovaProvider>
+  );
+}
+```
+
+### Почему provider на верхнем уровне
+
+Provider хранит выбранную тему, direction и настройки motion. Если разместить его глубоко, диалоги и overlay-компоненты могут получить другую тему, чем основная страница.
+
+## Button и Card
+
+Соберите первый блок с действием. Для product UI лучше начинать с реального состояния: счётчик, статус или следующий шаг.
+
+```tsx
+import { Button, Card } from '@novakit/react';
+
+export function TrialStatus() {
+  return (
+    <Card>
+      <Card.Header title='Пробный период' description='Осталось 9 дней' />
+      <Card.Content>
+        <p>Подключите billing, чтобы команда не потеряла доступ.</p>
+      </Card.Content>
+      <Card.Footer>
+        <Button variant='primary'>Настроить оплату</Button>
+        <Button variant='ghost'>Позже</Button>
+      </Card.Footer>
+    </Card>
+  );
+}
+```
+
+## Dialog для подтверждения
+
+Диалоги нужны для коротких подтверждений и фокусированных задач. Полные формы лучше открывать на отдельной странице, если сценарий длиннее одного шага.
+
+```tsx
+import { Button, Dialog } from '@novakit/react';
+
+export function InviteDialog() {
+  return (
+    <Dialog>
+      <Dialog.Trigger asChild>
+        <Button>Пригласить участника</Button>
+      </Dialog.Trigger>
+      <Dialog.Content title='Новое приглашение'>
+        <p>Письмо будет отправлено на рабочий email.</p>
+        <Dialog.Footer>
+          <Button variant='primary'>Отправить</Button>
+        </Dialog.Footer>
+      </Dialog.Content>
+    </Dialog>
+  );
+}
+```
+
+## Работа с темой
+
+Тема может следовать системным настройкам или фиксироваться на уровне приложения. Подробности описаны в [Theming](../concepts/theming) и [Dark Mode](../guides/dark-mode).
+
+```tsx
+import { NovaProvider } from '@novakit/react';
+
+export function Providers({ children }: { children: React.ReactNode }) {
+  return <NovaProvider theme='system'>{children}</NovaProvider>;
+}
+```
+
+## Частые ошибки
+
+- CSS импортирован в компонент, который рендерится не на всех страницах.
+- `Dialog.Trigger` не получает `asChild`, когда внутри используется собственная кнопка.
+- Цвета переопределены через обычные CSS-селекторы вместо semantic tokens.
+
+> Если вы видите hydration warning при переключении темы, проверьте стратегию из [Dark Mode](../guides/dark-mode).

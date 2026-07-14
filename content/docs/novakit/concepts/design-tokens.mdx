@@ -1,0 +1,85 @@
+---
+title: 'Design Tokens'
+description: 'Как NovaKit описывает spacing, radius, цвета, typography и semantic tokens.'
+---
+
+## Зачем нужны токены
+
+Design tokens - это слой между визуальным языком и конкретными CSS-значениями. Вместо `#2563eb` или `12px` компонент использует `--nk-color-accent` и `--nk-space-3`, а тема решает, какие значения за ними стоят.
+
+### Преимущество для команды
+
+Токены уменьшают количество локальных решений. Разработчик выбирает смысловое значение, дизайнер меняет шкалу в одном месте, а компонент остаётся стабильным.
+
+## Spacing
+
+Шкала spacing построена на шаге 4px. Для плотных SaaS-интерфейсов это удобный баланс между компактностью и читаемостью.
+
+| Token          | Value  | Типичный сценарий             |
+| -------------- | ------ | ----------------------------- |
+| `--nk-space-1` | `4px`  | расстояние между icon и label |
+| `--nk-space-2` | `8px`  | внутренний gap в кнопке       |
+| `--nk-space-4` | `16px` | padding карточки              |
+| `--nk-space-6` | `24px` | gap между секциями            |
+
+```css
+.settings-panel {
+  padding: var(--nk-space-4);
+  gap: var(--nk-space-3);
+}
+```
+
+## Radius
+
+NovaKit использует умеренные радиусы. Компоненты выглядят современно, но не превращаются в декоративные карточки там, где нужна рабочая плотность.
+
+```ts
+export const radius = {
+  sm: '4px',
+  md: '8px',
+  lg: '12px'
+} as const;
+```
+
+### Выбор радиуса
+
+Используйте `sm` для input и compact controls, `md` для cards и dialogs, `lg` только для крупных surfaces.
+
+## Colors
+
+Цвета разделены на primitive и semantic tokens. Primitive описывает палитру, semantic - роль в интерфейсе.
+
+| Semantic token       | Назначение         |
+| -------------------- | ------------------ |
+| `--nk-color-canvas`  | фон страницы       |
+| `--nk-color-surface` | фон cards и panels |
+| `--nk-color-accent`  | основное действие  |
+| `--nk-color-danger`  | destructive action |
+
+> Не используйте primitive colors напрямую в компонентах продукта. Это усложняет dark mode и брендирование.
+
+## Typography
+
+Типографика в NovaKit ориентирована на читаемость интерфейсов. Большие display-заголовки не используются в рабочих экранах по умолчанию.
+
+```css
+:root {
+  --nk-font-sans: Inter, system-ui, sans-serif;
+  --nk-text-sm: 14px;
+  --nk-text-base: 16px;
+  --nk-line-base: 24px;
+}
+```
+
+## Semantic tokens
+
+Semantic tokens позволяют менять тему без переписывания компонентов. Подробнее о переключении тем читайте в [Theming](./theming).
+
+```css
+[data-theme='dark'] {
+  --nk-color-canvas: #09090b;
+  --nk-color-surface: #18181b;
+  --nk-color-foreground: #fafafa;
+  --nk-color-accent: #60a5fa;
+}
+```

@@ -1,0 +1,83 @@
+---
+title: 'Theming'
+description: 'Темизация NovaKit через CSS variables, data attributes и runtime-переключение.'
+---
+
+## Модель темы
+
+NovaKit хранит тему в CSS-переменных и применяет её через `data-theme`. Такой подход работает с SSR, не требует runtime CSS-in-JS и хорошо масштабируется на брендовые темы.
+
+```html
+<html lang="ru" data-theme="light">
+  <body>
+    ...
+  </body>
+</html>
+```
+
+### Light и dark
+
+Базовые темы называются `light` и `dark`. Для пользовательских тем можно выбрать собственный id, например `brand`, `enterprise` или `high-contrast`.
+
+## CSS variables
+
+Все визуальные значения доступны как переменные. Компоненты NovaKit читают их напрямую, поэтому переопределение темы не требует пересборки.
+
+```css
+[data-theme='light'] {
+  --nk-color-canvas: #ffffff;
+  --nk-color-surface: #f8fafc;
+  --nk-color-foreground: #0f172a;
+}
+
+[data-theme='dark'] {
+  --nk-color-canvas: #09090b;
+  --nk-color-surface: #18181b;
+  --nk-color-foreground: #f8fafc;
+}
+```
+
+## Data attributes
+
+`data-theme` можно ставить на `html`, `body` или отдельный контейнер. Для большинства приложений лучше использовать `html`, чтобы portal-компоненты наследовали тему.
+
+```tsx
+export function ThemeBoundary({ children }: { children: React.ReactNode }) {
+  return <section data-theme='enterprise'>{children}</section>;
+}
+```
+
+> Локальная тема полезна для предпросмотра, но для dialog и toast безопаснее использовать глобальную тему.
+
+## Override strategy
+
+Переопределяйте semantic tokens, а не классы внутренних элементов. Внутренняя разметка компонента может измениться, но token contract остаётся стабильным.
+
+```css
+[data-theme='brand'] {
+  --nk-color-accent: #7c3aed;
+  --nk-color-accent-foreground: #ffffff;
+  --nk-focus-ring: #a78bfa;
+}
+```
+
+### Чего избегать
+
+- селекторов вида `.nk-button > span`;
+- `!important` для базовых состояний;
+- хардкода цветов в feature-компонентах.
+
+## Runtime switching
+
+Runtime-переключение темы обычно состоит из трёх шагов: прочитать сохранённое значение, применить атрибут, сохранить новый выбор.
+
+```ts
+type Theme = 'light' | 'dark' | 'system';
+
+export function setTheme(theme: Theme) {
+  localStorage.setItem('theme', theme);
+  document.documentElement.dataset.theme = theme === 'system' ? 'light' : theme;
+}
+```
+
+Для полноценной стратегии с системными настройками откройте [Dark Mode](../guides/dark-mode).

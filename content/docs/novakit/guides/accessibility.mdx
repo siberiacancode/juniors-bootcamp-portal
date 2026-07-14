@@ -1,0 +1,86 @@
+---
+title: 'Accessibility'
+description: 'Руководство по keyboard navigation, focus ring, aria labels, reduced motion и contrast.'
+---
+
+## Keyboard navigation
+
+Все действия должны быть доступны с клавиатуры. Пользователь должен понимать, где находится фокус, куда он перейдёт дальше и как закрыть overlay.
+
+### Проверка вручную
+
+1. Откройте страницу без мыши.
+2. Пройдите `Tab` по всем действиям.
+3. Убедитесь, что порядок соответствует визуальному layout.
+4. Проверьте `Escape` в dialog и popover.
+
+## Focus ring
+
+Focus ring должен быть видимым на светлой и тёмной теме. Не убирайте outline без полноценной замены.
+
+```css
+:root {
+  --nk-focus-ring: #2563eb;
+}
+
+.custom-action:focus-visible {
+  outline: 2px solid var(--nk-focus-ring);
+  outline-offset: 2px;
+}
+```
+
+> Если focus ring "мешает дизайну", проблема обычно в визуальной системе, а не в самом focus state.
+
+## ARIA labels
+
+ARIA нужен там, где визуального текста недостаточно. Например, icon-only button должна иметь доступное имя.
+
+```tsx
+import { Button } from '@novakit/react';
+
+export function CloseButton() {
+  return (
+    <Button variant='ghost' aria-label='Закрыть панель'>
+      ×
+    </Button>
+  );
+}
+```
+
+### Когда ARIA не нужен
+
+Если кнопка уже содержит понятный текст, `aria-label` обычно не нужен. Дублирование может ухудшить озвучивание.
+
+## Reduced motion
+
+Анимации должны уважать `prefers-reduced-motion`. Для критичных интерфейсов лучше делать motion коротким и не завязанным на понимание состояния.
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  .nk-dialog {
+    animation: none;
+  }
+}
+```
+
+## Color contrast
+
+Проверяйте contrast для текста, focus ring, disabled state и danger action. Особенно важно не полагаться только на цвет при ошибках формы.
+
+| Элемент        | Минимальная проверка             |
+| -------------- | -------------------------------- |
+| Основной текст | читается на `canvas` и `surface` |
+| Ошибка         | есть текст и цвет                |
+| Focus          | виден на active background       |
+| Disabled       | отличается, но остаётся понятным |
+
+## Checklist
+
+- У каждой формы есть labels.
+- Dialog имеет доступное имя.
+- Icon-only actions имеют `aria-label`.
+- Ошибки связаны с полями.
+- Анимации учитывают reduced motion.
+- Контраст проверен в light и dark themes.
+
+Для overlay-компонентов см. [Dialog](../components/dialog), а для темы - [Dark Mode](./dark-mode).

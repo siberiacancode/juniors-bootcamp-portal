@@ -1,0 +1,95 @@
+---
+title: 'Project Structure'
+description: 'Рекомендации по размещению UI, токенов, hooks и NovaKit-настроек в frontend-проекте.'
+---
+
+## Где хранить UI
+
+Компоненты приложения стоит отделять от компонентов NovaKit. Импортируйте `@novakit/react` в собственные wrapper-компоненты только там, где это действительно упрощает повторное использование.
+
+```txt
+src/
+  app/
+  features/
+  shared/
+    ui/
+      billing-card.tsx
+      confirm-dialog.tsx
+```
+
+### Локальные wrappers
+
+Wrapper полезен, если команда всегда использует один и тот же набор props. Если wrapper просто прокидывает все props без изменений, лучше импортировать компонент NovaKit напрямую.
+
+## Где хранить токены
+
+Брендовые значения можно держать рядом с CSS. Для runtime-конфигурации используйте `novakit.config.ts`, а для статических переменных - отдельный CSS-файл.
+
+```txt
+src/
+  styles/
+    globals.css
+    novakit-theme.css
+novakit.config.ts
+```
+
+```css
+[data-theme='brand'] {
+  --nk-color-accent: #4f46e5;
+  --nk-radius-md: 10px;
+}
+```
+
+## Где хранить hooks
+
+Hooks, которые описывают продуктовую логику, не должны жить внутри UI-компонентов. Например, `useBillingPlan` лучше разместить в feature-модуле, а `BillingCard` оставить презентационным.
+
+```tsx
+import { Button, Card } from '@novakit/react';
+import { useBillingPlan } from '../model/use-billing-plan';
+
+export function BillingSummary() {
+  const plan = useBillingPlan();
+
+  return (
+    <Card>
+      <Card.Header title={plan.name} description={plan.status} />
+      <Card.Footer>
+        <Button>Изменить</Button>
+      </Card.Footer>
+    </Card>
+  );
+}
+```
+
+## Пример структуры
+
+Ниже структура для среднего SaaS-приложения. Она показывает, где заканчивается дизайн-система и начинается продуктовый код.
+
+```txt
+src/
+  app/
+    layout.tsx
+    dashboard/page.tsx
+  features/
+    billing/
+      model/
+      ui/
+  shared/
+    ui/
+    hooks/
+    styles/
+      novakit.css
+  widgets/
+    app-sidebar/
+novakit.config.ts
+```
+
+## Рекомендации
+
+1. Держите глобальные стили в одном entrypoint.
+2. Не смешивайте design tokens и бизнес-константы.
+3. Выносите повторяющиеся композиции только после второго использования.
+4. Ссылки на компоненты держите рядом с product flow, а не в общем каталоге без владельца.
+
+Продолжите с [Responsive System](../concepts/responsive-system), если проект должен хорошо работать на разных ширинах.

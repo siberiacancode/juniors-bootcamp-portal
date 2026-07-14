@@ -1,0 +1,11 @@
+{
+  "title": "Docs",
+  "pages": [
+    "---NovaKit Demo---",
+    "novakit",
+    "---OrbitKit Demo---",
+    "orbitkit",
+    "---Links---",
+    "external:[GitHub](https://github.com/example/novakit)"
+  ]
+}

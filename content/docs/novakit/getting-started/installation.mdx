@@ -1,0 +1,90 @@
+---
+title: 'Installation'
+description: 'Установка NovaKit, peer dependencies, подключение CSS и проверка проекта.'
+---
+
+## Package manager
+
+NovaKit публикуется как один основной пакет. В реальном проекте команда выбирает один package manager и фиксирует его в репозитории, чтобы lockfile оставался предсказуемым.
+
+```bash
+npm install @novakit/react
+pnpm add @novakit/react
+yarn add @novakit/react
+bun add @novakit/react
+```
+
+### Что устанавливается
+
+Пакет содержит React-компоненты, типы TypeScript, CSS-переменные и небольшие runtime-утилиты для темы. Компоненты импортируются из `@novakit/react`.
+
+## Peer dependencies
+
+NovaKit ожидает, что React и React DOM уже установлены в приложении. Это снижает риск получить две копии React в bundle.
+
+| Пакет        | Диапазон | Комментарий                        |
+| ------------ | -------- | ---------------------------------- |
+| `react`      | `>=18.3` | Поддерживаются concurrent features |
+| `react-dom`  | `>=18.3` | Нужен для DOM-компонентов          |
+| `typescript` | `>=5.0`  | Только для типизации               |
+
+> Если package manager сообщает о peer warning, сначала проверьте версии React в приложении, а не переустанавливайте NovaKit.
+
+## Подключение CSS
+
+Импортируйте CSS один раз в корневом файле приложения. Для Next.js App Router это обычно `app/layout.tsx`.
+
+```tsx
+import '@novakit/react/styles.css';
+import type { ReactNode } from 'react';
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang='ru'>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+### CSS-переменные
+
+Базовый CSS объявляет переменные на `:root`. Тему можно переопределить позже через `data-theme` или через config, описанный в [Configuration](../reference/configuration).
+
+```css
+:root {
+  --nk-color-accent: #2563eb;
+  --nk-radius-md: 8px;
+  --nk-space-4: 16px;
+}
+```
+
+## Настройка TypeScript
+
+В большинстве проектов отдельная настройка не нужна. Если используется strict path mapping, убедитесь, что TypeScript видит package exports.
+
+```json
+{
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true
+  }
+}
+```
+
+## Проверка установки
+
+Создайте временную страницу и импортируйте `Button`. Если стили подключены, кнопка должна иметь фон, hover-состояние и видимый focus ring.
+
+```tsx
+import { Button } from '@novakit/react';
+
+export default function Page() {
+  return <Button variant='primary'>Проверить NovaKit</Button>;
+}
+```
+
+### Частая проблема
+
+Если компонент отрисовался как обычная HTML-кнопка без стилей, проверьте путь импорта CSS и убедитесь, что файл layout действительно используется вашим роутером.

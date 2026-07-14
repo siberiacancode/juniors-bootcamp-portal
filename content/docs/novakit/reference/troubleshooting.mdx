@@ -1,0 +1,78 @@
+---
+title: 'Troubleshooting'
+description: 'FAQ по типичным проблемам NovaKit: стили, hydration, dark mode, theme и TypeScript.'
+---
+
+## Styles not applied
+
+Если компоненты выглядят как обычный HTML, чаще всего CSS не импортирован в корневом entrypoint.
+
+```tsx
+import '@novakit/react/styles.css';
+```
+
+### Что проверить
+
+- CSS импортируется один раз.
+- Layout действительно используется текущим роутером.
+- Bundler не исключает CSS из package exports.
+
+## Hydration mismatch
+
+Hydration mismatch часто появляется из-за темы, которая на сервере и клиенте выбирается по-разному.
+
+```ts
+const theme = typeof window === 'undefined' ? 'light' : localStorage.getItem('theme');
+```
+
+Такой код создаёт разные результаты. Используйте cookie, inline script или provider-стратегию из [Dark Mode](../guides/dark-mode).
+
+## Dark mode flicker
+
+Мигание возникает, когда страница сначала отрисовалась в light theme, а потом клиент переключил её в dark.
+
+> Применяйте `data-theme` до загрузки React, если dark mode критичен для первого paint.
+
+## Component not themed
+
+Если часть интерфейса не реагирует на тему, вероятно, она находится вне theme boundary или использует хардкод цвета.
+
+```css
+/* Плохо */
+.custom-panel {
+  background: #ffffff;
+}
+
+/* Лучше */
+.custom-panel {
+  background: var(--nk-color-surface);
+}
+```
+
+## TypeScript errors
+
+Проверьте `moduleResolution`, версию TypeScript и корректный импорт типов. Для config используйте `satisfies`, чтобы получить проверку без потери literal types.
+
+```ts
+import type { NovaKitConfig } from '@novakit/react/config';
+
+export default {
+  theme: {
+    colorScheme: 'system'
+  }
+} satisfies NovaKitConfig;
+```
+
+## FAQ
+
+### Можно ли использовать NovaKit без config?
+
+Да. Config нужен для defaults и темы, но базовые компоненты работают после установки пакета и подключения CSS.
+
+### Почему `Dialog` не закрывается по Escape?
+
+Проверьте, не отключён ли modal behavior и не перехватывает ли приложение `keydown` выше по дереву.
+
+### Почему кнопка не получает focus style?
+
+Проверьте CSS-переменную `--nk-focus-ring` и отсутствие глобального `outline: none`.

@@ -1,0 +1,83 @@
+---
+title: 'Getting Started'
+description: 'Первые шаги с NovaKit: требования, установка, CSS и первый компонент.'
+---
+
+## Требования
+
+NovaKit рассчитан на современные React-проекты с TypeScript. В демо-примерах используется React 19, но API выглядит так, чтобы его можно было адаптировать под любую актуальную версию React.
+
+| Инструмент  | Рекомендуемая версия | Зачем нужен                |
+| ----------- | -------------------- | -------------------------- |
+| React       | 18.3+ или 19         | Компоненты и hooks         |
+| TypeScript  | 5+                   | Типы props и конфигурации  |
+| CSS bundler | Любой современный    | Подключение базовых стилей |
+
+### Перед началом
+
+Проверьте, что приложение уже умеет импортировать CSS из entrypoint-файла. В Next.js это обычно `app/layout.tsx`, в Vite - `src/main.tsx`.
+
+## Установка
+
+Перейдите к [Installation](./installation), если нужна подробная инструкция с разными package manager. Минимальная команда выглядит так:
+
+```bash
+pnpm add @novakit/react
+```
+
+После установки подключите CSS один раз в корневом layout. Повторный импорт в каждом компоненте не нужен и может привести к дублированию правил.
+
+```tsx
+import '@novakit/react/styles.css';
+import type { ReactNode } from 'react';
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang='ru'>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+## Минимальная настройка
+
+NovaKit работает без обязательного config-файла. Если нужно переопределить тему или значения по умолчанию, добавьте `novakit.config.ts` в корень проекта и экспортируйте объект настроек.
+
+```ts
+import type { NovaKitConfig } from '@novakit/react/config';
+
+export default {
+  theme: {
+    radius: 'md',
+    colorScheme: 'system'
+  }
+} satisfies NovaKitConfig;
+```
+
+### Когда config не нужен
+
+Для прототипа достаточно CSS и прямых импортов компонентов. Config становится полезен, когда несколько команд должны использовать одинаковые варианты кнопок, размеры форм и тему.
+
+## Первый компонент
+
+Создайте экран с кнопкой и карточкой. Такой пример помогает проверить стили, focus ring и базовые отступы.
+
+```tsx
+import { Button, Card } from '@novakit/react';
+
+export function WelcomePanel() {
+  return (
+    <Card>
+      <Card.Header title='Добро пожаловать' description='NovaKit подключён' />
+      <Card.Footer>
+        <Button>Открыть настройки</Button>
+      </Card.Footer>
+    </Card>
+  );
+}
+```
+
+## Следующая страница
+
+Продолжите с [Installation](./installation), если настраиваете проект с нуля, или откройте [Quickstart](./quickstart), чтобы сразу собрать небольшой layout. Для понимания визуальной основы полезно прочитать [Design Tokens](../concepts/design-tokens).

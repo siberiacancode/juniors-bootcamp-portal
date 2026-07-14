@@ -1,0 +1,29 @@
+---
+title: 'OrbitButton'
+description: 'Базовая кнопка для главных действий интерфейса.'
+---
+
+##### OrbitButton
+
+Кнопка отвечает за одно явное действие на экране: сохранить форму, открыть диалог или перейти к следующему шагу.
+
+###### Варианты подключения
+
+Используйте один компонент для React и CSS-настроек:
+
+:::code-group
+
+```tsx {fileName="save-button.tsx"}
+import { OrbitButton } from '@orbitkit/ui';
+
+export const SaveButton = () => <OrbitButton>Сохранить</OrbitButton>;
+```
+
+```css {fileName="orbitkit.css"}
+:root {
+  --orbit-accent: #6d5dfc;
+  --orbit-radius: 10px;
+}
+```
+
+:::
