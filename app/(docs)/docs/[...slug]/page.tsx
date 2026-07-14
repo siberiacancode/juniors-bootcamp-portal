@@ -1,22 +1,22 @@
+import { findPath } from 'fumadocs-core/page-tree';
 import { notFound } from 'next/navigation';
 
 import { Typography } from '@/components/ui';
 import { source } from '@/lib/source';
 import { cn } from '@/lib/utils';
 
-import { SidebarNode } from '../_components/DocsSidebarNode';
-import { DocsToc } from '../_components/DocsToc';
+import { SidebarNode as DocSidebar, DocToc, SidebarSettings } from './_components';
 
-interface DocsPageProps {
+interface DocPageProps {
   params: Promise<{
-    slug?: string[];
+    slug: string[];
   }>;
 }
 
 export const generateStaticParams = () => source.generateParams();
 
-export const generateMetadata = async ({ params }: DocsPageProps) => {
-  const { slug = [] } = await params;
+export const generateMetadata = async ({ params }: DocPageProps) => {
+  const { slug } = await params;
 
   const page = source.getPage(slug);
 
@@ -26,8 +26,8 @@ export const generateMetadata = async ({ params }: DocsPageProps) => {
   };
 };
 
-const Page = async ({ params }: DocsPageProps) => {
-  const { slug = [] } = await params;
+const DocPage = async ({ params }: DocPageProps) => {
+  const { slug } = await params;
   const page = source.getPage(slug);
 
   if (!page) {
@@ -36,6 +36,14 @@ const Page = async ({ params }: DocsPageProps) => {
 
   const MDX = page.data.body;
   const tree = source.getPageTree();
+  const pagePath = findPath(
+    tree.children,
+    (node) => node.type === 'page' && node.url === page.url,
+    { includeSeparator: false }
+  );
+
+  const activeRoot = pagePath?.find((node) => node.type === 'folder' && node.root);
+  const sidebarNodes = activeRoot ? [activeRoot] : tree.children;
 
   return (
     <div className='mx-auto mb-18 flex max-w-350 gap-12 pt-40 lg:pt-10'>
@@ -47,9 +55,10 @@ const Page = async ({ params }: DocsPageProps) => {
             'scrollbar-thin [scrollbar-color:var(--color-muted)_transparent] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-border-soft [&::-webkit-scrollbar-track]:bg-transparent'
           )}
         >
-          {/*Selectors*/}
-          {tree.children.map((node) => (
-            <SidebarNode key={node.$id} activeUrl={page.url} node={node} />
+          <SidebarSettings />
+
+          {sidebarNodes.map((node) => (
+            <DocSidebar key={node.$id} activeUrl={page.url} node={node} />
           ))}
         </nav>
       </aside>
@@ -65,17 +74,17 @@ const Page = async ({ params }: DocsPageProps) => {
           </Typography>
         </header>
 
-        <article className='prose max-w-none prose-neutral dark:prose-invert'>
+        <article className='prose max-w-none min-w-160 prose-neutral dark:prose-invert'>
           <MDX />
         </article>
       </main>
 
       {/* TOC */}
       <aside className='hidden xl:block'>
-        <DocsToc toc={page.data.toc} />
+        <DocToc toc={page.data.toc} />
       </aside>
     </div>
   );
 };
 
-export default Page;
+export default DocPage;

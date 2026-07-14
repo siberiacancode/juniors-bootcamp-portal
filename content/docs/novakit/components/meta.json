@@ -1,8 +1,8 @@
 {
   "title": "Components",
+  "pagesIndex": "index",
   "defaultOpen": true,
   "pages": [
-    "index",
     "---Inputs---",
     "button",
     "form-field",

@@ -2,9 +2,9 @@
   "title": "OrbitKit",
   "description": "Небольшая UI-библиотека для учебных проектов и прототипов.",
   "root": true,
+  "pagesIndex": "index",
   "defaultOpen": true,
   "pages": [
-    "index",
     "---Start Here---",
     "getting-started",
     "---Components---",

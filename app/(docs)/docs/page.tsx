@@ -7,12 +7,12 @@ import { IntlText } from '@/intl';
 import { intl } from '@/intl/server';
 import { source } from '@/lib/source';
 
+import { DocsCollectionCard } from './_components';
+
 export const metadata: Metadata = {
   title: intl.formatMessage({ id: 'page.docs.metadata.title' }),
   description: intl.formatMessage({ id: 'page.docs.metadata.description' })
 };
-
-export const dynamic = 'force-dynamic';
 
 const DocsPage = async () => {
   const roots = getPageTreeRoots(source.getPageTree());
@@ -26,12 +26,22 @@ const DocsPage = async () => {
         <Typography as='p' variant='body-lg'>
           <IntlText path='page.docs.description' />
         </Typography>
-        {roots.map((root) => (
-          <a key={String(root.name)}>
-            <h2>{root.name}</h2>
-            <p>{root.description}</p>
-          </a>
-        ))}
+        <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
+          {roots.map((root) => {
+            if (root.type !== 'folder' || !root.root || !root.index) {
+              return null;
+            }
+
+            return (
+              <DocsCollectionCard
+                key={root.$id}
+                description={root.description}
+                href={root.index.url}
+                title={root.name}
+              />
+            );
+          })}
+        </div>
       </section>
     </main>
   );

@@ -123,6 +123,12 @@
   "page.docs.metadata.description": "Выберите проект и ознакомьтесь с его документацией",
   "page.docs.title": "Документация",
   "page.docs.description": "Выберите проект для просмотра его документации",
+  "page.docs.toc.title": "На этой странице",
+  "page.docs.settings.level.junior": "Junior",
+  "page.docs.settings.level.middle": "Middle",
+  "page.docs.settings.level.senior": "Senior",
+  "page.docs.settings.api.rest": "REST",
+  "page.docs.settings.api.graphql": "GraphQL",
 
   "page.tasksApi.metadata.title": "API для заданий — REST и GraphQL",
   "page.tasksApi.metadata.description": "Общедоступное API для REST и GraphQL: одна доменная модель, без лимитов и платных тарифов — для обучения и pet-проектов.",

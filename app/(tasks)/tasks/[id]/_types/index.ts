@@ -1,4 +1,7 @@
 import type { GraphQLOperation, RestOperation } from '@/types/operation';
+import type { LevelName } from '@/types/task-settings';
+
+export type { ApiType, LevelName, TaskSettingsCookieValue } from '@/types/task-settings';
 
 export interface RestApiField {
   field: string;
@@ -9,10 +12,6 @@ export interface GraphQLApiField {
   field: string;
   operation: GraphQLOperation;
 }
-
-export type ApiType = 'graphQL' | 'rest';
-
-export type LevelName = 'junior' | 'middle' | 'senior';
 
 export interface LevelData {
   api: {
@@ -32,9 +31,4 @@ export interface TaskContent {
     backend: string;
   };
   title: MessagePath;
-}
-
-export interface TaskSettingsCookieValue {
-  api: ApiType;
-  level: LevelName;
 }
