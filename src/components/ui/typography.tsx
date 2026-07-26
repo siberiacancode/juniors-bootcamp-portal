@@ -10,7 +10,7 @@ const typographyVariants = cva('font-nunito', {
   variants: {
     variant: {
       display:
-        'text-[56px] leading-none font-(--font-weight) tracking-normal uppercase [--font-weight:700] lg:text-[170px]',
+        'text-[56px]/none font-(--font-weight) tracking-normal uppercase [--font-weight:700] lg:text-[170px]',
 
       'heading-2xl':
         'text-[36px] leading-none font-(--font-weight) tracking-normal [--font-weight:800] md:text-[96px]',
