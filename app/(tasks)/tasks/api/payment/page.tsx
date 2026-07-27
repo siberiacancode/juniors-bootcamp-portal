@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 
 const paymentSearchSchema = z
   .object({
+    backUrl: z.string().trim().min(1),
     cardId: z.string().trim().min(1).optional(),
     panmask: z.string().trim().min(1).optional(),
     transactionId: z.string().trim().min(1),
@@ -55,6 +56,7 @@ const PaymentPage = async ({ searchParams }: PaymentPageProps) => {
         <main className='fixed inset-0 z-100 overflow-y-auto bg-background'>
           <CardPayment
             amount={transaction.amount}
+            backUrl={paymentPageSearchParams.backUrl}
             cardId={paymentPageSearchParams.cardId}
             panmask={paymentPageSearchParams.panmask}
             taskId={transaction.orderType}
@@ -68,6 +70,7 @@ const PaymentPage = async ({ searchParams }: PaymentPageProps) => {
         <main className='fixed inset-0 z-100 overflow-y-auto bg-background'>
           <QRPayment
             amount={transaction.amount}
+            backUrl={paymentPageSearchParams.backUrl}
             taskId={transaction.orderType}
             transactionId={transaction._id}
           />

@@ -6,7 +6,6 @@ import { useIntl } from 'react-intl';
 
 import { Button, Card, Input, Typography } from '@/components/ui';
 import { IntlText } from '@/intl';
-import { cn } from '@/lib/utils';
 
 import type { PaymentTaskId } from '../../_constants';
 
@@ -14,21 +13,31 @@ import { PAYMENT_TASKS } from '../../_constants';
 import { formatMoney } from '../../_helpers';
 import { useCardPayment } from './hooks';
 
-const SAVED_CARD_CLASS_NAME =
-  'bg-[linear-gradient(249.7deg,#472187_3.25%,rgba(93,44,178,0.733649)_54.67%,rgba(124,58,237,0.37)_97.32%)]';
-
 interface CardPaymentProps {
   amount: number;
+  backUrl: string;
   cardId?: string;
   panmask?: string;
   taskId: PaymentTaskId;
   transactionId: string;
 }
 
-const CardPayment = ({ amount, cardId, panmask, taskId, transactionId }: CardPaymentProps) => {
+const CardPayment = ({
+  amount,
+  backUrl,
+  cardId,
+  panmask,
+  taskId,
+  transactionId
+}: CardPaymentProps) => {
   const intl = useIntl();
   const savedCard = Boolean(cardId);
-  const { features, form, functions, state } = useCardPayment({ cardId, savedCard, transactionId });
+  const { features, form, functions, state } = useCardPayment({
+    backUrl,
+    cardId,
+    savedCard,
+    transactionId
+  });
   const theme = PAYMENT_TASKS[taskId];
 
   return (
@@ -118,12 +127,7 @@ const CardPayment = ({ amount, cardId, panmask, taskId, transactionId }: CardPay
                 />
               </div>
 
-              <div
-                className={cn(
-                  'relative isolate flex h-[230px] w-full flex-col justify-between overflow-hidden rounded-24 p-6 text-white',
-                  SAVED_CARD_CLASS_NAME
-                )}
-              >
+              <div className='relative isolate flex h-[230px] w-full flex-col justify-between overflow-hidden rounded-24 bg-[linear-gradient(249.7deg,#472187_3.25%,rgba(93,44,178,0.733649)_54.67%,rgba(124,58,237,0.37)_97.32%)] p-6 text-white'>
                 <span className='pointer-events-none absolute top-[33px] left-[15px] z-0 font-pixelify-sans text-[96px]/[82px] font-bold tracking-wide text-white/13 lowercase'>
                   juniors
                 </span>

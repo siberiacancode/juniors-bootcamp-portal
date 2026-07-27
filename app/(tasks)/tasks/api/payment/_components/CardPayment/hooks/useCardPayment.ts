@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { usePostTransactionsPayMutation } from '@/generated/api/juniorsbootcamp/hooks.gen';
 
 interface UseCardPaymentParams {
+  backUrl: string;
   cardId?: string;
   savedCard: boolean;
   transactionId: string;
@@ -29,7 +30,7 @@ const savedCardPaymentFormSchema = z.object({
   cardNumber: z.string()
 });
 
-const useCardPayment = ({ cardId, savedCard, transactionId }: UseCardPaymentParams) => {
+const useCardPayment = ({ backUrl, cardId, savedCard, transactionId }: UseCardPaymentParams) => {
   const postTransactionsPayMutation = usePostTransactionsPayMutation();
   const cardPaymentForm = useForm<CardPaymentFormValues>({
     defaultValues: {
@@ -82,6 +83,14 @@ const useCardPayment = ({ cardId, savedCard, transactionId }: UseCardPaymentPara
 
     if (!postTransactionsPayResponse.data.success)
       throw new Error(postTransactionsPayResponse.data.reason ?? 'Payment failed');
+
+    const { transaction } = postTransactionsPayResponse.data;
+
+    if (!transaction.accessToken) throw new Error('Payment access token missing');
+
+    window.location.assign(
+      `${backUrl}?token=${encodeURIComponent(transaction.accessToken)}&status=success`
+    );
   });
 
   return {

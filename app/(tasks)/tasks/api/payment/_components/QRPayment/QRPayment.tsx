@@ -3,6 +3,7 @@
 import { QRCodeSVG } from 'qrcode.react';
 
 import { Typography } from '@/components/ui';
+import { useGetTransactionByIdQuery } from '@/generated/api/juniorsbootcamp/hooks.gen';
 import { IntlText } from '@/intl';
 
 import type { PaymentTaskId } from '../../_constants';
@@ -13,12 +14,32 @@ import { QrMascotIcon } from './QrMascotIcon';
 
 interface QRPaymentProps {
   amount: number;
+  backUrl: string;
   taskId: PaymentTaskId;
   transactionId: string;
 }
 
-const QRPayment = ({ amount, taskId, transactionId }: QRPaymentProps) => {
+const QRPayment = ({ amount, backUrl, taskId, transactionId }: QRPaymentProps) => {
   const service = PAYMENT_TASKS[taskId];
+  useGetTransactionByIdQuery({
+    params: {
+      refetchInterval: (query) => {
+        const transaction = query.state.data?.data.transaction;
+
+        if (transaction?.status !== 'paid' || !transaction.accessToken) return 2000;
+
+        window.location.assign(
+          `${backUrl}?token=${encodeURIComponent(transaction.accessToken)}&status=success`
+        );
+
+        return false;
+      },
+      refetchIntervalInBackground: false
+    },
+    request: {
+      path: { id: transactionId }
+    }
+  });
 
   return (
     <section className='mx-auto flex min-h-full w-full flex-col items-center bg-background px-4 py-6 sm:bg-secondary sm:px-[92px] sm:py-12'>
