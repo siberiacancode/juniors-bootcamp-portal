@@ -7,10 +7,10 @@ import { Button, Typography } from '@/components/ui';
 import { usePostTransactionByIdPayQrMutation } from '@/generated/api/juniorsbootcamp/hooks.gen';
 import { IntlText } from '@/intl';
 
-import type { PaymentTaskId } from '../../../payment/_constants';
+import type { PaymentTaskId } from '../../_constants';
 
-import { PAYMENT_TASKS } from '../../../payment/_constants';
-import { formatMoney } from '../../../payment/_helpers';
+import { PAYMENT_TASKS } from '../../_constants';
+import { formatMoney } from '../../_helpers';
 import { BankMascotIcon } from './BankMascotIcon';
 
 interface BankPaymentProps {

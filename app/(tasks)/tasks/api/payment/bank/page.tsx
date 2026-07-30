@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { getTransactionById } from '@/generated/api/juniorsbootcamp/requests.gen';
 import { intl } from '@/intl/server';
 
-import { BankPayment } from './_components';
+import { BankPayment } from '../_components/BankPayment';
 
 export const metadata: Metadata = {
   title: intl.formatMessage({ id: 'page.payment.bank.metadata.title' }),
@@ -38,13 +38,11 @@ const BankPaymentPage = async ({ searchParams }: BankPaymentPageProps) => {
   const { transaction } = getTransactionByIdResponse.data;
 
   return (
-    <main className='fixed inset-0 z-100 overflow-y-auto bg-background'>
-      <BankPayment
-        amount={transaction.amount}
-        taskId={transaction.orderType}
-        transactionId={transaction._id}
-      />
-    </main>
+    <BankPayment
+      amount={transaction.amount}
+      taskId={transaction.orderType}
+      transactionId={transaction._id}
+    />
   );
 };
 

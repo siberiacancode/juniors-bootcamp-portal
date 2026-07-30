@@ -163,7 +163,7 @@ const QRPayment = ({ amount, taskId, transactionId }: QRPaymentProps) => {
                 level='H'
                 marginSize={0}
                 size={280}
-                value={`/tasks/api/bank?transactionId=${encodeURIComponent(transactionId)}`}
+                value={`/tasks/api/payment/bank?transactionId=${encodeURIComponent(transactionId)}`}
               />
 
               <div className='absolute top-1/2 left-1/2 flex size-20 -translate-1/2 items-center justify-center bg-white'>

@@ -53,28 +53,24 @@ const PaymentPage = async ({ searchParams }: PaymentPageProps) => {
   switch (paymentPageSearchParams.type) {
     case 'card':
       return (
-        <main className='fixed inset-0 z-100 overflow-y-auto bg-background'>
-          <CardPayment
-            amount={transaction.amount}
-            backUrl={paymentPageSearchParams.backUrl}
-            cardId={paymentPageSearchParams.cardId}
-            panmask={paymentPageSearchParams.panmask}
-            taskId={transaction.orderType}
-            transactionId={transaction._id}
-          />
-        </main>
+        <CardPayment
+          amount={transaction.amount}
+          backUrl={paymentPageSearchParams.backUrl}
+          cardId={paymentPageSearchParams.cardId}
+          panmask={paymentPageSearchParams.panmask}
+          taskId={transaction.orderType}
+          transactionId={transaction._id}
+        />
       );
 
     case 'qr':
       return (
-        <main className='fixed inset-0 z-100 overflow-y-auto bg-background'>
-          <QRPayment
-            amount={transaction.amount}
-            backUrl={paymentPageSearchParams.backUrl}
-            taskId={transaction.orderType}
-            transactionId={transaction._id}
-          />
-        </main>
+        <QRPayment
+          amount={transaction.amount}
+          backUrl={paymentPageSearchParams.backUrl}
+          taskId={transaction.orderType}
+          transactionId={transaction._id}
+        />
       );
   }
 };
