@@ -4,6 +4,8 @@
   "notFound.title": "Страница не найдена",
   "notFound.backHome": "Вернуться на главную",
 
+  "error.validation.required": "Заполните поле",
+
   "header.logo.alt": "Логотип JUNIORS BOOTCAMP",
   "header.github.alt": "GitHub JUNIORS BOOTCAMP",
 
@@ -267,6 +269,35 @@
   "button.loginVia": "Войти через",
   "button.accept": "Принять",
   "button.start": "Начать",
+
+  "page.payment.metadata.title": "Оплата | Juniors Bootcamp",
+  "page.payment.metadata.description": "Страница оплаты тренировочной транзакции",
+  "page.payment.validationError": "Ошибка оплаты",
+  "page.payment.validationErrorDescription": "Проверьте ссылку оплаты и попробуйте снова.",
+  "page.payment.bank.metadata.title": "JB Банк | Juniors Bootcamp",
+  "page.payment.bank.metadata.description": "Страница подтверждения тренировочной оплаты через JB Банк",
+  "page.payment.bank.title": "Банк",
+  "page.payment.bank.payAmount": "Оплатить {amount}",
+  "page.payment.bank.disclaimer": "Оплата не является реальной, списание денежных средств не производится.",
+  "page.payment.card.title": "Оплата покупки",
+  "page.payment.card.savedTitle": "Введите CVV-код выбранной карты",
+  "page.payment.card.label": "Карта",
+  "page.payment.card.payAmount": "Оплатить {amount}",
+  "page.payment.card.disclaimer": "Оплата не является реальной, списание денежных средств не производится.",
+  "page.payment.qr.title": "Оплата покупки",
+  "page.payment.qr.description": "Для оплаты отсканируйте QR-код камерой телефона.",
+  "page.payment.qr.disclaimerLine1": "Оплата не является реальной, списание",
+  "page.payment.qr.disclaimerLine2": "денежных средств не производится.",
+  "page.payment.serviceLabel": "Оплата сервиса",
+  "page.payment.amountLabel": "Сумма",
+  "page.payment.orderNumberLabel": "Номер заказа",
+
+  "field.cardNumber.label": "Номер карты*",
+  "field.cardNumber.placeholder": "0000 0000 0000 0000",
+  "field.cardExpiry.label": "Срок*",
+  "field.cardExpiry.placeholder": "00/00",
+  "field.cvv.label": "CVV*",
+  "field.cvv.placeholder": "0000",
 
   "faq.title": "Частые вопросы",
 

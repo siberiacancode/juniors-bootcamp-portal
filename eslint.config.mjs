@@ -13,7 +13,7 @@ export default eslint(
         detectComponentClasses: true
       }
     },
-    ignores: ['temp/**/*']
+    ignores: ['generated/**/*']
   },
   {
     name: 'juniors-bootcamp/rewrite',
