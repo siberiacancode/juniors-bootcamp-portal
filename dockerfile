@@ -3,6 +3,9 @@ LABEL org.opencontainers.image.source https://github.com/siberiacancode/junior-b
 
 FROM base AS builder
 
+ARG NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+
 WORKDIR /app
 COPY package*.json yarn.lock ./
 RUN yarn --production --frozen-lockfile && \
@@ -15,7 +18,10 @@ RUN yarn build
 
 FROM base AS runner
 
+ARG NEXT_PUBLIC_API_URL
+
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 
 WORKDIR /app
 COPY --from=builder /app/node_modules ./node_modules

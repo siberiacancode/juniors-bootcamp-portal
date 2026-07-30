@@ -1,58 +1,73 @@
 pipeline {
     agent any
-    environment {
-        GITHUB_TOKEN=credentials('github-container')
-        IP=credentials('yandex-apps-ip')
 
-        IMAGE_NAME='siberiacancode/juniors-bootcamp-portal'
-        IMAGE_VERSION='latest'
-        PORT='3011'
+    options {
+        disableConcurrentBuilds(abortPrevious: true)
+        timeout(time: 20, unit: 'MINUTES')
+        buildDiscarder(logRotator(numToKeepStr: '10'))
     }
+
+    environment {
+        GITHUB_TOKEN    = credentials('github-container')
+        COOLIFY_WEBHOOK = credentials('coolify-webhook')
+        COOLIFY_TOKEN   = credentials('coolify-api-token')
+
+        IMAGE_NAME      = 'siberiacancode/juniors-bootcamp-portal'
+        IMAGE_VERSION   = 'latest'
+        NEXT_PUBLIC_API_URL = 'http://juniorsbootcamp.ru/api'
+    }
+
     stages {
-        stage('cleanup') {
-            steps {
-                sh 'docker system prune -a --volumes --force'
-            }
-        }
-        stage('build image') {
-            steps {
-                sh 'docker build -t $IMAGE_NAME:$IMAGE_VERSION .'
-            }
-        }
-        stage('login to GHCR') {
-            steps {
-                sh 'echo $GITHUB_TOKEN_PSW | docker login ghcr.io -u $GITHUB_TOKEN_USR --password-stdin'
-            }
-        }
-        stage('tag image') {
-            steps {
-                sh 'docker tag $IMAGE_NAME:$IMAGE_VERSION ghcr.io/$IMAGE_NAME:$IMAGE_VERSION'
-            }
-        }
-        stage('push image') {
-            steps {
-                sh 'docker push ghcr.io/$IMAGE_NAME:$IMAGE_VERSION'
-            }
-        }
-        stage('deploy') {
-            steps {
-                withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'yandex-apps-container', keyFileVariable: 'SSH_PRIVATE_KEY', usernameVariable: 'SSH_USERNAME')]) {
-                    sh 'echo $SSH_USERNAME'
-                    sh 'install -m 600 -D /dev/null ~/.ssh/id_rsa'
-                    sh 'rm ~/.ssh/id_rsa'
-                    sh 'cp -i $SSH_PRIVATE_KEY ~/.ssh/id_rsa'
-                    sh 'ssh -o "StrictHostKeyChecking=no" $SSH_USERNAME@$IP \
-                        "sudo docker login ghcr.io -u $GITHUB_TOKEN_USR --password $GITHUB_TOKEN_PSW &&\
-                        sudo docker rm -f juniors-bootcamp-portal &&\
-                        sudo docker pull ghcr.io/siberiacancode/juniors-bootcamp-portal:latest &&\
-                        sudo docker run --restart=always --name juniors-bootcamp-portal -d -p $PORT:$PORT -e PORT=$PORT --network juniors-bootcamp ghcr.io/siberiacancode/juniors-bootcamp-portal:latest"'
+        stage('build & push') {
+            when {
+                anyOf {
+                    branch 'main'
+                    expression { env.GIT_BRANCH == 'origin/main' }
                 }
             }
+
+            steps {
+                sh '''
+                    echo "$GITHUB_TOKEN_PSW" |
+                        docker login ghcr.io \
+                            -u "$GITHUB_TOKEN_USR" \
+                            --password-stdin
+
+                    docker build \
+                        --build-arg NEXT_PUBLIC_API_URL="$NEXT_PUBLIC_API_URL" \
+                        -t "ghcr.io/$IMAGE_NAME:$IMAGE_VERSION" \
+                        .
+
+                    docker push "ghcr.io/$IMAGE_NAME:$IMAGE_VERSION"
+                '''
+            }
+        }
+
+        stage('deploy via Coolify') {
+            when {
+                anyOf {
+                    branch 'main'
+                    expression { env.GIT_BRANCH == 'origin/main' }
+                }
+            }
+
+            steps {
+                sh '''
+                    curl --fail-with-body \
+                        --request GET "$COOLIFY_WEBHOOK" \
+                        --header "Authorization: Bearer $COOLIFY_TOKEN"
+                '''
+            }
         }
     }
+
     post {
         always {
-            sh 'docker logout'
+            sh 'docker logout ghcr.io || true'
+        }
+
+        cleanup {
+            sh 'docker image prune -f || true'
         }
     }
 }

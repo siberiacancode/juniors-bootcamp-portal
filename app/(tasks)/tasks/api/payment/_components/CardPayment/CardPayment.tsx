@@ -1,6 +1,6 @@
 'use client';
 
-import { Loader2Icon } from 'lucide-react';
+import { CheckIcon, Loader2Icon } from 'lucide-react';
 import { Controller } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 
@@ -22,23 +22,75 @@ interface CardPaymentProps {
   transactionId: string;
 }
 
-const CardPayment = ({
-  amount,
-  backUrl,
-  cardId,
-  panmask,
-  taskId,
-  transactionId
-}: CardPaymentProps) => {
+const CardPayment = ({ amount, cardId, panmask, taskId, transactionId }: CardPaymentProps) => {
   const intl = useIntl();
   const savedCard = Boolean(cardId);
   const { features, form, functions, state } = useCardPayment({
-    backUrl,
     cardId,
     savedCard,
     transactionId
   });
   const theme = PAYMENT_TASKS[taskId];
+
+  if (state.transaction)
+    return (
+      <section className='mx-auto flex min-h-full w-full flex-col items-center bg-background px-4 py-6 sm:bg-secondary sm:px-[92px] sm:py-16'>
+        <div className='flex w-full max-w-[1256px] flex-col items-center'>
+          <div className='flex w-full max-w-104.5 flex-col items-start gap-6 bg-background sm:bg-transparent'>
+            <div className='flex w-full items-start gap-2'>
+              <span className='flex size-8 shrink-0 items-center justify-center rounded-full bg-[#22C55E] text-white'>
+                <CheckIcon className='size-5' strokeWidth={3} />
+              </span>
+              <Typography as='h1' className='text-[24px]/8 tracking-normal' variant='title-md'>
+                <IntlText path='page.payment.result.title' />
+              </Typography>
+            </div>
+
+            <div className='flex w-full flex-col items-start gap-6'>
+              <div className='flex w-full flex-col items-start gap-4'>
+                <div className='flex w-full flex-col'>
+                  <Typography as='p' className='text-muted-fg' variant='caption'>
+                    <IntlText path='page.payment.serviceLabel' />
+                  </Typography>
+                  <div className='flex items-center gap-1'>
+                    <span className='text-[22px]/[22px]'>{theme.emoji}</span>
+                    <Typography as='span' className='font-extrabold uppercase' variant='caption'>
+                      {theme.title}
+                    </Typography>
+                  </div>
+                </div>
+
+                <div className='flex w-full flex-col'>
+                  <Typography as='p' className='text-muted-fg' variant='caption'>
+                    <IntlText path='page.payment.amountLabel' />
+                  </Typography>
+                  <Typography as='p' variant='body-lg'>
+                    {formatMoney(amount)}
+                  </Typography>
+                </div>
+
+                <div className='flex w-full flex-col'>
+                  <Typography as='p' className='text-muted-fg' variant='caption'>
+                    <IntlText path='page.payment.orderNumberLabel' />
+                  </Typography>
+                  <Typography as='p' className='break-all' variant='body-sm'>
+                    {transactionId}
+                  </Typography>
+                </div>
+              </div>
+
+              <Button className='w-full' size='lg' type='button'>
+                <IntlText path='button.downloadReceipt' />
+              </Button>
+
+              <Typography as='p' className='text-muted-fg' variant='caption'>
+                <IntlText path='page.payment.disclaimer' />
+              </Typography>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
 
   return (
     <section className='mx-auto flex min-h-full w-full flex-col items-center bg-background sm:px-0 sm:pt-14 sm:pb-10'>
@@ -249,7 +301,7 @@ const CardPayment = ({
           </Button>
 
           <Typography as='p' className='text-foreground/50' variant='caption'>
-            <IntlText path='page.payment.card.disclaimer' />
+            <IntlText path='page.payment.disclaimer' />
           </Typography>
         </form>
       </div>
