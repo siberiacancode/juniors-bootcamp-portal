@@ -1,8 +1,9 @@
 'use client';
 
+import { CheckIcon } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 
-import { Typography } from '@/components/ui';
+import { Button, Typography } from '@/components/ui';
 import { useGetTransactionByIdQuery } from '@/generated/api/juniorsbootcamp/hooks.gen';
 import { IntlText } from '@/intl';
 
@@ -19,20 +20,13 @@ interface QRPaymentProps {
   transactionId: string;
 }
 
-const QRPayment = ({ amount, backUrl, taskId, transactionId }: QRPaymentProps) => {
+const QRPayment = ({ amount, taskId, transactionId }: QRPaymentProps) => {
   const service = PAYMENT_TASKS[taskId];
-  useGetTransactionByIdQuery({
+  const getTransactionByIdQuery = useGetTransactionByIdQuery({
     params: {
       refetchInterval: (query) => {
         const transaction = query.state.data?.data.transaction;
-
-        if (transaction?.status !== 'paid' || !transaction.accessToken) return 2000;
-
-        window.location.assign(
-          `${backUrl}?token=${encodeURIComponent(transaction.accessToken)}&status=success`
-        );
-
-        return false;
+        return transaction?.status === 'paid' && transaction.accessToken ? false : 2000;
       },
       refetchIntervalInBackground: false
     },
@@ -40,6 +34,68 @@ const QRPayment = ({ amount, backUrl, taskId, transactionId }: QRPaymentProps) =
       path: { id: transactionId }
     }
   });
+
+  const transaction = getTransactionByIdQuery.data?.data.transaction;
+
+  if (transaction?.status === 'paid' && transaction.accessToken)
+    return (
+      <section className='mx-auto flex min-h-full w-full flex-col items-center bg-background px-4 py-6 sm:bg-secondary sm:px-[92px] sm:py-16'>
+        <div className='flex w-full max-w-[1256px] flex-col items-center'>
+          <div className='flex w-full max-w-104.5 flex-col items-start gap-6 bg-background sm:bg-transparent'>
+            <div className='flex w-full items-start gap-2'>
+              <span className='flex size-8 shrink-0 items-center justify-center rounded-full bg-[#22C55E] text-white'>
+                <CheckIcon className='size-5' strokeWidth={3} />
+              </span>
+              <Typography as='h1' className='text-[24px]/8 tracking-normal' variant='title-md'>
+                <IntlText path='page.payment.result.title' />
+              </Typography>
+            </div>
+
+            <div className='flex w-full flex-col items-start gap-6'>
+              <div className='flex w-full flex-col items-start gap-4'>
+                <div className='flex w-full flex-col'>
+                  <Typography as='p' className='text-muted-fg' variant='caption'>
+                    <IntlText path='page.payment.serviceLabel' />
+                  </Typography>
+                  <div className='flex items-center gap-1'>
+                    <span className='text-[22px]/[22px]'>{service.emoji}</span>
+                    <Typography as='span' className='font-extrabold uppercase' variant='caption'>
+                      {service.title}
+                    </Typography>
+                  </div>
+                </div>
+
+                <div className='flex w-full flex-col'>
+                  <Typography as='p' className='text-muted-fg' variant='caption'>
+                    <IntlText path='page.payment.amountLabel' />
+                  </Typography>
+                  <Typography as='p' variant='body-lg'>
+                    {formatMoney(amount)}
+                  </Typography>
+                </div>
+
+                <div className='flex w-full flex-col'>
+                  <Typography as='p' className='text-muted-fg' variant='caption'>
+                    <IntlText path='page.payment.orderNumberLabel' />
+                  </Typography>
+                  <Typography as='p' className='break-all' variant='body-sm'>
+                    {transactionId}
+                  </Typography>
+                </div>
+              </div>
+
+              <Button className='w-full' size='lg' type='button'>
+                <IntlText path='button.downloadReceipt' />
+              </Button>
+
+              <Typography as='p' className='text-muted-fg' variant='caption'>
+                <IntlText path='page.payment.disclaimer' />
+              </Typography>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
 
   return (
     <section className='mx-auto flex min-h-full w-full flex-col items-center bg-background px-4 py-6 sm:bg-secondary sm:px-[92px] sm:py-12'>
@@ -107,7 +163,7 @@ const QRPayment = ({ amount, backUrl, taskId, transactionId }: QRPaymentProps) =
                 level='H'
                 marginSize={0}
                 size={280}
-                value={`/tasks/api/bank?transactionId=${transactionId}`}
+                value={`/tasks/api/bank?transactionId=${encodeURIComponent(transactionId)}`}
               />
 
               <div className='absolute top-1/2 left-1/2 flex size-20 -translate-1/2 items-center justify-center bg-white'>
@@ -115,17 +171,8 @@ const QRPayment = ({ amount, backUrl, taskId, transactionId }: QRPaymentProps) =
               </div>
             </div>
 
-            <Typography
-              as='p'
-              className='w-70 text-[14px]/[22px] tracking-normal text-muted-fg'
-              variant='caption'
-            >
-              <span className='block whitespace-nowrap'>
-                <IntlText path='page.payment.qr.disclaimerLine1' />
-              </span>
-              <span className='block whitespace-nowrap'>
-                <IntlText path='page.payment.qr.disclaimerLine2' />
-              </span>
+            <Typography as='p' className='w-70 text-muted-fg' variant='caption'>
+              <IntlText path='page.payment.disclaimer' />
             </Typography>
           </div>
         </div>
