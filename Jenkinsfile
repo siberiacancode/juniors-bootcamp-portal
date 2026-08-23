@@ -50,12 +50,10 @@ pipeline {
                     expression { env.GIT_BRANCH == 'origin/main' }
                 }
             }
-
             steps {
                 sh '''
-                    curl --fail-with-body \
-                        --request GET "$COOLIFY_WEBHOOK" \
-                        --header "Authorization: Bearer $COOLIFY_TOKEN"
+                    curl --fail --show-error --silent --request POST "$COOLIFY_WEBHOOK" \
+                         --header "Authorization: Bearer $COOLIFY_TOKEN"
                 '''
             }
         }

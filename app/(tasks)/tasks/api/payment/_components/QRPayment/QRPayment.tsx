@@ -1,6 +1,7 @@
 'use client';
 
 import { CheckIcon } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import { QRCodeSVG } from 'qrcode.react';
 
 import { Button, Typography } from '@/components/ui';
@@ -20,7 +21,7 @@ interface QRPaymentProps {
   transactionId: string;
 }
 
-const QRPayment = ({ amount, taskId, transactionId }: QRPaymentProps) => {
+const QRPaymentContent = ({ amount, taskId, transactionId }: QRPaymentProps) => {
   const service = PAYMENT_TASKS[taskId];
   const getTransactionByIdQuery = useGetTransactionByIdQuery({
     params: {
@@ -157,13 +158,15 @@ const QRPayment = ({ amount, taskId, transactionId }: QRPaymentProps) => {
                   src: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==',
                   width: 80
                 }}
+                value={`${window.location.origin}/tasks/api/payment/bank?transactionId=${encodeURIComponent(
+                  transactionId
+                )}`}
                 bgColor='#FFFFFF'
                 className='block size-full'
                 fgColor='#000000'
                 level='H'
                 marginSize={0}
                 size={280}
-                value={`/tasks/api/payment/bank?transactionId=${encodeURIComponent(transactionId)}`}
               />
 
               <div className='absolute top-1/2 left-1/2 flex size-20 -translate-1/2 items-center justify-center bg-white'>
@@ -180,5 +183,7 @@ const QRPayment = ({ amount, taskId, transactionId }: QRPaymentProps) => {
     </section>
   );
 };
+
+const QRPayment = dynamic(async () => QRPaymentContent, { ssr: false });
 
 export { QRPayment };
