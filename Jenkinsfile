@@ -14,7 +14,7 @@ pipeline {
 
         IMAGE_NAME      = 'siberiacancode/juniors-bootcamp-portal'
         IMAGE_VERSION   = 'latest'
-        NEXT_PUBLIC_API_URL = 'http://juniorsbootcamp.ru/api'
+        NEXT_PUBLIC_API_URL = 'https://juniorsbootcamp.ru/api'
     }
 
     stages {
