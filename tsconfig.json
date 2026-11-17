@@ -10,7 +10,8 @@
       "@/*": ["./src/*"],
       "@/generated/*": ["./generated/*"],
       "@/app/*": ["./app/*"],
-      "@/public/*": ["./public/*"]
+      "@/public/*": ["./public/*"],
+      "@/.source/*": ["./.source/*"]
     },
     "resolveJsonModule": true,
     "allowJs": true,

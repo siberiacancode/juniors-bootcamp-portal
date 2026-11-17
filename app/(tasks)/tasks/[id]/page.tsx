@@ -11,6 +11,7 @@ import {
   Typography
 } from '@/components/ui';
 import { COOKIES } from '@/constants';
+import { DEFAULT_TASK_SETTINGS } from '@/docs/tasks/constants';
 import { IntlText } from '@/intl';
 import { intl } from '@/intl/server';
 import { getCookieValue } from '@/utils/server';
@@ -52,10 +53,10 @@ const TaskPage = async ({ params }: TaskPageProps) => {
 
   const task = TASKS[id as keyof typeof TASKS];
 
-  const initialTaskSettings = await getCookieValue<TaskSettingsCookieValue>(COOKIES.TASK_SETTINGS, {
-    level: 'junior',
-    api: 'rest'
-  });
+  const initialTaskSettings = await getCookieValue<TaskSettingsCookieValue>(
+    COOKIES.TASK_SETTINGS,
+    DEFAULT_TASK_SETTINGS
+  );
 
   return (
     <main className='mt-10 mb-18 flex flex-col gap-18 sm:mt-12 sm:mb-24 sm:gap-22'>
