@@ -1,3 +1,5 @@
+import type { Route } from 'next';
+
 import { ChevronLeftIcon, ChevronRightIcon, LockIcon } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -64,14 +66,14 @@ const TaskDocPage = async ({ params }: TaskDocPageProps) => {
         <nav className='flex justify-between gap-4'>
           {neighbours.previous && (
             <Button asChild variant='outline'>
-              <Link href={neighbours.previous.url}>
+              <Link href={neighbours.previous.url as Route}>
                 <ChevronLeftIcon /> {neighbours.previous.name}
               </Link>
             </Button>
           )}
           {neighbours.next && (
             <Button asChild className='ml-auto' variant='outline'>
-              <Link href={neighbours.next.url}>
+              <Link href={neighbours.next.url as Route}>
                 {neighbours.next.name} <ChevronRightIcon />
               </Link>
             </Button>

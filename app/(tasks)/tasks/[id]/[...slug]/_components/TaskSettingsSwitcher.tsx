@@ -29,7 +29,8 @@ export const TaskSettingsSwitcher = ({ initialValue }: TaskSettingsSwitcherProps
     initialValue
   });
 
-  const onChange = (key: keyof TaskSettings, value: string) => {
+  const onValueChange = (key: keyof TaskSettings) => (value: string | null) => {
+    if (!value) return;
     settings.set({ ...settings.value, [key]: value }, COOKIE_OPTIONS);
     router.refresh();
   };
@@ -37,11 +38,7 @@ export const TaskSettingsSwitcher = ({ initialValue }: TaskSettingsSwitcherProps
   return (
     <div className='flex flex-wrap gap-2'>
       {FIELDS.map(({ key, values }) => (
-        <Select
-          key={key}
-          value={settings.value[key]}
-          onValueChange={(value) => onChange(key, value)}
-        >
+        <Select key={key} value={settings.value[key]} onValueChange={onValueChange(key)}>
           <SelectTrigger className='w-36'>
             <SelectValue />
           </SelectTrigger>

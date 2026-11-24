@@ -105,7 +105,7 @@
   --color-neutral-600: rgb(183, 183, 183);
   --color-neutral-700: rgb(150, 150, 150);
   --color-neutral-800: rgb(46, 46, 46);
-  --color-neutral-900: rgb(11, 11, 11);
+  --color-neutral-900: rgb(20, 20, 20);
 
   --color-red-50: rgb(254, 242, 242);
   --color-red-100: rgb(255, 226, 226);
@@ -234,7 +234,7 @@
 
   /* Borders & UI */
   --color-border-hard: var(--color-neutral-900);
-  --color-border-soft: var(--color-neutral-700);
+  --color-border-soft: var(--color-neutral-300);
   --color-input: var(--color-neutral-600);
   --color-ring: var(--color-neutral-300);
 
@@ -301,7 +301,7 @@
 
   /* Borders & UI - более мягкие границы */
   --color-border-hard: var(--color-neutral-300);
-  --color-border-soft: var(--color-neutral-500);
+  --color-border-soft: var(--color-neutral-800);
   --color-input: var(--color-neutral-500);
   --color-ring: var(--color-neutral-400);
 

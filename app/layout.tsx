@@ -67,7 +67,6 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => (
       <meta content='image/png' property='og:image:type' />
       <meta content='1200' property='og:image:width' />
       <meta content='640' property='og:image:height' />
-      <meta content='noindex, nofollow' name='robots' />
       <ThemeScript />
     </head>
     <body className='flex min-h-screen flex-col overflow-x-hidden'>

@@ -4,7 +4,7 @@ import type { ComponentProps } from 'react';
 import { cva } from 'class-variance-authority';
 import { Slot } from 'radix-ui';
 
-import type { GraphQLOperation, RestOperation } from '@/types/operation';
+import type { GraphQLOperation, RestOperation } from '@/types';
 
 import { cn } from '@/lib/utils';
 

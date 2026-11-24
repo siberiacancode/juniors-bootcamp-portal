@@ -8,6 +8,7 @@
     "start": "next start",
     "content:generate": "fumadocs-mdx",
     "api:generate": "apicraft generate",
+    "sync-projects": "bun run scripts/sync-projects.ts",
     "lint": "eslint . --fix",
     "lint-inspector": "npx @eslint/config-inspector@latest",
     "format": "prettier --write .",
@@ -15,6 +16,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@base-ui/react": "^1.9.0",
     "@hookform/resolvers": "^5.5.7",
     "@shikijs/rehype": "^4.3.1",
     "@siberiacancode/fetches": "^1.14.3",
@@ -30,7 +32,7 @@
     "fumadocs-mdx": "15.6.3",
     "lucide-react": "^1.28.0",
     "motion": "^12.43.0",
-    "next": "^16.2.12",
+    "next": "^16.4.6",
     "nuqs": "^2.9.3",
     "qrcode.react": "^4.2.0",
     "radix-ui": "^1.6.7",
@@ -45,6 +47,7 @@
   },
   "devDependencies": {
     "@shikijs/transformers": "^4.3.1",
+    "@siberiacancode/autotest": "^1.0.0",
     "@siberiacancode/apicraft": "^1.12.1",
     "@siberiacancode/eslint": "^2.18.0",
     "@siberiacancode/prettier": "^1.8.0",
@@ -54,6 +57,7 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "babel-plugin-react-compiler": "1.0.0",
+    "fflate": "^0.8.3",
     "husky": "^9.1.7",
     "nano-staged": "^1.0.2",
     "shadcn": "^4.16.0",
