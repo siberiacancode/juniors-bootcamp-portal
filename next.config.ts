@@ -5,6 +5,7 @@ import { PHASE_PRODUCTION_SERVER } from 'next/constants';
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  typedRoutes: true,
   pageExtensions: ['jsx', 'mdx', 'tsx']
 };
 

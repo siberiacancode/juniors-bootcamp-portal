@@ -55,6 +55,11 @@ export const CodeGroup = ({ children }: CodeBlockGroupProps) => {
     copy(preRef.current.textContent);
   };
 
+  const onLanguageChange = (value: SupportedLanguage | null) => {
+    if (!value) return;
+    setCurrentLanguage(value);
+  };
+
   const { fileName, className, language, key, ...props } = blocks.find(
     (block) => block.language === currentLanguage
   )!;
@@ -64,10 +69,7 @@ export const CodeGroup = ({ children }: CodeBlockGroupProps) => {
       <div className='flex h-16 items-center border-b-2 border-border-hard px-6'>
         {fileName && <span className='text-[14px]/5.5 text-muted-fg'>{fileName}</span>}
         <div className='ml-auto flex items-center gap-2'>
-          <Select
-            value={currentLanguage}
-            onValueChange={(value) => setCurrentLanguage(value as SupportedLanguage)}
-          >
+          <Select value={currentLanguage} onValueChange={onLanguageChange}>
             <SelectTrigger size='sm'>
               <SelectValue />
             </SelectTrigger>

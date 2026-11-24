@@ -1,3 +1,5 @@
+import type { Route } from 'next';
+
 import { LockIcon } from 'lucide-react';
 import Link from 'next/link';
 
@@ -40,7 +42,7 @@ export const TaskDocSidebar = ({ nodes, activeUrl }: TaskDocSidebarProps) => (
               node.url === activeUrl && 'font-bold',
               node.lock && 'opacity-50'
             )}
-            href={node.url}
+            href={node.url as Route}
           >
             {node.name}
             {node.lock && <LockIcon className='size-3.5' />}

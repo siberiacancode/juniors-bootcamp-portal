@@ -1,12 +1,7 @@
+import type { Route } from 'next';
+
 import { GithubIcon, TelegramIcon, TwitchIcon, YoutubeIcon } from '@/components/icons';
 import { LINKS } from '@/constants';
-
-export const PRODUCTS = [
-  {
-    href: LINKS.SOCIAL.GITHUB,
-    label: 'siberiacancode'
-  }
-] as const;
 
 export const SOCIALS = [
   {
@@ -43,8 +38,12 @@ export const NAVIGATION = [
   {
     href: '/qa',
     label: 'navigation.qa'
+  },
+  {
+    href: '/projects',
+    label: 'navigation.projects'
   }
-] as const;
+] as const satisfies { href: Route; label: string }[];
 
 export const OPENSOURCE = [
   {

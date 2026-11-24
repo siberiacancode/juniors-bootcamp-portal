@@ -1,5 +1,5 @@
 import type { ApiType, LevelName, TaskSettings } from '@/docs/tasks/constants';
-import type { GraphQLOperation, RestOperation } from '@/types/operation';
+import type { GraphQLOperation, RestOperation } from '@/types';
 
 export type { ApiType, LevelName };
 
