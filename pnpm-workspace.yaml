@@ -1,0 +1,12 @@
+publicHoistPattern:
+  - eslint
+  - oxfmt
+  - lefthook
+  - vitest
+allowBuilds:
+  core-js: true
+  esbuild: true
+  lefthook: true
+  sharp: true
+minimumReleaseAgeExclude:
+  - '@siberiacancode/autotest@1.0.1'

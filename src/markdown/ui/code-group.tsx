@@ -34,7 +34,7 @@ interface BlockProps {
 }
 
 export const CodeGroup = ({ children }: CodeBlockGroupProps) => {
-  if (!Array.isArray(children)) throw new Error('Must be an array of elements');
+  if (!Array.isArray(children)) throw new TypeError('Must be an array of elements');
 
   const blocks = children.map((element, index) => {
     const props = element.props as unknown as BlockProps;

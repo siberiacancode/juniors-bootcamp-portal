@@ -125,7 +125,6 @@ const Carousel = ({
   useEffect(() => {
     if (!api) return;
 
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     onReInit(api);
     onSelect(api);
     setIsApiReady(true);

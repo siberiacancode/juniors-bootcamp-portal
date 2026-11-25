@@ -30,7 +30,7 @@ export const Marquee = ({
         className={cn(
           'inline-flex animate-[marquee_linear_infinite] will-change-transform',
           pauseOnHover && 'group-hover:paused',
-          reverse && 'direction-[reverse]',
+          reverse && 'shimmer-reverse',
           className
         )}
         style={{
