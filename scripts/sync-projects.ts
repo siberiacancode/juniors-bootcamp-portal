@@ -35,7 +35,7 @@ const sync = async () => {
   const archiveData: unknown = reposDownloadZipballArchiveResponse.data;
 
   if (!(archiveData instanceof ArrayBuffer))
-    throw new Error('GitHub response is not a ZIP archive');
+    throw new TypeError('GitHub response is not a ZIP archive');
 
   const files = unzipSync(new Uint8Array(archiveData), {
     filter: ({ name }) => PATHS.projectsJson.test(name) || PATHS.images.test(name)
