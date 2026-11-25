@@ -1,0 +1,11 @@
+extends:
+  - ./node_modules/@siberiacancode/lefthook/dist/lefthook.yml
+
+pre-commit:
+  jobs:
+    - name: format
+      skip: true
+    - name: oxfmt
+      glob: '*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,json,jsonc,md,yml,yaml,css,scss,html}'
+      run: pnpm exec oxfmt {staged_files}
+      stage_fixed: true
