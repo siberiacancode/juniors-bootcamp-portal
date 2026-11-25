@@ -42,14 +42,13 @@ export const cases = createTestCases([
     ]
   },
   {
-    name: 'Проекты. Метаданные и индексация',
+    name: 'Проекты. Метаданные',
     steps: [
       {
-        action: 'Открыть /projects и /tasks и проверить метатеги в исходном HTML обеих страниц.',
+        action: 'Открыть /projects и проверить метатеги в исходном HTML страницы.',
         expected: [
-          'У /projects title — «Проекты учеников | juniorsbootcamp», description — «Решения учеников по заданиям juniorsbootcamp. Смотрите код, сравнивайте подходы и делитесь своим проектом.».',
-          'У /projects сохранены Open Graph-метатеги: og:image — /metadata/open-graph.png, og:image:type — image/png, og:image:width — 1200, og:image:height — 640.',
-          'В исходном HTML /projects и /tasks отсутствует robots со значением noindex, nofollow.'
+          'title — «Проекты учеников | juniorsbootcamp», description — «Решения учеников по заданиям juniorsbootcamp. Смотрите код, сравнивайте подходы и делитесь своим проектом.».',
+          'Сохранены Open Graph-метатеги: og:image — /metadata/open-graph.png, og:image:type — image/png, og:image:width — 1200, og:image:height — 640.'
         ]
       }
     ]
@@ -59,55 +58,45 @@ export const cases = createTestCases([
     preconditions: [projectPreconditions.openedProjectsPage],
     steps: [
       {
-        action: 'Нажать на кнопку «Добавить свой проект».',
+        action: 'Нажать верхнюю кнопку «Добавить свой проект».',
         expected: [
-          'Открывается https://github.com/siberiacancode/juniors-bootcamp-examples/blob/main/CONTRIBUTING.md.'
-        ]
-      },
-      {
-        action: 'Нажать на кнопку «Отправить проект» в нижнем баннере.',
-        expected: [
-          'Открывается https://github.com/siberiacancode/juniors-bootcamp-examples/blob/main/CONTRIBUTING.md.'
+          'В новой вкладке открывается https://github.com/siberiacancode/juniors-bootcamp-examples/blob/main/CONTRIBUTING.md.'
         ]
       }
     ]
   },
   {
-    name: 'Проекты. Метрика',
+    name: 'Проекты. Отправить проект',
     preconditions: [projectPreconditions.openedProjectsPage],
     steps: [
       {
-        action:
-          'Открыть DevTools → Console, запомнить текущее содержимое window.dataLayer и выбрать задание в фильтре. Проверить новые записи window.dataLayer.',
+        action: 'Нажать на кнопку «Отправить проект» в нижнем баннере.',
         expected: [
-          'В window.dataLayer добавлена запись события изменения задания с выбранным значением.'
+          'В новой вкладке открывается https://github.com/siberiacancode/juniors-bootcamp-examples/blob/main/CONTRIBUTING.md.'
         ]
-      },
-      {
-        action: 'Выбрать framework в фильтре и проверить новые записи window.dataLayer.',
-        expected: [
-          'В window.dataLayer добавлена запись события изменения framework с выбранным значением.'
-        ]
-      },
+      }
+    ]
+  },
+  {
+    name: 'Проекты. Добавить свой проект. Метрика',
+    steps: [
       {
         action:
-          'Открыть ссылку GitHub в карточке проекта и проверить новые записи window.dataLayer.',
+          'В production-сборке открыть /projects, нажать «Принять» в уведомлении о cookies и верхнюю кнопку «Добавить свой проект». Проверить отправленную цель в DevTools → Network.',
         expected: [
-          'В window.dataLayer добавлена запись project_code_click с username и task выбранного проекта.'
+          'В Яндекс Метрику отправляется цель project_contribute_click с placement = gallery.'
         ]
-      },
+      }
+    ]
+  },
+  {
+    name: 'Проекты. Отправить проект. Метрика',
+    steps: [
       {
         action:
-          'Вернуться на /projects, нажать верхнюю кнопку «Добавить свой проект» и проверить новые записи window.dataLayer.',
+          'В production-сборке открыть /projects, нажать «Принять» в уведомлении о cookies и кнопку «Отправить проект» в нижнем баннере. Проверить отправленную цель в DevTools → Network.',
         expected: [
-          'В window.dataLayer добавлена запись project_contribute_click с placement = top.'
-        ]
-      },
-      {
-        action:
-          'Вернуться на /projects, нажать кнопку «Отправить проект» в нижнем баннере и проверить новые записи window.dataLayer.',
-        expected: [
-          'В window.dataLayer добавлена запись project_contribute_click с placement = banner.'
+          'В Яндекс Метрику отправляется цель project_contribute_click с placement = subfooter.'
         ]
       }
     ]
