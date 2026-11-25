@@ -1,0 +1,35 @@
+@startuml
+title Добавление проекта в каталог
+
+actor "Автор проекта" as Author
+participant "Страница /projects" as Page
+participant "CONTRIBUTING.md" as Guide
+participant "GitHub Issues" as Issues
+participant "GitHub Pull Requests" as PR
+actor "Сопровождающий" as Maintainer
+participant "Репозиторий примеров" as Repository
+participant "Репозиторий портала" as PortalRepository
+
+note over Page, Repository
+  Целевой сценарий по спецификации.
+  Подготовка каталога для сборки описана в спецификации отдельно.
+end note
+
+Author -> Page: Выбирает верхнюю CTA или кнопку в баннере
+note over Page
+  При согласии на аналитику дополнительно отправляется
+  событие перехода к гайду: placement = top или banner.
+end note
+Page -> Guide: Открывает гайд репозитория примеров
+Guide --> Author: Объясняет состав данных, создание Issue и подготовку PR
+Author -> Issues: Создаёт Issue с данными проекта и ссылками
+Author -> PR: Отправляет копию решения, скриншот и запись в конце projects.json
+PR --> Maintainer: Передаёт проект на проверку
+Maintainer -> PR: Проверяет и объединяет PR
+PR -> Repository: Добавляет решение и запись в каталог
+Maintainer -> Issues: Закрывает Issue
+Maintainer -> PortalRepository: Запускает sync-projects и коммитит снимок
+Author -> Page: После следующей сборки портала открывает /projects
+Page --> Author: Видит карточку со ссылкой на копию решения
+
+@enduml

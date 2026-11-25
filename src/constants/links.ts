@@ -12,9 +12,15 @@ export const LINKS = {
     FETCHES: 'https://www.npmjs.com/package/@siberiacancode/fetches'
   },
   CONTENT: {
+    SOURCE: 'https://github.com/siberiacancode/juniors-bootcamp-portal',
     DESIGN:
       'https://www.figma.com/design/dTtlKirZNUvr9POVt2lcRA/Juniors-Bootcamp-Landing?node-id=40000541-3429',
     API: 'https://juniorsbootcamp.ru/api/rest'
+  },
+  PROJECTS: {
+    REPOSITORY: 'https://github.com/siberiacancode/juniors-bootcamp-examples',
+    CONTRIBUTING:
+      'https://github.com/siberiacancode/juniors-bootcamp-examples/blob/main/CONTRIBUTING.md'
   },
   TESTER: 'https://juniorsbootcamp.ru/tester',
   TASKS: {

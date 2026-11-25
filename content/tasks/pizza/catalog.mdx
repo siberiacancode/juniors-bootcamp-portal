@@ -1,0 +1,29 @@
+---
+title: Каталог
+description: Получаем и выводим каталог пицц
+---
+
+## Задача
+
+Получите каталог пицц и выведите его карточками по макету.
+
+<show when={props.api === 'rest'}>Запрос: `GET /pizza/catalog`</show>
+<show when={props.api === 'graphQL'}>Запрос: `query getPizzasCatalog`</show>
+
+<show when={props.atLeast.middle}>
+## Фильтры
+
+Добавьте фильтр по ингредиентам и храните его в URL.
+
+</show>
+
+<show when={props.atLeast.senior}>
+## Производительность
+
+Сделайте skeleton на время загрузки и виртуализацию длинного списка.
+
+</show>
+
+<show when={props.level === 'junior'}>
+> Подсказка только для junior: начните с одной карточки, потом выведите список.
+</show>

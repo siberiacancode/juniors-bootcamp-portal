@@ -1,5 +1,9 @@
 import { createYandexMetrika } from '@siberiacancode/yandex-metrika';
 
+import type { ProjectFramework, ProjectTask } from '@/types';
+
+const YANDEX_METRIKA_COUNTER_ID = 108002818;
+
 interface GuideBadgeClickEvent {
   eventName: 'reachGoal';
   params: {
@@ -16,6 +20,44 @@ interface GuideSearchInputEvent {
   target: 'guide_search_input';
 }
 
-export const yandexMetrika = createYandexMetrika<GuideBadgeClickEvent | GuideSearchInputEvent>(
-  108002818
-);
+interface ProjectLinkClickEvent {
+  eventName: 'reachGoal';
+  params: {
+    task: ProjectTask;
+    username: string;
+  };
+  target: 'project_code_click';
+}
+
+interface ProjectContributeClickEvent {
+  eventName: 'reachGoal';
+  params: {
+    placement: 'gallery' | 'subfooter';
+  };
+  target: 'project_contribute_click';
+}
+
+interface ProjectTaskFilterClickEvent {
+  eventName: 'reachGoal';
+  params: {
+    task: ProjectTask;
+  };
+  target: 'project_task_filter_click';
+}
+
+interface ProjectFrameworkFilterClickEvent {
+  eventName: 'reachGoal';
+  params: {
+    framework: ProjectFramework;
+  };
+  target: 'project_framework_filter_click';
+}
+
+export const yandexMetrika = createYandexMetrika<
+  | GuideBadgeClickEvent
+  | GuideSearchInputEvent
+  | ProjectContributeClickEvent
+  | ProjectFrameworkFilterClickEvent
+  | ProjectLinkClickEvent
+  | ProjectTaskFilterClickEvent
+>(YANDEX_METRIKA_COUNTER_ID);

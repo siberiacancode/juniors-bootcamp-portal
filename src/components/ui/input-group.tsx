@@ -5,10 +5,10 @@ import type { ComponentProps } from 'react';
 
 import { cva } from 'class-variance-authority';
 
-import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 
 import { IconButton } from './icon-button';
+import { Input } from './input';
 
 const InputGroup = ({ className, ...props }: ComponentProps<'div'>) => (
   <div

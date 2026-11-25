@@ -1,0 +1,4 @@
+{
+  "title": "Пиццерия",
+  "pages": ["overview", "setup", "catalog", "payment", "auth"]
+}
