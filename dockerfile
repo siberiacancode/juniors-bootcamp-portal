@@ -1,5 +1,6 @@
-FROM node:22-alpine AS base
+FROM node:24-alpine AS base
 LABEL org.opencontainers.image.source https://github.com/siberiacancode/junior-bootcamp-portal
+RUN npm install -g pnpm@11.13.1
 
 FROM base AS builder
 
@@ -7,14 +8,13 @@ ARG NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 
 WORKDIR /app
-COPY package*.json yarn.lock ./
-RUN yarn --production --frozen-lockfile && \
-    yarn add typescript@5.9.3
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN pnpm install --frozen-lockfile
 
 COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
-RUN yarn build
+RUN pnpm build
 
 FROM base AS runner
 
@@ -31,4 +31,4 @@ COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/src/markdown/shiki.ts ./src/markdown/shiki.ts
 COPY --from=builder /app/next.config.ts ./next.config.ts
 
-CMD [ "yarn", "start" ]
+CMD [ "pnpm", "start" ]

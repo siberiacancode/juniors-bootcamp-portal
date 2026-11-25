@@ -56,7 +56,7 @@ export const OrbitingStack = ({ className, ...props }: OrbitingCirclesProps) => 
                   'absolute flex transform-gpu animate-[orbit_linear_infinite] items-center justify-center',
                   'size-6 rounded-full border border-black/10 bg-background dark:border-white/10 [&>svg]:size-4',
                   'hover:paused',
-                  orbitIndex % 2 === 0 && 'direction-[reverse]'
+                  orbitIndex % 2 === 0 && 'shimmer-reverse'
                 )}
                 style={
                   {
