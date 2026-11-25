@@ -1,0 +1,31 @@
+[
+  {
+    "username": "yelaiii",
+    "name": "",
+    "task": "cinema",
+    "framework": "next",
+    "path": "examples/cinema/1"
+  },
+  {
+    "username": "mynameisedward",
+    "name": "",
+    "task": "cinema",
+    "framework": "react",
+    "path": "examples/cinema/2"
+  },
+  {
+    "username": "vitrivdolkom",
+    "name": "",
+    "task": "cars",
+    "framework": "vue",
+    "path": "examples/cars/1"
+  },
+  {
+    "username": "tungulin",
+    "preview": "/projects/images/delivery-1.png",
+    "name": "",
+    "task": "delivery",
+    "framework": "react",
+    "path": "examples/delivery/1"
+  }
+]

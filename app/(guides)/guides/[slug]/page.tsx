@@ -5,6 +5,7 @@ import { getGuideModule, getGuides } from '@/app/(guides)/_helpers';
 import { GithubIcon } from '@/components/icons';
 import { Button, Typography } from '@/components/ui';
 import { IntlText } from '@/intl';
+import { CUSTOM_COMPONENTS } from '@/markdown';
 
 import { ShareButtton } from './_components';
 
@@ -63,7 +64,7 @@ const GuidePage = async ({ params }: GuidePageProps) => {
       </section>
 
       <section>
-        <GuideModule.default />
+        <GuideModule.default components={CUSTOM_COMPONENTS} />
       </section>
 
       <section className='flex flex-col items-start gap-6'>

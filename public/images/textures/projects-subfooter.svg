@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <defs>
+    <pattern id="p" width="260" height="260" patternUnits="userSpaceOnUse" patternTransform="rotate(-8)">
+      <g fill="none" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="22" y="30" width="56" height="56" rx="10" />
+        <path d="M44 50v19c0 5-3 8-8 8" />
+        <path d="M68 53c-1.5-3-4.5-4.5-8-4.5-4 0-7 2.2-7 5.6 0 3.6 3 5 7 6s7.2 2.6 7.2 6.4c0 3.6-3.2 6-7.6 6-3.6 0-6.4-1.6-7.8-4.4" />
+        <path d="M136 22c-12 0-12 8-12 14v10c0 6-4 8-9 8 5 0 9 2 9 8v10c0 6 0 14 12 14" />
+        <path d="M176 22c12 0 12 8 12 14v10c0 6 4 8 9 8-5 0-9 2-9 8v10c0 6 0 14-12 14" />
+        <path d="M150 160h56a18 18 0 0 1 0 36h-56a18 18 0 0 1 0-36z" />
+        <path d="M162 172v12M156 178h12" />
+        <circle cx="196" cy="174" r="2.5" />
+        <circle cx="203" cy="182" r="2.5" />
+        <path d="M58 150l7 16 16 7-16 7-7 16-7-16-16-7 16-7z" />
+        <path d="M30 236q15-18 30 0t30 0t30 0" />
+        <path d="M214 110l10 10 22-24" />
+        <path d="M226 236l-14-14M212 236l14-14" />
+      </g>
+    </pattern>
+  </defs>
+  <rect width="1280" height="640" fill="url(#p)" />
+</svg>
