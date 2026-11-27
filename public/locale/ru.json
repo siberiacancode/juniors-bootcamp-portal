@@ -23,6 +23,8 @@
   "header.tasks.cinema.description": "Афиша, выбор мест, билеты",
   "header.tasks.delivery.title": "Доставка еды",
   "header.tasks.delivery.description": "Расчёт стоимости и трекинг",
+  "header.tasks.projects.title": "Проекты учеников",
+  "header.tasks.projects.description": "Примеры реализации заданий",
   "header.docs.skills.title": "Скиллы",
   "header.docs.skills.description": "Команды для работы с AI-агентами",
   "header.docs.architecture.title": "Архитектура",

@@ -4,6 +4,7 @@ import { useDisclosure } from '@siberiacancode/reactuse';
 import {
   ArrowRightIcon,
   BookOpenIcon,
+  CodeXmlIcon,
   LayersIcon,
   Loader2Icon,
   LoaderIcon,
@@ -189,6 +190,20 @@ export const MobileHeader = () => {
                 </NavigationMenuCardTitle>
                 <NavigationMenuCardDescription>
                   <IntlText path='header.tasks.delivery.description' />
+                </NavigationMenuCardDescription>
+              </span>
+            </NavigationMenuCard>
+            <div className='my-1 h-px bg-border-soft' />
+            <NavigationMenuCard render={<Link href='/projects' onClick={menu.close} />}>
+              <NavigationMenuCardIcon>
+                <CodeXmlIcon aria-hidden='true' className='size-6' />
+              </NavigationMenuCardIcon>
+              <span className='flex min-w-0 flex-col'>
+                <NavigationMenuCardTitle>
+                  <IntlText path='header.tasks.projects.title' />
+                </NavigationMenuCardTitle>
+                <NavigationMenuCardDescription>
+                  <IntlText path='header.tasks.projects.description' />
                 </NavigationMenuCardDescription>
               </span>
             </NavigationMenuCard>

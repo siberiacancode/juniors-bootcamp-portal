@@ -1,5 +1,19 @@
 [
   {
+    "username": "zeroqs",
+    "name": "Reatom delivery",
+    "task": "delivery",
+    "framework": "react",
+    "path": "examples/delivery/2"
+  },
+  {
+    "username": "siberiacancode",
+    "name": "Tester app for holyjs",
+    "task": "games",
+    "framework": "react",
+    "path": "examples/games/1"
+  },
+  {
     "username": "yelaiii",
     "name": "",
     "task": "cinema",

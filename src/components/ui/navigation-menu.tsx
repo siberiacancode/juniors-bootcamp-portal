@@ -130,7 +130,7 @@ const NavigationMenuCard = ({ className, render, ...props }: useRender.Component
     props: {
       ...props,
       className: cn(
-        'flex items-center gap-3 rounded-16 p-2 text-left text-foreground hover:bg-muted',
+        'group/card flex items-center gap-3 rounded-16 p-2 text-left text-foreground hover:bg-muted',
         className
       ),
       'data-slot': 'navigation-menu-card'
@@ -148,7 +148,7 @@ const NavigationMenuCardIcon = ({
     props: {
       ...props,
       className: cn(
-        'flex size-10 shrink-0 items-center justify-center rounded-12 bg-muted',
+        'flex size-10 shrink-0 items-center justify-center rounded-12 bg-muted group-hover/card:bg-background',
         className
       ),
       'data-slot': 'navigation-menu-card-icon'

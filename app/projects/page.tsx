@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export const dynamic = 'force-static';
 
 const ProjectsPage = () => (
-  <main className='content-container mt-20 mb-18 flex flex-col gap-16 sm:mt-28 sm:mb-24 sm:gap-20 lg:mt-32'>
+  <main className='content-container mt-10 mb-18 flex flex-col gap-16 sm:mt-12 sm:mb-24 sm:gap-20'>
     <HeroSection />
     <GallerySection projects={projects as Project[]} />
     <SubfooterSection />

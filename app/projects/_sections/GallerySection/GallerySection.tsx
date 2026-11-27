@@ -162,10 +162,7 @@ export const GallerySection = ({ projects }: GallerySectionProps) => {
                         </ProjectCardCodeLink>
 
                         <ProjectCardFramework>
-                          <FrameworkIcon
-                            aria-hidden='true'
-                            className={project.framework === 'next' ? 'dark:invert' : undefined}
-                          />
+                          <FrameworkIcon aria-hidden='true' />
                         </ProjectCardFramework>
                       </ProjectCardActions>
                     </ProjectCardContent>
