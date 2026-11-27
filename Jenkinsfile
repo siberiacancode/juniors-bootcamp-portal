@@ -15,6 +15,8 @@ pipeline {
         IMAGE_NAME      = 'siberiacancode/juniors-bootcamp-portal'
         IMAGE_VERSION   = 'latest'
         NEXT_PUBLIC_API_URL = 'https://juniorsbootcamp.ru/api'
+        NEXT_PUBLIC_ALGOLIA_APP_ID = 'fake'
+        NEXT_PUBLIC_ALGOLIA_SEARCH_KEY = 'fake'
     }
 
     stages {
@@ -35,6 +37,8 @@ pipeline {
 
                     docker build \
                         --build-arg NEXT_PUBLIC_API_URL="$NEXT_PUBLIC_API_URL" \
+                        --build-arg NEXT_PUBLIC_ALGOLIA_APP_ID="$NEXT_PUBLIC_ALGOLIA_APP_ID" \
+                        --build-arg NEXT_PUBLIC_ALGOLIA_SEARCH_KEY="$NEXT_PUBLIC_ALGOLIA_SEARCH_KEY" \
                         -t "ghcr.io/$IMAGE_NAME:$IMAGE_VERSION" \
                         .
 
