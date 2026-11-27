@@ -63,10 +63,6 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => (
     lang={intl.locale}
   >
     <head>
-      <meta content='/metadata/open-graph.png' property='og:image' />
-      <meta content='image/png' property='og:image:type' />
-      <meta content='1200' property='og:image:width' />
-      <meta content='640' property='og:image:height' />
       <ThemeScript />
     </head>
     <body className='flex min-h-screen flex-col overflow-x-hidden'>
