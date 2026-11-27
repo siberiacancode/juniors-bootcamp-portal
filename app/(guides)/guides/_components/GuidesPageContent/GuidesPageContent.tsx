@@ -9,7 +9,7 @@ import { parseAsArrayOf, parseAsString, useQueryStates } from 'nuqs';
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
 
-import { ReactuseWordmarkIcon, SkillsshWordmarkIcon } from '@/components/icons';
+import { ReactuseIcon, SkillsshWordmarkIcon } from '@/components/icons';
 import {
   Badge,
   Chip,
@@ -67,7 +67,7 @@ const guidesQueryParams = {
 const adGuides: AdGuide[] = [
   {
     type: 'ad',
-    icon: <ReactuseWordmarkIcon />,
+    icon: <ReactuseIcon className='h-8 w-auto' />,
     badge: (
       <Badge className='bg-brand-reactuse text-brand-reactuse-fg' variant='accent'>
         react

@@ -51,7 +51,7 @@ const GuidePage = async ({ params }: GuidePageProps) => {
           <Button asChild size='sm' variant='ghost'>
             <Link href='/guides'>
               <ChevronLeftIcon />
-              <IntlText path='link.goBack' />
+              <IntlText path='button.goBack' />
             </Link>
           </Button>
 
@@ -93,7 +93,7 @@ const GuidePage = async ({ params }: GuidePageProps) => {
             rel='noopener noreferrer'
             target='_blank'
           >
-            <IntlText path='link.editOnGitHub' /> <GithubIcon className='size-4' />
+            <IntlText path='button.editOnGitHub' /> <GithubIcon className='size-4' />
           </Link>
         </Button>
       </section>

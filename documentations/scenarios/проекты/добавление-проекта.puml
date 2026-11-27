@@ -28,7 +28,7 @@ PR --> Maintainer: Передаёт проект на проверку
 Maintainer -> PR: Проверяет и объединяет PR
 PR -> Repository: Добавляет решение и запись в каталог
 Maintainer -> Issues: Закрывает Issue
-Maintainer -> PortalRepository: Запускает sync-projects и коммитит снимок
+Maintainer -> PortalRepository: Запускает sync:projects и коммитит снимок
 Author -> Page: После следующей сборки портала открывает /projects
 Page --> Author: Видит карточку со ссылкой на копию решения
 

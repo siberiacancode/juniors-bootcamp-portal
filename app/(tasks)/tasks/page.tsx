@@ -88,7 +88,7 @@ const TasksPage = () => (
 
                 <Button asChild>
                   <Link href={task.href}>
-                    <IntlText path='link.goTo' />
+                    <IntlText path='button.goTo' />
                     <ArrowRightIcon />
                   </Link>
                 </Button>

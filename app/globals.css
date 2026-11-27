@@ -25,6 +25,7 @@
   /* Secondary */
   --color-secondary: var(--color-secondary);
   --color-secondary-hover: var(--color-secondary-hover);
+  --color-secondary-emphasis-hover: var(--color-secondary-emphasis-hover);
   --color-secondary-fg: var(--color-secondary-fg);
 
   /* Muted */
@@ -222,6 +223,7 @@
   /* Secondary */
   --color-secondary: var(--color-neutral-100);
   --color-secondary-hover: var(--color-neutral-200);
+  --color-secondary-emphasis-hover: var(--color-neutral-300);
   --color-secondary-fg: var(--color-neutral-900);
 
   /* Muted */
@@ -259,9 +261,9 @@
   --color-brand-vercel: var(--color-black);
   --color-brand-vercel-fg: var(--color-white);
 
-  --color-brand-reactuse: var(--color-sky-400);
-  --color-brand-reactuse-hover: var(--color-sky-500);
-  --color-brand-reactuse-fg: var(--color-sky-50);
+  --color-brand-reactuse: var(--color-black);
+  --color-brand-reactuse-hover: var(--color-neutral-800);
+  --color-brand-reactuse-fg: var(--color-white);
 
   /* Action */
   --color-action-primary: var(--color-primary);
@@ -289,6 +291,7 @@
   /* Secondary */
   --color-secondary: var(--color-neutral-800);
   --color-secondary-hover: var(--color-neutral-700);
+  --color-secondary-emphasis-hover: var(--color-neutral-700);
   --color-secondary-fg: var(--color-neutral-200);
 
   /* Muted */
@@ -325,6 +328,10 @@
   /* Brand */
   --color-brand-vercel: var(--color-white);
   --color-brand-vercel-fg: var(--color-black);
+
+  --color-brand-reactuse: var(--color-white);
+  --color-brand-reactuse-hover: var(--color-neutral-200);
+  --color-brand-reactuse-fg: var(--color-black);
 
   /* Status - ярче для видимости */
   --color-danger: var(--color-red-400);

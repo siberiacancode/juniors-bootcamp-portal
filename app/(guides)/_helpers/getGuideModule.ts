@@ -1,17 +1,20 @@
-import type { MDXContent } from 'mdx/types';
+import { notFound } from 'next/navigation';
+
+import { guidesSource } from '@/lib/source';
 
 import 'server-only';
 
-export interface GuideMetadata {
-  description: string;
-  labels: string[];
-  title: string;
-}
+export const getGuideModule = async (slug: string) => {
+  const page = guidesSource.getPage([slug]);
 
-export interface GuideModule {
-  default: MDXContent;
-  metadata: GuideMetadata;
-}
+  if (!page) notFound();
 
-export const getGuideModule = (slug: string) =>
-  import(`../../../public/contents/guides/${slug}.mdx`) as Promise<GuideModule>;
+  return {
+    default: page.data.body,
+    metadata: {
+      title: page.data.title,
+      description: page.data.description,
+      labels: page.data.labels
+    }
+  };
+};

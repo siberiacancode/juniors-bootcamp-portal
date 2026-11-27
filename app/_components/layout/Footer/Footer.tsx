@@ -31,7 +31,7 @@ export const Footer = () => (
 
           <Button asChild className='mt-5 sm:mt-6' size='sm'>
             <a href={LINKS.SOCIAL.TELEGRAM} rel='noopener noreferrer' target='_blank'>
-              <IntlText path='link.contact' />
+              <IntlText path='button.contact' />
             </a>
           </Button>
 

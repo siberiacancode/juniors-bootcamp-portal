@@ -8,7 +8,7 @@ import type { Project } from '../src/types/projects';
 import { reposDownloadZipballArchive } from '../generated/api/github';
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-if (!GITHUB_TOKEN) throw new Error('GITHUB_TOKEN is required for sync-projects');
+if (!GITHUB_TOKEN) throw new Error('GITHUB_TOKEN is required for sync:projects');
 
 const OUTPUT_DIRECTORY = fileURLToPath(new URL('../public/projects', import.meta.url));
 const PROJECTS_JSON_FILE = 'projects.json';

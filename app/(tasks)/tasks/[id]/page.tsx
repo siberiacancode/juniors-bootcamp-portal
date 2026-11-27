@@ -64,7 +64,7 @@ const TaskPage = async ({ params }: TaskPageProps) => {
           <Button asChild size='sm' variant='ghost'>
             <Link href='/tasks'>
               <ChevronLeftIcon />
-              <IntlText path='link.goBack' />
+              <IntlText path='button.goBack' />
             </Link>
           </Button>
         </div>
